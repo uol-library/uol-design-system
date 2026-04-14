@@ -1,0 +1,1142 @@
+.uol-datepicker-background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 11;
+  background-color: $color-black--dark;
+  opacity: 0.78;
+  animation: backgroundFade 0.15s ease-in-out;
+
+  &.uol-datepicker-background--fade-out {
+    animation: backgroundFade 0.15s ease-in-out;
+    animation-direction: reverse;
+  }
+}
+
+.uol-datepicker__controls-wrapper {
+
+  @include media(">=uol-media-xs") {
+    display: flex;
+  }
+}
+
+  .uol-datepicker__input-wrapper {
+    position: relative;
+    width: 100%;
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 1px;
+      left: 1px;
+      border-bottom: 4px solid $color-focus-accent;
+      border-radius: 0 0 4px 4px;
+      width: 0;
+      z-index: 12;
+      transition: width 0.25s ease-in;
+
+      @include media(">=uol-media-xs") {
+        bottom: 1px;
+      }
+    }
+
+    &:focus-within {
+
+      &::before {
+        width: 100%;
+      }
+    }
+
+    [data-invalid] & {
+      &::before {
+        border-bottom-color: $color-alert--error;
+      }
+    }
+  }
+
+  .uol-datepicker__unified-input-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    @include media(">=uol-media-s") {
+      width: 22.8125rem;
+    }
+
+    [data-invalid] & {
+      .uol-form__input__error {
+        flex-basis: auto;
+        order: 2;
+
+        @include media("<uol-media-s") {
+          max-width: 100%;
+        }
+      }
+    }
+  }
+
+  .uol-datepicker__input-group {
+    position: relative;
+    width: 100%;
+
+    .uol-form__input__error {
+      @include media("<uol-media-s") {
+        max-width: 100%;
+      }
+    }
+
+    @include media(">=uol-media-s") {
+      width: 22.8125rem;
+    }
+  }
+
+    .uol-datepicker__labels-wrapper {
+      display: flex;
+
+      [data-invalid] & {
+        order: 1;
+      }
+    }
+
+      .uol-datepicker__range-label {
+        @extend .uol-form__input-label;
+
+        padding-bottom: $spacing-3;
+      }
+
+      .uol-datepicker__range-label--start {
+        flex-basis: 8.5rem;
+
+        @include media(">=uol-media-xs") {
+          flex-basis: 9rem;
+        }
+      }
+
+      .uol-datepicker__range-label--end {
+        padding-left: $spacing-1;
+      }
+
+  .uol-datepicker__unified-input {
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    width: 100%;
+    border: 1px solid $color-border;
+    border-radius: 6px;
+
+    [data-invalid] & {
+      order: 3;
+      border-color: $color-alert--error;
+      border-width: 2px;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.12);
+    }
+
+    .no-csspositionsticky & {
+      height: 3.125rem;
+    }
+
+    @include media(">=uol-media-s") {
+      width: (22.8125rem - 3rem);
+      border-right: none;
+      border-radius: 6px 0 0 6px;
+    }
+
+    .no-js & {
+      border-right: 1px solid $color-border;
+      border-radius: 6px;
+    }
+  }
+
+    .uol-datepicker__input-wrapper--start,
+    .uol-datepicker__input-wrapper--end {
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        bottom: -1px;
+        width: 0;
+        left: 1px;
+        border-top: 4px solid transparent;
+        border-radius: 0 0 0 3px;
+        transition: width 0.25s ease-in;
+      }
+
+      &:focus-within {
+        &::before {
+          border-color: $color-focus-accent;
+          width: 100%;
+
+          [data-invalid] & {
+            border-color: $color-alert--error;
+          }
+        }
+      }
+    }
+
+    .uol-datepicker__input-wrapper--start {
+      &::after {
+        content: "-";
+        position: absolute;
+        color: $color-font;
+        bottom: 50%;
+        transform: translateY(50%);
+        right: 0;
+        font-size: 1.25rem;
+      }
+    }
+
+    .uol-datepicker__input-wrapper--end {
+      flex-grow: 1;
+    }
+
+      .uol-datepicker__input {
+        @include font-size-responsive(1rem, 1.125rem, 1.25rem);
+        @include line-height-responsive(1.25, 1.25, 1.1);
+
+        box-sizing: border-box;
+        border: 0;
+        padding-left: $spacing-3;
+        height: 3.125rem;
+        width: 100%;
+        font-variant-numeric: lining-nums;
+        outline: transparent;
+
+        &::placeholder {
+          color: $color-font--light;
+        }
+
+        [data-single-selection] & {
+          border: 1px solid $color-border;
+          border-radius: 6px;
+
+          @include media(">=uol-media-xs") {
+            border-right: none;
+            border-radius: 6px 0 0 6px;
+          }
+
+          .no-js & {
+            border: 1px solid $color-border;
+            border-radius: 6px;
+          }
+        }
+
+        [data-single-selection][data-invalid] &{
+          border-width: 2px;
+          border-color: $color-alert--error;
+          box-shadow:
+          0 3px 6px rgba(0, 0, 0, 0.15),
+          0 2px 4px rgba(0, 0, 0, 0.12);
+        }
+
+        [data-range-selection] & {
+          height: calc(3.125rem - 2px);
+        }
+
+        [data-range-selection][data-invalid] & {
+          height: calc(3.125rem - 4px);
+        }
+      }
+
+      .uol-datepicker__input--start {
+        [data-range-selection] & {
+          border-radius: 6px 0 0 6px;
+          width: 8.5rem;
+        }
+      }
+
+      .uol-datepicker__input--start,
+      .uol-datepicker__input--end, {
+        .no-csspositionsticky & {
+
+          &:focus {
+          outline: 3px solid $color-focus-accent;
+          background-color: $color-grey--light;
+        }
+
+        &::-ms-clear {
+          display: none;
+        }
+      }
+    }
+
+      .uol-datepicker__input--end {
+        border-radius: 0 6px 6px 0;
+
+        @include media(">=uol-media-xs") {
+          border-radius: 0;
+        }
+
+        .no-js & {
+          border-radius: 0 6px 6px 0;
+        }
+      }
+
+    .uol-datepicker__toggle-btn {
+      margin-top: $spacing-2;
+      padding: $spacing-3 $spacing-4;
+      min-width: 0;
+      max-width: 8.5rem;
+
+      > svg {
+        height: 1.25rem;
+        width: 1.25rem;
+        fill: $color-brand-2--dark;
+
+        @media (-ms-high-contrast: active) {
+          fill: ButtonText;
+        }
+
+        @media (forced-colors: active) {
+          fill: currentColor;
+        }
+      }
+
+      [data-range-selection][data-invalid] & {
+        order: 4;
+      }
+
+      @include media("<uol-media-xs") {
+        position: relative;
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: -6px;
+          right: -6px;
+          bottom: -6px;
+          left: -6px;
+          border: 3px solid transparent;
+          border-radius: inherit;
+          transition: all 0.15s;
+        }
+
+        &:focus::before {
+          border-color: $color-focus-accent;
+        }
+      }
+
+      @include media(">=uol-media-xs") {
+        @include button_ripple($color-white);
+
+        align-self: flex-end;
+        margin-top: 0;
+        border-radius: 0 6px 6px 0;
+        padding: 0;
+        height: 3.125rem;
+        min-width: 3rem;
+        outline: transparent;
+
+        [data-range-selection] & {
+          position: absolute;
+          bottom: 0;
+        }
+
+        [data-invalid] & {
+          box-shadow:
+          0 3px 6px rgba(0, 0, 0, 0.15),
+          0 2px 4px rgba(0, 0, 0, 0.12);
+        }
+
+        .no-csspositionsticky & {
+          right: 0;
+        }
+
+        &:focus {
+          background-color: $color-focus-accent;
+          border-color: $color-focus-accent;
+
+          > svg {
+            fill: $color-white;
+          }
+        }
+      }
+    }
+
+      .uol-datepicker__btn-label {
+        vertical-align: text-top;
+
+        @include media(">=uol-media-xs") {
+          display: none;
+        }
+      }
+
+      .uol-datepicker {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        box-sizing: border-box;
+        margin-top: 0.15em;
+        border-radius: 8px;
+        padding: $spacing-5 $spacing-4;
+        max-height: 100%;
+        width: 20rem;
+        z-index: 12;
+        overflow: auto;
+        font-variant-numeric: lining-nums;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        background-color: $color-white;
+        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15), 0 5px 10px rgba(0, 0, 0, 0.5),
+        0 5px 10px rgba($color-black--dark, 0.05);
+
+        @include media(">=uol-media-xs", "<uol-media-l") {
+          width: 24.625rem;
+        }
+
+        @include media(">=uol-media-l") {
+          font-family: $font-family-sans-serif--desktop;
+        }
+
+        @media (forced-colors: active), (-ms-high-contrast: active) {
+          border: 1px solid ButtonText;
+        }
+      }
+
+        .uol-datepicker__header {
+          border-radius: 8px 8px 0 0;
+        }
+
+        .uol-datepicker__toggle-container {
+          position: relative;
+          display: flex;
+          border: none;
+          border-radius: 3px;
+          padding: 0;
+          background-color: $color-grey--light;
+
+          @media (forced-colors: active), (-ms-high-contrast: active) {
+            border: 1px solid ButtonText;
+          }
+
+          &::before,
+          &::after {
+            content: "";
+            box-sizing: border-box;
+            position: absolute;
+            margin: 2px;
+            border-radius: 3px;
+            transition: all 200ms ease-in;
+          }
+
+          &::before {
+            top: 0;
+            left: 0;
+            border: 2px solid $color-brand-2--dark;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.12);
+            height: calc(100% - 4px);
+            width: calc(50% - 2px);
+            background: radial-gradient(circle, $color-white 50%, darken($color-white, 10%) 90%);
+          }
+
+          &::after {
+            top: 4px;
+            left: 12px;
+            border: 2px solid transparent;
+            height: calc(100% - 12px);
+            width: calc(50% - 10px);
+
+            @media (forced-colors: active), (-ms-high-contrast: active) {
+              display: none;
+            }
+          }
+        }
+
+        [data-toggle="start"] {
+          &::before {
+            left: 2px;
+          }
+
+          &::after {
+            left: 6px;
+          }
+
+          &:focus-within {
+            &::after {
+              border-color: $color-focus-accent;
+            }
+          }
+        }
+
+        [data-toggle="end"] {
+          &::before {
+            transform: translateX(100%);
+          }
+
+          &::after {
+            right: 4px;
+            transform: translateX(100%);
+          }
+
+          &:focus-within {
+            &::after {
+              border-color: $color-focus-accent;
+            }
+          }
+        }
+
+          .uol-datepicker__toggle-item {
+            position: relative;
+            width: 50%;
+          }
+
+            .uol-datepicker__toggle-radio {
+              position: absolute;
+              top: 0;
+              left: 0;
+              height: 100%;
+              width: 100%;
+              opacity: 0.0001;
+              color: $color-font;
+              cursor: pointer;
+
+              &:checked {
+
+              +  .uol-datepicker__toggle-label {
+                & .uol-datepicker__toggle-label--lower {
+                  color: $color-brand-2--dark;
+                }
+              }
+            }
+          }
+
+            .uol-datepicker__toggle-label {
+              @include font-size-responsive(1rem, 1rem, 1.125rem);
+
+              display: block;
+              border-radius: 6px;
+              padding: calc(#{$spacing-4} + 2px) $spacing-4;
+              font-weight: 500;
+            }
+
+              .uol-datepicker__toggle-label--upper,
+              .uol-datepicker__toggle-label--lower {
+                display: block;
+                line-height: 1.2;
+              }
+
+              .uol-datepicker__toggle-label--lower {
+                padding-top: $spacing-2;
+                color: $color-font--light;
+              }
+
+          .uol-datepicker__nav {
+            display: flex;
+            justify-content: center;
+            padding: $spacing-5 $spacing-1 $spacing-3;
+
+            .uol-datepicker-container[data-single-selection] & {
+              padding-top: $spacing-2;
+            }
+          }
+
+            .uol-datepicker__grid-title {
+              @include font-size-responsive(1rem, 1rem, 1.125rem);
+
+              display: inline-block;
+              width: calc(18rem / 7 * 3.5);
+              margin: 0;
+              padding: 0;
+              font-weight: 500;
+              line-height: 1.625;
+              text-align: center;
+              color: $color-font--light;
+
+              @include media(">=uol-media-xs", "<uol-media-l") {
+                width: calc(21.625rem / 7 * 3.25);
+                line-height: 2;
+              }
+
+              @include media(">=uol-media-l") {
+                line-height: 1.3;
+              }
+            }
+
+            .uol-datepicker__prev-year,
+            .uol-datepicker__prev-month,
+            .uol-datepicker__next-month,
+            .uol-datepicker__next-year {
+              position: relative;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: none;
+              padding: 0;
+              width: 1.5rem;
+              height: 1.5rem;
+              font-size: 1.5rem;
+              background: none;
+              color: $color-black;
+              outline: transparent;
+
+              @include media(">=uol-media-xs", "<uol-media-l") {
+                height: 2rem;
+                width: 2rem;
+              }
+
+              & path {
+                height: 1.5rem;
+                width: 1.5rem;
+
+                @include media(">=uol-media-xs", "<uol-media-l") {
+                  height: 2rem;
+                  width: 2rem;
+                }
+              }
+
+              @media (forced-colors: active), (-ms-high-contrast: active) {
+                color: ButtonText;
+              }
+
+              &:focus,
+              &:hover {
+
+                &::before {
+                  box-sizing: border-box;
+                  content: "";
+                  position: absolute;
+                  top: -2px;
+                  left: -2px;
+                  height: 1.75rem;
+                  width: 1.75rem;
+                  border: 2px solid $color-focus-accent;
+                  border-radius: 3rem;
+
+                  @include media(">=uol-media-xs", "<uol-media-l") {
+                    height: 2.25rem;
+                    width: 2.25rem;
+                  }
+                }
+              }
+            }
+
+          .uol-datepicker__prev-year {
+            margin-right: $spacing-4;
+          }
+
+          .uol-datepicker__next-year {
+            margin-left: $spacing-4;
+          }
+
+        .uol-datepicker__grid {
+          table-layout: fixed;
+          border-collapse: separate;
+          border-spacing: 0 4px;
+
+          width: 100%;
+
+          @include media(">=uol-media-xs", "<uol-media-l") {
+            padding: 0 $spacing-2;
+          }
+        }
+
+          .uol-datepicker__header-cell {
+            @include font-size-responsive(1rem, 1rem, 1.125rem);
+
+            height: 2.375rem;
+            line-height: 1.625;
+            font-weight: normal;
+            text-align: center;
+            color: $color-font--light;
+          }
+
+            .uol-datepicker__row--blank {
+              visibility: hidden;
+            }
+
+          .uol-datepicker__cell {
+            @include font-size-responsive(1rem, 1rem, 1.125rem);
+
+            position: relative;
+            box-sizing: border-box;
+            margin: 0;
+            border: none;
+            width: 2.575rem;
+            height: 2.575rem;
+            line-height: inherit;
+            text-align: center;
+            cursor: pointer;
+            outline: transparent;
+
+
+            &:not(.uol-datepicker__cell--unavailable) {
+              font-weight: 600;
+            }
+
+            &[tabindex="0"]:focus {
+              @media (-ms-high-contrast: active) {
+                border: 1px solid ButtonText;
+              }
+
+              @media (forced-colors: active) {
+                border: 1px solid currentColor;
+              }
+            }
+
+            &::before,
+            &::after {
+              content: "";
+              box-sizing: border-box;
+              position: absolute;
+              border: 2px solid transparent;
+              border-radius: 3rem;
+              z-index: 11;
+
+              @media (forced-colors: active), (-ms-high-contrast: active) {
+                display: none;
+              }
+            }
+
+            &::before {
+              top: 0;
+              right: 0;
+              bottom: 0;
+              left: 0;
+              height: 100%;
+              width: 100%;
+            }
+
+            &::after {
+              top: 2px;
+              right: 2px;
+              bottom: 2px;
+              left: 2px;
+              height: calc(100% - 4px);
+              width: calc(100% - 4px);
+            }
+
+            > span[aria-hidden="true"] {
+              position: relative;
+              display: inline-block;
+              height: 100%;
+              width: 100%;
+              line-height: 2.45;
+              z-index: 12;
+              color: $color-font;
+              pointer-events: none;
+
+              @include media(">=uol-media-xs", "<uol-media-l") {
+                line-height: 2.965;
+              }
+
+              @include media(">=uol-media-l") {
+                line-height: 2.1;
+              }
+            }
+
+            &:hover:not([data-selected]),
+            &[tabindex="0"]:not([data-selected]) {
+              color: $color-brand-2--dark;
+
+              @media (-ms-high-contrast: active) {
+                outline: 2px dotted ButtonText;
+              }
+
+              @media (forced-colors: active) {
+                outline: 2px dotted currentColor;
+              }
+
+              &::before {
+                background-color: $color-white;
+                border-color: $color-brand-2--dark;
+              }
+            }
+
+            &.uol-datepicker__cell--has-focus[tabindex="0"] {
+
+              &:not([data-selected]) {
+                &::before {
+                  background-color: #699A9C;
+                }
+
+                &::after {
+                  border-color: $color-white;
+                }
+              }
+
+              &[data-selected] {
+                &::after {
+                  border-color: $color-white;
+                }
+              }
+            }
+
+            &[data-selected-start]:not([data-single-day]) {
+              background: linear-gradient(to right, $color-white 0%, $color-white 50%, #699A9C 50%, #699A9C 50%);
+            
+              @media (-ms-high-contrast: active) {
+                border: 2px solid ButtonText;
+                border-radius: 1rem 0 0 1rem;
+              }
+
+              @media (forced-colors: active) {
+                border: 2px solid currentColor;
+                border-radius: 1rem 0 0 1rem;
+              }
+            }
+
+            &[data-selected-end]:not([data-single-day]),
+            &.uol-datepicker__cell--end-range {
+              background: linear-gradient(to right, #699A9C 0%, #699A9C 50%, $color-white 50%, $color-white 100%);
+            
+              @media (-ms-high-contrast: active) {
+                border: 2px solid ButtonText;
+                border-radius: 0 1rem 1rem 0;
+              }
+
+              @media (forced-colors: active) {
+                border: 2px solid currentColor;
+                border-radius: 0 1rem 1rem 0;
+              }
+            }
+
+            &.uol-datepicker__cell--end-range:not([data-selected]) {
+              &.uol-datepicker__cell--has-focus {
+                &::before {
+                  background-color: #699A9C;
+                }
+
+                &::after {
+                  border-color: $color-white;
+                }
+              }
+            }
+
+            &[data-single-day] {
+              background-color: $color-white;
+            }
+
+            &[data-single-day],
+            &[data-selected-date] {
+              @media (-ms-high-contrast: active) {
+                border: 2px solid ButtonText;
+                border-radius: 1rem;
+              }
+
+              @media (forced-colors: active) {
+                border: 2px solid currentColor;
+                border-radius: 1rem;
+              }
+            }
+
+            &[data-selected-date],
+            &[data-single-day],
+            &[data-selected-start],
+            &[data-selected-end] {
+
+              span[aria-hidden="true"] {
+                color: $color-white;
+              }
+
+              &::before {
+                background-color: $color-brand-2--dark;
+              }
+
+              &:focus {
+                &::after {
+                  border-color: $color-white;
+                }
+              }
+            }
+
+            &.uol-datepicker__cell--in-range,
+            &.uol-datepicker__cell--passthrough {
+              color: $color-font--dark;
+              background-color: #699A9C;
+
+              > span[aria-hidden="true"] {
+                &::before {
+                  background-color: $color-white;
+                }
+              }
+
+              > span[aria-hidden="true"] {
+                color: $color-black--dark;
+
+                &::after {
+                  background-color: $color-black--dark;
+                }
+              }
+
+              &[tabindex="0"],
+              &:focus {
+                &::before {
+                  background-color: $color-white;
+                  border-color: #699A9C;
+                }
+
+                > span[aria-hidden="true"] {
+                  &::before {
+                    background-color: $color-brand-2--dark;
+                  }
+                }
+              }
+
+              &.uol-datepicker__cell--has-focus[tabindex="0"] {
+                &::before {
+                  border-color: $color-white;
+                }
+
+                &::after {
+                  border-color: $color-brand-2--dark;
+                }
+              }
+            }
+          }
+
+          .uol-datepicker__cell--empty {
+            cursor: not-allowed;
+            height: calc(18rem / 7);
+
+            @include media(">=uol-media-xs", "<uol-media-l") {
+              height: calc(21.625rem / 7);
+            }
+
+            &::before,
+            &::after {
+              display: none;
+            }
+          }
+
+          .uol-datepicker__cell--current-day {
+            span[aria-hidden="true"] {
+
+              &::before {
+                content: "";
+                position: absolute;
+                bottom: 6px;
+                left: 50%;
+                height: 4px;
+                width: 4px;
+                transform: translateX(-2px);
+                background-color: $color-brand-2--dark;
+
+                @media (-ms-high-contrast: active) {
+                  background-color: ButtonText;
+                }
+
+                @media (forced-colors: active) {
+                  background-color: currentColor;
+                }
+
+                @include media(">=uol-media-xs", "<uol-media-l") {
+                  bottom: 8px;
+                }
+              }
+            }
+
+            &[tabindex="0"]:not([data-selected]) {
+
+              span[aria-hidden="true"] {
+                &::before {
+                  background-color: $color-brand-2--dark;
+                }
+              }
+            }
+
+            &[data-selected],
+            &.uol-datepicker__cell--has-focus[tabindex="0"] {
+
+              > span[aria-hidden="true"] {
+                &::before {
+                  background-color: $color-white;
+                }
+              }
+            }
+          }
+
+          .uol-datepicker__cell--unavailable[aria-disabled="true"] {
+            cursor: not-allowed;
+
+            &[tabindex="0"] {
+              &::before {
+                border-color: $color-alert--error;
+              }
+            }
+
+            &.uol-datepicker__cell--has-focus[tabindex="0"] {
+              [aria-hidden="true"] {
+                color: $color-white;
+
+                &::after {
+                  background-color: $color-white;
+                }
+              }
+
+              &::before {
+                background-color: $color-alert--error;
+              }
+            }
+
+            [aria-hidden="true"] {
+              color: $color-font--x-light;
+
+              &::after {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                height: 100%;
+                width: 2px;
+                transform: translate(-50%, -50%) rotate(-45deg);
+                background-color: $color-font--x-light;
+
+                @media (-ms-high-contrast: active) {
+                  background-color: ButtonText;
+                }
+
+                @media (forced-colors: active) {
+                  background-color: CanvasText;
+                }
+              }
+            }
+
+            &.uol-datepicker__cell--in-range,
+            &.uol-datepicker__cell--passthrough {
+
+              &.uol-datepicker__cell--has-focus[tabindex="0"] {
+
+                &::after {
+                  border-color: $color-alert--error
+                }
+
+                > [aria-hidden="true"] {
+                  color: $color-white;
+
+                  &::after {
+                    background-color: $color-white;
+                  }
+                }
+              }
+
+              > [aria-hidden="true"] {
+                color: $color-black--dark;
+
+                &::after {
+                  background-color: $color-black--dark;
+                }
+              }
+
+              &:focus {
+                > [aria-hidden="true"] {
+                  color: $color-black--light;
+
+                  &::after {
+                    background-color: $color-black--light;
+                  }
+                }
+              }
+            }
+
+            &:focus,
+            &:hover {
+              &::before {
+                border-color: $color-alert--error;
+              }
+            }
+
+            &[data-selected-start],
+            &[data-selected-end],
+            &[data-single-day],
+            &[data-selected-date] {
+
+              > [aria-hidden="true"] {
+
+                &::after {
+                  background-color: $color-white;
+
+                  @media (forced-colors: active) {
+                    background-color: CanvasText;
+                  }
+                }
+              }
+
+              &::before {
+                background-color: $color-alert--error;
+              }
+
+              &:focus {
+                &::after {
+                  border-color: $color-white;
+                }
+              }
+            }
+          }
+
+        .uol-datepicker__footer {
+          display: flex;
+          justify-content: flex-end;
+          margin: $spacing-3 0 $spacing-2;
+          padding: $spacing-4 0 0;
+        }
+
+          .uol-datepicker__cancel-btn,
+          .uol-datepicker__confirm-btn {
+            @include button_focus(-6px);
+            @include font-size-responsive(1rem, 1rem, 1.125rem);
+
+            border-radius: 4px;
+            padding: $spacing-4;
+            max-height: 3.125rem;
+            min-width: 0;
+            max-width: 7.75rem;
+            width: 7.75rem;
+
+            @include media(">=uol-media-l") {
+              padding: calc(#{$spacing-4} - 2px);
+            }
+          }
+
+          .uol-datepicker__cancel-btn {
+            margin-right: $spacing-3;
+          }
+
+            .uol-datepicker--fade-in {
+              animation: fadeIn 0.2s ease-in-out;
+              animation-fill-mode: forwards;
+            }
+
+            .uol-datepicker--fade-out {
+              animation: fadeOut 0.2s ease-in-out;
+              animation-fill-mode: backwards;
+            }
+
+            @keyframes fadeIn {
+              0% {
+                opacity: 0;
+                visibility: visible;
+              }
+
+              100% {
+                opacity: 1;
+              }
+            }
+
+            @keyframes fadeOut {
+              0% {
+                opacity: 1;
+                visibility: visible;
+              }
+
+              99% {
+                visibility: visible;
+              }
+
+              100% {
+                opacity: 0;
+                visibility: hidden;
+              }
+            }
+
+            @keyframes backgroundFade {
+              0% {
+                opacity: 0;
+              }
+
+              100% {
+                opacity: 0.78;
+              }
+            }

@@ -1,0 +1,208 @@
+.uol-site-footer-outer {
+  background-color: $color-black;
+}
+
+.uol-site-footer {
+  @extend .uol-col-container;
+
+  display: block;
+  color: $color-white--dark;
+  overflow: auto;
+
+  > * {
+    float: left;
+  }
+
+  a {
+    transition: color 0.3s ease;
+
+    &:hover,
+    &:focus {
+      color: $color-brand--bright;
+      text-decoration: underline;
+    }
+
+    &[aria-current] {
+      color: $color-brand--bright;
+    }
+  }
+}
+
+  .uol-site-footer__title {
+    @extend .hide-accessible;
+  }
+
+  .uol-site-footer__nav-container {
+    @extend .uol-col;
+    @extend .uol-col-s-6;
+    @extend .uol-col-l-8;
+    @extend .uol-col-xl-9;
+
+    .uol-site-footer__nav-outer {
+      @extend .uol-col-container;
+
+      @include media(">=uol-media-xs") {
+        margin: -#{$col-gutter-s};
+      }
+
+      @include media(">=uol-media-l") {
+        margin: -#{$col-gutter-l};
+      }
+
+      @include media(">=uol-media-xl") {
+        margin: -#{$col-gutter-xl};
+      }
+    }
+
+    .uol-site-footer__nav {
+        @extend .uol-col;
+        @extend .uol-col-l-6;
+        @extend .uol-col-xl-4;
+     }
+  }
+
+  .uol-site-footer__address-container {
+    @extend .uol-col;
+    @extend .uol-col-s-6;
+    @extend .uol-col-l-4;
+    @extend .uol-col-xl-3;
+
+    align-self: flex-start;
+  }
+
+  .uol-site-footer__accreditations {
+    @extend .uol-col;
+    @extend .uol-col-s-6;
+    @extend .uol-col-l-12;
+    margin: $spacing-4 0;
+    width: 18rem;
+
+    @include media(">=uol-media-s", "<uol-media-m") {
+      width: 16.5rem;
+    }
+
+    @include media(">=uol-media-l") {
+      width: 49.5rem;
+      margin: 0;
+    }
+
+    @include media(">=uol-media-xl") {
+      margin-top: $spacing-2;
+    }
+    @include media(">=uol-media-s", "<uol-media-m") {
+      width: 16.5rem;
+    }
+
+    @include media(">=uol-media-l") {
+      width: 49.5rem;
+      margin: 0;
+    }
+
+    @include media(">=uol-media-xl") {
+      margin-top: $spacing-2;
+    }
+
+    @include media(">=uol-media-l") {
+      height: auto;
+    }
+  }
+
+  .uol-site-footer__site-information-container {
+    @extend .uol-col;
+    @extend .uol-col-m-7;
+    @extend .uol-col-xl-8;
+
+    position: relative;
+
+    @include media(">=uol-media-m") {
+      min-height: 5.25rem;
+    }
+
+    @include media(">=uol-media-l") {
+      min-height: 6.25rem;
+    }
+
+    .footer-site-information__list {
+      margin-bottom: $spacing-6;
+
+      @include media(">=uol-media-m") {
+        position: absolute;
+        margin: 0;
+        bottom: #{$col-gutter-s / 2};
+        left: #{$col-gutter-s / 2};
+        right: #{$col-gutter-s / 2};
+      }
+
+      @include media(">=uol-media-l") {
+        bottom: #{$col-gutter-l / 2};
+        left: #{$col-gutter-l / 2};
+        right: #{$col-gutter-l / 2};
+      }
+
+      @include media(">=uol-media-xl") {
+        bottom: #{$col-gutter-xl / 2};
+        left: #{$col-gutter-xl / 2};
+        right: #{$col-gutter-xl / 2};
+      }
+    }
+  }
+
+  .uol-site-footer__logo-outer {
+    position: relative;
+
+    @include media(">=uol-media-m") {
+      top: 2rem;
+    }
+
+    @extend .uol-col;
+    @extend .uol-col-m-5;
+    @extend .uol-col-xl-4;
+  }
+
+  .uol-site-footer__logo {
+    display: block;
+    max-width: 100%;
+    float: left;
+
+
+    @include media(">=uol-media-l") {
+      width: 277px;
+    }
+
+    @include media(">=uol-media-s") {
+      float: right;
+    }
+
+
+    @include media(">=uol-media-l") {
+      width: 327px;
+    }
+
+    svg {
+      width: 237px;
+      height: 48px;
+
+      .st0{fill:#fff;}
+
+      @include media(">=uol-media-l") {
+        width: 277px;
+        height: 56px;
+        margin-top: 3px;
+      }
+
+      path {
+        fill: $color-white--dark;
+        transition: fill 0.3s ease;
+      }
+    }
+  }
+  
+  .uol-site-footer__address-container,
+  .uol-site-footer__site-information-container,
+  .uol-site-footer__logo-outer {
+    
+    @include media("<uol-media-s") {
+      padding: 0 $spacing-2;
+      width: calc(100% - #{$spacing-4}) !important;
+    }
+  }

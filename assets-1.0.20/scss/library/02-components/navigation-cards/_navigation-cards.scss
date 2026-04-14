@@ -1,0 +1,139 @@
+.uol-navigation-cards {
+  display: flex;
+  flex-wrap: wrap;
+  > * {
+    text-decoration: none;
+  }
+
+  @include media(">=uol-media-m") {
+    gap: 0 $spacing-4;
+  }
+
+  @include media(">=uol-media-l") {
+    gap: 0 $spacing-5;
+  }
+
+  @include media(">=uol-media-xl") {
+    gap: 0 $spacing-6;
+  }
+}
+
+  .uol-navigation-card {
+    box-sizing: border-box;
+    min-height: 338px;
+    
+    padding: $spacing-6 $spacing-4;
+    flex: 100%;
+
+    background-color: $color-grey--faded;
+    // background-color: lightblue;
+    position: relative;
+
+    border: 1px solid $color-border--light;
+
+    margin-bottom: $spacing-4;
+
+    @include media(">=uol-media-l") {
+      margin-bottom: $spacing-5;
+    }
+  
+    @include media(">=uol-media-xl") {
+      margin-bottom: $spacing-6;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      transition: box-shadow 0.25s ease-in-out;
+      z-index: 3;
+    }
+  
+    &:hover {
+  
+      &::before {
+        box-shadow:
+        0px 13px 15px rgba(0, 0, 0, 0.25);
+      }
+    }   
+
+    @include media(">=uol-media-m") { 
+      flex: calc(50% - 8px);
+      max-width: calc(50% - 8px);
+    }
+
+    @include media(">=uol-media-l") {
+      flex: calc((100% + 24px) / 3 - 24px);
+      max-width:  calc((100% + 24px) / 3 - 24px);
+    }
+
+    @include media(">=uol-media-xl") {
+      flex: calc((100% + 32px) / 4 - 32px);
+      max-width:  calc((100% + 32px) / 4 - 32px);
+    }
+    
+    
+    &::after {
+      content: "";
+      display: block;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      border-bottom: $spacing-2 solid $color-brand;
+      transform: scaleX(0);
+      transition: transform .3s ease-in-out;
+      transform-origin: 0 50%;
+    }
+
+    &:hover:after,
+    &:focus-within:after {
+      transform: scaleX(1);
+      outline: none;
+    }
+
+    .uol-side-nav-container--populated + .uol-homepage-content & {
+      
+      @include media(">=uol-media-l") {
+        flex: calc((100% + 24px) / 2 - 24px);
+        max-width:  calc((100% + 24px) / 2 - 24px);
+      }
+      
+      @include media(">=uol-media-xl") {
+        flex: calc((100% + 32px) / 3 - 32px);
+        max-width:  calc((100% + 32px) / 3 - 32px);
+      }
+    } 
+  }
+
+    .uol-navigation-card__title {
+      @extend .uol-typography-heading-5;
+      
+      margin: 0 0 $spacing-2;
+    }
+
+    .uol-navigation-card__description {
+      @include font-size-responsive(1.125rem, 1.25rem, 1.25rem);
+      @include line-height-responsive(1.75rem, 1.75rem, 2rem);
+
+      @extend %uol-font-sans-serif;
+
+      margin-top: 0;
+      margin-bottom: 0;
+      color: $color-font;
+
+      @include media(">=uol-media-m") {
+        @include font-size-responsive(1rem, 1rem, 1.125rem);
+        @include line-height-responsive(1.5rem, 1.625rem, 1.75rem);
+      }
+
+      display: -webkit-box;
+      -webkit-line-clamp: 6;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+

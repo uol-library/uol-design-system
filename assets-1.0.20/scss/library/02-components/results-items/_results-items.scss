@@ -1,0 +1,496 @@
+.uol-results-items {
+  padding-top: $spacing-4;
+  padding-bottom: $spacing-4;
+}
+
+  .uol-results-items__item {
+    box-sizing: border-box;
+    margin-bottom: $spacing-4;
+    box-shadow: 0;
+    transition: box-shadow 0.25s ease-in-out;
+
+    @include media(">=uol-media-l") {
+      margin-bottom: $spacing-5;
+    }
+
+    @include media(">=uol-media-xl") {
+      margin-bottom: $spacing-6;
+    }
+  }
+
+    .uol-results-items__item__featured {
+      color: $color-white;
+      display: flex;
+      border-bottom: 2px solid $color-black;
+
+      @include media(">=uol-media-m") {
+        flex-direction: row;
+      }
+    }
+
+    .uol-results-items__item__featured__text {
+      padding: $spacing-2 $spacing-4;
+      background: $color-black;
+      color: $color-white;
+    }
+
+    .uol-results-items__item__content-wrapper {
+      border: 1px solid rgba($color-border--light, 0.6);
+      border-top: 0;
+      transition: box-shadow 0.25s ease-in-out;
+
+      &:hover,
+      &:focus-within {
+        box-shadow:
+          0 15px 25px rgba($color-black--dark, 0.15),
+          0 5px 10px rgba($color-black--dark, 0.05);
+      }
+      
+      @include media(">=uol-media-m") {
+        border: 1px solid rgba($color-border--light, 0.6);
+        display: flex;
+        gap: 0 16px;
+        background: $color-grey--faded;
+        padding: $spacing-5 $spacing-4 $spacing-5 $spacing-4;
+        box-shadow: 0;
+        transition: box-shadow 0.25s ease-in-out;
+        position: relative;
+      }
+
+      @include media(">=uol-media-l") {
+        padding-left: $spacing-5;
+        padding-right: $spacing-5;
+        gap: 0 24px;
+        padding-bottom: 0.875rem; // 14px
+      }
+
+      @include media(">=uol-media-xl") {
+        gap: 0 32px;
+      }
+    }
+
+    .uol-results-items__item__text-container {
+      background: $color-grey--faded;
+      padding: $spacing-5 $spacing-4 $spacing-4 $spacing-4;
+
+      @include media("<=uol-media-m") {
+        position: relative;
+      }
+
+      @include media(">=uol-media-m") {
+        padding-top: 0;
+        border: 0;
+        background: none;
+        padding: 0;
+        margin: 0;
+        flex-basis: 100%;
+      }
+    }
+
+    .uol-results-items__item__text-container__inner {
+
+      @include media(">=uol-media-s") {
+        max-width: 470px;
+      }
+
+      @include media(">=uol-media-m") {
+        max-width: 610px;
+      }
+
+      @include media(">=uol-media-l") {
+        max-width: 564px;
+      }
+
+      @include media(">=uol-media-xl") {
+        max-width: 674px;
+      }
+
+      @include media(">=uol-media-xxl") {
+        max-width: 784px;
+      }
+    }
+
+    .uol-results-items__item__title {
+      margin: 0 0 $spacing-2;
+    }
+
+    .uol-results-items__item__link {
+      @extend .uol-typography-heading-4;
+
+      /*
+      Incorrect heading sizes in DS. Hard code these for now.
+      */
+
+      font-size: 1.375rem; // 22px
+  
+      @include media(">=uol-media-m") {
+        font-size: 1.75rem; // 28px
+      }
+
+      text-decoration: none;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+      }
+    }
+
+    .uol-results-items__item__highlight {
+      @extend .uol-typography-heading-6;
+
+      margin-top: 0;
+      margin-bottom: $spacing-2;
+      display: block;
+      color: $color-brand;
+    }
+
+    .uol-results-items__item__meta {
+      @extend %text-size-caption;
+
+      font-weight: $font-weight-medium--sans-serif;
+      margin: 0 0 $spacing-2;
+
+      &:last-child {
+        margin-bottom: $spacing-4;
+      }
+
+    }
+
+      .uol-results-items__item__meta__group {
+        margin-bottom: $spacing-2;
+        line-height: 1.5rem;
+      }
+
+      .uol-results-items__item__meta + p {
+        margin-top: 0px;
+      }
+
+      .uol-results-items__item__meta__label {
+        @extend .uol-typography-paragraph-small;
+        
+        display: inline;
+        font-weight: $font-weight-bold--sans-serif;
+
+        &::after {
+          content: ":";
+        }
+      }
+
+      .uol-results-items__item__meta__data {
+        @extend .uol-typography-paragraph-small;
+
+        margin: 0;
+        display: inline;
+
+        &::after {
+          content: "";
+          display: inline-block;
+          position: relative;
+          width: 1px;
+          height: 0.8em;
+          background-color: $color-brand;
+          margin-left: 0.3em;
+          margin-right: 0.15em;
+          top: 0.1em;
+        }
+
+        &:last-of-type {
+          &::after {
+            content: none;
+          }
+        }
+      }
+
+        .uol-results-items__item__meta__group--has-additional {
+          .uol-results-items__item__meta__data {
+            &::after {
+              content: none;
+            }
+          }
+
+          .uol-results-items__item__meta__additional-data {
+            @extend .uol-typography-paragraph-small;
+
+            margin: $spacing-2 0 0 0;
+          }
+        }
+
+    .uol-results-items__item__image-container {
+      
+      @include media(">=uol-media-m") {
+        max-width: 220px;
+        flex-basis: 100%;
+      }
+
+      @include media(">=uol-media-l") {
+        max-width: 290px;
+      }
+
+      @include media(">=uol-media-xxl") {
+        max-width: 344px;
+      }
+    }
+
+    .uol-results-items__item__img {
+      display: block;
+      width: 100%;
+      height: auto;
+
+      @include media(">=uol-media-m") {
+        margin-bottom: 16px;
+      }
+
+      @include media(">=uol-media-l") {
+        margin-bottom: 18px;
+      }
+
+      &:hover,
+      &:focus {
+        cursor: pointer;
+      }
+    }
+
+    .uol-results-items__item__summary,
+    .uol-results-items__item__introduction {
+      @extend .uol-typography-paragraph-small;
+      
+      margin-top: 0;
+    }
+
+    .uol-results-items__item__introduction {
+      margin-bottom: $spacing-2;
+    }
+
+    .image-titles-and-content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    
+    @media only screen and (min-width: 600px) {
+      .image-titles-and-content {
+        flex-direction: row;
+      }
+    }
+
+/*
+Below CSS needed to make results items in course pages look as they should
+TODO: replace course content results items with new component
+*/
+.uol-course__content .uol-results-items {
+  .uol-results-items__item__title {
+    margin-top: 0;
+  }
+  .uol-results-items__item__meta {
+    font-size: 16px;
+
+    @include media(">=uol-media-l") {
+      font-size: 18px;
+    }
+  }
+  .uol-results-items__item__meta__label {
+    font-weight: 600;
+  }
+  .uol-results-items__item__content-wrapper {
+    border: 1px solid rgba($color-border--light, 0.6);
+    padding: 0;
+  }
+  .uol-results-items__item__text-container {
+    padding: $spacing-3 $spacing-4 $spacing-1;
+
+    @include media(">=uol-media-l") {
+      padding: $spacing-3 $spacing-5 $spacing-2;
+    }
+  }
+  .uol-results-items__item {
+    padding: 0;
+  }
+}
+
+/*
+.uol-results-items__circle added to top level and applied to all items
+.uol-results-items__item__has-image for each image, added when image is available
+below rule applies if both criteria met
+*/
+
+.uol-results-items__circle .uol-results-items__item__has-image {
+  $width320: 97px;
+  $width414: 116px;
+  $width768: 156px;
+  $width1024: 161px;
+  $width1440: 179px;
+  $width1660: 215px;
+
+  padding: 0;
+  gap: 0;
+  position: relative;
+
+  .uol-results-items__item__image-container {
+    /*
+    float left to allow wrapping content so things like subheading can change
+    from alongside image to underneath
+    */
+    
+    float: left;
+    flex-basis: initial;
+
+    // same padding as text container but with bottom set to 0
+    padding: $spacing-5 $spacing-4 0 $spacing-4;
+
+    @include media(">=uol-media-m") {
+      padding-bottom: $spacing-5;
+    }
+
+    @include media(">=uol-media-l") {
+      padding: $spacing-5 $spacing-5 $spacing-5 $spacing-5;
+    }
+
+    @include media(">=uol-media-xl") {
+      padding-right: $spacing-6;
+    }
+
+    .uol-results-items__item__img {
+      border-radius: 50%;
+      object-fit: cover;
+      width: $width320;
+      height: $width320;
+
+      @include media(">=uol-media-xs") {
+        width: $width414;
+        height: $width414;
+      }
+
+      @include media(">=uol-media-m") {
+        width: $width768;
+        height: $width768;
+      }
+
+      @include media(">=uol-media-l") {
+        width: $width1024;
+        height: $width1024;
+      }
+
+      @include media(">=uol-media-xl") {
+        width: $width1440;
+        height: $width1440;
+      }
+
+      @include media(">=uol-media-xxl") {
+        width: $width1660;
+        height: $width1660;
+      }
+    }
+  }
+
+  .uol-results-items__item__text-container { 
+    // cancels position relative used for square images
+    position: initial;
+    padding: $spacing-5 $spacing-4 $spacing-6;
+
+    @include media(">=uol-media-m") {
+      display: flex;
+      flex-direction: column;
+      padding: $spacing-5 $spacing-5 $spacing-6 0;
+    }
+
+    .uol-results-items__item__headings {
+      height: calc(#{$width320} - #{$spacing-4}); // 84px;
+      margin-bottom: $spacing-4;
+
+      @include media(">=uol-media-xs") {
+        height: calc(#{$width414} - #{$spacing-4}); // 100px;
+      }
+
+      // no margin bottom when both heading and subheading alongside image
+      @include media(">=uol-media-m") {
+        margin-bottom: 0;
+        height: initial;
+      }
+    }
+
+    .uol-results-items__item__title {
+      height: calc(#{$width320} - #{$spacing-4}); 
+      margin-top: $spacing-4;
+      
+      // edge case for very long surnames
+      word-break: break-word;
+
+      @include media(">=uol-media-xs") {
+        height: calc(#{$width414} - #{$spacing-4}); 
+      }
+
+      @include media(">=uol-media-m") {
+        height: initial;
+        margin-top: 0;
+      }
+    }
+
+    .uol-results-items__item__highlight {
+      margin-top: $spacing-4;
+      
+      @include media(">=uol-media-s") {
+        margin-bottom: $spacing-2;
+      }
+
+      @include media(">=uol-media-m") {
+        margin-top: $spacing-2;
+      }
+    }
+
+    .uol-results-items__item__text-container__inner {
+      
+      > *:last-child {
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+
+        .uol-results-items__item__meta__group:last-of-type {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+// Highlighted variant 
+.uol-results-items__item__featured--highlighted {
+  border-color: $color-brand-teal;
+
+  .uol-results-items__item__featured__text {
+    background-color: $color-brand-teal;
+    color: $color-font--dark;
+  }
+}
+
+.uol-results-items__item__content-wrapper--highlighted,
+.uol-results-items__item__text-container--highlighted {
+  background-color: $color-brand-cream;
+}
+
+
+// No link variant
+  .uol-results-items__item--no-link {
+    .uol-results-items__item__content-wrapper:hover {
+      box-shadow: none;
+    }
+
+    .uol-results-items__item__title {
+      @extend %uol-font-serif;
+      line-height: 1.75rem;
+      font-size: 1.375rem;
+      font-weight: $font-weight-bold--serif;
+      
+      @include media(">=uol-media-m") {
+        font-size: 1.75rem;
+        line-height: 2.5rem;
+      }
+    }
+  }

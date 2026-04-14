@@ -1,0 +1,130 @@
+// All accordion styling is js dependent. If no js use default styling
+.js {
+
+  .uol-accordion {
+    position: relative;
+    border-top: 1px solid $color-border--light;
+    border-bottom: 1px solid $color-border--light;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    margin-top: $spacing-6;
+    margin-bottom: $spacing-6;
+
+    + .uol-accordion {
+      border-top: none;
+      margin-top: -#{$spacing-6};
+    }
+
+  }
+
+  .uol-accordion--group-heading {
+    
+    margin: $spacing-6 0 $spacing-2;
+    padding-bottom: $spacing-2;
+
+    @include media(">=uol-media-m") {
+      margin: $spacing-7 0 $spacing-4;
+      padding-bottom: $spacing-4;
+    }
+  }
+
+    .uol-accordion__title {
+      @extend %text-size-paragraph;
+      @extend %uol-font-sans-serif;
+
+      font-weight: $font-weight-bold--sans-serif;
+      margin: 0;
+    }
+
+    .uol-accordion__btn {
+      width: 100%;
+      text-align: inherit;
+      font-weight: inherit;
+      background: none;
+      border: none;
+      padding: $spacing-4 $spacing-6 $spacing-4 0;
+      color: inherit;
+
+      &::before,
+      &::after {
+        content: "";
+        width: 0.7em;
+        height: 2px;
+        position: absolute;
+        top: 1.4em;
+        right: $spacing-2;
+        background: $color-black;
+        transition: transform 0.3s ease;
+
+        @media (forced-colors: active) {
+          border: 1px solid transparent;
+        }
+      
+        @media (-ms-high-contrast: active) {
+          border: 1px solid WindowText;
+        }
+      }
+
+      &::after {
+        transform: rotate(0deg);
+      }
+
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+      }
+
+      &[aria-expanded="false"] {
+        &::after {
+          transform: rotate(90deg);
+        }
+      }
+
+      &[aria-expanded="true"] {
+        &::after {
+          transform: rotate(180deg);
+        }
+      }
+    }
+
+    .uol-accordion__content {
+      position: relative;
+      transition: max-height 0.5s ease;
+      overflow-y: hidden;
+
+      *:last-child {
+        margin-bottom: 0;
+      }
+
+      // defect 94649, rich text in accordion shouldn't have margin right set
+      .uol-rich-text {
+        margin-right: 0;
+      }
+    }
+
+      .uol-accordion__content-inner {
+        padding-bottom: $spacing-5;
+
+        .uol-rich-text p:last-child {
+          margin-bottom: 0;
+        }
+      }
+
+  // Fix for 107008 - list as last item in accordion, vertical spacing issue
+  // The below code refers to the following pages:
+  // .uol-article-container = Article pages
+  // .uol-page-container = Document Pages, clearing pages also uses/inherits this
+  // .uol-course__content__section-container = Courses and Postgraduate Research Opportunities
+  
+  .uol-article-container .uol-accordion__content--expanded .uol-rich-text > ul:last-child,
+  .uol-article-container .uol-accordion__content--expanded .uol-rich-text > ol:last-child,
+
+  .uol-page-container .uol-accordion__content--expanded .uol-rich-text > ul:last-child,
+  .uol-page-container .uol-accordion__content--expanded .uol-rich-text > ol:last-child,
+  
+  .uol-course__content__section-container .uol-accordion__content--expanded .uol-rich-text > ul:last-child,
+  .uol-course__content__section-container .uol-accordion__content--expanded .uol-rich-text > ol:last-child {
+    padding-bottom: 2.5rem;
+  }
+
+}

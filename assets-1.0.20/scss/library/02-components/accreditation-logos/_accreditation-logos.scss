@@ -1,0 +1,252 @@
+$accreditation-border-width: 2px;
+
+.uol-accreditations {
+  box-sizing: border-box;
+
+  @media screen and (forced-colors: active) {
+    background-color: #838383;
+    forced-color-adjust: none;
+  }
+
+  .uol-widget__content & {
+
+    @include media(">=uol-media-m") {
+      margin: 0 -#{$spacing-2};
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    @include media(">=uol-media-l") {
+      margin: 0 -#{$spacing-3};
+    }
+
+    @include media(">=uol-media-xl") {
+      margin: 0 -#{$spacing-4};
+    }
+  }
+
+  .uol-site-footer & {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 18rem;
+
+    @include media(">=uol-media-s", "<uol-media-m") {
+      width: 16.5rem;
+    }
+
+    @include media(">=uol-media-m") {
+      width: 19rem;
+    }
+
+    @include media(">=uol-media-l") {
+      width: 49.5rem;
+      justify-content: flex-start;
+    }
+
+    @include media(">=uol-media-xl") {
+      margin-top: $spacing-2;
+    }
+
+    @media screen and (-ms-high-contrast: active) {
+      -ms-high-contrast-adjust: none;
+
+      // TODO: IE11 hack
+      .no-csspositionsticky & {
+        background-color: #838383;
+      }
+    }
+  }
+}
+
+  .uol-accreditation {
+    box-sizing: border-box;
+
+    @include media(">=uol-media-m") {
+      width: 50%;
+      padding: 0 $spacing-2;
+    }
+
+    @include media(">=uol-media-l") {
+      padding: 0 $spacing-3;
+    }
+
+    @include media(">=uol-media-xl") {
+      width: 25%;
+      padding: 0 $spacing-4;
+    }
+
+    .uol-widget__content & {
+
+      @include media(">=uol-media-m") {
+
+        // when stacked in two columns, nudge up 3rd + onwards logos to avoid duplicate border
+        &:nth-child(n+3) {
+          margin-top: -#{$accreditation-border-width};
+        }
+      }
+
+      @include media(">=uol-media-xl") {
+
+        // when in four columns remove negative margin for items 3 and 4
+        &:nth-child(n+3) {
+          margin-top: 0;
+        }
+
+        // add negative margin for 5th onwards items (2nd row and beyond)
+        &:nth-child(n+5) {
+          margin-top: -#{$accreditation-border-width};
+        }
+      }
+
+      .uol-side-nav-container--populated + .uol-homepage-content & {
+
+        @include media(">=uol-media-xl") {
+          width: calc(100% / 3);
+
+          &:nth-child(n+4) {
+            margin-top: -#{$accreditation-border-width};
+          }
+        }
+      }
+    }
+
+    .uol-site-footer & {
+      height: 4.25rem;
+      padding: 0;
+      width: 8rem;
+
+      @include media(">=uol-media-s", "<uol-media-m") {
+        width: 7.125rem;
+      }
+
+      @include media(">=uol-media-l") {
+        width: fit-content;
+        margin-right: $spacing-6;
+      }
+
+      &:nth-child(-n+2) {
+        margin-bottom: $spacing-5;
+
+        @include media(">=uol-media-l") {
+          margin-bottom: 0;
+        }
+      }
+
+      &:nth-child(n+5) {
+        margin-top: $spacing-5;
+
+        @include media(">=uol-media-l") {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+    .uol-accreditation__link {
+      display: block;
+      text-align: center;
+      padding: $spacing-5 $spacing-7;
+
+      .uol-widget__content & {
+        display: flex;
+        padding: $spacing-5 $spacing-7;
+        min-height: 60px;
+        justify-content: center;
+        align-items: center;
+
+        @include media(">=uol-media-m") {
+          min-height: 80px;
+        }
+
+        // all widget items have top border
+        border-top: $accreditation-border-width solid $color-brand;
+
+        @include media(">=uol-media-m") {
+          // when NOT small (ie more than one column) items have a bottom border
+          border-bottom: $accreditation-border-width solid $color-brand;
+        }
+
+        @include media(">=uol-media-l") {
+          padding: $spacing-5 0;
+        }
+
+        &:focus {
+          background-color: $color-brand--faded;
+          outline: none;
+        }
+
+      }
+
+      // if in widget and small and last item, have a bottom border
+      .uol-widget__content .uol-accreditation:last-of-type & {
+        border-bottom: $accreditation-border-width solid $color-brand;
+      }
+
+      .uol-site-footer & {
+        display: inline-block;
+        height: 4.25rem;
+        padding: 0;
+
+        &:focus {
+          outline: 1px dotted $color-brand--bright;
+          outline-offset: 1px;
+          transition: outline 0.66s ease-in;
+        }
+      }
+    }
+
+    .uol-accreditation__logo {
+      max-width: 100%;
+
+      // TODO: IE11 hack
+      .no-csspositionsticky & {
+        height: auto;
+        height: 100%;
+        width: 100%;
+
+        @include media(">=uol-media-s") {
+          width: auto;
+          height: auto;
+        }
+      }
+
+      .uol-widget__content & {
+        // Image scaled on hover - set non-hover size to be less than 1 to avoid distortion when scaled to 100%
+        transform: scale3d(0.92, 0.92, 0.92);
+        transition: transform 0.2s ease;
+        max-height: 60px;
+        vertical-align: middle;
+
+        @include media(">=uol-media-m") {
+          max-height: 80px;
+        }
+
+        &:hover,
+        .uol-accreditation__link:focus & {
+          transform: scale3d(1, 1, 1);
+        }
+      }
+
+      .uol-site-footer & {
+        vertical-align: middle;
+        object-fit: contain;
+        transform: translate(0, -50%);
+        max-width: 8rem;
+        margin: 1.5rem 0;
+        height: 4.25rem;
+        max-width: 8rem;
+
+        @include media(">=uol-media-m") {
+          height: 4.675rem;
+          max-width: 8.8rem;
+        }
+
+        // TODO: IE11 hack
+        .no-csspositionsticky & {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }

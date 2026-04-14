@@ -1,0 +1,27 @@
+.uol-year-of-entry {
+  font-variant-numeric: lining-nums;
+  margin-bottom: $spacing-2;
+}
+
+  .uol-year-of-entry__title {
+    @extend %text-size-heading-6;
+
+    font-weight: $font-weight-bold--sans-serif;
+    margin: $spacing-2 0;
+    color: $color-font--dark;
+  }
+
+  .uol-year-of-entry__date {
+    @extend %text-size-heading-6;
+
+    font-weight: $font-weight-medium--sans-serif;
+    color: $color-font;
+  }
+
+  .uol-year-of-entry__link {
+    @extend %text-size-paragraph;
+
+    display: inline-block;
+    font-weight: $font-weight-medium--sans-serif;
+    text-decoration: none;
+  }

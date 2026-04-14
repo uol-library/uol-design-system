@@ -1,0 +1,197 @@
+$filters-z-index: 1000;
+
+.uol-filters-panel {
+  box-sizing: border-box;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  background-color: $color-white;
+  width: 100%;
+  box-shadow: 0 15px 25px 0 rgba(#000, 0), 0 5px 10px 0 rgba(#000, 0);
+  transition: all 0.7s ease;
+  opacity: 1;
+  z-index: $filters-z-index;
+
+  .uol-form__custom__legend {
+    margin-bottom: $spacing-1;
+  }
+
+  .uol-form__input-label__hint {
+    padding-bottom: $spacing-3;
+  }
+
+
+
+  .js & {
+    @include media("<uol-media-l") {
+      padding: $spacing-4 $spacing-4 $spacing-5;
+      position: fixed;
+      transform: translateX(-100%);
+      overflow-y: auto;
+    }
+  }
+
+  @media (prefers-reduced-motion) {
+    transition: none;
+  }
+
+  @include media(">=uol-media-m") {
+    .js & {
+      width: calc((100% - #{$spacing-4}) / 12 * 9);
+    }
+  }
+
+  // Like remove all this to accommodate in normal flow
+  .js & {
+    @include media(">=uol-media-l") {
+      position: relative;
+      width: auto;
+      transform: translateX(0);
+      // width: calc((100% - #{$spacing-5}) / 12 * 8);
+    }
+  }
+
+  .uol-form__input-container {
+    padding-bottom: $spacing-3;
+
+    @include media(">=uol-media-l") {
+      padding-bottom: calc(#{$spacing-3} + #{$spacing-2}); // increase by 8px, gives 20px
+    }
+
+
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      right: 0;
+      bottom: -#{$spacing-4};
+      left: 0;
+      height: 2px;
+      background: $color-border--light;
+    }
+  }
+
+  .uol-form__custom-fieldset {
+    margin-bottom: 0;
+
+    > *:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+}
+
+  .uol-filters-panel--open {
+    .js & {
+      transform: translateX(0);
+      box-shadow: 0 15px 25px 0 rgba(#000, 0.15), 0 5px 10px 0 rgba(#000, 0.5);
+    }
+
+
+    @include media(">=uol-media-l") {
+      box-shadow: none;
+    }
+
+    .uol-form__input-wrapper__num-of-selected-message {
+      top: 11px;
+    }
+  }
+
+  // TODO: Remove ID dependency
+  #filters-close-button {
+    position: absolute;
+    top: $spacing-4;
+    right: $spacing-4;
+
+    @include media(">=uol-media-l") {
+      display: none;
+    }
+  }
+
+  // TODO: Remove ID dependency
+  #show_search_results {
+    @include media(">=uol-media-l") {
+      display: none;
+    }
+  }
+
+  // fix so filter panel text fits on one line
+  #clear_filter_panel {
+    padding: 0.8em 2.1em;
+  }
+
+  .uol-filters-panel__title {
+    @extend %text-size-heading-4;
+    @extend %uol-font-sans-serif;
+
+    font-weight: $font-weight-bold--sans-serif;
+    margin-top: 0;
+  }
+
+    .uol-filters-panel__title__count {
+      @extend %text-size-heading-6;
+    }
+
+  .uol-filters-panel__footer {
+    button {
+      display: block;
+      width: auto;
+      margin-bottom: $spacing-5;
+
+      &:first-of-type {
+        margin-top: $spacing-4;
+      }
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+
+.uol-filters-panel__overlay {
+  position: fixed;
+  top: -100%;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: rgba($color-black--dark, 0);
+  transition: background 0.7s ease;
+
+  .uol-filters-panel--open + & {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba($color-black--dark, 0.78);
+    z-index: ($filters-z-index - 1);
+  }
+}
+// No max width for small input within filter panel
+.uol-filters-panel {
+  .uol-form__input-container--small {
+    max-width: none;
+  }
+}
+
+//Checkbox within filters panel
+
+.uol-filters-panel {
+  .uol-form__input--checkbox-custom {
+    svg {
+      height: 20px;
+      width: 20px;
+    }
+  }
+}
+
+.uol-filters-panel--open {
+  .uol-form__input--checkbox-custom {
+    svg {
+      height: 36px;
+      width: 36px;
+    }
+  }
+}
+

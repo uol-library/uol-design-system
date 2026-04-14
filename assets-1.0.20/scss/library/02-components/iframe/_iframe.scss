@@ -1,0 +1,69 @@
+.uol-iframe {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #51504C;
+    aspect-ratio: 2 / 1;
+
+}
+
+// Diffrent layout for when iframe present in search results
+.uol-search-results {
+    .uol-iframe {
+        aspect-ratio: 1 / 1;
+        margin: $spacing-2 $spacing-2 9px; // combatting results item margin
+
+        @include media('<uol-media-m') {
+            margin-bottom: 25px; // combatting results item margin
+        }
+        // max-width: 986px;
+        border: 1px solid #C9C8C5;
+
+        @include media(">=uol-media-s", "<uol-media-l") {
+            height: 382px;
+            width: 100%;
+            // aspect-ratio: 1.9 / 1;
+        }
+
+        // hacky fix - padding on map between 300px-360px
+        @media(max-width: 360px) {
+            width: 95%;
+        }
+
+        @include media(">=uol-media-m") {
+            height: 382px;
+            margin-bottom: $spacing-5;
+        }
+
+        @include media(">=uol-media-l") {
+            margin: $spacing-1 $spacing-3 $spacing-7;
+            // margin-right: calc(100% - 986px)
+        }
+
+    }
+}
+
+// Different layout for when iframe present in article pattern search result variant
+.uol-article {
+    .uol-iframe + .uol-search-result__filters  {
+        margin-bottom: $spacing-6 !important;
+        @include media(">=uol-media-m") {
+            margin-bottom: $spacing-7 !important;
+        }
+    }
+}
+// spacings only on form-map article variant
+.uol-article--form-map {
+    .uol-iframe {
+        margin-bottom: $spacing-6 !important;
+
+        @include media(">=uol-media-m") {
+            margin-bottom: $spacing-7 !important;
+        }
+    }
+}
+
+// Only for youtube iframe embeds, for example in article pattern config.
+// Folling removal of obsolete 'frameborder' property.
+.fluid-width-video-wrapper iframe {
+    border: none;
+}

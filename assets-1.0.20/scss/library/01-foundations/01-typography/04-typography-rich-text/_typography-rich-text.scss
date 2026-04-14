@@ -1,0 +1,341 @@
+.uol-rich-text {
+  @extend %uol-font-sans-serif;
+
+  max-width: 47.5rem;
+  color: $color-font;
+
+  > :first-child {
+    margin-top: 0;
+  }
+
+  > *,
+  > * > * {
+    max-width: 47.5rem;
+
+    @include media(">=uol-media-xl") {
+      max-width: 49rem;
+    }
+  }
+
+  img:not(.uol-logo-group-item__logo) {
+    width: 100%;
+    max-width: 47.5rem;
+    height: auto;
+    // margin-top: $spacing-6;
+    // margin-bottom: $spacing-6;
+
+    @include media(">=uol-media-l") {
+      // margin-top: $spacing-7;
+      // margin-bottom: $spacing-7;
+    }
+  }
+
+
+
+  h2 + h3, h3 + h4, h4 + h5, h5 + h6 {
+    margin-top: $spacing-4;
+    @include media(">=uol-media-m") {
+      margin-top: $spacing-5;
+    }
+  }
+
+  p + ul {
+    // margin-top: -16px !important;
+  }
+
+  .fluid-width-video-wrapper {
+    width: 100%;
+    max-width: none;
+    margin-top: $spacing-6;
+    margin-bottom: $spacing-6;
+
+    @include media(">=uol-media-m") {
+      margin-top: $spacing-7;
+      margin-bottom: $spacing-7;
+    }
+
+    iframe {
+      width: 100%;
+      max-width: none;
+    }
+  }
+
+  ul {
+    margin-top: 0;
+  }
+
+  figure {
+    width: 100%;
+    // margin-bottom: $spacing-6;
+
+    @include media(">=uol-media-m") {
+      // margin-bottom: $spacing-7;
+    }
+
+    img {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+
+  strong {
+    @extend %uol-font-sans-serif--bold;
+  }
+
+  h1,
+  h2,
+  h3:not(.uol-in-text-fact__item__title):not(.uol-in-text-cta__heading):not(.uol-accordion__title),
+  h4:not(.uol-in-text-fact__item__title):not(.uol-in-text-cta__heading):not(.uol-accordion__title),
+  h5:not(.uol-in-text-fact__item__title):not(.uol-in-text-cta__heading):not(.uol-accordion__title),
+  h6:not(.uol-in-text-fact__item__title):not(.uol-in-text-cta__heading):not(.uol-accordion__title) {
+    @extend %uol-font-serif;
+
+    font-weight: $font-weight-bold--serif;
+    font-variant-numeric: lining-nums;
+
+    margin: $spacing-6 0 $spacing-2;
+
+    @include media(">=uol-media-m") {
+      margin: $spacing-6 0 $spacing-4;
+    }
+
+    strong {
+      @extend %uol-font-serif--bold;
+    }
+  }
+
+  h1 {
+    @extend %text-size-heading-1;
+  }
+
+  h1.epic {
+    @extend %text-size-epic;
+  }
+
+  h2 {
+    @extend %text-size-heading-2;
+  }
+
+  h3 {
+    @extend %text-size-heading-3;
+  }
+
+  h4 {
+    @extend %text-size-heading-4;
+  }
+
+  h5 {
+    @extend %text-size-heading-5;
+  }
+
+  h6 {
+    @extend %text-size-heading-6;
+  }
+
+  p:not(.uol-in-text-fact__item__description):not(.uol-in-text-cta__text):not(.uol-in-text-cta__heading) {
+    @extend %text-size-paragraph;
+
+    margin-top: 0;
+    margin-bottom: $spacing-6;
+  }
+
+
+  // Change spacing of paragraph when its followed by an in-text-cta
+  // p:has(+ .uol-in-text-cta) {
+  //    @include media("<uol-media-m") {
+  //       margin-bottom: $spacing-5 !important;
+  //     }
+  // }
+
+  img + p {
+    margin-top: 0;
+  }
+
+  // paragraph followed by heading
+  p + h2,
+  p + h3,
+  p + h4,
+  p + h5,
+  p + h6 {
+    // margin added to paragraph bottom margin
+    // margin-top: 0;
+
+    // @include media(">=uol-media-m") {
+    //   margin-top: 16px;
+    // }
+  }
+
+  blockquote {
+    @extend %text-size-blockquote;
+    @extend %uol-font-serif;
+
+    font-weight: $font-weight-bold--serif;
+    display: inline-block;
+    position: relative;
+    margin: $spacing-6 0;
+    padding: 0 1.75em;
+
+    @include media(">=uol-media-m") {
+      padding: 0 1.7em;
+      margin: $spacing-8 0 $spacing-7;
+    }
+
+    &::before {
+      content: "\201C";
+      @extend %uol-font-serif--bold;
+
+      font-size: 400%;
+      height: 1ex;
+      display: block;
+      position: absolute;
+      top: -0.125em;
+      left: 0;
+      color: $color-brand;
+      line-height: 0.3;
+
+      @media (forced-colors: active) {
+        font-size: 300%;
+      }
+    }
+
+    &:first-child {
+      margin-top: $spacing-5;
+
+      @include media(">=uol-media-m") {
+        margin-top: $spacing-7;
+      }
+
+      @include media(">=uol-media-l") {
+        margin-top: $spacing-8;
+      }
+    }
+
+    p {
+      @extend %text-size-blockquote;
+
+      margin-bottom: 0.5em;
+    }
+
+    footer {
+      @extend %text-size-caption;
+
+      cite {
+        @extend %uol-font-sans-serif--italic;
+
+        color: $color-font--x-light;
+
+        a {
+          @include link_focus();
+
+          color: inherit;
+
+          &:hover {
+            text-decoration-color: $color-brand;
+          }
+        }
+      }
+    }
+  }
+
+  hr {
+    @extend .uol-typography-hr;
+  }
+
+  ul,
+  ol {
+    @extend %text-size-paragraph;
+
+    padding-left: 35px; // 16px plus standard bullet width
+    margin-bottom: $spacing-5;
+
+    @include media(">=uol-media-m") {
+      padding-left: 51px; // 32px plus standard bullet width
+    }
+
+    li {
+      margin-bottom: $spacing-2;
+    }
+
+    ul,
+    ol {
+      margin-top: 0.5em;
+      margin-bottom: 0;
+
+      :first-child {
+        margin-top: 0.5em;
+      }
+    }
+  }
+
+  ol {
+    list-style: none;
+    counter-reset: item;
+
+    > li {
+      position: relative;
+      counter-increment: item;
+
+      &::before {
+        @extend %uol-font-sans-serif--bold;
+
+        content: counter(item) ".";
+        font-variant-numeric: lining-nums;
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 2em;
+        transform: translateX(-126%);
+        text-align: right;
+      }
+    }
+  }
+
+  p,
+  li {
+    a {
+      text-decoration: underline;
+      @include link_focus();
+      // font-weight: 600;
+    }
+  }
+
+  // WordPress/TinyMCE specifics
+  .wp-caption-text,
+  figcaption {
+    @extend %text-size-caption;
+    @extend %uol-font-sans-serif;
+
+    color: $color-font--x-light;
+
+    a {
+      @include link_focus();
+
+      font-style: italic;
+      color: inherit;
+    }
+  }
+
+  // JADU/CKEditor
+  blockquote {
+
+    footer {
+
+      p,
+      cite {
+        @extend %text-size-caption;
+        @extend %uol-font-sans-serif--italic;
+
+        color: $color-font--x-light;
+      }
+    }
+  }
+}
+
+  .uol-rich-text--with-lead {
+    > p:first-of-type {
+      @extend .uol-typography-paragraph-intro;
+
+      font-weight: $font-weight-bold--sans-serif;
+    }
+  }

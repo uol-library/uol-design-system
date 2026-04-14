@@ -1,0 +1,10 @@
+
+.uol-typography-ul {
+  @extend %text-size-paragraph;
+
+  padding-left: 2em;
+
+  .uol-typography-ul__item {
+    margin-bottom: 0.6em;
+  }
+}

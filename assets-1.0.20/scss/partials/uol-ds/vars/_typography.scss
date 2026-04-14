@@ -1,0 +1,32 @@
+// Base
+$base-font-size: 1rem;
+$base-line-height: 1.5; // TODO: Confirm
+
+// Font faces
+$font-family-sans-serif:          "San Francisco",
+                                  Roboto,
+                                  "Helvetica Neue",
+                                  Helvetica,
+                                  "Noto Sans",
+                                  "Segoe UI",
+                                  Arial,
+                                  sans-serif;
+
+$font-family-sans-serif--desktop: freight-sans-pro,
+                                  $font-family-sans-serif;
+
+$font-family-serif:               freight-text-pro,
+                                  Georgia,
+                                  Cambria,
+                                  "Times New Roman",
+                                  Times,
+                                  serif;
+
+$font-family-serif--desktop:      $font-family-serif;
+
+// Font weights
+$font-weight-regular--serif:      500;
+$font-weight-bold--serif:         800;
+$font-weight-regular--sans-serif: 400;
+$font-weight-medium--sans-serif:  500;
+$font-weight-bold--sans-serif:    600;

@@ -1,0 +1,70 @@
+%uol-font-sans-serif {
+  font-family: $font-family-sans-serif;
+  font-weight: $font-weight-regular--sans-serif;
+  font-style: normal;
+  font-variant-numeric: lining-nums;
+
+  @include media(">=uol-media-m") {
+      font-family: $font-family-sans-serif--desktop;
+  }
+}
+
+%uol-font-sans-serif--bold {
+  @extend %uol-font-sans-serif;
+
+  font-weight: $font-weight-bold--sans-serif;
+}
+
+%uol-font-sans-serif--italic {
+  @extend %uol-font-sans-serif;
+
+  font-style: italic;
+}
+
+%uol-font-serif {
+  font-family: $font-family-serif;
+  font-weight: $font-weight-regular--serif;
+
+  @include media(">=uol-media-m") {
+    font-family: $font-family-serif--desktop;
+    font-style: normal;
+  }
+}
+
+%uol-font-serif--bold {
+  font-family: $font-family-serif;
+  font-weight: $font-weight-bold--serif;
+
+  @include media(">=uol-media-m") {
+    font-family: $font-family-serif--desktop;
+    font-style: normal;
+  }
+}
+
+body {
+  @extend %uol-font-sans-serif;
+}
+
+.uol-font-sans-serif {
+  @extend %uol-font-sans-serif;
+}
+
+.uol-font-sans-serif--bold {
+  @extend %uol-font-sans-serif--bold;
+}
+
+.uol-font-sans-serif--italic {
+  @extend %uol-font-sans-serif--italic;
+}
+
+.uol-font-serif {
+  @extend %uol-font-serif;
+}
+
+.uol-font-serif--bold {
+  @extend %uol-font-serif--bold;
+}
+
+.Prose {
+  font-feature-settings: normal;
+}

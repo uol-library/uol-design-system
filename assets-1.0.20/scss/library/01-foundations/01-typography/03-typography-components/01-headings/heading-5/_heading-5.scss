@@ -1,0 +1,12 @@
+.uol-typography-heading-5 {
+  @extend %text-size-heading-5;
+  @extend %uol-font-serif;
+
+  font-weight: $font-weight-bold--serif;
+
+  &.uol-typography-heading-5--sans-serif {
+    @extend %uol-font-sans-serif;
+
+    font-weight: $font-weight-bold--sans-serif;
+  }
+}

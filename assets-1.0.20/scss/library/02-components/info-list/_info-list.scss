@@ -1,0 +1,121 @@
+.uol-info-list-container {
+  display: block;
+  width: 100%;
+}
+
+.uol-info-list {
+  @extend .text-size-paragraph;
+
+  overflow: auto;
+}
+
+  .uol-info-list--inline {
+    @include media(">=uol-media-m") {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+
+    .uol-info-list__group {
+        clear: both;
+        margin-bottom: $spacing-3;
+        overflow: auto;
+
+        .uol-info-list--inline & {
+          @include media(">=uol-media-m") {
+            margin-right: 1em;
+          }
+        }
+
+        .uol-people-profile__card & {
+          margin-bottom: 0;
+        }
+    }
+
+    .uol-info-list__group:last-child {
+      margin-bottom: 0;
+    }
+
+    .uol-info-list__term {
+      float: left;
+      font-weight: 700;
+      margin-right: 0.2em;
+
+      &::after {
+        content: ":\00a0";
+      }
+    }
+
+      .uol-info-list__term--hidden {
+        @extend .hide-accessible;
+      }
+
+    .uol-info-list__data {
+      float: left; // add comment to force update as not on dev
+      margin: 0;
+      font-variant-numeric: lining-nums;
+
+      &::after {
+        content: ",\00a0";
+        display: inline-block;
+        margin-left: -0.2em;
+      }
+
+      &:last-of-type {
+        &::after {
+          content: none;
+        }
+      }
+
+      a {
+        @include link_focus(2px);
+
+        text-decoration: underline;
+        color: inherit;
+        transition: all 0.3s ease;
+
+        &:hover {
+          text-decoration-color: $color-brand;
+        }
+
+        &.uol-info-list__data__button {
+          @extend .uol-arrow-link;
+          // @extend .uol-button;
+        //   @extend .text-size-paragraph;
+
+        //   display: block;
+        //   text-decoration: none;
+        //   background-color: $color-black;
+        //   color: $color-white--dark;
+        //   border-radius: $spacing-3;
+        //   padding: $spacing-2 $spacing-6;
+        //   margin: $spacing-6 0;
+        //   transition: all 0.3s cubic-bezier(1, -0.37, 0.52, 0.96);;
+
+        //   &:hover,
+        //   &:focus {
+        //     background-color: $color-brand--bright;
+        //   }
+        }
+      }
+    }
+
+      .uol-info-list__data--date {
+        // @extend .text-size-paragraph--intro;
+        @extend %text-size-heading-5;
+        @extend %uol-font-serif;
+
+        font-weight: $font-weight-bold--serif;
+        display: block;
+        float: none;
+        border-top: 3px solid $color-brand;
+        padding-top: $spacing-5;
+        margin-bottom: 0;
+        font-variant-numeric: normal;
+
+        @include media(">=uol-media-m") {
+          margin-bottom: $spacing-2;
+          padding-top: $spacing-6;
+        }
+        
+      }

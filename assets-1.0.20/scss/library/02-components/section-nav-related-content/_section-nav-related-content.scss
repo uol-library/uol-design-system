@@ -1,0 +1,188 @@
+.uol-section-nav-related-content {
+
+  margin: $spacing-7 $spacing-4 $spacing-8;
+
+  // margin: $spacing-6 $spacing-4 $spacing-6;
+  border-top: 4px solid $color-border--light;
+  font-size: 1.125rem;
+
+  @include media(">=uol-media-xs") {
+    // PRE CS refactor: margin: $spacing-6 $spacing-4 $spacing-7;
+    margin-left: $spacing-4;
+    margin-right: $spacing-4;
+  }
+
+  @include media(">=uol-media-m") {
+      // PRE CS refactor: margin: $spacing-7 0 $spacing-9;
+      margin-left: 0;
+      margin-right: 0;
+  }
+
+  @include media(">=uol-media-l") {
+    // PRE CS refactor: margin: 0 0 $spacing-9;
+  }
+}
+
+  .uol-section-nav-related-content__title {
+    @extend .uol-typography-paragraph;
+
+    color: $color-black--dark;
+    margin-bottom: $spacing-6;
+    margin-top: $spacing-4;
+    font-weight: 700;
+
+    @include media(">=uol-media-m") {
+      font-weight: 600;
+    }
+  }
+
+  .uol-section-nav-related-content__list {
+    @include media(">=uol-media-s", "<uol-media-l"){
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+    .uol-section-nav-related__item {
+      box-sizing: border-box;
+      padding: $spacing-5 $spacing-5 $spacing-6;
+      margin-bottom: $spacing-4;
+      border: 2px solid $color-border--light;
+      border-radius: 10px;
+      line-height: 1.556;
+
+      @include media(">=uol-media-s", "<uol-media-l") {
+        flex-basis: calc(50% - #{$spacing-2});
+      }
+
+      @include media(">=uol-media-l") {
+        margin-bottom: $spacing-6;
+      }
+    }
+
+    .uol-section-nav-related__item:last-of-type {
+      margin-bottom: 0;
+    }
+
+      .uol-section-nav-related-content__item__title {
+        margin: 0 0 $spacing-2;
+        line-height: 1.5;
+        color: $color-font;
+        font-weight: $font-weight-bold--sans-serif;
+        font-size: 1.25rem;
+        // max-width: 66.66%;
+      }
+
+      .uol-section-nav-related-content__item__title__link {
+        text-decoration: none;
+
+        svg {
+          display: inline-block;
+          fill: $color-brand;
+          position: relative;
+          top: 0.3rem;
+          left: 0;
+          margin-left: 0.5em;
+          transition: left 0.3s ease 0.2s;
+
+          @media (forced-colors: active) {
+            fill: WindowText;
+          }
+
+          @media (-ms-high-contrast: active) {
+            fill: CanvasText;
+          }
+        }
+
+        &:hover {
+          text-decoration: underline;
+
+          svg {
+            left: 0.4em;
+          }
+        }
+      }
+
+      .uol-section-nav-related-content__item__text {
+        margin: 0;
+        color: $color-font--light;
+        font-size: 1.125rem;
+      }
+
+      .uol-section-nav-related-content__item__contact-wrapper {
+        a {
+          display: flex;
+          span {
+            width: calc(100% - 35px);
+            overflow-wrap: break-word;
+            padding-top: 3px;
+          }
+        }
+
+        font-variant-numeric: lining-nums;
+
+        &:not(:last-of-type) {
+          padding-bottom: $spacing-4;
+        }
+
+        .uol-section-nav-related-content__item__text + & {
+          margin-top: $spacing-2;
+        }
+
+        svg {
+          fill: $color-warmgrey--dark;
+          margin-right: $spacing-2;
+          position: relative;
+          top: 0.35rem;
+
+          @media (forced-colors: active) {
+            fill: WindowText;
+          }
+
+          @media (-ms-high-contrast: active) {
+            fill: CanvasText;
+          }
+        }
+
+        a {
+
+          &:hover {
+            text-decoration-color: $color-brand;
+          }
+        }
+      }
+
+// Fix for related content (coursefinder pages only) was loosing left/right margin between 768px & 1024px
+// Note: 'rem' values below are to account for additional spacing on 'Coursefinder' page only
+.uol-section-nav-related-content--coursefinder {
+  margin-top: -1.75rem;
+
+  @include media(">=uol-media-m", "<uol-media-l") {
+    margin-top: -0.563rem;
+    margin-left: calc((100% / 12) + 0.9rem);
+    margin-right: calc((100% / 12) + 0.9rem);
+  }
+
+  @include media(">=uol-media-l") {
+    margin-top: 0;
+  }
+}
+
+.uol-content-switch-from-side-to-main {
+  margin-left: $spacing-4;
+  margin-right: $spacing-4;
+  margin-bottom: $spacing-8;
+
+  @include media(">=uol-media-m") {
+    margin-bottom: $spacing-9;
+  }
+
+  @include media(">=uol-media-l") {
+    // margin: $spacing-5 0 $spacing-7;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 84px; // container has 12px, target is 96px
+  }
+}

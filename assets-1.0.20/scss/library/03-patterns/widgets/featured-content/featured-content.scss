@@ -1,0 +1,11 @@
+.uol-widget--featured-content {
+  .uol-gallery__image-caption {
+    padding-left: $spacing-4;
+    padding-right: $spacing-4;
+
+    @include media(">=uol-media-l") {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}

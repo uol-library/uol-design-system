@@ -1,0 +1,110 @@
+.uol-pagination {
+  text-align: center;
+  font-variant-numeric: lining-nums;
+  padding-bottom: $spacing-4;;
+  border-bottom: 1px solid $color-border--light;
+}
+
+  .uol-pagination__list {
+    margin: $spacing-4 0 $spacing-3;
+    padding: 0;
+    list-style: none;
+  }
+
+  .uol-pagination__item {
+    display: inline-block;
+    margin: 0 ($spacing-1 / 2);
+
+    &.uol-pagination__item--numeric {
+
+      @include media("<uol-media-s") {
+        display: none;
+      }
+
+      .uol-button {
+
+        &:focus {
+          box-shadow: 0px 0px 0px 2px #ffffff, 0px 0px 0px 5px $color-focus-accent;
+          outline: 3px dotted transparent;
+        }
+
+        &:focus:not(:focus-visible) {
+          box-shadow: none;
+        }
+
+        &:focus-visible {
+          box-shadow: 0px 0px 0px 2px #ffffff, 0px 0px 0px 5px $color-focus-accent;
+        }
+      }
+
+      &.uol-pagination__item--current {
+        display: inline-block;
+      }
+    }
+
+    .uol-button--primary {
+      @include button_focus(-7px);
+    }
+
+    @include media(">=uol-media-xs") {
+      margin: 0 $spacing-1;
+    }
+  }
+
+  .uol-pagination__link {
+    .js & {
+      @include media("<uol-media-s") {
+        display: none;
+      }
+
+      &[aria-current] {
+        display: inline-flex;
+        background: transparent;
+        color: $color-font;
+        border-color: transparent;
+
+        &:hover,
+        &:focus {
+          box-shadow: none;
+        }
+
+        &:focus {
+          box-shadow: 0px 0px 0px 2px #ffffff, 0px 0px 0px 5px $color-focus-accent;
+          outline: 3px dotted transparent;
+        }
+
+        &:focus:not(:focus-visible) {
+          box-shadow: none;
+        }
+
+        &:focus-visible {
+          box-shadow: 0px 0px 0px 2px #ffffff, 0px 0px 0px 5px $color-focus-accent;
+        }
+
+        @media (forced-colors: active) {
+          border-color: Canvas;
+          color: ButtonText;
+        }
+
+        @media (-ms-high-contrast: active) {
+          border-color: Window;
+        }
+      }
+
+      &::after {
+        content: attr(data-number);
+        display: block;
+        width: 100%;
+        height: 1em;
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+      }
+    }
+  }
+
+  .uol-pagination__status {
+    @extend %text-size-caption;
+  }

@@ -1,0 +1,374 @@
+.uol-form-container--centered {
+  @extend .uol-col;
+  @extend .uol-col-m-10;
+  @extend .uol-col-xl-8;
+
+  margin: 0 auto;
+}
+
+.uol-form__container {
+  border: 1px solid $color-border--light;
+  border-radius: 6px;
+  margin-bottom: $spacing-6;
+
+  &.uol-form-container--centered {
+    padding: 0;
+  }
+
+  .uol-side-nav-container--populated + .uol-homepage-content & {
+
+    .uol-form__inner-wrapper {
+
+      @include media(">=uol-media-l") {
+        flex-basis: 100%;
+      }
+
+      @include media(">=uol-media-xl") {
+        flex-basis: 55.555%;
+      }
+    }
+
+      // .uol-form {
+
+      //   @include media(">=uol-media-xl") {
+      //     margin-right: $spacing-6;
+      //   }
+      // }
+
+    .uol-form__img-wrapper {
+      display: none;
+
+      @include media(">=uol-media-xl") {
+        display: inline-flex;
+        flex-basis: 44.444%;
+      }
+    }
+  }
+}
+
+.uol-form__inner-wrapper {
+  padding: $spacing-5 $spacing-4 $spacing-6;
+  background-color: $color-grey--light;
+
+  @include media(">=uol-media-l") {
+    flex-basis: 58.333%;
+    padding: 2.5rem $spacing-6;
+  }
+
+  @include media(">=uol-media-xl") {
+    flex-basis: 50%;
+  }
+
+   /*
+  Note:
+  As element uses typography rich text, each paragraph element has spacing underneath
+  Here, the element is at the bottom of the form so we force last paragraph element
+  to have zero spacing
+  */
+  p:last-child {
+    margin-bottom: 0 !important;
+  }
+}
+
+/*
+Note:
+Fix so blue line is in correct place for form group inputs
+*/
+.uol-form__input-group--inline {
+  .uol-form__input-wrapper:before {
+    bottom: 1px;
+  }
+}
+
+  .uol-form__title {
+    color: $color-font;
+    font-size: 2rem;
+    line-height: 1.25;
+    font-family: $font-family-serif;
+    margin: 0;
+    padding-bottom: $spacing-2;
+
+    + .uol-form {
+      padding-top: $spacing-2;
+    }
+
+    @include media(">=uol-media-m") {
+      font-size: 2.25rem;
+      line-height: 1.333;
+    }
+
+    @include media(">=uol-media-l") {
+      font-size: 2.625rem;
+      line-height: 1.238;
+    }
+  }
+
+  .uol-form__lead {
+    display: block;
+    color: $color-font;
+    font-size: 1.125rem;
+    line-height: 1.556;
+    font-family: $font-family-sans-serif;
+    margin: 0 0 $spacing-6;
+    font-weight: normal;
+
+    // @include media(">=uol-media-s") {
+    //   max-width: 31.5rem;
+    // }
+
+    @include media(">=uol-media-m") {
+      max-width: 32rem;
+    }
+
+    @include media(">=uol-media-l") {
+      font-size: 1.25rem;
+      max-width: 41rem;
+    }
+  }
+
+  .uol-form {
+    flex-direction: row;
+
+    .uol-form--button-inline {
+      @include media(">=uol-media-m") {
+        display: flex;
+      }
+      &:has(.uol-form__input-wrapper--predictive) {
+        display: flex;
+
+          .uol-form__button-wrapper {
+            padding-left: 1rem;
+          }
+      }
+
+    }
+
+    .uol-form__input-group {
+      display: flex;
+      flex-wrap: wrap;
+
+      @include media(">=uol-media-m") {
+        column-gap: $spacing-4;
+      }
+
+      @include media(">=uol-media-l") {
+        column-gap: $spacing-5;
+      }
+
+      @include media(">=uol-media-xl") {
+        column-gap: $spacing-6;
+      }
+
+      .uol-form__input-container {
+        width: 100%;
+
+        @include media(">=uol-media-m") {
+          width: calc(50% - #{$spacing-2});
+        }
+
+        @include media(">=uol-media-l") {
+          width: calc(50% - #{$spacing-3});
+        }
+
+        @include media(">=uol-media-l") {
+          width: calc(50% - #{$spacing-4});
+        }
+
+        .uol-form__input-wrapper {
+          max-width: none;
+        }
+      }
+
+    }
+
+    .uol-form__input-group--inline {
+      display: flex;
+      flex-direction: column;
+
+      @include media(">=uol-media-m") {
+        flex-direction: row;
+      }
+    }
+  }
+
+.uol-form__container--with-image {
+
+  @include media(">=uol-media-l") {
+    display: flex;
+  }
+}
+
+  .uol-form__img-wrapper {
+    background-color: $color-grey--light;
+    background-color: pink;
+    position: relative;
+    display: none;
+    z-index: -2;
+    overflow: hidden;
+
+    @include media(">=uol-media-l") {
+      display: inline-flex;
+      flex-basis: 41.666%;
+    }
+
+    @include media(">=uol-media-xl") {
+      flex-basis: 50%;
+    }
+  }
+
+    .uol-form__img {
+      position: absolute;
+      min-width: 100%;
+      min-height: 100%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+    }
+
+    .uol-form--button-inline {
+      .uol-form__inputs-wrapper {
+        flex: 1;
+      }
+
+      .uol-form__input-container {
+        margin-bottom: 0;
+      }
+
+      .uol-form__button-wrapper {
+        align-self: flex-end;
+
+        .uol-button {
+          @include button_focus(-6px);
+        }
+
+        @include media(">=uol-media-m") {
+          padding-left: $spacing-4;
+        }
+
+        @include media(">=uol-media-l") {
+          padding-left: $spacing-5;
+        }
+
+        @include media(">=uol-media-xl") {
+          padding-left: $spacing-6;
+        }
+
+        [class^="uol-button"] {
+          width: 100%;
+
+          @include media(">=uol-media-s") {
+            width: inherit;
+          }
+
+          height: 3.125rem;
+          line-height: 0.75;
+        }
+      }
+    }
+
+    .uol-form__button-wrapper {
+      .uol-form--button-block & {
+
+      @include media(">=uol-media-s") {
+        display: inline-block;
+        width: initial;
+      }
+
+        .uol-button {
+          width: 100%;
+        }
+      }
+    }
+
+.uol-form__additional-content {
+  padding: 0;
+  margin: 0;
+
+  a {
+    @include link_focus();
+  }
+}
+
+.uol-form__additional-content--before {
+  .uol-rich-text & {
+    margin: $spacing-4 0 $spacing-6;
+
+    @include media(">=uol-media-m") {
+      margin: $spacing-4 0 $spacing-7;
+    }
+
+    > * {
+      margin-bottom: $spacing-4;
+    }
+
+    > *:last-child {
+      margin-bottom: $spacing-6;
+    }
+  }
+}
+
+.uol-form__additional-content--after {
+  .uol-rich-text & {
+    margin: $spacing-6 0 0;
+
+    > * {
+      margin-bottom: $spacing-4;
+    }
+
+    > *:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// TODO: refactor this file
+
+.uol-form__inner-wrapper {
+
+  .uol-form__custom-fieldset {
+    // Fiddle to allow container for buttons to extend over search button
+
+    @include media(">=uol-media-m") {
+      width: calc(100% + 160px + 16px);
+    }
+
+    @include media(">=uol-media-l") {
+      width: calc(100% + 160px + 24px);
+    }
+  }
+
+  .uol-form__custom__legend {
+    // margin: 0 0 $spacing-1;
+  }
+
+  .uol-form__input-label {
+    // padding-bottom: $spacing-3;
+  }
+
+}
+
+// Refactored CSS for spacings between form elements
+
+.uol-form__input-label__text {
+  margin-bottom: $spacing-3;
+}
+.uol-form__input-label__hint {
+  margin-top: calc(#{$spacing-2} * -1); // -8px;
+  margin-bottom: $spacing-3;
+}
+.uol-form__input__error {
+  margin-bottom: $spacing-2;
+}
+
+/*
+Margin below form error message
+Scope to just campaign landing pages so as not to affect other forms
+*/
+.uol-clp .uol-form__form-error {
+  margin-bottom: $spacing-6;
+
+  @include media(">=uol-media-l") {
+    margin-bottom: $spacing-7;
+  }
+}

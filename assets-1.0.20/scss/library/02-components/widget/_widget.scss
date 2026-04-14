@@ -1,0 +1,613 @@
+.uol-widget-container {
+  display: flex;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  margin-bottom: $spacing-4;
+  width: 100%;
+  
+  .uol-col-debug & {
+    background: rgba(hotpink, .3);
+  }
+
+  &:last-of-type {
+    margin-bottom: $spacing-7;
+
+    @include media(">=uol-media-m") {
+      margin-bottom: $spacing-9;
+    }
+
+    // @include media(">=uol-media-l") {
+    //   margin-bottom: ($spacing-7 * 2);
+    // }
+  }
+
+  .uol-side-nav-container--populated + .uol-homepage-content & {
+    @include media(">=uol-media-l") {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    @include media(">=uol-media-xl") {
+      padding-left: $spacing-1;
+      padding-right: $spacing-1;
+    }
+  }
+}
+
+.uol-widget {
+  position: relative;
+  margin-top: $spacing-4;
+  padding: 0 !important;
+  flex-basis: 100% !important;
+
+  @include media("<uol-media-l") {
+    max-width: none;
+  }
+
+  @include media(">=uol-media-l") {
+    margin-top: $spacing-8;
+  }
+}
+
+  .uol-widget--cards {
+    margin-top: 0;
+    width: 100%;
+  }
+
+  .uol-widget--ctas,
+  .uol-widget--content,
+  .uol-widget--featured-content,
+  .uol-widget--form,
+  .uol-widget--news-events,
+  .uol-widget--news-tiles,
+  .uol-widget--events,
+  .uol-widget--description-list,
+  .uol-widget--accreditation-logos,
+  .uol-widget--wide {
+    @extend .uol-col;
+
+    max-width: none;
+  }
+
+  .uol-widget--ctas {
+
+    // @include media("<uol-media-m") {
+    //   padding-top: $spacing-7 !important;
+    // }
+
+
+  }
+
+  .uol-widget--featured-content {
+    @include media("<uol-media-l") {
+      border-bottom: $spacing-2 solid $color-brand--faded;
+      padding-bottom: $spacing-5;
+      margin-bottom: $spacing-5;
+    }
+
+    @include media(">=uol-media-l") {
+      display: flex;
+      flex: 2 1 auto;
+      flex-basis: auto;
+      align-items: flex-start;
+    }
+  }
+
+  .uol-widget--ctas,
+  .uol-widget--form {
+    margin-top: 0;
+    padding-bottom: 0;
+  }
+
+  .uol-widget {
+
+    .uol-side-nav-container--populated + .uol-homepage-content & {
+      flex-basis: 100%;
+      max-width: none;
+      padding: 0 !important;
+    }
+  }
+
+  .uol-widget__head {
+    position: relative;
+    box-sizing: border-box;
+    padding-bottom: $spacing-6;
+
+    @include media(">=uol-media-l") {
+      padding-bottom: calc(#{$spacing-6 * 1.25});
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    display: flex;
+    flex-direction: column;
+
+    // TODO: Horrible IE hack - Find a better way
+    .no-csspositionsticky & {
+      padding: 3px;
+    }
+
+    @include media(">=uol-media-m") {
+      // margin: 0 $spacing-5;
+      margin: 0;
+    }
+
+    @include media(">=uol-media-l") {
+
+      .no-csspositionsticky & {
+        padding: 0;
+      }
+    }
+
+    @include media(">=uol-media-xl") {
+      // margin: 0 $spacing-6;
+      margin: 0;
+    }
+
+    > * {
+      max-width: 52rem;
+    }
+
+    .uol-widget--featured-content & {
+      @include media(">=uol-media-l") {
+        // width: 40%;
+        // width: calc(100% / 3);
+        padding: $spacing-4 $spacing-4 $spacing-7 0;
+
+        // .uol-side-nav-container--populated + .uol-homepage-content & {
+        //   width: 40%;
+        // }
+
+        &::before {
+          content: "";
+          display: block;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          width: $spacing-8;
+          background: $color-brand--faded;
+          border-radius: 0 0 0 6px;
+          z-index: -1;
+        }
+      }
+    }
+
+    .uol-widget--news-events & {
+      padding-bottom: 0;
+    }
+
+    .uol-widget--list-featured & {
+      padding-bottom: $spacing-4;
+
+      @include media(">=uol-media-m") {
+        padding-bottom: $spacing-5;
+      }
+
+      @include media(">=uol-media-l") {
+        padding-bottom: $spacing-6;
+      }
+    }
+  }
+
+  .uol-widget__title {
+    @extend .uol-typography-heading-2;
+
+    position: relative;
+    margin: $spacing-6 0 0;
+    overflow-wrap: break-word;
+
+    @include media("<uol-media-l") {
+      margin-top: $spacing-7;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      display: inline-block;
+      top: -#{$spacing-4};
+      left: 0;
+      width: $spacing-4;
+      height: $spacing-2;
+      background-color: $color-brand;
+
+      @include media(">=uol-media-m") {
+        width: $spacing-5;
+      }
+
+      @include media(">=uol-media-l") {
+        width: $spacing-6;
+        top: -#{$spacing-5};
+      }
+    }
+
+    .uol-widget--featured-content & {
+      max-width: none;
+      margin: 0;
+
+      @include media("<uol-media-l") {
+        border-radius: 6px 6px 0 0;
+        padding: $spacing-7 $spacing-4 $spacing-6;
+        background: $color-brand--faded;
+
+        &::before {
+          top: $spacing-6;
+          left: $spacing-4;
+        }
+      }
+
+      @include media(">=uol-media-l") {
+        margin-top: $spacing-2;
+      }
+    }
+  }
+
+  .uol-widget__lead {
+
+    .uol-widget--featured-content & {
+
+      @include media("<uol-media-l") {
+        padding-left: $spacing-4;
+        padding-right: $spacing-4;
+      }
+
+      @include media("<uol-media-l") {
+        padding-top: $spacing-2;
+      }
+    }
+  }
+
+  .uol-widget__head,
+  .uol-widget__lead {
+
+    p {
+      @extend %text-size-paragraph--intro;
+      @extend %uol-font-sans-serif;
+    }
+
+    p:first-of-type {
+      margin-top: $spacing-4; // add comment to force line update
+
+      @include media(">=uol-media-l") {
+        margin-top: $spacing-5;
+      }
+
+      @include media(">=uol-media-l") {
+        margin-top: $spacing-5;
+      }
+    }
+
+    &:last-child,
+    p:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  .uol-widget__content {
+    margin: $spacing-4 0 0;
+    clear: both;
+
+    > p {
+      @extend .uol-typography-paragraph;
+      
+      &:first-of-type {
+        margin-top: 0;
+      }
+    }
+    // overflow-x: hidden;
+
+    .uol-widget--cards & {
+      overflow-x: initial;
+    }
+
+    @include media(">=uol-media-m") {
+      margin: $spacing-4 0 0;
+    }
+
+    .uol-widget--featured-content & {
+      @include media(">=uol-media-l") {
+        margin-top: 0;
+        width: calc(100% / 3 * 2);
+        padding: 0 $spacing-6 $spacing-4;
+        border-right: 4px solid $color-brand--faded;
+
+        .uol-side-nav-container--populated + .uol-homepage-content & {
+          width: 60%;
+        }
+      }
+    }
+
+    .uol-widget--list-featured & {
+        margin-top: 0;
+    }
+
+    .uol-widget--form & {
+      margin-top: $spacing-2;
+    }
+  }
+
+    .uol-widget__content__text {
+      @include media("<uol-media-l") {
+        padding-left: $spacing-4;
+        padding-right: $spacing-4;
+      }
+    }
+
+  .uol-widget__link {
+    @extend .uol-chevron-right;
+    @include link_focus(1px);
+
+    /*
+    link chevrons not lined up in widget
+    use of em in cehvron css so overwrite with em too
+    */
+    &::after {
+      top: 0.25em;
+
+      @include media(">=uol-media-m") {
+        top: 0.473em;
+      }
+    }
+  
+
+    align-self: flex-start;
+    font-size: 1.25rem;
+    font-weight: $font-weight-medium--sans-serif;
+    padding-right: 0.2em;
+    color: inherit;
+    text-decoration: none;
+    text-decoration-color: rgba($color-white, 0);
+    transition: text-decoration-color 0.3s ease;
+    
+    margin-top: $spacing-4;
+
+    @include media(">=uol-media-l") {
+      margin-top: $spacing-5;
+    }
+
+    @include media(">=uol-media-m") {
+      font-weight: $font-weight-bold--sans-serif;
+    }
+
+    
+  }
+
+  .uol-widget__left-col {
+    .uol-widget--featured-content & {
+      @include media(">=uol-media-l") {
+        width: calc(100% / 3);
+      }
+    }
+  }
+
+  .uol-widget__arrow-links {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    .uol-widget--featured-content & {
+      @include media(">=uol-media-l") {
+        margin-top: $spacing-5;
+      }
+    }
+  }
+
+  .uol-widget__arrow-links-item {
+    margin: 0 0 $spacing-5 0;
+
+    .uol-widget--featured-content & {
+      margin: 0 $spacing-4 $spacing-5 $spacing-4;
+
+      @include media(">=uol-media-l") {
+        margin: 0 0 $spacing-4 0;
+      }
+    }
+  }
+
+  .uol-widget__arrow-link {
+    @extend %text-size-paragraph;
+    font-weight: $font-weight-bold--sans-serif;
+    padding-top: $spacing-2;
+    padding-bottom: $spacing-2;
+    display: inline-block;
+  }
+
+/*
+Rules for widget combinations
+Generic spacing between widgets set on widget container
+In following instances the widget itself has white space at the bottom
+giving a net result white space too large
+The following rules ensure visual gap is as required
+*/
+
+.uol-homepage-content {
+  .uol-widget-container__facts-figures  + .uol-widget-container {
+    margin-top: 0;
+  
+    @include media(">=uol-media-m") {
+      margin-top: -40px;
+    }
+  }
+  
+  .uol-widget-container__description-list + .uol-widget-container {
+    margin-top: -48px;
+  
+    @include media(">=uol-media-m") {
+      margin-top: -32px;
+    }
+  }
+  
+  .uol-widget-container__tiles + .uol-widget-container {
+    margin-top: - 8px;
+  }
+  
+  .uol-widget-container__content .uol-spacing *:last-child  {
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  .uol-widget-container__content .uol-spacing .uol-in-text-cta  {
+    padding-bottom: $spacing-5;
+  }
+
+  .uol-widget-container:last-of-type {
+    margin-bottom: 0;
+  }
+  
+  .uol-widget-container__facts-figures .uol-facts-figures:first-of-type {
+    @include media("<uol-media-m") {
+      margin-top: 0;
+    }
+  }
+
+  .uol-widget-container__description-list .uol-description-list {
+    margin-top: 0;
+  }
+}
+
+.uol-homepage-content .uol-widget-container:last-of-type {
+  margin-bottom: 48px;
+}
+
+.uol-homepage-content-container + .uol-section-nav-ctas {
+  margin-top: 0;
+}
+
+.uol-widget__content {
+  margin-top: 0;
+
+  .uol-spacing >:first-child {
+    margin-top: 0 !important;
+  }
+}
+
+// bugfix 91676
+.uol-homepage-content .uol-widget--news-events .uol-widget__link {
+  margin-bottom: $spacing-4;
+
+  @include media(">=uol-media-m") {
+    margin-bottom: $spacing-5;
+  }
+}
+
+// Featured video highlighted variant
+.uol-widget--featured-video-highlighted {
+  position: relative;
+  border: 0;
+}
+
+.uol-widget--featured-video-highlighted .uol-gallery__item--video-play-icon .uol-button.uol-icon--icon-only {
+  left: $spacing-6;
+  bottom: $spacing-6;
+  background-color: $color-black--dark;
+}
+
+.uol-widget__head.uol-widget__head--featured-video-highlighted {
+  padding-bottom: 0;
+  max-width: 29.375rem;
+
+  @include media(">=uol-media-m") {
+    max-width: 38.125rem;
+  }
+
+  @include media(">=uol-media-l") {
+    max-width: none;
+    padding-right: 0;
+    padding-top: 0;
+  }
+}
+
+.uol-widget__left-col.uol-widget__left-col--featured-video-highlighted {
+  background-color: $color-cream;
+  // Used value below as no css var created for this
+  padding: 2.5rem $spacing-6; // 2.5rem = 40px
+
+  @include media(">=uol-media-l") {
+    width: calc(100% / 3.5);
+    padding: 2.5rem $spacing-6;
+  }
+
+  @include media(">=uol-media-xl") {
+    width: calc(100% / 3.4);
+  }
+
+  @include media(">=uol-media-xxl") {
+    width: calc(100% / 3.3);
+  }
+}
+
+.uol-widget__title.uol-widget__title--featured-video-highlighted {
+  padding: 0;
+  background: none;
+}
+
+// Bug fix for when components appears on Homepage, it picks up additional spacing from home
+.uol-homepage-content .uol-widget--featured-content .uol-widget__title.uol-widget__title.uol-widget__title--featured-video-highlighted  {
+  padding-top: 0;
+}
+
+.uol-widget__title--featured-video-highlighted::before {
+  display: none;
+}
+
+.uol-widget__head .uol-widget__featured-video-highlighted-sub-text {
+  @extend .uol-typography-paragraph-small;
+
+  &:first-of-type {
+    margin-bottom: $spacing-2;
+    margin-top: 0;
+
+    @include media(">=uol-media-l") {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.uol-widget__content.uol-widget__content--featured-video-highlighted {
+  padding: 0;
+  border: 0;
+}
+
+.uol-widget__link--featured-video-highlighted {
+  text-decoration: underline;
+  font-weight: $font-weight-bold--sans-serif;
+  text-decoration-thickness: 1px;
+  text-decoration-color: #111; // Not currently as a var in DS (could add in future if required)
+  font-size: 1.125rem;
+
+  @include media(">=uol-media-m") {
+    font-size: 1.25rem;
+  }
+
+  @include media(">=uol-media-l") {
+    margin-top: $spacing-4;
+  }
+}
+
+.uol-widget__link--featured-video-highlighted::after {
+  display: none;
+}
+
+.uol-widget__lead.uol-widget__lead--featured-video-highlighted {
+  padding: 0;
+
+  p {
+    @extend %text-size-paragraph;
+
+    @include media(">=uol-media-l") {
+      margin-top: $spacing-4;
+    }
+  }
+}
+ 
+.uol-widget__content--featured-video-highlighted .uol-gallery__image-caption {
+  @include media(">=uol-media-l") {
+    padding-left: 1rem!important;
+  }
+}
+
+.uol-widget-container .uol-widget__content  .uol-in-text-cta {
+  margin: $spacing-5 0;
+}

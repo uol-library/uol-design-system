@@ -1,0 +1,193 @@
+// heights for when JS disabled, JS calculates height based on content
+.uol-task-banner {
+  
+  @include media(">=uol-media-l") {
+    height: 685px;
+  }
+
+  @include media(">=uol-media-xl") {
+    height: 647px;
+  }
+  
+  &__outer {
+    width: 100%;
+    background: $color-brand-teal;
+    display: flex;
+  }
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    max-width: $site-container-full;
+    margin: 0 auto;
+    padding: 0;
+
+    @include media(">=uol-media-l") {
+      flex-direction: row;
+      height: 551px;
+    }
+
+    @include media(">=uol-media-xl") {
+      flex-direction: row;
+      height: 532px;
+    }
+  }
+
+  &__key-task {
+    color: $color-font--dark;
+    position: relative;
+    width: calc(100% - #{$spacing-6});
+    padding: $spacing-6 $spacing-4;
+
+    @include media(">=uol-media-l") {
+      width: calc((100% - #{$spacing-5}) / 12 * 4 - #{$spacing-7});
+      padding: 0 $spacing-6;
+    }
+
+    @include media(">=uol-media-xl") {
+      width: calc((100% - #{$spacing-6}) / 12 * 4 - #{$spacing-8});
+    }
+
+    .uol-content-block__heading {
+      @extend .uol-typography-heading-2;
+    }
+
+    * {
+      max-width: 470px;
+
+      @include media(">=uol-media-m") {
+        max-width: 610px;
+      }
+    }
+
+    .uol-content-block button {
+      margin-bottom: 0;
+    }
+  }
+
+  &__course-section {
+    position: relative;
+    top: 0;
+    margin: 0 calc(#{$spacing-4} * -2) 0;
+    width: 100%;
+
+    @include media(">=uol-media-l") {
+      position: absolute;
+      top: 0;
+      margin: 0;
+      left: calc((100% - #{$spacing-5}) / 12 * 4 + #{$spacing-5});
+      width: calc((100% - #{$spacing-5}) / 12 * 8 - #{$spacing-5});
+      padding-top: $spacing-6;
+  
+      .uol-content-block {
+        padding: $spacing-6 $spacing-6 $spacing-4 $spacing-6;
+        width: calc(50% - #{$spacing-8});
+      }
+    }
+
+    @include media(">=uol-media-xl") {
+      left: calc((100% - #{$spacing-6}) / 12 * 4 + #{$spacing-6});
+      width: calc((100% - #{$spacing-6}) / 12 * 8 - #{$spacing-6});
+    }
+
+    .uol-content-block__heading {
+      @extend .uol-typography-heading-4;
+
+      @include media("<uol-media-m") {
+        font-size: 1.375rem;
+      }
+    }
+    
+    .uol-form__container {
+      border: none;
+      margin-bottom: 0;
+    }
+
+    .uol-form__inner-wrapper {
+      padding: $spacing-6 $spacing-4;
+      background: $color-white;
+
+      @include media(">=uol-media-l") {
+        padding: $spacing-6;
+      }
+    }
+
+    .uol-form__input-container {
+      margin-bottom: 0;
+    }
+
+    .uol-form__title {
+      @extend .uol-typography-heading-3;
+    }
+
+    .uol-form__additional-content a {
+      margin-right: $spacing-4;
+      font-weight: 600;
+    }
+
+    .uol-arrow-link {
+      font-weight: 600;
+
+      svg {
+        fill: $color-black--dark;
+      }
+    }
+
+    .uol-form__custom-fieldset {
+      margin-bottom: 0;
+      
+      .uol-form__input--radio-wrapper {
+        margin-right: $spacing-4;
+      }
+      .uol-form__inputs-wrapper {
+        display: flex;
+        flex-direction: column;
+
+        @include media(">=uol-media-xs") {
+          flex-direction: row;
+        }
+      }
+
+      .uol-form__input--radio:checked~.uol-form__input--custom-radio svg {
+        fill: $color-black--dark;
+      }
+
+      .uol-form__input--radio:checked~.uol-form__input--custom-radio {
+        border-color: $color-black--dark;
+        box-shadow: inset 0 0 0 1px $color-black--dark;
+      }
+
+      .uol-form__input--custom-radio {
+        border: 2px solid $color-black--dark;
+      }
+    }
+  }
+        
+  &__course-cards {
+    @extend .uol-typography-heading-4;
+
+    background: $color-brand-cream;
+    display: flex;
+    flex-direction: column;
+
+    @include media(">=uol-media-m") {
+      flex-direction: row;
+  
+      .uol-content-block {
+        width: calc(50% - #{$spacing-6});
+      }
+    } 
+          
+    .uol-content-block {
+      display: none;
+      padding: $spacing-6 $spacing-4 $spacing-4 $spacing-4;
+
+      @include media(">=uol-media-l") {
+        padding: $spacing-6 $spacing-6 $spacing-4 $spacing-6;
+      }
+    }
+  }
+}

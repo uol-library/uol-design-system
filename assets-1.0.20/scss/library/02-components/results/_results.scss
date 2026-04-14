@@ -1,0 +1,351 @@
+.uol-results {
+  /*
+  Circle image sizes
+  Do as parameters as also used for heading alongside with float layout
+  */
+
+  $width320: 97px;
+  $width414: 116px;
+  $width768: 156px;
+  $width1024: 161px;
+  $width1440: 179px;
+  $width1660: 215px;
+
+  margin: 0 auto;
+  max-width: 1188px;
+
+  .uol-results {
+    position: relative;
+    margin: $spacing-4 0;
+
+    @include media(">=uol-media-l") {
+      margin: $spacing-5 0;
+    }
+
+    @include media(">=uol-media-xl") {
+      margin: $spacing-6 0;
+    }
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    // Whatever is last item has no margin or padding so spacing set by container    
+    .uol-results__text > *:last-child,
+    .uol-results__text > *:last-child > *:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    .uol-results__featured,
+    .uol-results__highlighted {
+      color: $color-white;
+      display: flex;
+      border-bottom: 2px solid $color-black;
+
+      & ~ .uol-results__link {
+        border-top: none;
+      }
+
+      @include media(">=uol-media-m") {
+        flex-direction: row;
+      }
+    }
+
+    .uol-results__featured__text,
+    .uol-results__highlighted__text {
+      padding: $spacing-2 $spacing-4;
+      background: $color-black;
+      color: $color-white; 
+    }
+
+    .uol-results__content {
+      background: $color-grey--faded;
+      border: 1px solid rgba($color-border--light, 0.6);
+      padding: $spacing-5 $spacing-4 $spacing-6;
+
+      @include media(">=uol-media-m") {
+        padding: $spacing-5 $spacing-4 $spacing-6;
+      }
+
+      @include media(">=uol-media-l") {
+        padding: $spacing-5 $spacing-5 $spacing-6;
+      }
+    }
+
+    .uol-results__link {
+      box-sizing: border-box;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      transition: all .25s ease-in-out;
+      transition: box-shadow 0.25s ease-in-out;
+
+      &:hover,
+      &:focus-within {
+        box-shadow:
+          0 15px 25px rgba($color-black--dark, 0.15),
+          0 5px 10px rgba($color-black--dark, 0.05);
+      }
+
+      a {
+        text-decoration: none;
+        display: block;
+        
+        // Sets whole parent container to be active link
+        &::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+        }
+
+        &:hover,
+        &:focus {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .uol-results__image {
+      display: flex;
+      flex-direction: column;
+
+      @include media(">=uol-media-m") {
+        flex-direction: row;
+        column-gap: $spacing-4;
+      }
+
+      @include media(">=uol-media-l") {
+        column-gap: $spacing-5;
+      }
+
+      @include media(">=uol-media-xl") {
+        column-gap: $spacing-6;
+      }
+    }
+      
+      .uol-results__image__container {
+        position: relative;
+
+        img {
+          width: 100%;
+          display: block;
+        }
+      }
+    
+    h2 {
+      margin: 0;
+
+      @extend .uol-typography-heading-4;
+
+      font-size: 1.375rem; // 22px
+  
+      @include media(">=uol-media-m") {
+        font-size: 1.75rem; // 28px
+      }
+
+      text-decoration: none;
+    }
+
+    .uol-results__image--circle {
+      display: block;
+
+      @include media(">=uol-media-m") {
+        display: flex;
+      }
+
+      .uol-results__image__container {
+        min-width: inherit;
+        position: relative;
+        float: left;
+        margin-right: $spacing-4;
+
+        @include media(">=uol-media-m") {
+          margin-right: 0;
+        }
+      }
+
+      img {
+        border-radius: 50%;
+        object-fit: cover;
+        width: $width320;
+        height: $width320;
+        
+        @include media(">=uol-media-xs") {
+          width: $width414;
+          height: $width414;
+        }
+  
+        @include media(">=uol-media-m") {
+          width: $width768;
+          height: $width768;
+        }
+  
+        @include media(">=uol-media-l") {
+          width: $width1024;
+          height: $width1024;
+        }
+  
+        @include media(">=uol-media-xl") {
+          width: $width1440;
+          height: $width1440;
+        }
+  
+        @include media(">=uol-media-xxl") {
+          width: $width1660;
+          height: $width1660;
+        }
+      }
+
+      h2 {
+
+        height: calc(#{$width320} - #{$spacing-4});
+        margin-bottom: $spacing-4;
+        padding-top: $spacing-4;
+
+        @include media(">=uol-media-xs") {
+          height: calc(#{$width414} - #{$spacing-4});
+        }
+  
+        @include media(">=uol-media-m") {
+          height: inherit;
+          margin-bottom: $spacing-2;
+          padding-top: 0;
+        }
+        
+      }
+    }
+
+    .uol-results__image--rectangle {
+      img {
+        margin: -24px -16px $spacing-5;
+        width: calc(100% + #{$spacing-6});
+        display: block;
+
+        @include media(">=uol-media-m") {
+          margin: 0;
+          width: 220px;
+        }
+
+        @include media(">=uol-media-l") {
+          width: 290px;
+        }
+
+        @include media(">=uol-media-xxl") {
+          width: 344px;
+        }
+      }
+    }
+
+    .uol-results__text {
+
+      @include media(">=uol-media-s") {
+        max-width: 470px;
+      }
+
+      @include media(">=uol-media-m") {
+        max-width: 610px;
+      }
+
+      @include media(">=uol-media-l") {
+        max-width: 648px;
+      }
+
+      @include media(">=uol-media-xl") {
+        max-width: 674px;
+      }
+
+      @include media(">=uol-media-xxl") {
+        max-width: 784px;
+      }
+    }
+
+    .uol-results__text--highlight {
+      @extend .uol-typography-heading-6;
+      color: $color-brand;
+    }
+
+    .uol-results__text--highlight,
+    .uol-results__text--standard,
+    .uol-info-list {
+      margin: $spacing-2 0;
+    }
+
+    .uol-results__text--standard {
+      @extend .uol-typography-paragraph-small;
+    }
+
+    .uol-results__text--definition {
+      // each definition has text--standard margin so this needs to be zero
+      margin: 0;
+    }
+
+    .uol-results__text--definition__data {
+      @extend .uol-typography-paragraph-small;
+
+      margin: 0;
+      display: inline;
+
+      &::after {
+        content: "";
+        display: inline-block;
+        position: relative;
+        width: 1px;
+        height: 0.8em;
+        background-color: $color-brand;
+        margin-left: 0.3em;
+        margin-right: 0.15em;
+        top: 0.1em;
+      }
+
+      &:last-of-type {
+        &::after {
+          content: none;
+        }
+      }
+    }
+
+    .uol-results__text--definition__label {
+      
+      display: inline;
+      font-weight: $font-weight-bold--sans-serif;
+
+      &::after {
+        content: ":";
+      }
+    } 
+  }
+
+  .uol-info-list {
+    @extend .text-size-paragraph--small;
+  }
+
+  // Highlighted variant
+  .uol-results__highlighted {
+    .uol-results__content {
+      background-color: $color-brand-cream;
+    }
+
+    .uol-results__featured {
+      border-color: $color-brand-teal;
+    }
+
+    .uol-results__text--highlight {
+      color: $color-font--dark;
+    }
+
+    .uol-results__featured__text {
+      background-color: $color-brand-teal;
+      color: $color-font--dark;
+    }
+
+    .uol-button--secondary {
+      color: $color-font--dark;
+      border-color: $color-font--dark;
+    }
+  }
+}
+

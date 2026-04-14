@@ -1,0 +1,28 @@
+.uol-clp--widget-variant {
+
+  .uol-widget-container:first-child {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .uol-widget-container:nth-child(2) {
+    margin-top: 0;
+
+    @include media(">=uol-media-l") {
+      margin-top: 32px;
+    }
+  }
+
+  .uol-widget .uol-in-text-cta {
+    width: 100%;
+  }
+}
+
+.uol-clp--widget-variant-confirmation {
+  .uol-spacing>.uol-in-text-facts:last-child {
+    @include media("<=uol-media-m") {
+      // Use of important required to ovewrite inherited rule that also carried !important. 
+      margin-bottom: 0!important; 
+    }
+  }
+}

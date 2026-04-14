@@ -1,0 +1,106 @@
+.uol-logo-group {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: calc(#{$spacing-5} * -1);
+}
+
+  .uol-logo-group-item {
+    width: 100%;
+
+    margin-bottom: $spacing-5;
+    
+    
+    @include media(">=uol-media-xs") {
+      width: calc((100% - #{$spacing-4}) / 2);
+      margin-right: $spacing-4;
+      
+      &:nth-child(2n+2) {
+        margin-right: 0;
+      }
+
+    }
+
+    @include media(">=uol-media-m") {
+      width: calc((100% - 2 * #{$spacing-4}) / 3);
+      margin-right: $spacing-4;
+      
+      &:nth-child(2n+2) {
+        margin-right: $spacing-4;
+      }
+      
+      &:nth-child(3n+3) {
+        margin-right: 0;
+      }
+
+    }
+
+    @include media(">=uol-media-l") {
+      width: calc((100% - 2 * #{$spacing-5}) / 3);
+      margin-right: $spacing-5;
+      
+      &:nth-child(2n+2) {
+        margin-right: $spacing-5;
+      }
+    }
+
+    @include media(">=uol-media-xl") {
+      width: calc((100% - 2 * #{$spacing-6}) / 3);
+      margin-right: $spacing-6;
+      
+      &:nth-child(2n+2) {
+        margin-right: $spacing-6;
+      }
+      
+    }
+
+  }
+
+    .uol-logo-group-item__container {
+      border: 1px solid $color-border--light;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 144px; // max height of 96px plus 24px top and bottom
+      margin-bottom: $spacing-1;
+    }
+
+    .uol-logo-group-item__logo {
+      margin: 0 auto;
+      max-height: 96px;
+      max-width: 226px; 
+
+      @include media(">=uol-media-xs") {
+        max-width: 152px;
+      }
+  
+      @include media(">=uol-media-s") {
+        max-width: 163px;
+      }
+  
+      @include media(">=uol-media-m") {
+        max-width: 161px;
+      }
+  
+      @include media(">=uol-media-l") {
+        max-width: 158px;
+      }
+  
+      @include media(">=uol-media-xl") {
+        max-width: 171px;
+      }
+  
+      @include media(">=uol-media-xxl") {
+        max-width: 176px;
+      }
+    }
+
+    .uol-logo-group-item__link {
+      @include link_focus(3px);
+
+      margin-bottom: $spacing-5; // TEMP, different for different viewpoints
+
+      &:hover {
+        text-decoration-color: $color-brand--bright;
+      }
+    }

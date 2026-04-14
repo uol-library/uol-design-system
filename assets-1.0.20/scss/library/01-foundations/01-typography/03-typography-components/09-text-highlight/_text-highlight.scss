@@ -1,0 +1,30 @@
+.text-highlight {
+  border: 4px solid $color-brand;
+  font-weight: $font-weight-medium--sans-serif;
+  padding: $spacing-4;
+  text-align: center;
+
+  p {
+    font-weight: 600;
+  }
+
+  @include media(">=uol-media-m") {
+    padding: $spacing-4 $spacing-6;
+  }
+
+  :first-child {
+    margin-top: 0;
+  }
+
+  :last-child {
+    margin-bottom: 0 !important;
+  }
+}
+
+.uol-article {
+  .text-highlight {
+    @include media('>=uol-media-l') {
+      max-width: 43rem; // 43 as minus padding
+    }
+  }
+}

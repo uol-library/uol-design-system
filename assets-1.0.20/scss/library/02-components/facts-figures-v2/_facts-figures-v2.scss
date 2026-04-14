@@ -1,0 +1,191 @@
+// Not used in tiles pattern
+.uol-facts-figures-v2-container {
+    // border: 1px dotted hotpink; // for debugging
+    box-sizing: border-box;
+    padding: 0 $spacing-4 $spacing-7 $spacing-4;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    row-gap: $spacing-6;
+
+    @include media(">=uol-media-m") {
+      column-gap: $spacing-4;
+      row-gap: 2.5rem; // 40px
+      padding-bottom: $spacing-8;
+    }
+
+    @include media(">=uol-media-l") {
+      padding: 0 $spacing-5 $spacing-9 $spacing-5;
+      column-gap: $spacing-5;
+    }
+
+    @include media(">=uol-media-xl") {
+      padding: 0 $spacing-6 $spacing-9 $spacing-6;
+      column-gap: $spacing-6;
+    }
+  
+    & > * {
+      box-sizing: border-box;
+    }
+  }
+
+  .uol-facts-figures-v2 {
+    // background: yellow;
+    margin: 0;
+    text-align: center;
+    // border: 1px solid red; // for debugging
+    grid-column: 2 / span 10;
+  
+    // ie. Not in tiles pattern
+    .uol-facts-figures-v2-container & {
+      @include media(">=uol-media-m") {
+        grid-column: auto;
+
+        &:nth-child(2n-1) {
+          grid-column: 1 / span 6;
+          padding: 0 $spacing-6 0 $spacing-4;
+        }
+      
+        &:nth-child(2n) {
+          grid-column: 7 / span 6;
+          padding: 0 $spacing-4 0 $spacing-6;
+        }
+      }
+
+      @include media(">=uol-media-l") {
+        grid-column: span 3;
+
+        &:nth-child(2n-1),
+        &:nth-child(2n) {
+          grid-column: span 3;
+          padding: 0;
+        }
+      }
+    }
+  }
+
+    .uol-facts-figures-v2__headline {
+      @extend %uol-font-sans-serif;
+
+      // background: pink;
+  
+      margin-top: 0;
+      margin-bottom: 0;
+
+      & > :last-child {
+        margin-bottom: 0;
+      }
+  
+      &+footer {
+        margin: 0;
+      }
+  
+      .in-text-icon {
+        margin-bottom: $spacing-3 !important; // To overwrite parent that is set to !important
+        grid-template-columns: none;
+        grid-gap: 0;
+  
+        svg {
+          justify-self: center!important;
+          height: 40px !important;
+          width: 40px !important;
+          color: #00A881;
+          margin-top: 0.635rem;
+
+          @include media(">=uol-media-m") {
+            height: 44px !important;
+            width: 44px !important;
+          }
+
+          @include media(">=uol-media-l") {
+            height: 48px !important;
+            width: 48px !important;
+          }
+        }
+      }
+    }
+  
+      .uol-facts-figures-v2__headline__1 {
+        @include font-size-responsive(2rem, 2.75rem, 3.3125rem); // 32px, 44px, 53px
+        @include line-height-responsive(2.75rem, 3.5rem, 3.9375rem); // 44px, 56px, 63px
+  
+        display: block;
+        margin-bottom: $spacing-3;
+        color: #00A881;
+        font-family: $font-family-serif;
+        font-weight: 800;
+  
+        .uol-tiles & {
+          color: $color-brand--bright;
+        } 
+        
+        &.uol-icon {
+          @include media(">=uol-media-m") {
+            padding-top: 0.4375rem;
+            height: $spacing-7;
+          }
+
+          @include media(">=uol-media-l") {
+            padding-top: 0.625rem;
+            height: 3.3125rem;
+          }
+        }
+      }
+  
+        .uol-facts-figures-v2__headline__1__emphasis {
+          @include font-size-responsive(2.75rem, 4.25rem);
+          @include line-height-responsive(2.75rem, 3rem);
+        }
+      
+      .uol-facts-figures-v2__headline__2 {
+        // @include font-size-responsive(1.25rem, 1.25rem, 1.25rem); // 20px, 20px, 20px
+        // @include line-height-responsive(2rem, 1.75rem, 2rem,); // 32px, 28px, 32px
+        @extend %text-size-paragraph;
+        
+        margin-top: 0;
+        margin-bottom: $spacing-3;
+        color: $color-font--dark;
+      }
+  
+    .uol-facts-figures-v2__optional-fact-source {
+      @include font-size-responsive(1rem, 1rem, 1.125rem); // 16px, 16px, 18px
+      @include line-height-responsive(1.625rem, 1.625rem, 1.75rem,); // 26px, 26px, 28px
+      
+      color: $color-font;
+      margin-top: 0;
+      margin-bottom: $spacing-3;
+      padding-top: $spacing-3;
+
+      &+footer {
+        padding-top: 0;
+      }
+    }
+
+    .uol-facts-figures-v2__cite {
+      @include font-size-responsive(1rem, 1.25rem,  1.25rem); // 16px, 20px, 20px
+      @include line-height-responsive(1.625rem, 1.75rem, 2rem); // 26px, 28px, 32px
+  
+      font-style: normal;
+      color: $color-font--dark;
+      font-weight: $font-weight-bold--sans-serif;
+      // line-height: 1.75rem;
+
+      // @include media(">=uol-media-m") {
+      //   line-height: 2rem;
+      // }
+    }
+  
+    .uol-facts-figures-v2__link {
+      @extend %text-size-paragraph;
+      
+      @include link_focus(3px);
+      
+      color: $color-font--dark;
+      color: inherit;
+  
+      // &:hover {
+      //   // text-decoration-color: $color-brand;
+      //   text-decoration: none;
+      //   background: yellow;
+
+      // }
+    }

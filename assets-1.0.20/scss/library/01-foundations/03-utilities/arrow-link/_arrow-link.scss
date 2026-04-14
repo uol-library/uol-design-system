@@ -1,0 +1,54 @@
+.uol-arrow-link {
+  &:hover,
+  &:focus {
+    svg {
+      right: -0.1em;
+    }
+
+    @media (prefers-reduced-motion) {
+      svg {
+        right: 0.2em;
+      }
+    }
+  }
+}
+
+.uol-arrow-link--bg-dark {
+  svg {
+    fill: $color-brand--bright;
+  }
+}
+
+.uol-arrow-link--fade-in {
+  svg {
+    opacity: 0;
+  }
+
+  &:hover,
+  &:focus {
+    svg {
+      opacity: 1;
+    }
+  }
+}
+
+.uol-arrow-link__arrow-wrapper {
+  position: relative;
+  white-space: nowrap;
+  padding-right: 1.65em;
+
+  svg {
+    position: absolute;
+    height: 1.2em;
+    width: 1.2em;
+    top: 0.1em;
+    right: 0.2em;
+    fill: $color-brand;
+    transition: all 0.3s ease 0.15s;
+
+    @media (-ms-high-contrast: active), (forced-colors: active) {
+      fill: -ms-hotlight;
+      fill: linkText;
+    }
+  }
+}

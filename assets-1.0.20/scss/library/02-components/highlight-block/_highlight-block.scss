@@ -1,0 +1,21 @@
+.uol-highlight-block {
+  border-radius: 6px;
+  padding: $spacing-6 $spacing-4;
+  margin-bottom: $spacing-6;
+  background: $color-grey--light;
+
+  @include media(">=uol-media-l") {
+    border-radius: 12px;
+    padding: $spacing-6 $spacing-5;
+  }
+
+  @include media(">=uol-media-xl") {
+    padding: $spacing-6;
+  }
+
+  .uol-rich-text {
+    :last-child {
+      margin-bottom: 0;
+    }
+  }
+}

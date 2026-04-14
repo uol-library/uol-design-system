@@ -1,0 +1,124 @@
+// adding comment line to initiate dev build again
+
+// Slideshow CSS
+$slideZoomRatio: 1.2;
+$bannerHeightSmall: 220px;
+$bannerHeightMedium: 300px;
+$bannerHeightLarge: 400px;
+$maxWidth: 1600px;
+
+$controlMargin: 16px;
+
+#bannerSlideshow {
+  width: 100%;
+  height: $bannerHeightSmall;
+  position: relative;
+  overflow: hidden;
+
+  @include media(">=uol-media-m") {
+    height: $bannerHeightMedium;
+  }
+
+  @include media(">=uol-media-l") {
+    height: $bannerHeightLarge;
+  }
+
+  .slideshowImages {
+    width: 100%;
+    overflow: hidden;
+
+    .image {
+      height: $bannerHeightSmall;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      animation-name: fade3;
+      animation-iteration-count: infinite;
+      animation-play-state: paused;
+      opacity: 0;
+      background-position: 50%;
+      background-repeat: no-repeat;
+      background-size: cover;
+
+      &:first-child {
+          opacity: 1 !important;
+        }
+
+
+      @include media(">=uol-media-m") {
+        height: $bannerHeightLarge;
+      }
+    }
+
+    &:has(> :nth-child(4)) {
+      .image {
+        animation-name: fade4;
+      }
+    }
+    &:has(> :nth-child(5)) {
+      .image {
+        animation-name: fade5;
+      }
+    }
+
+    @keyframes fade3 {
+      0%   { opacity: 0; }
+      11.11%   { opacity: 1; }
+      33.33%  { opacity: 1; }
+      44.44%  { opacity: 0; transform: scale($slideZoomRatio);}
+      100% { opacity: 0; transform: scale(1);}
+    }
+    @keyframes fade4 {
+      0%   { opacity: 0; }
+      8.33%   { opacity: 1; }
+      25%  { opacity: 1; }
+      33.33%  { opacity: 0; transform: scale($slideZoomRatio);}
+      100% { opacity: 0; transform: scale(1);}
+    }
+    @keyframes fade5 {
+      0%   { opacity: 0; }
+      6.66%   { opacity: 1; }
+      20%  { opacity: 1; }
+      26.66%  { opacity: 0; transform: scale($slideZoomRatio);}
+      100% { opacity: 0; transform: scale(1);}
+    }
+
+  }
+}
+
+.bannerSlideshowControls {
+  width: 100%;
+  max-width: $maxWidth;
+  margin: 0 auto;
+  position: relative;
+
+  .slideshowControlsInner {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background: $color-brand-teal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .slideshowControl {
+      align-items: center;
+      cursor: pointer;
+      border: 2px solid white;
+      margin: $controlMargin $controlMargin 0;
+    }
+
+    #pauseButton {
+      display: none; // change between flex and none using JS
+    }
+
+    #playButton {
+      display: flex; // change between flex and none using JS
+    }
+  }
+}
+
+
+
+

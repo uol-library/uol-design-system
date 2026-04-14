@@ -1,0 +1,184 @@
+$innerWidthMax: 1600px;
+$placeholderPadding: 16px;
+$placeholderSpacing: 32px;
+$placeholoderMinHeight: 100px;
+
+.homeSectionPlaceholder, .tempDevNotes {
+  width: calc(100% - 2 * #{$placeholderPadding} - 2px);
+  border: 1px solid #999;
+  background: #eee;
+  padding: $placeholderPadding;
+  font-size: 18px;
+  line-height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  * {
+    max-width: $innerWidthMax;
+  }
+}
+
+.homeSectionPlaceholder {
+  min-height: $placeholoderMinHeight;
+  margin-bottom: $spacing-8;
+
+  @include media('>=uol-media-m') {
+    margin-bottom: $spacing-9;
+  }
+
+  @include media('>=uol-media-l') {
+    margin-bottom: 6.5rem; // 104px
+  }
+}
+
+.homeMain {
+  max-width: $innerWidthMax;
+  margin: $placeholderSpacing auto 0;
+  padding: 0 $placeholderSpacing;
+}
+
+// temp, to be replaced with key tasks component CSS
+.keyTasksSection {
+  height: 300px;
+  background: #f7e5e5;
+  padding: $placeholderPadding;
+  font-size: 18px;
+  line-height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  * {
+    max-width: $innerWidthMax;
+  }
+}
+
+// Temp
+.homePageHeading {
+  @extend .uol-typography-heading-2;
+  padding: $spacing-6;
+}
+
+// Temp
+.uol-facts-figures {
+  padding: 0 $spacing-6 !important;
+}
+
+.uol-main--uol-home-2025 {
+  padding: 0 $spacing-4;
+
+  @include media(">=uol-media-l") {
+    padding: 0;
+  }
+
+  .uol-widget {
+    margin-top: 0;
+
+    .uol-widget__title:before {
+      display: none;
+    }
+  }
+
+  .uol-widget-container__facts-figures {
+    margin-bottom: 0;
+
+    .uol-widget__title {
+      margin-top: $spacing-7;
+
+      @include media(">=uol-media-m") {
+        margin-top: $spacing-8;
+      }
+
+      @include media(">=uol-media-l") {
+        margin-top: $spacing-5;
+      }
+    }
+  }
+
+  .uol-widget-container__facts-figures .uol-widget__head {
+    padding-bottom: $spacing-4;
+
+    @include media(">=uol-media-m") {
+      padding-bottom: $spacing-6;
+    }
+  }
+
+  .uol-widget-container__featured-content {
+    margin-bottom: $spacing-2;
+
+    @include media(">=uol-media-m") {
+      margin-bottom: $spacing-5;
+    }
+
+    @include media(">=uol-media-l") {
+      margin-bottom: $spacing-9;
+    }
+
+    .uol-gallery__button {
+      @include media("<uol-media-m") {
+        width: 56px !important;
+        height: 56px !important;
+      }
+
+
+      svg {
+        width: 43px !important; // to give a button size of 20px
+      }
+    }
+  }
+
+}
+
+/*
+added new class to main container
+once main location finalised, refactor this file and move below rule
+*/
+.uol-home-2025-container {
+  @include media(">=uol-media-l") {
+    padding: 0 $spacing-6;
+  }
+}
+
+// Temp until proper teal tiles variant component is created
+
+.uol-home-2025-container {
+
+  .uol-widget__link {
+      &:after {
+        border-color: $color-black;
+    }
+  }
+  .uol-news-tile {
+
+    .uol-news-tile__link {
+      &:hover {
+        text-decoration-color: $color-brand-teal;
+      }
+    }
+
+    .uol-news-tile__content {
+      &:hover {
+        &::before {
+          background-color: $color-brand-teal;
+        }
+      }
+    }
+
+    &:nth-of-type(2),
+    &:nth-of-type(4) {
+      background-color: $color-brand-teal;
+      color: $color-black;
+
+      .uol-news-tile__content {
+        &::before {
+          background-color: $color-black;
+        }}
+        .uol-news-tile__link {
+        &:hover {
+          text-decoration-color: $color-black;
+        }}
+
+    }
+  }
+}

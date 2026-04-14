@@ -1,0 +1,401 @@
+$nav-depth: 77px;
+// button sizes used in calculation for right hand nav spacings
+$small-button-size: 2.81rem;
+$standard-button-size: 3.12rem;
+
+@keyframes info-text-fade {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+  1% {
+    display: block;
+    opacity: 0;
+    // transform: scale(0);
+  }
+  30% {
+    display: block;
+    opacity: 0;
+    // transform: scale(0);
+  }
+  100% {
+    display: block;
+    opacity: 1;
+    // transform: scale(1);
+  }
+}
+
+.uol-gallery-modal {
+  position: absolute;
+  width: 100vw;
+  height: calc(var(--vh, 1vh) * 99.9); // 99.9% to avoid distortion when zoomed in
+  left: 0;
+  top: 0;
+  background: $color-black--dark;
+  z-index: 10;
+  color: $color-white;
+}
+
+  .uol-gallery-modal__button-close {
+    .js .uol-gallery-modal & {
+      position: absolute;
+      top: $spacing-4;
+      right: $spacing-3;
+      z-index: 2;
+
+      @media (orientation: portrait) {
+        @include media(">=uol-media-xs") {
+          right: $spacing-5;
+        }
+      }
+
+      @media (orientation: landscape) {
+        top: $spacing-2;
+        right: ($nav-depth / 2);
+        transform: translateX(50%);
+        
+        @include media(">=uol-media-s") {
+          top: $spacing-5;
+        }
+      }
+
+      svg {
+        path {
+          fill: $color-white;
+
+          @media (-ms-high-contrast: active), (forced-colors: active) {
+            fill: ButtonText;
+          }
+        }
+      }
+    }
+  }
+
+  .uol-gallery-modal__track {
+    margin: 0;
+    padding: 0;
+    height: calc(var(--vh, 1vh) * 99.9);
+    width: 100vw;
+    list-style: none;
+    scroll-snap-type: x mandatory;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    overflow-x: auto;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    // TODO: IE 11 remove scrollbar
+    -ms-overflow-style: none;
+  }
+
+    .uol-gallery-modal__track--smooth {
+      scroll-behavior: smooth;
+    }
+
+  .uol-gallery-modal__item {
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    width: 100vw;
+    height: 100%;
+    scroll-snap-align: start;
+    background: $color-black;
+
+    @media (orientation: portrait) {
+      margin-top: $nav-depth;
+      height: calc(100% - #{$nav-depth});
+    }
+  }
+
+  .uol-gallery-modal__info-container {
+    box-sizing: border-box;
+    background: rgba($color-black--dark, 0.92);
+    z-index: 1;
+    transition: all 0.3s ease;
+
+    @media (orientation: landscape) {
+      position: absolute;
+      width: $nav-depth;
+      height: 100%;
+      border-right: 3px solid $color-border--light;
+      display: flex;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: calc(#{$nav-depth} - 3px);
+        background-color: $color-black--dark;
+      }
+    }
+
+    @media (orientation: portrait) {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      max-height: 100%;
+      overflow-y: hidden;
+      border-top: 3px solid $color-border--light;
+      padding: $spacing-4 $spacing-5;
+    }
+  }
+
+    .uol-gallery-modal__info-container--open {
+
+      @media (orientation: portrait) {
+        padding-bottom: $spacing-6;
+      }
+
+      @media (orientation: landscape) {
+        width: calc(100vw - (#{$nav-depth} * 1.5));
+
+        @include media(">=uol-media-s") {
+          width: calc(80vw - (#{$nav-depth}));
+        }
+
+        @include media(">=uol-media-m") {
+          width: calc(70vw - (#{$nav-depth}));
+        }
+
+        @include media(">=uol-media-l") {
+          width: calc(60vw - (#{$nav-depth}));
+        }
+
+        @include media(">=uol-media-xl") {
+          width: calc(50vw - (#{$nav-depth}));
+        }
+      }
+    }
+
+  .uol-gallery-modal__button-info {
+    @media (orientation: landscape) {
+      position: absolute;
+      left: $spacing-4;
+      top: $spacing-2;
+
+      @include media(">=uol-media-s") {
+        top: $spacing-5;
+      }
+
+      @include media(">=uol-media-l") {
+        left: $spacing-3;
+      }
+    }
+
+    .uol-gallery-modal__info-container--open & {
+      border: 2px solid $color-white;
+    }
+  }
+
+  .uol-gallery-modal__info {
+    @include ds-scrollbars();
+
+    display: none;
+    box-sizing: border-box;
+    overflow-y: auto;
+
+    @media (orientation: portrait) {
+      margin-top: $spacing-4;
+      max-height: calc(var(--vh, 1vh) * 100 - (#{$nav-depth} * 2) - #{$spacing-6});
+      padding-right: $spacing-4;
+    }
+
+    @media (orientation: landscape) {
+      box-sizing: border-box;
+      flex-basis: calc(100% - #{$nav-depth});
+      margin: $spacing-5 $spacing-2 0 auto;
+      padding-right: $spacing-2;
+      padding-left: $spacing-4;
+    }
+
+    .uol-gallery-modal__button-info[aria-expanded="true"] + & {
+      display: block;
+
+      @media (orientation: landscape) {
+        animation: info-text-fade 0.7s ease;
+        animation-fill-mode: both;
+      }
+    }
+  }
+
+    .uol-gallery-modal__info__title {
+      @extend .uol-typography-heading-2;
+
+      margin-top: 0;
+      margin-bottom: $spacing-4;
+
+      @media (orientation: landscape) {
+        margin-top: $spacing-4;
+
+        @include media(">=uol-media-m") {
+          margin-top: $spacing-2;
+        }
+      }
+    }
+
+  .uol-gallery-modal__figure {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+
+    @media (orientation: landscape) {
+      height: 100%;
+      width: calc(100% - #{$nav-depth});
+
+      .uol-gallery-modal__info-container + & {
+        margin-left: $nav-depth;
+        width: calc(100% - (#{$nav-depth} * 2));
+      }
+    }
+
+    @media (orientation: portrait) {
+      .uol-gallery-modal__item--has-info & {
+        height: calc(100% - #{$nav-depth} - 3px);
+      }
+    }
+  }
+
+  .uol-gallery-modal__image-container {
+    position: absolute;
+    top: 50%;
+    height: 100%;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: translateY(-50%);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+  }
+
+    .uol-gallery-modal__image-container--video {
+      top: auto;
+      transform: none;
+      position: relative;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+
+      iframe {
+        border: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+  .uol-gallery-modal__image-caption {
+    @extend %text-size-caption;
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: $spacing-2 $spacing-4;
+    background: rgba($color-black, 0.88);
+    color: $color-white;
+
+    // TODO: This is a hack to stop caption overlapping video controls
+    @media (orientation: landscape) {
+      .uol-gallery-modal__figure--video & {
+        display: none;
+      }
+    }
+  }
+
+  .uol-gallery-modal__nav-container {
+    box-sizing: border-box;
+    position: fixed;
+    background: $color-black--dark;
+    display: flex;
+    z-index: 1;
+
+    @media (orientation: landscape) {
+      top: 0;
+      right: 0;
+      width: $nav-depth;
+      flex-direction: column;
+      height: 100%;
+      padding: $small-button-size + $spacing-2 $spacing-3 0;
+      
+      @include media(">=uol-media-s") {
+        padding: $small-button-size + $spacing-5 $spacing-3 0;
+      }
+      
+      @include media(">=uol-media-l") {
+        padding: $standard-button-size + $spacing-5 $spacing-3 0;
+      }
+
+      button {
+        margin-bottom: $spacing-2;
+        margin-left: auto;
+        margin-right: auto;
+
+        @include media(">=uol-media-s") {
+          margin-bottom: $spacing-5;
+          padding: $spacing-9 $spacing-3 $spacing-4;
+        }
+      }
+    }
+
+    @media (orientation: portrait) {
+      top: 0;
+      height: $nav-depth;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .uol-gallery-modal__progress {
+    font-variant-numeric: lining-nums;
+
+    @media (orientation: landscape) {
+      order: -1;
+      text-align: center;
+      margin: $spacing-2 0;
+      
+      @include media(">=uol-media-s") {
+        margin: $spacing-5 0;
+      }
+    }
+
+    @media (orientation: portrait) {
+      margin: 0 $spacing-5;
+
+      @include media(">=uol-media-xs") {
+        margin: 0 $spacing-7;
+      }
+
+      @include media(">=uol-media-s") {
+        margin: 0 $spacing-8;
+      }
+    }
+  }
+
+    .uol-gallery-modal__progress__current,
+    .uol-gallery-modal__progress__total {
+      position: relative;
+      top: 0.05em;
+    }
+
+    .uol-gallery-modal__progress__current {
+      color: $color-brand--bright;
+    }

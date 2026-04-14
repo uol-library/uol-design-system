@@ -1,0 +1,238 @@
+.uol-profile-supplement {
+  padding: $spacing-7 $spacing-4 $spacing-8;
+
+  @include media(">=uol-media-m") {
+    padding: $spacing-8 $spacing-4  $spacing-9;
+  }
+
+  @include media(">=uol-media-l") {
+    padding: $spacing-9 $spacing-5 96px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .uol-article-container &,
+  .uol-course-container & {
+    margin: 0 0 $spacing-4;
+    padding: 0;
+  }
+
+  footer {
+    padding-top: $spacing-2;
+
+    @include media(">=uol-media-m") {
+      padding-top: $spacing-4;
+    }
+  }
+}
+
+  .uol-profile-supplement__title {
+    @extend .uol-typography-heading-2;
+
+    position: relative;
+    margin: $spacing-5 0 $spacing-6;
+    overflow-wrap: break-word;
+
+    @include media(">=uol-media-xl") {
+      flex-basis: 100%;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      display: inline-block;
+      top: -#{$spacing-4};
+      left: 0;
+      width: $spacing-4;
+      height: $spacing-2;
+      background-color: $color-brand;
+
+      @include media(">=uol-media-m") {
+        width: $spacing-5;
+      }
+
+      @include media(">=uol-media-l") {
+        width: $spacing-6;
+        top: -#{$spacing-5};
+      }
+    }
+  }
+
+  .uol-profile-supplement__body {
+    position: relative;
+
+    @include media(">=uol-media-l") {
+      width: 100%;
+
+      display: flex;
+
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 6.5rem;
+        background: $color-brand--dark;
+        border-radius: 6px 0 0 6px;
+      }
+    }
+  }
+
+  .uol-profile-supplement__image-container {
+
+    // background-color: rgba(hotpink, 0.5);
+    box-sizing: border-box;
+    position: relative;
+    // Span 5 columns
+    width: calc((100% + #{$spacing-4}) / 12 * 5 - #{$spacing-4});
+    min-width: 150px;
+    padding: $spacing-4 0 $spacing-4 $spacing-6;
+
+    @include media(">=uol-media-m") {
+      // Span 4 columns
+      width: calc((100% + #{$spacing-4}) / 12 * 4 - #{$spacing-4});
+    }
+
+    @include media(">=uol-media-l") {
+      // width: initial;
+      width: 35% !important;
+      // min-width: 197px;
+      // Span 3 columns
+      flex-basis: calc((100% + #{$spacing-5}) / 9 * 3 - #{$spacing-5});
+      padding: $spacing-4 0 $spacing-4 $spacing-5;
+    }
+
+    @include media("<uol-media-l") {
+
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: calc(50% - #{$spacing-4});
+        background: $color-brand--dark;
+        border-radius: 6px 0 0 6px;
+        z-index: -1;
+      }
+    }
+  }
+
+  .uol-profile-supplement__video-icon {
+    .js & {
+      @extend %text-size-heading-2;
+
+      position: absolute !important;
+      right: 0;
+      bottom: $spacing-1;
+      width: 30%;
+      background: $color-brand--bright;
+      border: 3px solid $color-white;
+      border-radius: 50%;
+      color: $color-white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      aspect-ratio: 1/1;
+
+      @include media(">=uol-media-xs") {
+        bottom: $spacing-2;
+        width: 30%;
+      }
+
+      @include media(">=uol-media-s") {
+        width: 25%;
+      }
+
+      @include media(">=uol-media-m") {
+        bottom: $spacing-4;
+      }
+
+      @include media(">=uol-media-l") {
+        bottom: 10%;
+      }
+
+      @include media(">=uol-media-xl") {
+        width: 20%;
+        bottom: $spacing-6;
+      }
+
+      svg {
+        width: 80% !important;
+        height: 80% !important;
+        position: absolute;
+      }
+    }
+  }
+
+
+  .uol-typography-blockquote {
+    padding: 0;
+    margin-bottom: #{$spacing-6 + $spacing-1 + $spacing-2};
+
+    @include media(">=uol-media-m") {
+      margin-bottom: #{$spacing-7 + $spacing-1 + $spacing-2};
+    }
+
+    p {
+      margin-bottom: $spacing-4;
+    }
+
+    &::before {
+      top: -#{$spacing-5};
+      left: -#{$spacing-5};
+    }
+  }
+
+  .uol-profile-supplement__text-container {
+
+    margin: $spacing-7 calc((100% + #{$spacing-4}) / 12) 0;
+
+    @include media(">=uol-media-l") {
+      width: 65% !important;
+      margin: 0;
+      box-sizing: border-box;
+      padding: $spacing-6 0 $spacing-6 $spacing-6;
+      flex-basis: calc((100% + #{$spacing-5}) / 9 * 6);
+    }
+
+    @include media(">=uol-media-xl") {
+      min-height: 388px;
+    }
+  }
+
+  .uol-profile-supplement__link {
+    @extend %text-size-paragraph;
+
+    display: block;
+    font-weight: $font-weight-bold--sans-serif;
+
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      position: relative;
+      height: $spacing-1;
+      top: -#{$spacing-4};
+      background: $color-grey--light;
+    }
+
+    &::after {
+      content: '';
+      // position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+  }
+

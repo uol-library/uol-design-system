@@ -1,0 +1,281 @@
+$col-count: 12;
+$col-gutter-s: $spacing-4;
+$col-gutter-m: $spacing-4;
+$col-gutter-l: $spacing-5;
+$col-gutter-xl: $spacing-6;
+$col-debug-color: #fce5f0;
+
+.uol-col-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: #{$col-gutter-s / 2};
+
+  @include media(">=uol-media-l") {
+    padding: #{$col-gutter-l / 2};
+  }
+  @include media(">=uol-media-xl") {
+    padding: #{$col-gutter-xl / 2};
+  }
+
+  > [class^="uol-col-"],
+  .uol-col {
+    flex-basis: 100%;
+    width: 100%;
+
+    @include media(">=uol-media-xs") {
+      flex-basis: calc(100% - #{$col-gutter-s});
+      width: calc(100% - #{$col-gutter-s});
+      padding: #{$col-gutter-s / 2};  
+    }
+
+    @include media(">=uol-media-l") {
+      padding: #{$col-gutter-l / 2};
+    }
+
+    @include media(">=uol-media-xl") {
+      padding: #{$col-gutter-xl / 2};
+    }
+  }
+
+  [class*="uol-col-"] & {
+
+    @include media(">=uol-media-xs") {
+      margin: -#{$col-gutter-s};
+    }
+
+    @include media(">=uol-media-l") {
+      margin: -#{$col-gutter-l};
+    }
+
+    @include media(">=uol-media-xl") {
+      margin: -#{$col-gutter-xl};
+    }
+  }
+}
+
+  .uol-col-container--no-padding {
+    padding: 0;
+
+    > [class^="uol-col-"],
+    .uol-col {
+      flex-basis: 100%;
+      max-width: 100%;
+      padding: 0;
+
+      @include media(">=uol-media-xs") {
+        padding: 0;
+      }
+
+      @include media(">=uol-media-l") {
+        padding: 0;
+      }
+
+      @include media(">=uol-media-xl") {
+        padding: 0;
+      }
+    }
+  }
+
+// col
+@for $i from 1 through $col-count {
+
+  $width: ($i / $col-count) * 100 + "%";
+
+  .uol-col-#{$i} {
+
+    @include media(">=uol-media-xs") {
+      flex-basis: calc(#{$width} - #{$col-gutter-s});
+      max-width: calc(#{$width} - #{$col-gutter-s});
+    }
+
+    @include media(">=uol-media-l") {
+      flex-basis: calc(#{$width} - #{$col-gutter-l});
+      max-width: calc(#{$width} - #{$col-gutter-l});
+    }
+
+    @include media(">=uol-media-xl") {
+      flex-basis: calc(#{$width} - #{$col-gutter-xl});
+      max-width: calc(#{$width} - #{$col-gutter-xl});
+    }
+
+    .uol-col-container--no-padding & {
+      flex-basis: #{$width};
+      max-width: #{$width};
+    }
+  }
+}
+
+// col-s
+@for $i from 1 through $col-count {
+
+  $width: ($i / $col-count) * 100 + "%";
+
+  .uol-col-s-#{$i} {
+
+    @include media(">=uol-media-s") {
+      flex-basis: calc(#{$width} - #{$col-gutter-s});
+      max-width: calc(#{$width} - #{$col-gutter-s});
+    }
+
+    @include media(">=uol-media-l") {
+      flex-basis: calc(#{$width} - #{$col-gutter-l});
+      max-width: calc(#{$width} - #{$col-gutter-l});
+    }
+
+    @include media(">=uol-media-xl") {
+      flex-basis: calc(#{$width} - #{$col-gutter-xl});
+      max-width: calc(#{$width} - #{$col-gutter-xl});
+    }
+  }
+}
+
+// col-m
+@for $i from 1 through $col-count {
+
+  $width: ($i / $col-count) * 100 + "%";
+
+  .uol-col-m-#{$i} {
+
+    @include media(">=uol-media-m") {
+      flex-basis: calc(#{$width} - #{$col-gutter-s});
+      max-width: calc(#{$width} - #{$col-gutter-s});
+    }
+
+    @include media(">=uol-media-l") {
+      flex-basis: calc(#{$width} - #{$col-gutter-l});
+      max-width: calc(#{$width} - #{$col-gutter-l});
+    }
+
+    @include media(">=uol-media-xl") {
+      flex-basis: calc(#{$width} - #{$col-gutter-xl});
+      max-width: calc(#{$width} - #{$col-gutter-xl});
+    }
+  }
+}
+
+// col-l
+@for $i from 1 through $col-count {
+
+  $width: ($i / $col-count) * 100 + "%";
+
+  .uol-col-l-#{$i} {
+
+    @include media(">=uol-media-l") {
+      flex-basis: calc(#{$width} - #{$col-gutter-l});
+      max-width: calc(#{$width} - #{$col-gutter-l});
+    }
+
+    @include media(">=uol-media-xl") {
+      flex-basis: calc(#{$width} - #{$col-gutter-xl});
+      max-width: calc(#{$width} - #{$col-gutter-xl});
+    }
+  }
+}
+
+// col-xl
+@for $i from 1 through $col-count {
+
+  $width: ($i / $col-count) * 100 + "%";
+
+  .uol-col-xl-#{$i} {
+
+    @include media(">=uol-media-xl") {
+      flex-basis: calc(#{$width} - #{$col-gutter-xl});
+      max-width: calc(#{$width} - #{$col-gutter-xl});
+    }
+  }
+}
+
+// Demo styling
+.uol-example-col-container {
+  border: 1px solid red;
+  margin-bottom: $col-gutter-s;
+
+  @include media(">=uol-media-l") {
+    margin-bottom: $col-gutter-l;
+  }
+
+  @include media(">=uol-media-xl") {
+    margin-bottom: $col-gutter-xl;
+  }
+}
+
+.uol-example-col-item {
+  position: relative;
+  background: rgba(#c1e0fe, 0.7);
+  box-sizing: border-box;
+  border: 1px solid $color-blue--bright;
+  height: 4rem;
+
+  p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    text-align: center;
+  }
+}
+
+.uol-text-debug {
+  p, ul, h2, h3, h4, h5, h6, table {
+    border: 1px solid #ccc;
+  }
+}
+
+.uol-col-debug {
+  position: relative;
+
+  &::before {
+
+    @include media(">=uol-media-xs") {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin-right: auto;
+      margin-left: auto;
+      z-index: -1000;
+      pointer-events: none;
+      width: calc(100% - (2 * #{$col-gutter-s}));
+      background-image:
+        repeating-linear-gradient(
+          to right,
+          #{$col-debug-color},
+          #{$col-debug-color} calc((100% / #{$col-count}) - #{$col-gutter-s}),
+          transparent calc((100% / #{$col-count}) - #{$col-gutter-s}),
+          transparent calc(100% / #{$col-count})
+        );
+      background-size: calc(100% + #{$col-gutter-s}) 100%;
+    }
+
+    @include media(">=uol-media-l") {
+      width: calc(100% - (2 * #{$col-gutter-l}));
+      background-image:
+        repeating-linear-gradient(
+          to right,
+          #{$col-debug-color},
+          #{$col-debug-color} calc((100% / #{$col-count}) - #{$col-gutter-l}),
+          transparent calc((100% / #{$col-count}) - #{$col-gutter-l}),
+          transparent calc(100% / #{$col-count})
+        );
+      background-size: calc(100% + #{$col-gutter-l}) 100%;
+    }
+
+    @include media(">=uol-media-xl") {
+      width: calc(100% - (2 * #{$col-gutter-xl}));
+      background-image:
+        repeating-linear-gradient(
+          to right,
+          #{$col-debug-color},
+          #{$col-debug-color} calc((100% / #{$col-count}) - #{$col-gutter-xl}),
+          transparent calc((100% / #{$col-count}) - #{$col-gutter-xl}),
+          transparent calc(100% / #{$col-count})
+        );
+      background-size: calc(100% + #{$col-gutter-xl}) 100%;
+    }
+  }
+}

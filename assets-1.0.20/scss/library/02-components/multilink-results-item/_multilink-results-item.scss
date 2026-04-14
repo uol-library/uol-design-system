@@ -1,0 +1,185 @@
+.uol-multilink-results {
+  list-style: none;
+  margin-bottom: $spacing-4;
+  padding: $spacing-5 $spacing-4;
+  border: 1px solid $color-border--light;
+  border-radius: 6px;
+  background-color: $color-grey--faded;
+  font-variant-numeric: lining-nums;
+  color: $color-font;
+  overflow: auto;
+
+  @include media(">=uol-media-m") {
+    padding: $spacing-5 $spacing-4;
+  }
+
+  @include media(">=uol-media-l") {
+    padding: $spacing-5;
+  }
+
+  .uol-info-list {
+    @extend %text-size-paragraph--small;  
+    margin: $spacing-2 0 0 0;
+  }
+
+}
+    .uol-multilink-results__alongside-image {
+      max-width: 784px;
+    }
+
+    .uol-multilink-results__has-image  {
+      margin-top: $spacing-4;
+      margin-left: $spacing-4;
+      
+
+      @include media(">=uol-media-m") {
+        margin-top: 0;
+        margin-left: $spacing-4;
+      }
+      
+      @include media(">=uol-media-l") {
+        margin-left: $spacing-5;
+      }
+
+      @include media(">=uol-media-xl") {
+        margin-left: $spacing-6;
+      }
+    }
+  
+    .uol-multilink-results__image-titles {
+      display: flex;
+    }
+
+    .uol-multilink-results__image {
+      border-radius: 50%;
+      width: 116px;
+      height: 116px;
+      margin-bottom: $spacing-2;
+    
+      @include media(">=uol-media-m") {
+        width: 156px;
+        height: 156px;
+      }
+    
+      @include media(">=uol-media-l") {
+        width: 161px;
+        height: 161px;
+      }
+    
+      @include media(">=uol-media-xl") {
+        width: 179px;
+        height: 179px;
+      }
+
+      @include media(">=uol-media-xxl") {
+        width: 215px;
+        height: 215px;
+      }
+    }
+
+    .uol-multilink-results__name {
+      font-size: 1.375rem;
+  
+      @include media(">=uol-media-m") {
+        font-size: 1.75rem;
+      }
+      font-family: $font-family-serif;
+      margin: 0;
+  
+      a {
+        text-decoration: underline;
+  
+        &:hover {
+          text-decoration-color: $color-brand;
+        } 
+        &:focus-within {
+          outline: 3px dotted transparent;
+          text-decoration-color: $color-brand--bright;
+          background-color: #ffeded;
+        }
+      }
+    }
+
+    .uol-multilink-results__position {
+      @extend %text-size-heading-6;
+
+      display: block;
+      font-family: $font-family-serif;
+      color: $color-brand;
+      margin-top: $spacing-2;
+    }
+
+    .uol-multilink-results--further {
+      margin-bottom: $spacing-2;
+    }
+
+    .uol-multilink-results__paragraph {
+      @extend %text-size-paragraph--small;
+      
+      margin: $spacing-2 0 0;
+    }
+
+    .uol-status-message:last-child {
+      margin-bottom: -#{$spacing-2};
+    }
+
+    .uol-info-list--inline {
+      .uol-info-list__group:not(:last-child) {
+        margin-right: $spacing-3;
+        margin-bottom: $spacing-2;
+      }
+
+      // to allow for correct gaps for when switches to and from in a row to in a column
+      @include media(">=uol-media-m") {
+        margin-bottom: -#{$spacing-2} !important;
+      }
+    }
+    
+  .uol-multilink-results__footer{
+    padding: $spacing-5 0 0;
+  
+      &:before {  
+        content: "";
+        display: block;
+        width: 100%;
+        height: 1px;
+        background-color: $color-border--light;
+      }
+  }
+
+    .uol-multilink-results__footer__messages {
+      @extend %text-size-paragraph--small;
+    
+      display: block;
+      padding-top: $spacing-5;
+    
+      .js & svg {
+        height: 1.5em;
+        width: 1.5em;
+        min-width: 1.5em;
+        margin-top: 0;
+        margin-left: 0;
+      }
+    
+    }
+  
+    .uol-multilink-results__footer__actions {
+      /*
+      Convoluted spacing rules,
+      sort in PBI 73990
+      */
+      margin-bottom: -#{$spacing-5};
+      padding-top: 24px;
+
+      @include media("<uol-media-m") {
+        padding-top: 28px;
+      }
+    
+      .uol-button {
+        margin: 0 $spacing-4 $spacing-5 0;
+      }
+    }
+
+
+
+

@@ -1,0 +1,545 @@
+// Utility
+.no-wrap {
+  white-space: nowrap;
+}
+
+@mixin local-navigation-link-accent {
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: calc(#{$spacing-4} - 2px);
+    right: calc(100% - #{$spacing-4} + 2px);
+    height: $spacing-2;
+    background-color: $color-white;
+    transition: right 0.4s ease 0.1s;
+  }
+
+  &:focus {
+    outline: 2px dotted transparent;
+  }
+
+  &:hover,
+  &:focus {
+    &::after {
+      right: calc(#{$spacing-4} - 2px);
+      background-color: $color-brand;
+
+      @media (-ms-high-contrast: active),
+      (forced-colors: active) {
+        background-color: WindowText;
+        background-color: CanvasText;
+      }
+    }
+  }
+}
+
+.uol-header-local-navigation-wrapper {
+  max-width: 101.75rem;
+
+  .no-js & {
+    margin: $spacing-4 0;
+    padding-bottom: $spacing-4;
+  }
+
+  .js & {
+    position: relative;
+    padding-top: $spacing-2;
+    padding-bottom: $spacing-2;
+    margin-top: 0;
+
+    @include media(">=uol-media-l") {
+      margin-top: $spacing-6;
+      padding-left: $spacing-2;
+    }
+
+    @include media(">=uol-media-xl") {
+      padding-left: $spacing-4;
+    }
+
+    @include media(">=uol-media-xxl") {
+      padding-left: 0;
+    }
+  }
+}
+
+  .uol-header-local-navigation-wrapper--scrollable {
+    border-top: 1px solid $color-border--light;
+  }
+
+  .uol-header-local-navigation-wrapper--sub-expanded {
+    @include media("<uol-media-m") {
+      padding-bottom: 0;
+    }
+  }
+
+.uol-header-local-navigation {
+
+  .js & {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+  }
+}
+
+  .uol-header-local-navigation--scrollable {
+    .js & {
+      margin-left: $spacing-6;
+      margin-right: $spacing-6;
+    }
+
+    .uol-header-local-navigation-wrapper--sub-expanded & {
+      @include media("<uol-media-m") {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+  }
+
+  .uol-header-local-navigation__button-scroll {
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    width: $spacing-7;
+    height: 100%;
+    background: rgba($color-white, 0.96);
+    border: none;
+    transition: opacity 0.3s ease;
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border: 7px solid transparent;
+
+      @media (-ms-high-contrast: active), (forced-colors: active) {
+        -ms-high-contrast-adjust: none;
+        forced-color-adjust: CanvasText;
+      }
+    }
+
+    &[disabled] {
+      // background: none;
+      opacity: 0;
+      cursor: default;
+      z-index: -1;
+    }
+
+    .uol-header-local-navigation-wrapper--sub-expanded & {
+      @include media("<uol-media-m") {
+        display: none;
+      }
+    }
+  }
+
+    .uol-header-local-navigation__button-scroll--left {
+      left: 0;
+      border-right: 1px solid $color-border--light;
+
+      &::after {
+        left: $spacing-3;
+        border-right-color: $color-brand--bright;
+      }
+    }
+
+    .uol-header-local-navigation__button-scroll--right {
+      right: 0;
+      border-left: 1px solid $color-border--light;
+
+      &::after {
+        right: $spacing-3;
+        border-left-color: $color-brand--bright;
+      }
+    }
+
+  .uol-header-local-navigation__item {
+    font-weight: $font-weight-bold--sans-serif;
+
+    @include media("<uol-media-m") {
+      font-weight: 500; // TODO: May need to update font weights
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+
+    .js .uol-header-local-navigation__sub-nav & {
+      padding: $spacing-2 $spacing-4;
+    }
+  }
+
+    .uol-header-local-navigation__item--sibling-open {
+      @include media("<uol-media-m") {
+        position: absolute;
+        clip: rect(1px, 1px, 1px, 1px);
+        height: 1px;
+        width: 1px;
+        overflow: hidden;
+        left: -9999px;
+      }
+    }
+
+    .uol-header-local-navigation__item--cta {
+      .js & {
+        background: $color-black;
+        margin-left: -1px;
+        margin-right: -1px;
+        margin-bottom: -1px;
+        border: 1px solid $color-black;
+
+        @include media(">=uol-media-m") {
+          &:last-of-type {
+            border-radius: 0 0 $spacing-3 $spacing-3;
+          }
+        }
+      }
+
+      .js .uol-header-local-navigation__sub-nav & {
+
+        // Add extra spacing to first and last cta (assuming cta is last item)
+        margin-top: $spacing-4;
+        padding-top: $spacing-5;
+        padding-bottom: $spacing-2;
+
+        ~ .uol-header-local-navigation__item--cta {
+          margin-top: 0;
+          padding-top: 0;
+        }
+
+        &:last-of-type {
+          padding-bottom: $spacing-6;
+        }
+      }
+    }
+
+  .uol-header-local-navigation__link {
+
+    .no-js & {
+      // padding: $spacing-1 $spacing-2 $spacing-2;
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+      }
+    }
+
+    .js & {
+      @extend %text-size-paragraph;
+      @include local-navigation-link-accent();
+
+      position: relative;
+      display: block;
+      color: $color-font--light;
+      text-decoration: none;
+      white-space: nowrap;
+      padding: $spacing-2 $spacing-4 $spacing-3;
+      transition: color 0.4s ease 0.1s;
+
+      &:hover,
+      &:focus {
+        color: $color-font--dark;
+      }
+
+      &[aria-current] {
+        color: $color-brand;
+      }
+    }
+
+    .js .uol-header-local-navigation__sub-nav & {
+      background: $color-white;
+      color: $color-font--light;
+      white-space: normal;
+      transition: background 0.5s ease;
+      border-radius: 6px;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+
+      &:hover,
+      &:focus {
+        background-color: $colour-warmgrey—faded;
+        color: $color-font;
+        text-decoration: underline;
+      }
+
+      &[aria-current] {
+        color: $color-brand;
+      }
+
+      &::after {
+        content: none;
+      }
+
+      svg {
+        position: relative;
+        top: 0.35em;
+        left: 0;
+        margin-left: 0.5em;
+        fill: rgba($color-brand, 0);
+        transition: all 0.3s ease 0.2s;
+      }
+
+      &:hover,
+      &:focus {
+        svg {
+          left: 0.4em;
+          fill: $color-brand;
+
+          @media (-ms-high-contrast: active) {
+            fill: windowText;
+          }
+        }
+      }
+    }
+
+    .js .uol-header-local-navigation__item--cta & {
+      background: inherit;
+      color: $color-white;
+      padding-top: $spacing-1;
+      padding-bottom: $spacing-1;
+
+      @include media(">=uol-media-m") {
+        font-size: 18px;
+      }
+
+      &:hover,
+      &:focus {
+        background-color: $color-black--dark;
+        color: $color-white;
+      }
+
+      &[aria-current] {
+        color: $color-brand--bright;
+      }
+
+      svg {
+        fill: $color-brand--bright;
+
+        @media (-ms-high-contrast: active) {
+          fill: windowText;
+        }
+      }
+
+      &:hover,
+      &:focus {
+        svg {
+          left: 0.4em;
+          fill: $color-brand--bright;
+
+          @media (-ms-high-contrast: active) {
+            fill: windowText;
+          }
+        }
+      }
+    }
+  }
+
+  .uol-header-local-navigation__subnav-button {
+    @extend %text-size-paragraph;
+    @include local-navigation-link-accent();
+
+    position: relative;
+    font-weight: inherit;
+    white-space: nowrap;
+    background: transparent;
+    border: none;
+    margin: 0;
+    padding: $spacing-2 $spacing-4 $spacing-3;
+    appearance: none;
+    color: $color-font--light;
+    transition: color 0.4s ease 0.1s;
+
+    &[aria-expanded="true"] {
+      @include media("<=uol-media-m") {
+
+        &:focus {
+          text-decoration: underline;
+        }
+
+        &:focus:not(:focus-visible) {
+          text-decoration: none;
+
+        }
+
+        &:focus-visible {
+          outline-color: transparent;
+          text-decoration: underline;
+          text-underline-offset: 4px;
+          text-decoration-thickness: $spacing-2;
+          text-decoration-color: $color-brand--bright;
+        }
+      }
+    }
+
+    &:focus {
+      outline-offset: -4px;
+    }
+
+    &:hover,
+    &:focus {
+      color: $color-font--dark;
+    }
+
+    &[aria-expanded="true"] {
+      color: $color-font--dark;
+
+      @include media(">=uol-media-m") {
+        &::before {
+          content: "";
+          position: absolute;
+          right: 0;
+          transform: translateX(-70%);
+          bottom: ($spacing-2 - $spacing-1 / 2);
+          width: 0;
+          height: 0;
+          border: ($spacing-3 - $spacing-1 / 2) solid transparent;
+          border-top: none;
+          border-bottom-color: $color-white;
+          filter: drop-shadow(0 -0.05rem 0.05rem rgba($color-black, 0.1));
+          z-index: 4;
+        }
+      }
+    }
+
+    // TODO: Un-nest icon
+    .uol-header-local-navigation__button__icon {
+      position: relative;
+      display: inline-block;
+      width: $spacing-5;
+      height: $spacing-4;
+      margin-left: 0.2em;
+      margin-right: -0.2em;
+
+      &::before,
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 0.5em;
+        height: 0.13em;
+        background: $color-black;
+        bottom: 20%;
+
+        @media (-ms-high-contrast: active) {
+          background: ButtonText;
+        }
+      }
+
+      &::before {
+        left: 50%;
+        transform: translateX(-76%) rotate(45deg);
+      }
+
+      &::after {
+        right: 50%;
+        transform: translateX(76%) rotate(-45deg);
+      }
+    }
+
+    // TODO: Duplicate selector - refactor
+    &[aria-expanded="true"] {
+      @include media("<uol-media-m") {
+        @include font-size-responsive(1.75rem, 2.25rem, 3rem);
+        @include line-height-responsive(2.25rem, 3rem, 3.5rem);
+
+        display: block;
+        text-align: left;
+        width: 100vw;
+        border-bottom: 2px solid $color-border--light;
+
+        @include media("<uol-media-m") {
+          margin-top: -#{$spacing-2};
+          padding: 1.312rem $spacing-7 1.312rem $spacing-4;
+        }
+
+        &::after {
+          content: none;
+        }
+
+        @include media(">=uol-media-m") {
+          &::before {
+            content: "";
+            width: 30px;
+            height: 30px;
+            background: red;
+            position: absolute;
+          }
+        }
+      }
+
+      // TODO: Un-nest icon
+      .uol-header-local-navigation__button__icon {
+
+        &::before {
+          transform: translateX(-76%) rotate(315deg);
+        }
+
+        &::after {
+          transform: translateX(76%) rotate(45deg);
+        }
+
+        @include media("<uol-media-m") {
+          position: absolute;
+          padding: $spacing-4;
+          right: $spacing-3;
+          top: 50%;
+          transform: translateY(-50%);
+
+          &::before {
+            bottom: 50%;
+          }
+
+          &::after {
+            bottom: 50%;
+          }
+        }
+      }
+    }
+  }
+
+  .uol-header-local-navigation__sub-nav {
+    .js & {
+      padding: 0;
+      list-style: none;
+      display: none;
+      box-shadow:
+        0 15px 24px 0 rgba(10, 2, 2, 0.15),
+        0 5px 10px 0 rgba(33, 33, 33, 0.5),
+        0 5px 15px 2px rgba(255, 255, 255, 0.25);
+
+      @include media("<uol-media-m") {
+        padding-top: $spacing-4;
+        background: $color-white;
+        width: 100vw;
+        overflow-y: auto;
+        overflow: hidden;
+
+        @media (-ms-high-contrast: active) {
+          border-bottom: 1px solid windowText;
+        }
+      }
+
+      @include media(">=uol-media-m") {
+        position: absolute;
+        top: calc(100% - #{$spacing-4});
+        box-sizing: border-box;
+        width: 375px;
+        background: $color-white;
+        border: 1px solid rgba($color-border--light, 0.2);
+        border-radius: $spacing-3;
+        padding-top: $spacing-1;
+        z-index: 1001;
+        transform: translateX(-#{$spacing-4});
+      }
+    }
+  }

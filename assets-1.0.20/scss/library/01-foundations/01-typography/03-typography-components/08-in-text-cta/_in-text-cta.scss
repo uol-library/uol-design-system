@@ -1,0 +1,128 @@
+.uol-in-text-ctas-wrapper {
+
+  .uol-rich-text & {
+    margin: $spacing-6 0;
+
+
+    @include media(">=uol-media-m") {
+      margin: $spacing-7 0;
+    }
+  }
+}
+
+  .uol-in-text-cta {
+    position: relative;
+    box-sizing: border-box;
+    padding: $spacing-5;
+    width: 100%;
+    background-color: $color-brand--faded;
+    border: 2px solid $color-brand;
+    border-radius: 10px;
+
+    + .uol-in-text-cta {
+      margin-top: $spacing-5;
+
+      @include media(">=uol-media-xl") {
+        margin-top: $spacing-6;
+      }
+    }
+
+    &:hover {
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, .12);
+    }
+
+    
+
+    .uol-widget & {
+
+      @include media(">=uol-media-l") {
+        width: calc((100% + #{$spacing-5}) / 12 * 9 - #{$spacing-5});
+      }
+
+      @include media(">=uol-media-xl") {
+        width: calc((100% + #{$spacing-6}) / 12 * 7 - #{$spacing-6});
+      }
+
+      .uol-side-nav-container--populated + .uol-homepage-content & {
+
+        @include media(">=uol-media-l") {
+          width: calc(100% - #{$spacing-5 / 2} - 4px);
+        }
+
+        // @include media(">=uol-media-xl") {
+        //   // TODO: no idea why this requires the - 10px and don;t have time to check now
+        //   width: calc((100% + #{$spacing-6}) / 9 * 7 - #{$spacing-6} - 10px);
+        // }
+      }
+    }
+
+      .uol-in-text-cta__heading {
+        @extend %uol-font-sans-serif;
+        @extend %text-size-paragraph;
+
+        margin: 0;
+        color: $color-font;
+        line-height: 1.4;
+        font-weight: 600;
+        letter-spacing: 0;
+
+        @include media(">=uol-media-xl") {
+          line-height: 1.4;
+        }
+      }
+
+      .uol-in-text-cta__link {
+        text-decoration: none;
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+        }
+
+        &:hover,
+        &:focus-within {
+          text-decoration: underline;
+        }
+
+        &:focus-within {
+          text-decoration-color: $color-brand--bright;
+        }
+      }
+
+      .uol-in-text-cta__text {
+        @extend %text-size-paragraph;
+
+        line-height: 1.625;
+        margin: $spacing-2 0 0;
+        color: $color-font--light;
+
+        @include media(">=uol-media-xl") {
+          line-height: 1.556;
+        }
+      }
+    }
+
+// in text CTA same width as other content when in content widget...
+.uol-widget__content {
+  .uol-in-text-cta {
+    width: 100%;
+  }
+}
+
+// ...when in homepage width changes
+.uol-homepage-content-container {
+  .uol-widget__content {
+    .uol-in-text-cta {
+      @include media(">=uol-media-l") {
+        width: calc((100% + 1.5rem) / 12* 9 - 1.5rem);
+      }
+      @include media(">=uol-media-xl") {
+        width: calc((100% + 2rem) / 12 * 7 - 2rem);
+      }
+    }
+  }
+}

@@ -1,0 +1,62 @@
+/**
+ * Show and hide
+ */
+
+ .hide-accessible {
+    position: absolute !important;
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    left: -9999px;
+}
+
+.show-accessible {
+    position: static !important;
+    clip: auto;
+    height: auto;
+    width: auto;
+    overflow: visible;
+    left: auto;
+}
+
+/**
+ * Skip to main content btn
+ */
+
+@mixin focus-outline {
+    outline: 1px solid #7cb1e8;
+	box-shadow:
+		0 0 5px #85bdf8,
+        inset 0 0 8px #7cb1e8;
+}
+
+@mixin focus-no-outline {
+    outline: 0;
+    box-shadow: none;
+}
+
+#skip-main {
+	clip: rect(0 0 0 0);
+    overflow: hidden;
+    position: absolute;
+    height: 1px;
+    width: 1px;
+
+	&:focus {
+		background-color: #f1f1f1;
+	    border-radius: 3px;
+	    clip: auto !important;
+	    color: $color-font;
+	    display: block;
+	    font-size: 16px;
+	    font-weight: bold;
+	    height: auto;
+	    left: 5px;
+	    padding: 16px 20px;
+	    text-decoration: none;
+	    top: 5px;
+	    width: auto;
+	    z-index: 100000;
+	}
+}

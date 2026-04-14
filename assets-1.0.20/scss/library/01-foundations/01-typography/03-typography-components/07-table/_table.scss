@@ -1,0 +1,156 @@
+$tableScrollIndicatorWidth: $spacing-7;
+$stackable-table-breakpoint: "uol-media-xs";
+
+.uol-table-outer {
+  position: relative;
+  overflow: hidden;
+
+  &::before,
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: $tableScrollIndicatorWidth;
+    transition: all 0.7s ease;
+  }
+
+  &::before {
+    left: -#{$tableScrollIndicatorWidth};
+    background: linear-gradient(to left, rgba(95, 87, 84, 0), rgba(95, 87, 84, 0.2) 67%, rgba(95, 87, 84, 0.3) 100%);
+    z-index: 2;
+  }
+
+  &::after {
+    right: -#{$tableScrollIndicatorWidth};
+    background: linear-gradient(to right, rgba(95, 87, 84, 0), rgba(95, 87, 84, 0.2) 67%, rgba(95, 87, 84, 0.3) 100%);
+  }
+
+  &.scrollable-left {
+    &::before {
+      left: 0;
+    }
+  }
+
+  &.scrollable-right {
+    &::after {
+      right: 0;
+    }
+  }
+}
+
+.uol-table-container {
+  position: relative;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.uol-rich-text table {
+  @include font-size-responsive(1.125rem);
+
+  border-collapse: collapse;
+  // margin-bottom: $spacing-4;
+  font-variant-numeric: lining-nums;
+  caption {
+    @extend %text-size-heading-5;
+    
+    font-weight: $font-weight-bold--sans-serif;
+    margin-bottom: $spacing-4; 
+    text-align: left;
+
+    @include media(">#{$stackable-table-breakpoint}") {
+      margin-bottom: 0;
+    }
+  }
+  thead {
+
+    th {
+      font-weight: $font-weight-bold--sans-serif;
+      color: $color-font--dark;
+      border-bottom: 2px solid $color-border;
+    }
+  }
+
+  th,
+  td {
+    padding: $spacing-4 $spacing-6 $spacing-4 0;
+  }
+
+  th {
+    text-align: left;
+
+    @include media(">#{$stackable-table-breakpoint}") {
+      &[scope=row] {
+        border-bottom: 1px solid $color-border--light;
+      }
+
+      &:empty {
+        border-bottom: none;
+     }
+    }
+  }
+
+  td {
+    vertical-align: top;
+    border-bottom: 1px solid $color-border--light;
+  }
+}
+
+/*
+ * Stackable tables
+ */
+
+// uol-table--stacked class added with javascript
+.uol-table--stacked {
+
+  @include media("<=#{$stackable-table-breakpoint}") {
+    border-collapse: collapse;
+    border-top: 0.123rem solid $color-border;
+    min-width: 100%;
+
+    thead {
+      position: absolute !important;
+      clip: rect(1px, 1px, 1px, 1px);
+      height: 1px;
+      width: 1px;
+      overflow: hidden;
+      left: -9999px;
+    }
+
+    tbody {
+      tr {
+        display: block;
+        margin-bottom: 0;
+        // padding: 16px 16px 8px;
+        border-bottom: 1px solid $color-border--light;
+
+        &:first-of-type {
+          border-top: 1px solid $color-border--light;
+        }
+      }
+
+      td {
+        display: block;
+        color: $color-font--dark;
+        padding: $spacing-4 0 $spacing-2;
+        border-bottom: none;
+
+        &:last-of-type {
+          padding-bottom: $spacing-4 
+        }
+      }
+    }
+  }
+}
+
+.uol-table__pseudo-th {
+  display: block;
+  font-weight: $font-weight-bold--sans-serif;
+  color: $color-font--dark;
+  margin-bottom: 4px;
+
+  @include media(">#{$stackable-table-breakpoint}") {
+      display: none;
+  }
+}

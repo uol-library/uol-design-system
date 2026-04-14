@@ -1,0 +1,117 @@
+.uol-in-page-navigation {
+  background-color: $color-brand--faded;
+  max-width: 47.5rem;
+  margin-top: $spacing-5;
+
+  &:not(.uol-in-page-navigation--with-accordion) {
+    padding: $spacing-4;
+    border-radius: 12px;
+    margin-bottom: $spacing-5;
+  }
+
+  @include media("<uol-media-s") {
+    margin-left: -#{$spacing-1};
+    margin-right: -#{$spacing-1};
+  }
+
+  @include media(">=uol-media-m") {
+    margin-top: $spacing-6;
+    margin-bottom: $spacing-6;
+  }
+
+  @include media(">=uol-media-l") {
+    margin-top: $spacing-7;
+    margin-bottom: $spacing-7;
+  }
+
+  &.uol-in-page-navigation--with-accordion {
+
+    .uol-accordion {
+      border-top-color: $color-border;
+      border-bottom-color: $color-border;
+      margin-right: 0;
+    }
+
+    .uol-accordion__title {
+      padding: 0 $spacing-4;
+    }
+
+    .uol-accordion__btn,
+    .uol-accordion__btn[aria-expanded="true"] {
+      box-sizing: border-box;
+      text-decoration: none;
+      color: $color-font;
+      margin-left: -#{$spacing-4};
+      margin-right: -#{$spacing-4};
+      padding-left: $spacing-4;
+      padding-right: $spacing-4;
+      width: calc(100% + #{$spacing-6});
+
+      &:hover,
+      &:focus {
+        text-decoration: none;
+      }
+    }
+
+    .uol-accordion__content {
+
+
+      padding: 0 $spacing-4 $spacing-6;
+
+      &:first-of-type {
+        padding: 0;
+      }
+    }
+  }
+
+  .uol-in-page-navigation__title {
+    @include font-size-responsive(1.125rem, 1.25rem, 1.25rem);
+
+    margin: 0;
+    color: $color-font;
+  }
+
+  ul {
+    padding: 0 $spacing-4;
+    border-radius: 12px;
+    margin: $spacing-2 0 $spacing-4;
+  }
+
+  li {
+    padding: 0 0 $spacing-3 $spacing-3;
+    position: relative;
+
+    &::marker {
+      content: "—";
+      position: absolute;
+      color: $color-border;
+      font-size: 1rem;
+    }
+
+    &:last-of-type {
+      padding-bottom: 0;
+    }
+
+    a {
+      @include font-size-responsive(1rem, 1rem, 1.125rem);
+
+      font-family: $font-family-serif;
+      line-height: 1.625;
+      color: $color-font--light;
+
+      &:hover,
+      &:focus {
+        text-decoration-color: $color-brand;
+      }
+
+      @include media(">=uol-media-m") {
+        line-height: 1.556;
+      }
+
+      &[aria-current="page"] {
+        color: $color-font--dark;
+        font-weight: 600;
+      }
+    }
+  }
+}

@@ -1,0 +1,264 @@
+@mixin galleryItemHalf {
+  flex-basis: calc(50% - #{$spacing-4});
+  margin: 0 $spacing-2 $spacing-4;
+
+  @include media(">=uol-media-l") {
+    flex-basis: calc(50% - #{$spacing-5});
+    margin: 0 $spacing-3 $spacing-4;
+  }
+
+  @include media(">=uol-media-xl") {
+    flex-basis: calc(50% - #{$spacing-6});
+    margin: 0 $spacing-4 $spacing-5;
+  }
+}
+
+// Keyframe animations
+@keyframes skeletonBg {
+  0% {
+    background-color: $color-grey--light;
+  }
+  50% {
+    background-color: rgba($color-grey--light, 0.2);
+  }
+  100% {
+    background-color: $color-grey--light;
+  }
+}
+
+@keyframes galleryImageFadeIn {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+  1% {
+    display: block;
+  }
+  100% {
+    display: block;
+    opacity: 1;
+  }
+}
+
+.uol-gallery-container {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.uol-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -#{$spacing-2};
+  margin-right: -#{$spacing-2};
+
+  @include media(">=uol-media-l") {
+    margin-left: -#{$spacing-3};
+    margin-right: -#{$spacing-3};
+  }
+
+  @include media(">=uol-media-xl") {
+    margin-left: -#{$spacing-4};
+    margin-right: -#{$spacing-4};
+  }
+
+  .uol-rich-text & {
+    max-width: none;
+  }
+}
+
+  .uol-gallery__item {
+    box-sizing: border-box;
+
+    .js & {
+      @include galleryItemHalf;
+    }
+
+    &:first-of-type {
+      flex-basis: 100%;
+    }
+
+    .uol-gallery--count-2 &,
+    .uol-gallery--count-4 & {
+
+      &:first-of-type {
+        @include galleryItemHalf;
+      }
+    }
+
+    // Hide all after 5
+    &:nth-of-type(5) ~ & {
+      .js & {
+        display: none;
+      }
+    }
+  }
+
+  .uol-gallery__item__title {
+    .js & {
+      @extend .hide-accessible;
+    }
+  }
+
+  .uol-gallery__figure {
+
+    .uol-gallery__item--video & {
+      display: none;
+
+      .js & {
+        display: block;
+      }
+    }
+
+    .uol-rich-text & {
+      margin: 0;
+    }
+  }
+
+  .uol-gallery__image-caption {
+    @extend %text-size-caption;
+
+    color: $color-font--light;
+    padding-top: $spacing-2;
+
+    @include media(">=uol-media-l") {
+      padding-top: $spacing-3;
+    }
+  }
+
+  .uol-gallery__image-container {
+    font-size: 0;
+    @include imageFit(66.6%);
+
+    .uol-gallery__item:first-of-type & {
+      @include imageFit(50%);
+    }
+
+    .uol-gallery--count-2 .uol-gallery__item:nth-of-type(2) & {
+      @include imageFit(50%);
+    }
+
+    .uol-gallery--count-4 .uol-gallery__item:first-of-type & {
+      @include imageFit(66.6%);
+    }
+
+    .uol-gallery__item--video & {
+      outline: 1px solid rgba($color-grey--dark, 0.7);
+      outline-offset: -1px;
+      background-color: $color-grey--light;
+      animation-name: skeletonBg;
+      animation-duration: 2.49s;
+      animation-iteration-count: 2;
+
+      img {
+        opacity: 0;
+      }
+    }
+
+      .uol-gallery__item--video[aria-busy=false] & {
+        outline: none;
+
+        img {
+          opacity: 0;
+          display: block;
+          animation: galleryImageFadeIn 1s ease-out forwards;
+        }
+      }
+
+    @for $i from 1 through 5 {
+      .uol-gallery__item--video:nth-of-type(5n + #{$i}) & {
+        animation-delay: #{$i * 0.2}s;
+      }
+    }
+  }
+
+  .uol-gallery__item__content {
+    .js & {
+      display: none;
+    }
+  }
+
+  .uol-gallery__button {
+    background: rgba($color-black, 0.75);
+    border: none;
+  }
+
+  .uol-gallery__button--open-item {
+    @include button_focus(-3px, false, $color-brand--bright);
+
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    left: $spacing-2;
+    bottom: $spacing-2;
+    transition: all 0.15s;
+
+    &:hover,
+    &:focus {
+      background: $color-black;
+      color: $color-brand--bright;
+    }
+
+    @include media(">=uol-media-m") {
+      left: $spacing-5;
+      bottom: $spacing-5;
+    }
+
+    // Override the default uol-icon positioning
+    .js .uol-gallery__item & {
+      position: absolute;
+    }
+  }
+
+  .uol-gallery__button--with-count {
+    @include button_focus(-2px, false, $color-brand--bright);
+    @extend %text-size-heading-2;
+
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba($color-black, 0.65);
+    color: $color-white;
+    z-index: 2;
+    text-decoration-color: $color-brand--bright;
+    transition: all 0.15s;
+
+    &:hover,
+    &:focus {
+      background: rgba($color-black, 0.75);
+      text-decoration: underline;
+      text-decoration-color: $color-brand--bright;
+
+      @media (-ms-high-contrast: active), (forced-colors: active) {
+        text-decoration-color: ButtonText;
+        border: 2px solid ButtonText;
+      }
+    }
+  }
+
+// Update for video variant using play icon
+.js .uol-gallery__item--video-play-icon 
+.uol-button.uol-icon--icon-only {
+  @extend %text-size-heading-2;
+
+  background: $color-brand;
+  border: 2px solid $color-white;
+  border-radius: 50%;
+  color: $color-white;
+  aspect-ratio: 1/1;
+  width: $spacing-8;
+  height: $spacing-8;
+  left: $spacing-5;
+  bottom: $spacing-5;
+
+  svg {
+    width: $spacing-7;
+    height: $spacing-7;
+  }
+}

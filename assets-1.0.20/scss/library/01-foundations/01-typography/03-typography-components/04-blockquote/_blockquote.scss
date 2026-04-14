@@ -1,0 +1,72 @@
+.uol-typography-blockquote {
+  @extend %text-size-blockquote;
+  @extend %uol-font-serif;
+
+  font-weight: $font-weight-bold--serif;
+  position: relative;
+  margin: 2em 0 1em;
+  padding: 0 1.75em;
+
+  @include media(">=uol-media-m") {
+    padding: 0 1.7em;
+  }
+
+  @include media(">=uol-media-l") {
+    padding: 0 1.5em;
+  }
+
+  &::before {
+    content: "\201C";
+    @extend %uol-font-serif--bold;
+
+    font-size: 400%;
+    height: 1ex;
+    display: block;
+    position: absolute;
+    top: -0.125em;
+    left: 0;
+    color: $color-brand;
+    line-height: 0.3 !important;
+  }
+
+  p {
+    @extend %text-size-blockquote;
+
+    margin-bottom: 0.5em;
+  }
+
+  footer {
+    @extend %text-size-caption;
+
+    cite {
+      @extend %uol-font-sans-serif--italic;
+
+      color: $color-font--x-light;
+
+      a {
+        color: inherit;
+
+        &:hover,
+        &:focus {
+          color: $color-font;
+          text-decoration-color: $color-brand;
+        }
+      }
+    }
+  }
+}
+
+blockquote p {
+  margin-bottom: $spacing-2 !important;
+
+  @include media(">=uol-media-m") {
+    margin-bottom: $spacing-4 !important;
+    font-size: 24px !important;
+    line-height: 36px !important;
+  }
+
+  @include media(">=uol-media-l") {
+    font-size: 28px !important;
+    line-height: 38px !important;
+  }
+}

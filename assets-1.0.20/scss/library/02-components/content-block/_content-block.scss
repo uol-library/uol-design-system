@@ -1,0 +1,74 @@
+// adding comment line to initiate dev build again
+
+.uol-content-block {
+  position: relative;
+
+  * {
+    margin: 0 0 $spacing-4;
+    max-width: 674px;
+  }
+
+  h1 {@extend .uol-typography-heading-1;}
+
+  h2 {@extend .uol-typography-heading-2;}
+
+  h3 {@extend .uol-typography-heading-3;}
+
+  h4 {@extend .uol-typography-heading-4;}
+
+  &__heading {
+    a {
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+      }
+    }
+  }
+
+  &__heading-link {
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+  &__topic {
+    @extend .uol-typography-paragraph-small;
+    margin-bottom: $spacing-2;
+  }
+
+  &__date {
+    @extend .uol-typography-paragraph-small;
+  }
+
+  &__copy {
+    @extend .uol-typography-paragraph;
+  }
+
+  &__link {
+    @extend .uol-typography-paragraph;
+
+    @include link_focus();
+    font-weight: 600;
+    display: block;
+  }
+
+  &__arrow-link {
+    @extend .uol-typography-paragraph;
+
+    @include link_focus();
+    font-weight: 600;
+    display: block;
+  }
+
+  .uol-button {
+    margin-top: $spacing-2;
+  }
+
+}

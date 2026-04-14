@@ -1,0 +1,302 @@
+.uol-banner-outer {
+  background: $color-black;
+  overflow: hidden;
+}
+
+.uol-banner-container {
+  box-sizing: border-box;
+  max-width: $site-container-full;
+  margin: 0 auto;
+  position: relative;
+  color: $color-white;
+
+  @include media(">=uol-media-l") {
+    padding: 0 $spacing-4;
+  }
+}
+
+  .uol-banner-container--multiple {
+    @include media(">=uol-media-l") {
+      padding-bottom: $spacing-4;
+    }
+  }
+
+.uol-banner {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 $spacing-6;
+  display: flex;
+  height: auto;
+}
+
+  .uol-banner--multiple {
+    @include ds-scrollbars($horizontal: true);
+
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+
+    > * {
+      flex: 0 0 auto;
+    }
+
+    > * + * {
+      margin-left: 1rem;
+    }
+
+    @include media(">=uol-media-l") {
+      max-width: calc(100% - 5rem);
+    }
+  }
+
+ .uol-banner__item {
+   position: relative;
+   display: flex;
+   flex-direction: column;
+   box-sizing: border-box;
+   padding: 0 $spacing-4 $spacing-6;
+   width: 100%;
+   transition: opacity 0.2s ease;
+
+   @include media(">=uol-media-l") {
+    width: 100%;
+    display: block;
+    padding-bottom: $spacing-4;
+
+    // Keep min ratio to avoid crop of absolutely positioned .uol-banner__item__img
+    &::before {
+      content: "";
+      display: block;
+      width: 0;
+      height: 0;
+      padding-bottom: 33%;
+      float: right;
+    }
+  }
+
+   .uol-banner--multiple & {
+    scroll-snap-align: start;
+    width: 87%;
+
+    @include media(">=uol-media-m") {
+      width: 90%;
+    }
+
+    @include media(">=uol-media-l") {
+      width: 100%;
+      display: block;
+    }
+   }
+ }
+
+  .uol-banner__item--unfocused {
+    opacity: 0.5;
+  }
+
+  .uol-banner__item__title {
+    @extend .uol-typography-heading-2;
+
+    margin: $spacing-5 0 $spacing-2;
+
+    @include media(">=uol-media-s") {
+      margin-top: $spacing-6;
+    }
+
+    @include media(">=uol-media-l") {
+      width: 36%;
+      margin-top: $spacing-7;
+    }
+
+    @include media(">=uol-media-xl") {
+      width: 28%;
+      margin-top: $spacing-8;
+    }
+  }
+
+  .uol-banner__item__lead {
+    @extend .uol-typography-paragraph;
+
+    margin: 0 0 $spacing-2;
+
+    @include media(">=uol-media-l") {
+      width: 36%;
+    }
+
+    @include media(">=uol-media-xl") {
+      width: 28%;
+    }
+  }
+
+  .uol-banner__item__img {
+    order: -1;
+    width: calc(100% + #{$spacing-4} * 2);
+    margin: 0 -#{$spacing-4};
+    height: auto;
+    min-height: 1px; // IE11 hack - don't ask why this works
+
+    @include media(">=uol-media-l") {
+      width: 62%;
+      position: absolute;
+      top: $spacing-6;
+      right: 0;
+    }
+
+    @include media(">=uol-media-xl") {
+      width: 70%;
+      top: 0;
+    }
+  }
+
+  .uol-banner__item__link {
+    display: inline-block;
+    margin: $spacing-2 0 0;
+    font-size: 1.125rem;
+    font-weight: $font-weight-medium--sans-serif;
+
+    @include media(">=uol-media-m") {
+      font-weight: $font-weight-bold--sans-serif;
+    }
+
+    @include media(">=uol-media-l") {
+      max-width: 36%;
+    }
+
+    @include media(">=uol-media-xl") {
+      max-width: 28%;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+
+    .js & {
+      text-decoration: none;
+
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+        text-decoration-color: $color-brand--bright;
+      }
+    }
+
+    svg {
+      position: relative;
+      margin-top: -0.35em;
+      top: 0.35em;
+      left: 0;
+      margin-left: 0.5em;
+      fill: $color-brand--bright;
+      transition: all 0.3s ease 0.2s;
+
+      @media (-ms-high-contrast: active) {
+        fill: windowText;
+      }
+    }
+
+    &:hover,
+    &:focus {
+      svg {
+        left: 0.4em;
+      }
+    }
+  }
+
+  .uol-banner__button {
+    // Override icon-button specificity
+    .js .uol-banner-container &.uol-icon--icon-only {
+      position: absolute;
+    }
+
+    right: calc(13% - #{$spacing-2});
+    transform: translateX(50%);
+    transition: all 0.5s ease;
+
+    &:disabled {
+      opacity: 0.7;
+    }
+
+    @include media(">=uol-media-m") {
+      right: calc(10% - #{$spacing-2});
+    }
+
+    @include media(">=uol-media-l") {
+      right: 3.125rem;
+    }
+  }
+
+    .uol-banner__button--prev {
+      top: $spacing-6;
+      @include button_focus(-5px, true);
+
+      @include media(">=uol-media-xs") {
+        top: calc(15% - 30px);
+      }
+
+      @include media(">=uol-media-s") {
+        top: calc(20% - 30px);
+      }
+
+      @include media(">=uol-media-l") {
+        top: calc(33% + 1rem);
+        transform: translateX(50%) translateY(-50%);
+      }
+
+      @include media(">=uol-media-xl") {
+        top: 33%;
+      }
+    }
+
+    .uol-banner__button--next {
+      top: 5.5rem;
+      @include button_focus(-5px, true);
+
+      @include media(">=uol-media-xs") {
+        top: calc(15% + 30px);
+      }
+
+      @include media(">=uol-media-s") {
+        top: calc(20% + 30px);
+      }
+
+      @include media(">=uol-media-l") {
+        top: calc(33% + 5rem);
+        transform: translateX(50%) translateY(-50%);
+      }
+
+      @include media(">=uol-media-xl") {
+        top: calc(33% + 4rem);
+      }
+    }
+
+  .uol-banner__counter {
+    position: absolute;
+    bottom: $spacing-6;
+    left: $spacing-4;
+    font-variant-numeric: lining-nums;
+
+    @include media(">=uol-media-l") {
+      left: auto;
+      bottom: auto;
+      top: 20%;
+      right: $spacing-7;
+      transform: translateX(30%);
+      padding-bottom: 0.2em;
+      border-bottom: 1px solid $color-border;
+    }
+  }
+
+    .uol-banner__counter__current {
+      color: $color-brand--bright;
+    }
+
+    .uol-banner__counter__total {
+      &::before {
+        content: " / ";
+      }
+    }

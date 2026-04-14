@@ -1,0 +1,254 @@
+.uol-form-container--centered {
+  @extend .uol-col;
+  @extend .uol-col-m-10;
+  @extend .uol-col-xl-8;
+
+  margin: 0 auto;
+}
+
+.uol-form__container {
+  border: 1px solid $color-border--light;
+  border-radius: 6px;
+  // overflow: hidden;
+  margin-bottom: $spacing-6;
+
+  &.uol-form-container--centered {
+    padding: 0;
+  }
+
+  // Used for when Course search is in Home page
+  .uol-homepage-content & {
+    margin: 0;
+    width: calc(100% - 2px);
+  }
+
+  .uol-side-nav-container--populated + .uol-homepage-content & {
+
+    .uol-form__inner-wrapper {
+
+      @include media(">=uol-media-l") {
+        flex-basis: 100%;
+      }
+
+      @include media(">=uol-media-xl") {
+        flex-basis: 55.555%;
+      }
+    }
+
+      .uol-form {
+
+        @include media(">=uol-media-xl") {
+          // margin-right: $spacing-6;
+        }
+      }
+
+    .uol-form__img-wrapper {
+      display: none;
+
+      @include media(">=uol-media-xl") {
+        display: inline-flex;
+        flex-basis: 44.444%;
+      }
+    }
+  }
+}
+
+.uol-form__inner-wrapper {
+  padding: $spacing-5 $spacing-4 $spacing-6;
+  background-color: $color-grey--light;
+
+  @include media(">=uol-media-l") {
+    flex-basis: 58.333%;
+    padding: $spacing-5 $spacing-5 2.5rem;
+  }
+
+  @include media(">=uol-media-xl") {
+    flex-basis: 50%;
+    padding: 2.5rem $spacing-6;
+  }
+}
+
+  .uol-form__title {
+    color: $color-font;
+    font-size: 2rem;
+    line-height: 1.25;
+    font-family: $font-family-serif;
+    margin: 0;
+    padding-bottom: $spacing-2;
+
+    + .uol-form {
+      padding-top: $spacing-2;
+    }
+
+    @include media(">=uol-media-m") {
+      font-size: 2.25rem;
+      line-height: 1.333;
+    }
+
+    @include media(">=uol-media-l") {
+      font-size: 2.625rem;
+      line-height: 1.238;
+    }
+  }
+
+  .uol-form__lead {
+    display: block;
+    color: $color-font;
+    font-size: 1.125rem;
+    line-height: 1.556;
+    font-family: $font-family-sans-serif;
+    margin: 0 0 $spacing-6;
+    font-weight: normal;
+
+    // @include media(">=uol-media-s") {
+    //   max-width: 31.5rem;
+    // }
+
+    @include media(">=uol-media-m") {
+      max-width: 32rem;
+    }
+
+    @include media(">=uol-media-l") {
+      font-size: 1.25rem;
+      max-width: 41rem;
+    }
+  }
+
+.uol-form {
+  flex-direction: row;
+
+  &.uol-form--button-inline {
+    @include media(">=uol-media-m") {
+      display: flex;
+    }
+  }
+}
+
+.uol-form__container--with-image {
+
+  @include media(">=uol-media-l") {
+    display: flex;
+  }
+}
+
+  .uol-form__img-wrapper {
+    background-color: $color-grey--light;
+    position: relative;
+    display: none;
+    z-index: -2;
+
+    @include media(">=uol-media-l") {
+      display: inline-flex;
+      flex-basis: 41.666%;
+    }
+
+    @include media(">=uol-media-xl") {
+      flex-basis: 50%;
+    }
+  }
+
+    .uol-form__img {
+      position: absolute;
+      min-width: 100%;
+      min-height: 100%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+    }
+
+    .uol-form--button-inline {
+      .uol-form__inputs-wrapper {
+        flex: 1;
+      }
+
+      .uol-form__input-container {
+        margin-bottom: 0;
+      }
+
+      .uol-form__button-wrapper {
+        align-self: flex-end;
+
+        .uol-button {
+          @include button_focus(-6px);
+        }
+
+        @include media(">=uol-media-m") {
+          padding-left: $spacing-4;
+        }
+
+        @include media(">=uol-media-l") {
+          padding-left: $spacing-5;
+        }
+
+        @include media(">=uol-media-xl") {
+          padding-left: $spacing-6;
+        }
+
+        [class^="uol-button"] {
+          width: 100%;
+          height: 3.125rem;
+          line-height: 0.75;
+        }
+      }
+    }
+
+    .uol-form__button-wrapper {
+      .uol-form--button-block & {
+
+      @include media(">=uol-media-s") {
+        display: inline-block;
+        width: initial;
+      }
+
+        .uol-button {
+          width: 100%;
+        }
+      }
+    }
+
+.uol-form__additional-content {
+  padding: 0;
+  margin: 0;
+
+  a {
+    @include link_focus();
+  }
+}
+
+.uol-form__additional-content--before {
+  .uol-rich-text & {
+    margin: $spacing-4 0;
+
+    > * {
+      margin-bottom: $spacing-4;
+    }
+
+    > *:last-child {
+      margin-bottom: $spacing-6;
+    }
+  }
+}
+
+.uol-form__additional-content--after {
+  .uol-rich-text & {
+    margin: $spacing-6 0 0;
+
+    > * {
+      margin-bottom: $spacing-4;
+    }
+
+    > *:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.uol-form-container--overflow {
+  overflow: visible !important;
+
+  & .uol-widget__content {
+    overflow: visible  !important;
+  }
+}
+

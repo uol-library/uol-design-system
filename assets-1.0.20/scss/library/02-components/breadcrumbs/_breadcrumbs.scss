@@ -1,0 +1,90 @@
+.uol-breadcrumb {
+  padding: $spacing-5 $spacing-4 0;
+
+  @include media(">=uol-media-xs") {
+    padding: $spacing-5 $spacing-4 0;
+  }
+
+  @include media(">=uol-media-m") {
+    padding: $spacing-5 $spacing-4 0;
+  }
+
+  @include media(">=uol-media-l") {
+    padding: $spacing-6 0 0;
+    margin: 0 $spacing-5;
+  }
+
+  @include media(">=uol-media-xl") {
+    margin: 0 $spacing-6;
+  }
+
+  .uol-banner-outer + .uol-content-container & {
+    @include media(">=uol-media-l") {
+      padding-top: $spacing-2;
+    }
+  }
+}
+
+  .uol-breadcrumb__list {
+    @include font-size-responsive(0.875rem, 0.875rem, 1rem);
+
+    margin: 0;
+    padding: 0 0 $spacing-4;
+    list-style: none;
+    border-bottom: 1px solid $color-border--light;
+
+    @include media(">=uol-media-m") {
+      padding-bottom: $spacing-5;
+    }
+
+    @include media(">=uol-media-l") {
+      padding-bottom: $spacing-6;
+    }
+  }
+
+  .uol-breadcrumb__item {
+
+    &::before {
+      content: "<";
+      margin-right: 0.3em;
+    }
+
+    @include media("<uol-media-m") {
+      display: none;
+
+      &:last-of-type {
+        display: inline-block;
+      }
+    }
+
+    @include media(">=uol-media-m") {
+      display: inline-block;
+
+      &::before {
+        content: ">";
+        margin-right: 0.3em;
+      }
+
+      &:first-of-type {
+
+        &::before {
+          content: none;
+        }
+      }
+    }
+  }
+
+  .uol-breadcrumb__link {
+    @include link_focus(2px, false);
+
+    padding: 0.5em;
+    transition: text-decoration-color 0.3s ease;
+
+    &:hover {
+      text-decoration-color: $color-brand;
+    }
+
+    &:first-of-type {
+      padding-left: 0;
+    }
+  }

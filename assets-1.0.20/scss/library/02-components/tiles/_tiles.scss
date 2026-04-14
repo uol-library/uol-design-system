@@ -1,0 +1,592 @@
+.uol-tiles {
+  display: flex;
+  flex-wrap: wrap;
+
+  @include media(">=uol-media-m") {
+    // padding: 0 $spacing-3;
+    // margin: 0 -#{$spacing-1};
+  }
+
+  @include media(">=uol-media-xl") {
+    // padding: 0;
+  }
+}
+
+.uol-tile {
+  position: relative;
+  color: $color-white;
+  width: 100%;
+  min-height: 11.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  box-sizing: border-box;
+  background-clip: padding-box;
+  margin: 0 0 $spacing-2;
+
+  @include media(">=uol-media-xs") {
+    min-height: 13rem;
+  }
+
+  @include media(">=uol-media-s") {
+    min-height: 18.75rem;
+  }
+
+  @include media(">=uol-media-m") {
+    margin: 0;
+    border: $spacing-1 solid $color-white;
+    min-height: 16rem;
+    width: calc(100% / 3 * 2);
+  }
+
+  @include media(">=uol-media-l") {
+    min-height: 17rem;
+  }
+
+  @include media(">=uol-media-xl") {
+    width: 50%;
+    min-height: 20rem;
+  }
+}
+
+  .uol-tile--small,
+  .uol-tile--facts {
+
+    @include media(">=uol-media-m") {
+      width: calc(100% / 3);
+    }
+
+    @include media(">=uol-media-xl") {
+      width: 25%;
+    }
+  }
+
+  .uol-tile--img {
+    // text-shadow: 0 0 50px $color-font--dark;
+
+    // TODO: IE 11 Hack - needs a better approach
+    .csspositionsticky & {
+      background-color: $color-black;
+    }
+  }
+
+  .uol-tile--no-img {
+    background-color: $color-black;
+
+    &:nth-of-type(6n+2) {
+      background: $color-brand--dark;
+    }
+
+    &:nth-of-type(6n+3) {
+      background: $color-brand;
+    }
+
+    &:nth-of-type(6n+4) {
+      background: $color-black--dark;
+    }
+
+    &:nth-of-type(6n+5) {
+      background: $color-warmgrey--dark;
+    }
+
+    &:nth-of-type(6n+6) {
+      background: $color-blue--dark;
+    }
+
+    @include media("<uol-media-m") {
+      min-height: 7rem;
+    }
+
+    &:hover,
+    &:focus-within {
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        border: 4px solid $color-brand--bright;
+        // z-index: 1;
+      }
+    }
+
+    &.uol-tile--facts {
+      &:hover,
+      &:focus-within {
+        &::after {
+          content: none;
+        }
+      }
+    }
+
+    // + .uol-tile--no-img {
+    //   background-color: $color-black;
+
+    //   // Fix issues for profiles and tile backgrounds
+    //   &.uol-tile--profile {
+    //     background: $color-cream--medium;
+    //   }
+
+    //   &.uol-tile--facts {
+    //     background: $color-black;
+    //   }
+    // }
+
+    // + .uol-tile--no-img + .uol-tile--no-img {
+    //   background-color: $color-brand;
+
+    //   // Fix issues for profiles and tile backgrounds
+    //   &.uol-tile--profile {
+    //     background: $color-cream--medium;
+    //   }
+
+    //   &.uol-tile--facts {
+    //     background: $color-black;
+    //   }
+    // }
+  }
+
+  .uol-tile--profile {
+    justify-content: flex-start;
+    background: $color-cream--medium;
+    color: $color-font;
+    transition: background 0.3s ease;
+
+    &.uol-tile--no-img {
+      background: $color-cream--medium;
+    }
+
+    @include media(">=uol-media-m") {
+      width: 100%;
+    }
+
+    @include media(">=uol-media-xl") {
+      width: 75%;
+    }
+  }
+
+  .uol-tile__inner {
+    box-sizing: border-box;
+    padding: $spacing-4;
+    z-index: 1;
+
+    @include media("<uol-media-xs") {
+      padding: $spacing-2;
+    }
+
+    @include media(">=uol-media-m") {
+      padding: $spacing-5;
+    }
+
+    .uol-tile--img & {
+      @include media("<uol-media-xs") {
+        padding: 0;
+        display: flex;
+        flex-direction: column-reverse;
+      }
+
+      @media (-ms-high-contrast: active), (forced-colors: active) {
+        -ms-high-contrast-adjust: none;
+        forced-color-adjust: CanvasText;
+      }
+    }
+
+    .uol-tile--profile & {
+
+      @include media(">=uol-media-m") {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: calc(100% / 3 * 2);
+      }
+    }
+  }
+
+  .uol-tile__text-container {
+
+    .uol-tile--img & {
+      text-shadow: 0 0 50px $color-black--dark;
+      background: $color-black;
+      padding: $spacing-2;
+
+      @include media("<uol-media-xs") {
+        border: solid $color-black--dark;
+        border-width: 0 4px 4px 4px;
+        padding: $spacing-1;
+      }
+
+      @include media(">=uol-media-xs") {
+        background: rgba($color-black, 0.8);
+        margin-left: -#{$spacing-2};
+        margin-right: -#{$spacing-2};
+        margin-bottom: -#{$spacing-2};
+      }
+
+      @include media(">=uol-media-m") {
+        margin-left: -#{$spacing-4};
+        margin-right: -#{$spacing-4};
+        margin-bottom: -#{$spacing-4};
+      }
+    }
+
+    .uol-tile--img:hover & {
+      @include media("<uol-media-xs") {
+        border-color: $color-brand--bright;
+      }
+    }
+
+    .uol-tile--small.uol-tile--video &,
+    .uol-tile--no-img.uol-tile--video & {
+        @include media("<uol-media-m") {
+          margin-right: $spacing-7;
+        }
+    }
+  }
+
+  .uol-tile__title {
+    @include font-size-responsive(1.25rem, 1.5rem, 1.75rem);
+    @include line-height-responsive(1.75rem, 2.25rem, 2.375rem);
+    @extend %uol-font-serif;
+
+    font-weight: $font-weight-bold--serif;
+    margin: 0;
+
+    .uol-tile--profile & {
+      @extend .hide-accessible;
+    }
+  }
+
+  .uol-tile__subtitle {
+    @extend %text-size-paragraph--small;
+
+    display: none;
+    margin: $spacing-2 0 0;
+
+    @include media(">=uol-media-m") {
+      display: block;
+      margin-bottom: $spacing-3;
+    }
+  }
+
+  .uol-tile__icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 0;
+  }
+
+    .uol-tile__icon--video {
+      @extend %video-icon;
+
+      .uol-tile:focus-within &,
+      .uol-tile:hover & {
+
+        &::after {
+          transform: scale(1.2);
+          transition: transform 0.5s ease;
+        }
+      }
+    }
+
+  .uol-tile__link {
+    text-decoration: none;
+    color: inherit;
+    z-index: 4;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+      text-decoration-color: $color-brand--bright;
+
+      .uol-tile--no-img & {
+        text-decoration-color: $color-white;
+      }
+
+      // .uol-tile--no-img + .uol-tile--no-img & {
+      //   text-decoration-color: $color-brand--bright;
+      // }
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+ .uol-tile__img {
+    background-position: 50%;
+    background-size: cover;
+    z-index: -1;
+    @include media("<uol-media-xs") {
+      display: block;
+      padding-bottom: 50%;
+    }
+
+    @include media(">=uol-media-xs") {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      // transition: background 0.3s ease;
+      z-index: 1;
+    }
+
+    .uol-tile--img:hover &,
+    .uol-tile--img:focus-within & {
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        border: 4px solid $color-brand--bright;
+        z-index: 1;
+      }
+    }
+  }
+
+  .uol-tile__profile-image {
+    position: relative;
+    width: 8rem;
+    height: 8rem;
+    background-position: 50%;
+    background-size: cover;
+    margin: $spacing-3 $spacing-4;
+    border-radius: 4px;
+    box-sizing: border-box;
+
+    @media (-ms-high-contrast: active), (forced-colors: active) {
+      -ms-high-contrast-adjust: none;
+      forced-color-adjust: none;
+    }
+
+    @include media(">=uol-media-xs") {
+      margin-left: $spacing-6;
+    }
+
+    @include media(">=uol-media-s") {
+      margin: -3.7rem $spacing-7 $spacing-3 auto;
+    }
+
+    @include media(">=uol-media-m") {
+      margin: 0;
+      position: absolute;
+      height: initial;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: calc(100% / 3 - 1px);
+      border-radius: 0;
+
+      .uol-tile:hover & {
+
+        &::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          border: solid $color-brand--bright;
+          border-width: 4px 4px 4px 0;
+        }
+      }
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      box-shadow: inset 0 2px 4px rgba(black, 0.4);
+      border-radius: inherit;
+    }
+  }
+
+  .uol-tile__profile-blockquote {
+    margin: 0;
+    padding: $spacing-6 0 0 $spacing-4;
+    display: flex;
+    flex-direction: column;
+
+    @include media(">=uol-media-xs") {
+      padding-left: $spacing-6;
+    }
+
+    @include media(">=uol-media-s") {
+      padding-left: $spacing-7;
+      padding-right: $spacing-6;
+    }
+
+    @include media(">=uol-media-m") {
+      // min-height: calc(100% - 5rem);
+      padding-left: $spacing-4;
+    }
+
+    @include media(">=uol-media-l") {
+      padding-left: 0;
+    }
+  }
+
+  .uol-tile__profile-quote {
+    // margin-bottom: $spacing-4;
+
+    &::before {
+      content: "\201C";
+      @extend %uol-font-serif--bold;
+
+      @media (-ms-high-contrast: active), (forced-colors: active) {
+        forced-color-adjust: none;
+      }
+
+      font-size: 600%;
+      height: 1ex;
+      display: block;
+      position: absolute;
+      top: -0.22em;
+      left: 0.15em;
+      color: $color-brand--bright;
+
+      @include media(">=uol-media-s") {
+        left: 0.4em;
+      }
+
+      @include media(">=uol-media-m") {
+        left: 0.16em;
+      }
+    }
+
+    p {
+      @include font-size-responsive(1.125rem);
+      @include line-height-responsive(1.75rem);
+
+      font-family: $font-family-serif;
+
+      &:first-of-type {
+        margin-top: 0;
+      }
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .uol-tile__profile-detail {
+    margin-bottom: 0;
+    padding-left: $spacing-4;
+
+    @include media(">=uol-media-xs") {
+      padding-left: $spacing-6;
+    }
+
+    @include media(">=uol-media-s") {
+      padding-left: $spacing-7;
+      max-width: calc(100% - 14rem);
+    }
+
+    @include media(">=uol-media-m") {
+      max-width: none;
+      // min-height: calc(100% - 4rem);
+      padding-left: $spacing-4;
+    }
+
+    @include media(">=uol-media-l") {
+      padding-left: 0;
+    }
+  }
+
+  .uol-tile__profile-name {
+    display: block;
+    font-weight: $font-weight-bold--serif;
+    color: $color-font--x-light;
+  }
+
+  .uol-tile__profile-role,
+  .uol-tile__profile-position {
+    @include font-size-responsive(0.875rem);
+    @include line-height-responsive(1.125rem);
+
+    color: $color-font--x-light;
+  }
+
+  .uol-tile__profile-role + .uol-tile__profile-position {
+
+    &::before {
+      content: "";
+      display: inline-block;
+      height: 1.2em;
+      width: 1px;
+      position: relative;
+      top: 0.28em;
+      background: $color-brand--bright;
+      margin-left: 0.2em;
+      margin-right: 0.35em;
+    }
+  }
+
+  .uol-tile__profile-link {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    background: rgba($color-black--dark, 0);
+
+    @media (-ms-high-contrast: active) {
+      background: none;
+    }
+
+    &:focus {
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        border: 4px solid $color-brand--bright;
+        z-index: 1;
+      }
+    }
+  }
+
+  .uol-tile--facts {
+    background: $color-black;
+    text-align: center;
+
+    &.uol-tile--no-img {
+      background: $color-black;
+    }
+
+    .uol-tile__inner {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }

@@ -1,0 +1,27 @@
+.footer-site-information {
+    background: inherit;
+}
+
+.footer-site-information__list {
+    list-style: none;
+    padding: 0;
+    line-height: 1.5;
+    font-variant-numeric: lining-nums;
+}
+
+.footer-site-information__item {
+    text-decoration: none;
+    margin-bottom: $spacing-2;
+
+    @include media(">=uol-media-m") {
+        display: inline;
+        padding-right: $spacing-5;
+        margin-bottom: 0;
+    }
+}
+
+.footer-site-information__link {
+    color: inherit;
+    text-decoration: none;
+    white-space: nowrap;
+}

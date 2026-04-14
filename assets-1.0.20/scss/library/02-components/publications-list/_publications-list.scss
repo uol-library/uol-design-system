@@ -1,0 +1,95 @@
+.uol-publications-list {
+  margin-bottom: $spacing-6;
+
+    @include media(">=uol-media-m") {
+      margin-bottom: $spacing-7;
+    }
+    
+    & .uol-info-list {
+      @extend .uol-typography-paragraph-small;
+      
+      margin: 0;
+    }
+    
+    & .uol-info-list__data {
+      float: none;
+    }
+    
+    & .uol-info-list__group {
+      margin-top: $spacing-3; 
+    }
+
+}
+
+  .uol-publications-list__publication-title {
+    @extend %text-size-paragraph;
+    @extend %uol-font-sans-serif;
+    
+    font-weight: $font-weight-bold--sans-serif;
+    color: $color-brand--dark;
+  }
+
+ 
+
+  //  TO DO (potentially), if back end required individual fields this adds comma between them
+  // .uol-publications-list__author-name,
+  // .uol-publications-list__editor-name {
+
+  //   &:not(:last-child):after {
+  //     content: ", ";
+  //   }
+  // }
+
+  .uol-publications-list__content-group {
+    // @extend .text-size-paragraph;
+    @extend .uol-typography-paragraph-small;
+
+    margin-top: $spacing-3;
+  }
+
+  .uol-publications-list__title {
+    font-weight: $font-weight-bold--sans-serif;
+  }
+
+  .uol-publications-list__category {
+    font-weight: $font-weight-bold--sans-serif;
+    color: $color-blue--dark;
+  }
+  
+  .uol-publications-list__link-container {
+    @extend .uol-typography-paragraph-small;
+    
+    margin-top: $spacing-3;
+  }
+  
+  .uol-publications-list__link-outer {
+    margin-top: $spacing-3;
+  }
+  .uol-publications-list__link {
+    @extend .uol-typography-paragraph-small;
+    @include link_focus(2px);
+    
+    display: inline-block;
+    margin-top: 0;
+
+    &:hover {
+      text-decoration-color: $color-brand;
+    }
+  }
+
+  .uol-publications-list__further-link {
+    @extend .uol-typography-paragraph;
+    @include link_focus(2px);
+    
+    display: inline-block;
+    margin-top: 0;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    @include media(">=uol-media-l") {
+      margin-top: 0;
+    }
+  }
+

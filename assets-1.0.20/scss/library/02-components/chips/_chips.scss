@@ -1,0 +1,107 @@
+.uol-chips {
+  @extend %text-size-paragraph;
+
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -#{$spacing-1};
+  margin-right: -#{$spacing-1};
+}
+
+  .uol-chips__item {
+    margin: 0 6px 12px;
+    list-style-type: none;
+    display: inline-block;
+  }
+
+  .uol-chips__link {
+    text-decoration: none;
+  }
+
+  .uol-chips__button {
+    @extend .uol-typography-paragraph;
+
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    border: 0;
+    padding: $spacing-2 $spacing-1;
+    background-color: #699B9D;
+    color: $color-font--dark;
+    border-radius: 4px;
+    text-align: left;
+    text-decoration: none;
+
+    @include media(">=uol-media-l") {
+      padding: $spacing-1;
+    }
+
+    &:focus {
+      // focus highlight applies to child icon
+      outline: none;
+    }
+  }
+
+    .uol-chips__text {
+      padding: 0 $spacing-2 0 $spacing-1;
+      pointer-events: none;
+    }
+
+    .uol-chips__delete-icon {
+      height: 28px;
+      margin-right: $spacing-1;
+      pointer-events: none;
+
+      svg {
+        box-sizing: border-box;
+        border: 2px solid $color-brand-2--dark;
+        width: 28px;
+        height: 28px;
+        border-radius: 100%;
+        // margin-left: $spacing-2;
+        background-color: $color-white;
+        pointer-events: none;
+
+        path {
+          fill: $color-brand-2--dark;
+        }
+
+        .uol-chips__button:hover & {
+          box-shadow:
+            0 3px 6px rgba(#000,0.15),
+            0 2px 4px rgba(#000,0.12);
+        }
+
+        .uol-chips__button:focus & {
+          background-color: $color-alert--info;
+          border-color: $color-white;
+          box-shadow: none;
+
+          path {
+            fill: $color-white;
+          }
+        }
+      }
+    }
+
+// Chips contained by search results
+
+.uol-search-results__results {
+  .uol-chips {
+    padding: $spacing-5 0 $spacing-6;
+  }
+}
+
+.uol-chips-ds-container {
+  background-image: linear-gradient(152deg, #eae8e6 25%, #f3f2f1 25%, #f3f2f1 50%, #eae8e6 50%, #eae8e6 75%, #f3f2f1 75%, #f3f2f1 100%);
+  background-size: 213.01px 113.26px;
+  border: 1px solid rgba(201,200,197,.6);
+  padding: 24px;
+  margin: 0 0 32px 0;
+
+  @include media(">=uol-media-m") {
+    margin: 0 0 48px 0;
+  }
+}

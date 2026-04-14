@@ -1,0 +1,86 @@
+.uol-key-facts {
+  background-color: $color-brand-cream;
+
+  /*
+  TODO: width fix for fitting in to course pages incorporating scroll bar
+  Do more robust solution whereby scrollbar width is calculated via using client width
+  */
+  width: 100%;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50%;
+  margin-right: -50%;
+  margin-bottom: $spacing-7;
+
+  @include media(">=uol-media-l") {
+    width: calc(100vw - 9px);
+    position: relative;
+    margin-left: -50vw;
+    margin-right: -50vw;
+  }
+}
+
+  .uol-key-facts__list {
+    @extend .text-size-paragraph;
+
+    font-variant-numeric: lining-nums;
+    padding: 0;
+    margin: $spacing-5 #{$spacing-4 / 2};
+    width: 100%;
+
+    @include media(">=uol-media-s", "<uol-media-l") {
+      columns: 2;
+      column-gap: $spacing-4;
+      margin: $spacing-5 calc((1 / 12) * 100% + #{$spacing-2});
+    }
+
+    @include media(">=uol-media-l") {
+      columns: 3;
+      margin: $spacing-4 #{$spacing-5 / 2};
+      column-gap: $spacing-5;
+    }
+
+    @include media(">=uol-media-xl") {
+      margin: 2.25rem calc((1 / 12) * 100% + #{$spacing-6 / 2}) 2.25rem #{$spacing-6 / 2};
+      column-gap: calc((100% + #{$spacing-6}) / 11 + #{$spacing-6});
+    }
+  }
+
+  .uol-key-facts__group {
+    break-inside: avoid;
+    margin-bottom: $spacing-4;
+
+    &:last-child {
+      margin-bottom: 0;
+
+      @include media(">=uol-media-s") {
+        margin-bottom: $spacing-4;
+      }
+    }
+
+    @include media(">=uol-media-l") {
+      margin: 0;
+      padding: $spacing-3 0;
+    }
+  }
+
+  .uol-key-facts__term {
+    font-weight: $font-weight-bold--sans-serif;
+    color: $color-font--dark;
+  }
+
+  .uol-key-facts__data {
+    margin-left: 0;
+  }
+
+  // Temp to fix alignment, there is probably better way to do this.
+  .uol-col-container--key-facts {
+
+    [class*=uol-col-] & {
+      margin: 0;
+    }
+    @include media(">=uol-media-l") {
+      padding: 1rem 1.5rem;
+    }
+  }

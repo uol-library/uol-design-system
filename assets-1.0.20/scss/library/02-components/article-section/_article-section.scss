@@ -1,0 +1,35 @@
+.uol-article-section {
+
+}
+
+  .uol-article-section__title {
+    margin-bottom: $spacing-4 !important;
+  }
+
+    .uol-article-section__content {
+
+      .uol-spacing ul:last-child {
+        margin-bottom: 0 !important;
+      }
+      
+      .uol-spacing ul:first-of-type {
+        padding-top: $spacing-2;
+      }
+
+      a {
+            text-decoration: underline;
+            color: inherit;
+
+            &:hover,
+            &:focus {
+                // color: $color-brand-1;
+            }
+        }
+
+        .uol-publications-list__further-link {
+          text-decoration: none;
+          font-weight: $font-weight-bold--sans-serif;
+        }
+    }
+
+    

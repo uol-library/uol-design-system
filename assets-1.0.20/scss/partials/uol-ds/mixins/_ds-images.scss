@@ -1,0 +1,25 @@
+// Alternative to object-fit. Can be removed once we drop IE11 support
+@mixin imageFit($heightRatio: 100%) {
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    display: block;
+    width: 0;
+    padding-bottom: $heightRatio;
+  }
+
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    height: auto;
+    min-width: 100%;
+    min-height: 100%;
+    max-height: 100%;
+    object-fit: cover;
+  }
+}

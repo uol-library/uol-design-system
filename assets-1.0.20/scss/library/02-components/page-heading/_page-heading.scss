@@ -1,0 +1,152 @@
+.page-heading {
+  margin-bottom: $spacing-6;
+
+  @include media(">=uol-media-m") {
+    margin-bottom: $spacing-7;
+  }
+
+  .uol-article--profile & {
+    margin-bottom: 0;
+  }
+}
+
+.page-heading__title__main {
+  @extend .uol-typography-heading-1;
+
+  position: relative;
+  margin: 24px 0 0;
+
+  @include media(">=uol-media-m") {
+    margin: 40px 0 0;
+  }
+
+  @include media(">=uol-media-l") {
+    margin: 48px 0 0;
+  }
+
+  @include media(">=uol-media-xl") {
+    margin: 48px 0 0;
+  }
+}
+
+  .page-heading__title {
+    @extend .uol-typography-heading-1;
+
+    position: relative;
+    margin: 24px 0 0;
+
+    @include media(">=uol-media-m") {
+      margin: 40px 0 0;
+    }
+
+    @include media(">=uol-media-l") {
+      margin: 48px 0 0;
+    }
+
+    @include media(">=uol-media-xl") {
+      margin: 48px 0 0;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      display: inline-block;
+      top: -16px;
+      left: 0;
+      width: $spacing-5;
+      height: $spacing-2;
+      background-color: $color-brand;
+
+      @include media(">=uol-media-m") {
+        top: -24px;
+        width: $spacing-6;
+      }
+
+      @include media(">=uol-media-l") {
+        top: -24px;
+        width: $spacing-6;
+      }
+
+      @include media(">=uol-media-xl") {
+        top: -24px;
+      }
+    }
+
+    &.page-heading__title--subtitle {
+      @extend %text-size-heading-2;
+      @extend %uol-font-serif;
+
+      display: block;
+      padding-top: $spacing-2;
+      font-weight: $font-weight-bold--serif;
+
+      &::before {
+        content: none;
+      }
+    }
+
+    
+  }
+
+  .page-heading__title--position {
+    @extend %text-size-heading-4;
+    @extend %uol-font-serif;
+
+    margin-top: $spacing-2;
+    display: block;
+    font-weight: $font-weight-bold--serif;
+    color: $color-brand;
+  }
+
+  .page-heading__meta {
+    @extend .uol-typography-paragraph-small;
+
+    margin-top: $spacing-2;
+    margin-bottom: 0;
+
+    @include media(">=uol-media-m") {
+      margin-top: $spacing-4;
+    }
+    
+  }
+
+    .page-heading__meta__group {
+      margin-bottom: $spacing-1;
+    }
+
+    .page-heading__meta__term {
+      @extend .hide-accessible;
+    }
+
+    .page-heading__meta__data {
+      display: inline-block;
+      margin: 0;
+      color: $color-font--x-light;
+      font-variant-numeric: lining-nums;
+
+      .uol-article--profile &,
+      .uol-article--person-insight &,
+      .uol-article--blog & {
+        @extend %text-size-heading-4;
+        @extend %uol-font-serif;
+
+        font-weight: $font-weight-bold--serif;
+        color: $color-brand;
+      }
+    }
+
+      .page-heading__meta__data__link {
+        color: $color-brand;
+
+        &::after {
+          content: ",";
+          position: relative;
+          left: -0.3em;
+        }
+
+        .page-heading__meta__data:last-of-type & {
+          &::after {
+            content: none;
+          }
+        }
+      }

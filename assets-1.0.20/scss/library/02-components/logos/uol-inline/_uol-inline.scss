@@ -1,0 +1,9 @@
+.uol-logo-uol-inline {
+  .uol-logo-uol-inline__img {
+    fill: $color-black;
+
+    @media screen and (-ms-high-contrast: active) {
+      fill: windowText;
+    }
+  }
+}

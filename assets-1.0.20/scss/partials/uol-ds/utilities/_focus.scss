@@ -1,0 +1,9 @@
+// uses npm focus-visible polyfill until browser support improves
+.js-focus-visible :focus:not(.focus-visible) {
+  outline: none;
+}
+
+/* Optional: Customize .focus-visible */
+// .focus-visible {
+//     outline: rgb(17, 46, 135) auto 1px;
+// }

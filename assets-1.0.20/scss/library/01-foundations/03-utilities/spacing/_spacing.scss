@@ -1,0 +1,433 @@
+/*
+The rules below were taken from article scss for uol-article-container
+The uol-main-container has been added to ensure article and doc pages settings the same
+*/
+
+.uol-article-container, .uol-page-container {
+  padding: 0 $spacing-2;
+  margin: $spacing-2 auto $spacing-8;
+
+  @include media(">=uol-media-m") {
+    margin: $spacing-3 auto $spacing-9;
+    padding: 0 $spacing-4;
+  }
+
+  @include media(">=uol-media-l") {
+    margin: $spacing-3 auto $spacing-10;
+    padding: 0 $spacing-4;
+
+    .uol-side-nav-container--populated {
+      padding: $spacing-3 14px $spacing-3 $spacing-2;
+    }
+  }
+
+  @include media(">=uol-media-xl") {
+    margin: $spacing-4 auto $spacing-10;
+    padding: 0 $spacing-4;
+
+    .uol-side-nav-container--populated {
+      padding: $spacing-4;
+    }
+  }
+
+  .page-heading {
+    margin-bottom: $spacing-4;
+  }
+}
+
+/*
+Article and document pages added uol-spacing class
+Rules nested under this to only apply spacing to those pages
+*/
+.uol-spacing {
+
+  > blockquote {
+    margin-bottom: 0;
+  }
+
+  > .fluid-width-video-wrapper {
+    margin-bottom: $spacing-6;
+  }
+
+  // CK editor followed by paragraph, set spacing between both to be 32px
+  > blockquote,
+  > .uol-in-text-cta,
+  > .uol-accordion,
+  > .fluid-width-video-wrapper,
+  > .uol-logo-group,
+  > .text-highlight
+   {
+    & + p {
+      margin-top: $spacing-6 !important;
+    }
+  }
+
+  > p:first-of-type {
+    margin: $spacing-6 0;
+
+    @include media(">=uol-media-m") {
+      margin: $spacing-7 0;
+    }
+  }
+
+  // Heading followed by next heading level down tree
+  > h1 + h2,
+  > h2 + h3,
+  > h3 + h4,
+  > h4 + h5,
+  > h5 + h6 {
+    margin-top: $spacing-6 !important;
+  }
+
+  // heading followed by rules
+
+  > h1, > h2, > h3, > h4, > h5, > h6 {
+    // generic heading spacing rules
+    margin-top: $spacing-7 !important;
+
+    @include media(">=uol-media-m") {
+      margin-top: $spacing-7 !important;
+    }
+    margin-bottom: $spacing-4;
+
+    // heading followed by paragraph
+    & + p {
+      margin-top: $spacing-2;
+
+      @include media(">=uol-media-m") {
+        margin-top: $spacing-4;
+      }
+    }
+
+    // heading followed by ordered or ordered standard list
+    & + ul,
+    & + ol {
+      margin-top: $spacing-5;
+    }
+
+    // heading followed by in text facts
+    & + .uol-in-text-facts {
+      margin-top: $spacing-5;
+
+      .uol-in-text-facts__title {
+        margin-top: $spacing-6;
+      }
+    }
+
+    // heading followed by CK elements
+    & + figure,
+    & + .uol-in-text-cta,
+    & + .uol-accordion,
+    & + .fluid-width-video-wrapper,
+    & + .uol-logo-group,
+    & + .text-highlight,
+    & + .uol-image-pair {
+      margin-top: $spacing-5;
+
+      @include media(">=uol-media-m") {
+        margin-top: $spacing-6;
+      }
+    }
+
+    // Negative margin negates table header internal top padding
+    & + .uol-table-outer {
+      margin-top: $spacing-5;
+
+      @include media(">=uol-media-xs") {
+        margin-top: -8px;
+      }
+
+
+      @include media(">=uol-media-m") {
+        margin-top: 0;
+      }
+    }
+
+    & + .uol-iframe {
+      margin-top: $spacing-2;
+
+      @include media(">=uol-media-m") {
+        margin-top: $spacing-4;
+      }
+    }
+
+    // heading followed by linked list (result 16, 24)
+    & + .uol-linked-list {
+      margin-top: -8px; // fix due to padding on linked list items themselves
+      margin-bottom: -18px;
+
+      @include media(">=uol-media-m") {
+        margin-top: 0;
+      }
+    }
+
+    // heading followed by blockquote
+    & + blockquote {
+      margin-top: 30px;
+
+      @include media(">=uol-media-m") {
+        margin-top: 44px;
+      }
+    }
+  }
+
+  // paragraph followed by rules
+
+  > p {
+
+    margin-top: $spacing-6;
+
+    // paragraph followed by ordered or ordered standard list
+
+    & + ul,
+    & + ol {
+      margin-top: 0; // fix due to padding on list items themselves
+    }
+
+    // paragraph followed by ck editor element, 32px for all viewpoints
+
+    & + figure,
+    & + .uol-logo-group,
+    & + .uol-in-text-cta,
+    & + .text-highlight,
+    & + .fluid-width-video-wrapper,
+    & + .uol-image-pair,
+    & + .uol-accordion {
+      margin-top: $spacing-6;
+    }
+
+    & + .uol-iframe {
+      margin-top: 0;
+    }
+
+    & + .uol-table-outer {
+      margin-top: 0;
+
+      @include media(">=uol-media-xs") {
+        margin-top: -16px;
+
+        caption {
+          margin-top: $spacing-4;
+        }
+      }
+
+    }
+
+    // paragraph followed by linked list
+
+    & + .uol-linked-list {
+      margin-top: -14px; // fix due to padding on linked list items themselves
+      margin-bottom: -18px;
+
+      @include media(">=uol-media-m") {
+        margin-top: -14px;
+      }
+    }
+
+    & + .uol-in-text-facts {
+      margin-top: -16px; // required gap 32px, in text facts has its own margins
+    }
+
+    // paragraph followed by blockquote - not same values due to quote mark being off the top
+
+    & + blockquote {
+      margin-top: $spacing-5;
+      margin-bottom: 0;
+
+      @include media(">=uol-media-m") {
+        margin-top: 26px;
+      }
+    }
+
+    blockquote + * , .uol-typography-pull-quote + *  {
+      margin-top: 0;
+    }
+  }
+
+  > figure,
+  >  .uol-table-outer,
+  >  .uol-logo-group,
+  >  .uol-in-text-cta,
+  >  .uol-in-text-facts,
+  >  .text-highlight,
+  >  .fluid-width-video-wrapper,
+  >  .uol-image-pair,
+  >  .uol-accordion,
+  > ol,
+  > ul {
+    & + p {
+      margin-top: $spacing-6 !important;
+    }
+  }
+
+  >  .uol-iframe {
+
+    // fix because iFrame has 5px at bottom to cope with potential characters below the bottom of the block
+    margin-bottom: -5px;
+
+    & + p {
+      margin-top: $spacing-6 !important;
+    }
+  }
+
+  >  .uol-linked-list {
+    & + p {
+      margin-top: $spacing-6 !important;
+    }
+  }
+
+  /*
+  Here we are looking at spacing underneath each element,
+  if it is the last element in the content area.
+  Apply margin (positive or negative) to achieve following:
+  64px for viewpoints <768
+  80px for viewpoints =>768
+  96px for viewpoints =>1024
+
+  following ones don't need adjusting (keeping in code in case des review wants to change)
+  > p:last-child {}
+  > blockquote:last-child {}
+  > .text-highlight:last-child {}
+  > .uol-image-pair:last-child {}
+  > .uol-table-outer:last-child {}
+  > figure:last-child {}
+  > .fluid-width-video-wrapper:last-child {}
+  > .uol-in-text-cta:last-child {}
+  */
+
+  > p:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  > ol:last-child, ul:last-child {
+    // current: <768 72px, =>768 88px, =>1024 104px,
+    // reduce gap by 8px for each resolution due to list element padding
+    margin-bottom: calc((#{$spacing-2}) * -1) !important; // -8px
+  }
+
+  > .uol-logo-group:last-child {
+    // current: <768 88px, =>768 104px, =>1024 120px,
+    // reduce gap by 24px for each resolution due to space under each logo and caption
+    margin-bottom: calc((#{$spacing-5}) * -1) !important; // -8px
+  }
+
+  > .in-text-icons:last-child {
+    // current: <768 84px, =>768 80px, =>1024 96px,
+    // just out <768px when in one column
+    .in-text-icon:last-child {
+      margin-bottom: 6px !important;
+    }
+  }
+
+  > .uol-in-text-facts:last-child {
+    // current: <768 80px, =>768 80px, =>1024 96px,
+    // 16px too big for <768 (when stacked in one column)
+
+    @include media("<uol-media-m") {
+      margin-bottom: calc((#{$spacing-4}) * -1) !important; // -16px
+    }
+  }
+
+  > .uol-linked-list:last-child {
+    // current: <768 72px, =>768 86px, =>1024 102px,
+    // below adjustments get desired spacings
+    margin-bottom: -20px !important; // -8px
+
+    @include media(">=uol-media-m") {
+      margin-bottom: -16px;
+    }
+  }
+
+}
+
+.uol-page {
+  .uol-rich-text {
+    max-width: inherit !important;
+
+    > *,
+    > * > * {
+      max-width: inherit !important;
+    }
+  }
+}
+
+// special rule as this h3 is embedded inside component
+.uol-in-text-facts__title {
+  margin-top: $spacing-7 !important;
+}
+
+// lead sentence
+.uol-rich-text--with-lead > p:first-of-type {
+
+  @include media(">=uol-media-m") {
+    margin-top: $spacing-6 !important;
+  }
+
+}
+
+// list followed by in text CTA spacing
+ol + .uol-in-text-cta,
+ul + .uol-in-text-cta {
+  margin-top: $spacing-6;
+}
+
+/*
+Horizontal spacing aids.
+Set classes here for spreading content over a number of columns.
+Potentially set these up with mixins, but for now only add required ones.
+*/
+
+.full-width-container {
+  max-width: 103.75rem;
+  margin: 0 auto;
+  padding: 0;
+
+}
+
+.s-1-12 {
+  margin-left: #{$col-gutter-s};
+  width: calc((100% - #{$col-gutter-s}) - #{$col-gutter-s});
+}
+
+
+.m-1-9 {
+  @include media(">=uol-media-m") {
+    margin-left: calc(100% / 12 * 0 + #{$col-gutter-m});
+    width: calc((100% - #{$col-gutter-m}) / 12 * 9 - #{$col-gutter-m});
+  }
+
+  @include media(">=uol-media-l") {
+    margin-left: calc(100% / 12 * 0 + #{$col-gutter-l});
+    width: calc((100% - #{$col-gutter-l}) / 12 * 9 - #{$col-gutter-l});
+  }
+
+  @include media(">=uol-media-xl") {
+    margin-left: calc(100% / 12 * 0 + #{$col-gutter-xl});
+    width: calc((100% - #{$col-gutter-xl}) / 12 * 9 - #{$col-gutter-xl});
+  }
+}
+
+.l-1-9 {
+
+  @include media(">=uol-media-l") {
+    margin-left: calc(100% / 12 * 0 + #{$col-gutter-l});
+    width: calc((100% - #{$col-gutter-l}) / 12 * 9 - #{$col-gutter-l});
+  }
+
+  @include media(">=uol-media-xl") {
+    margin-left: calc(100% / 12 * 0 + #{$col-gutter-xl});
+    width: calc((100% - #{$col-gutter-xl}) / 12 * 9 - #{$col-gutter-xl});
+  }
+}
+
+
+.uol-full-width-content--with-lead.uol-rich-text p:first-of-type {
+  @extend %text-size-paragraph--intro;
+  font-weight: 500;
+}
+
+
+
+
+
+

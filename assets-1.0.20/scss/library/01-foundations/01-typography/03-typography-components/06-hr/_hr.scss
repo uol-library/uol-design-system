@@ -1,0 +1,32 @@
+.uol-typography-hr {
+    border: none;
+    margin: $spacing-5 auto;
+    height: 4px;
+    width: 4px;
+    position: relative;
+    overflow: visible;
+    background: $color-brand--bright;
+    border-radius: 50%;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      height: inherit;
+      width: inherit;
+      border-radius: 50%;
+      background: $color-brand--pastel;
+    }
+
+    &::before {
+      left: -$spacing-5;
+    }
+
+    &::after {
+      right: -$spacing-5;
+    }
+
+    @include media(">=uol-media-l") {
+      margin: $spacing-6 auto;
+    }
+}

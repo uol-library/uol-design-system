@@ -1,0 +1,47 @@
+@mixin font-size-responsive($font-size-mobile, $font-size-tablet:null, $font-size-desktop:null) {
+  font-size: $font-size-mobile;
+
+  @if $font-size-tablet {
+    @include media(">=uol-media-m") {
+      font-size: $font-size-tablet;
+    }
+  }
+
+  @if $font-size-desktop {
+    @include media(">=uol-media-l") {
+      font-size: $font-size-desktop;
+    }
+  }
+}
+
+@mixin line-height-responsive($line-height-mobile, $line-height-tablet:null, $line-height-desktop:null) {
+  line-height: $line-height-mobile;
+
+  @if $line-height-tablet {
+    @include media(">=uol-media-m") {
+      line-height: $line-height-tablet;
+    }
+  }
+
+  @if $line-height-desktop {
+    @include media(">=uol-media-l") {
+      line-height: $line-height-desktop;
+    }
+  }
+}
+
+@mixin letter-spacing-responsive($letter-spacing-mobile, $letter-spacing-tablet:null, $letter-spacing-desktop:null) {
+  letter-spacing: $letter-spacing-mobile;
+
+  @if $letter-spacing-tablet {
+    @include media(">=uol-media-m") {
+      letter-spacing: $letter-spacing-tablet;
+    }
+  }
+
+  @if $letter-spacing-desktop {
+    @include media(">=uol-media-l") {
+      letter-spacing: $letter-spacing-desktop;
+    }
+  }
+}

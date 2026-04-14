@@ -1,0 +1,351 @@
+.uol-typeahead {
+  background: $color-white;
+
+  &[type="text"] {
+    padding-right: $spacing-6;
+  }
+
+  ~ svg {
+    transition: transform 200ms ease-in-out;
+  }
+
+  &[aria-expanded="true"] {
+    border-radius: 6px 6px 0 0;
+
+    ~ .uol-form__input__chevron {
+      cursor: pointer;
+      pointer-events: auto;
+      transform: rotate(180deg)
+    }
+  }
+
+  &[aria-expanded="false"] {
+    border-radius: 6px;
+
+    ~ svg {
+      transform: rotate(0)
+    }
+  }
+}
+
+  .uol-typeahead__list {
+    box-sizing: border-box;
+    position: absolute;
+    top: 1.85rem;
+    left: 0;
+    border: 1px solid $color-border;
+    padding: 0;
+    width: 100%;
+    max-height: 12rem;
+    list-style-type: none;
+    z-index: 11;
+    overflow-y: auto;
+    background-color: $color-white;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+
+    &[data-panel-shown="false"] {
+      visibility: hidden;
+    }
+
+    &[data-panel-shown="true"] {
+      visibility: visible;
+    }
+
+    @include media(">=uol-media-m") {
+      max-height: 22rem;
+    }
+
+    @include media(">=uol-media-l") {
+      max-height: 24rem;
+    }
+  }
+
+  .uol-typeahead__item {
+    @extend %text-size-paragraph--small;
+
+    position: relative;
+    display: flex;
+    padding: 1rem 2.875rem 1rem $spacing-3;
+    // min-height: 2.875rem;
+    // align-items: center;
+    font-family: $font-family-sans-serif;
+    font-weight: normal;
+    background: inherit;
+    color: $color-font;
+    align-items: center;
+    line-height: 2rem;
+
+    &[data-item-active] {
+      background-color: $color-brand-2--light;
+    }
+
+    .uol-typeahead__list--multi-select & {
+      &::before {
+        content: "";
+        position: relative;
+        margin-right: $spacing-2;
+        min-width: 1.75rem;
+        height: 1.75rem;
+        width: 1.75rem;
+        border: 2px solid $color-brand-2--dark;
+        background-color: $color-white;
+        z-index: 2;
+        pointer-events: none;
+        display: flex;
+        align-self: flex-start;
+      }
+      &[aria-selected="true"] {
+
+        > svg {
+          top: 31px;
+          fill: $color-brand-2--dark;
+          color: $color-brand-2--dark;
+        }
+
+      }
+    }
+
+    &:hover {
+      background-color: #699B9D;
+      cursor: pointer;
+    }
+
+
+    &[aria-selected="true"] {
+
+      > svg {
+        position: relative;
+        top: -1px;
+        left: $spacing-2;
+        fill: $color-black--dark;
+        color: $color-black--dark;
+        pointer-events: none;
+
+        .uol-typeahead__list--multi-select & {
+          position: absolute;
+          z-index: 3;
+          left: $spacing-4;
+          transform: translateY(-50%);
+        }
+
+        @media screen and (forced-colors: active) {
+          fill: CanvasText;
+        }
+      }
+    }
+
+    &[data-filter-hidden] {
+      display: none;
+    }
+
+    @include media(">=uol-media-l") {
+      font-family: $font-family-sans-serif--desktop;
+    }
+  }
+
+  //Stop onload flash
+  .js {
+    .uol-form__input--select {
+
+      &[hidden] {
+        display: none;
+      }
+
+      // Enable next five lines to show native select
+      // &:not([data-native-select]) {
+      //   display: block;
+      //   height: 200px !important;
+      //   margin-top: 250px !important;
+      // }
+    }
+  }
+
+  // Modifier for uol-chips, when appearing in input field they have associated boundary and other
+  .uol-chips--inInput {
+    padding-top: $spacing-3;
+    padding-left: 6px;
+    border: 1px solid $color-border;
+    border-bottom: none;
+    border-radius: 6px;
+    margin: 0 0 -8px 0;
+    background-color: #fff;
+
+    @include media(">=uol-media-s") {
+      max-width: calc(27.375rem - 8px);
+    }
+  }
+
+  .uol-chips--inInput__true {
+    border: 2px solid $color-alert--error;
+    border-bottom: 0;
+    box-shadow:
+      0 3px 6px rgba(0, 0, 0, 0.15),
+      0 2px 4px rgba(0, 0, 0, 0.12);
+    
+      @include media(">=uol-media-s") {
+        max-width: calc(27.375rem - 10px);
+      }
+  }
+
+  .uol-typeahead--panelOpenChips {
+    // Increase specificity
+    &.uol-typeahead {
+      border-top: 0;
+      border-radius: 0;
+    }
+
+    &[aria-invalid="true"] {
+      border-top: 0 !important;
+    }
+  }
+
+  .uol-typeahead--panelOpenChips {
+    
+
+  }
+
+  .uol-typeahead--panelOpenNoChips {
+    // Increase specificity
+    &.uol-typeahead {
+      border-radius: 6px 6px 0 0;
+    }
+
+    &::before {
+      border-radius: 0;
+    }
+  }
+
+  .uol-typeahead--panelClosedChips {
+    // Increase specificity
+    &.uol-typeahead {
+      border-top: 0 !important;
+      border-radius: 0 0 6px 6px;
+    }
+
+    &::before {
+      border-radius: 0;
+    }
+  }
+
+  .uol-typeahead--panelClosedNoChips {
+    // Increase specificity
+    &.uol-typeahead {
+      border-radius: 6px 6px 6px 6px;
+    }
+  }
+
+  .uol-typeahead__input--no-chips--panel-open {
+    // Important overwrites JS setting of values for generic (chips) version
+    padding-top: 50px !important;
+    height: 100px !important;
+  }
+
+  .uol-typeahead__input--no-chips--panel-closed {
+    // Important overwrites JS setting of values for generic (chips) version
+    padding-top: 50px !important;
+    height: 50px !important;
+  }
+
+  .uol-typeahead__select--no-chips--panel-open {
+    top: 80px;
+  }
+
+  .uol-typeahead__select--no-chips--panel-closed {
+    top: 30px;
+  }
+
+  .uol-typeahead__count-num--no-chips--panel-open {
+    border-bottom: 1px solid #51504c;
+    padding-bottom: 8px;
+  }
+
+  .uol-typeahead__count-num--no-chips--panel-closed {
+    border-bottom: none;
+    padding-bottom: 0;
+
+
+  }
+
+  .uol-form__input-wrapper__num-of-selected-message {
+    @extend .uol-typography-paragraph;
+
+    display: block;
+    width: calc(100% - #{$spacing-3});
+    padding-left: $spacing-3;
+    position: absolute;
+    left: 0;
+    top: 12px;
+    color: $color-font--light;
+    pointer-events: none;
+
+    @include media(">=uol-media-m") {
+      top: 10px;
+    }
+
+    @include media(">=uol-media-l") {
+      top: 8px;
+    }
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  // native select in search form
+  .uol-form__input-wrapper--search-typeahead {
+    .uol-form__input--select {
+      height: 44px;
+      padding-bottom: 0;
+
+      @include media("<=uol-media-m") {
+        margin-bottom: $spacing-6;
+      }
+    }
+  }
+
+  // Enable if want to see default multiselect
+  // .uol-form__input--select {
+  //   margin-top: 200px;
+  //   height: 10rem !important;
+  // }
+
+  // .uol-chips {
+  //   margin: 0;
+  //   padding: 0;
+  // }
+
+  //   .uol-chips__item {
+  //     display: inline-block;
+  //     margin: 0 $spacing-3 $spacing-3;
+  //   }
+
+  //   .uol-chips__button {
+  //     display: flex;
+  //     align-items: center;
+  //     justify-content: center;
+  //     position: relative;
+  //     border: none;
+  //     border-radius: 6px;
+  //     padding: $spacing-1 $spacing-7 $spacing-1 $spacing-2;
+  //     background-color: #699B9D;
+  //     cursor: pointer;
+
+  //     &::before {
+  //       content: "\00d7";
+  //       box-sizing: border-box;
+  //       position: absolute;
+  //       right: $spacing-3;
+  //       border: 1px solid $color-brand-2--dark;
+  //       border-radius: 50%;
+  //       height: 1.75rem;
+  //       width: 1.75rem;
+  //       font-size: 1.75rem;
+  //       line-height: 0.7;
+  //       color: $color-font--dark;
+  //       background-color: $color-white;
+  //     }
+  //   }
+
+
+

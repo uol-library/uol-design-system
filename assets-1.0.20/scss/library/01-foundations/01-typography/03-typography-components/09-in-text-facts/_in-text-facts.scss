@@ -1,0 +1,143 @@
+.uol-in-text-facts {
+  margin-bottom: 0;
+
+  @include media(">=uol-media-m") {
+    margin-bottom: $spacing-6;
+  }
+}
+
+  .uol-in-text-facts__title {
+    margin-bottom: $spacing-5;
+
+    @include media(">=uol-media-m") {
+      margin-bottom: $spacing-6;
+    }
+  }
+
+  h2.uol-in-text-facts__title,
+  h3.uol-in-text-facts__title,
+  h4.uol-in-text-facts__title,
+  h5.uol-in-text-facts__title,
+  h6.uol-in-text-facts__title {
+    color: $color-font--dark;
+  }
+
+  h2.uol-in-text-facts__title {
+    @extend .uol-typography-heading-2;
+  }
+
+  h3.uol-in-text-facts__title,
+  h3.uol-in-text-fact__item__title {
+    @extend .uol-typography-heading-3;
+  }
+
+  h4.uol-in-text-facts__title,
+  h4.uol-in-text-fact__item__title {
+    @extend .uol-typography-heading-4;
+  }
+
+  h5.uol-in-text-facts__title,
+  h5.uol-in-text-fact__item__title {
+    @extend .uol-typography-heading-5;
+  }
+
+  h6.uol-in-text-fact__item__title {
+    @extend .uol-typography-heading-6;
+  }
+
+  .uol-in-text-facts__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .uol-in-text-fact__item {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: $color-brand-2--bright;
+    color: $color-white;
+    text-align: center;
+    padding: $spacing-4 $spacing-5 $spacing-5;
+
+    @include media(">=uol-media-xs") {
+      padding: $spacing-4 $spacing-7 $spacing-5;
+    }
+
+    @include media(">=uol-media-m") {
+      padding: $spacing-4 $spacing-9 $spacing-5;
+    }
+
+    &:not(:only-child) {
+
+      @include media(">=uol-media-m") {
+        /*
+        when there's 2 facts (not only child) and resolution above 768px span in rows
+        width of each item is 50% - half gap between both
+        */
+        padding: $spacing-4 $spacing-6 $spacing-5;
+        width: calc(50% - #{$spacing-5} / 2);
+      }
+
+      @include media(">=uol-media-xl") {
+        width: calc(50% - #{$spacing-6} / 2);
+      }
+    }
+  }
+
+  .uol-in-text-fact__item {
+      margin-bottom: $spacing-4;
+
+      @include media(">=uol-media-m") {
+        margin-bottom: $spacing-5;
+      }
+
+      @include media(">=uol-media-xl") {
+        margin-bottom: $spacing-6;
+      }
+  }
+
+    .uol-in-text-fact__item__title {
+      margin: 0 0 $spacing-1 0;
+      text-decoration: none;
+    }
+
+    .uol-in-text-fact__item__description {
+      @extend .uol-typography-paragraph;
+
+      margin: 0;
+    }
+
+    .uol-in-text-fact__link {
+      text-decoration: none;
+
+      &:hover {
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, .12);
+      }
+
+        &:focus-within {
+          .uol-in-text-fact__item__description {
+            outline-offset: 2px;
+            outline: $color-white 2px dotted;
+          }
+        }
+    }
+
+    .uol-in-text-fact__link .uol-in-text-fact__item__description {
+      text-decoration: underline;
+    }
+
+    // Stacked variant - always stack items for all viewpoints - only for CLP
+    .uol-in-text-facts__container--stacked {
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+
+      .uol-in-text-fact__item {
+        width: 444px;
+        margin-bottom: 2.5rem;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }

@@ -1,0 +1,73 @@
+.uol-footer-contact {
+  font-style: normal;
+  font-variant-numeric: lining-nums;
+}
+
+  .uol-footer-contact__title {
+    @extend .hide-accessible;
+  }
+
+  .uol-footer-contact__name {
+    @extend %text-size-paragraph--small;
+
+    display: block;
+    position: relative;
+    font-weight: $font-weight-bold--sans-serif;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+
+    &::before {
+      content: "";
+      position: absolute;
+      display: inline-block;
+      top: -1rem;
+      left: 0;
+      width: 1rem;
+      height: 0.25rem;
+      background-color: $color-brand--bright;
+    }
+  }
+
+  .uol-footer-contact__address {
+    @extend %text-size-paragraph--small;
+
+    padding: 0 0 $spacing-4;
+  }
+
+    .uol-footer-contact__address__item {
+      display: block;
+    }
+
+  .uol-footer-contact__telephone-email-container {
+    position: relative;
+    margin-top: $spacing-4;
+    margin-bottom: $spacing-6;
+
+    &::before {
+      content: "";
+      position: absolute;
+      display: inline-block;
+      top: -1rem;
+      left: 0;
+      width: 1rem;
+      height: 0.25rem;
+      background-color: $color-brand--bright;
+    }
+  }
+
+  .uol-footer-contact__telephone-email-label {
+    @extend .hide-accessible;
+  }
+
+  .uol-footer-contact__telephone-email-data {
+    margin-left: 0;
+  }
+
+  .uol-footer-contact__telephone,
+  .uol-footer-contact__email {
+    @extend %text-size-paragraph--small;
+
+    display: inline-block;
+    color: inherit;
+    text-decoration: none;
+  }

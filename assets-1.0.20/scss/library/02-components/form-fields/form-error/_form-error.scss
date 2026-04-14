@@ -1,0 +1,21 @@
+.uol-form__form-error {
+  @extend .uol-form__input__error;
+
+  position: relative;
+  max-width: 27.375rem;
+  border-radius: 6px;
+  margin-bottom: 2.5rem;
+
+  &[data-form-error="true"] {
+    @include button_focus(-5px, false, $color-alert--error);
+  }
+
+  p {
+    margin: 0;
+    padding: 0;;
+  }
+}
+.uol-form__form-error__text {
+  position: relative;
+  z-index: 3;
+}

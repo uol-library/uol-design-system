@@ -1,0 +1,7 @@
+.uol-results-count__title {
+  @include font-size-responsive(1.125rem, 1.25rem);
+  font-weight: $font-weight-regular--serif;
+  font-variant-numeric: lining-nums;
+  text-align: left;
+}
+

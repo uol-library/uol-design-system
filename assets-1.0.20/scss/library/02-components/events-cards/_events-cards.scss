@@ -1,0 +1,135 @@
+.events-cards {
+  box-sizing: border-box;
+
+  @include media(">=uol-media-m") {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: 0 -#{$spacing-2};
+  }
+
+  @include media(">=uol-media-l") {
+    margin: 0 -#{$spacing-3};
+  }
+
+  @include media(">=uol-media-xl") {
+    margin: 0 -#{$spacing-4};
+  }
+}
+
+.event-card-outer {
+  box-sizing: border-box;
+  width: 100%;
+
+  @include media(">=uol-media-m") {
+    width: 50%;
+    padding: 0 $spacing-2;
+  }
+
+  @include media(">=uol-media-l") {
+    padding: 0 $spacing-3;
+  }
+
+  @include media(">=uol-media-xl") {
+    width: 25%;
+    padding: 0 $spacing-4;
+  }
+
+  .uol-side-nav-container--populated + .uol-homepage-content & {
+
+    @include media(">=uol-media-l") {
+      width: 50%;
+    }
+
+    @include media(">=uol-media-xl") {
+      width: calc(100% / 3);
+    }
+  }
+}
+
+.event-card {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  position: relative;
+  box-sizing: border-box;
+  border-top: 2px solid $color-brand;
+  padding: $spacing-4 0 $spacing-6 0;
+  height: 100%;
+
+  &:focus-within {
+    background-color: $color-brand--faded;
+  }
+}
+
+  .event-card__title {
+    @extend .uol-typography-heading-5;
+
+    width: 100%;
+    margin: $spacing-2 0 $spacing-1;
+  }
+
+  .event-card__link {
+    text-decoration: none;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+
+    .event-card:focus-within &,
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+      text-decoration-color: $color-brand--bright;
+    }
+  }
+
+  .event-card__dates {
+    order: -1;
+    margin-left: 2.25rem;
+    margin-top: 0.75rem;
+
+    @include media("<=uol-media-m") {
+      width: 100%;
+    }
+
+    @include media(">=uol-media-m") {
+      margin-left: 3rem;
+      margin-top: 1.5rem;
+    }
+
+    @include media(">=uol-media-l") {
+      margin-left: 3.5rem;
+      margin-top: 1.875rem;
+    }
+  }
+
+  .event-card__dates,
+  .event-card__time {
+    @extend .uol-typography-paragraph-small;
+
+    font-weight: $font-weight-medium--sans-serif;
+    font-variant-numeric: lining-nums;
+  }
+
+  .event-card__time {
+    width: 100%;
+  }
+
+  .event-card__date__end-date {
+    white-space: nowrap;
+  }
+
+  .event-card__date__start-date__day {
+    @extend .uol-typography-heading-1;
+
+    position: absolute;
+    left: 0;
+    top: $spacing-4;
+    font-variant-numeric: lining-nums;
+  }

@@ -1,0 +1,94 @@
+.uol-page-nav {
+  display: block;
+  max-width: 47.5rem;
+  margin: $spacing-6 0;
+
+  @include media(">=uol-media-m") {
+    display: flex;
+    margin: $spacing-8 0;
+  }
+
+  .uol-course__content & {
+    max-width: none;
+  }
+
+}
+
+  .uol-page-nav__item {
+    @include link_focus();
+
+    &:focus {
+      text-decoration: none;
+    }
+
+    box-sizing: border-box;
+    display: block;
+    text-decoration: none;
+    border: solid $color-border;
+    border-width: 1px 0;
+    padding: $spacing-5 $spacing-4;
+
+    .uol-page-nav__item + & {
+      @include media("<uol-media-m") {
+        border-top: none;
+      }
+
+      @include media(">=uol-media-m") {
+        margin-left: $spacing-4;
+      }
+
+      @include media(">=uol-media-l") {
+        margin-left: $spacing-5;
+      }
+
+      @include media(">=uol-media-xl") {
+        margin-left: $spacing-6;
+      }
+    }
+
+    @include media(">=uol-media-m") {
+      flex-basis: calc(50% - #{$spacing-2});
+    }
+
+    @include media(">=uol-media-l") {
+      flex-basis: calc(50% - #{$spacing-3});
+    }
+
+    @include media(">=uol-media-xl") {
+      flex-basis: calc(50% - #{$spacing-4});
+    }
+  }
+
+    .uol-page-nav__item--next {
+      @include media(">=uol-media-m") {
+        text-align: right;
+        margin-left: auto;
+      }
+    }
+
+    .uol-page-nav__item__identifier {
+      @extend .uol-typography-paragraph;
+
+      display: block;
+      color: $color-font--dark;
+
+      .uol-page-nav__item:focus & {
+        text-decoration: none;
+      }
+    }
+
+    .uol-page-nav__item__title {
+      @extend .uol-typography-heading-5;
+
+      display: block;
+
+      .uol-page-nav__item:hover &,
+      .uol-page-nav__item:focus & {
+        text-underline-offset: 4px;
+        text-decoration: underline;
+      }
+
+      .uol-page-nav__item:focus & {
+        text-decoration-color: $color-brand--bright;
+      }
+    }

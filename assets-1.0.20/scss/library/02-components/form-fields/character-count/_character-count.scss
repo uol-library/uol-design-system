@@ -1,0 +1,22 @@
+.uol-form__input--character-count {
+  @extend %text-size-paragraph--small;
+
+  padding-top: $spacing-3;
+  font-weight: 500;
+  margin: 0;
+  user-select: none;
+  font-variant-numeric: lining-nums;
+
+  @include media(">=uol-media-m") {
+    font-weight: 400;
+  }
+  
+  &[data-field-invalid="true"] {
+    color: darken($color-alert--error, 5%);
+  }
+}
+
+.uol-form-input__excess-text {
+  background-color: lighten($color-alert--error, 30%);
+  font-style: normal;
+}

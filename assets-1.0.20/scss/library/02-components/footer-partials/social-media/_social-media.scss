@@ -1,0 +1,33 @@
+.uol-footer-social-media {
+
+}
+
+.uol-footer-social-media__item {
+    display: inline-block;
+    margin-right: $spacing-5;
+    margin-bottom: $spacing-3;
+    margin-left: -#{$spacing-1};
+    text-decoration: none;
+    padding: $spacing-1;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+
+    svg {
+
+      path {
+        fill: $color-warmgrey--light;
+        transition: fill 0.3s ease;
+      }
+    }
+
+    &:hover,
+    &:focus {
+      svg {
+        path {
+          fill: $color-brand--bright;
+        }
+      }
+    }
+  }

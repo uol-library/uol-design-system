@@ -1,0 +1,77 @@
+.uol-hero-banner {
+  width: 100%;
+  position: relative;
+  // left: 50%;
+  // right: 50%;
+  // margin-left: -50vw;
+  // margin-right: -50vw;
+  background-color: $color-black;
+}
+
+.uol-hero-banner--inner {
+  max-width: calc(103.75rem - 64px);
+  margin: 0 auto;
+  display: flex;
+  height: auto;
+  flex-direction: column-reverse;
+	background: $color-black;
+  color: $color-white;
+	overflow: hidden;
+  max-height: 592px;
+  // background: navy;
+
+  @include media(">=uol-media-l") {
+    flex-direction: row;
+    align-items: center;
+    // padding-right: 100px;
+  }
+
+  @include media(">=uol-media-xl") {
+    // padding-right: 130px;
+  }
+}
+
+  .uol-hero-banner__text-container {
+    padding: $spacing-5 $spacing-4 $spacing-6;
+
+    @include media(">=uol-media-m") {
+      padding: $spacing-6 $spacing-4 $spacing-7 $spacing-4;
+    }
+
+    @include media(">=uol-media-l") {
+      // width: calc(38% - 64px);
+      width: 38%;
+      padding-left: $spacing-6;
+      padding-right: $spacing-5;
+    }
+
+    @include media(">=uol-media-xxl") {
+      padding-left: 0;
+    }
+  }
+
+    .uol-hero-banner__title {
+      @extend .uol-typography-heading-2;
+      margin: 0;
+    }
+
+    .uol-hero-banner__lead {
+      @extend .uol-typography-paragraph;
+      margin: $spacing-2 0 0;
+    }
+
+  .uol-hero-banner__img {
+    // width: calc(100% + #{$spacing-4} * 2);
+    // margin: 0 -#{$spacing-4};
+    // height: auto;
+    // padding: 0 32px 0 0;
+    @include media(">=uol-media-l") {
+      width: 62%;
+      padding: 40px 0 48px;
+    }
+
+    @include media(">=uol-media-xl") {
+      padding: 0;
+    }
+  }
+

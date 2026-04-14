@@ -1,0 +1,19 @@
+  .uol-page {
+    @include page-width("x-wide");
+
+    .uol-page-nav {
+      @include media(">=uol-media-l") {
+        margin-right: calc(100% / 12* 3);
+        margin-left: calc(100% / 12 + .25rem);
+      }
+
+    }
+
+    .uol-in-text-cta {
+      margin: $spacing-5 0;
+    }
+  }
+
+    .uol-page--index {
+      @include page-width("index");
+    }

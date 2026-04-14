@@ -1,0 +1,35 @@
+@mixin link_focus ($offset: 4px, $background: true, $text-color: $color-font, $underline-color: $color-brand--bright) {
+  transition: background 0.15s ease-out, text-decoration 0.15s ease-out;
+
+  &:focus {
+    color: $text-color;
+    background-color: $color-brand--faded;
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-decoration-color: $underline-color;
+    text-underline-offset: $offset;
+    outline: 2px dotted inherit;
+    outline-offset: 1px;
+    outline-color: transparent;    
+
+    @if not ($background == true) {
+      background: none;
+    } 
+  }
+
+  &:focus:not(:focus-visible) {
+    text-decoration: none;
+    outline-color: transparent;
+  }
+
+  &:focus-visible {
+    color: $text-color;
+    outline-color: transparent;
+    outline-offset: 1px;
+    background-color: $color-brand--faded;
+
+    @if not ($background == true) {
+      background: none;
+    } 
+  }
+}

@@ -1,0 +1,41 @@
+// Experiment - let SASS create the media queries...
+$featured-image-bottom-margin: (
+  "xs": $spacing-6,
+  "l": $spacing-7
+);
+
+.uol-featured-image {
+  @each $key, $val in $featured-image-bottom-margin {
+    @include media(">=uol-media-#{$key}") {
+      margin-bottom: $val;
+    }
+  }
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  // TODO: Remove IE11 hack
+  .no-csspositionsticky & {
+    display: block;
+  }
+
+  .uol-widget__content & {
+    margin-bottom: $spacing-4;
+  }
+}
+
+  .uol-featured-image__img {
+    width: 100%;
+    height: auto;
+  }
+
+  .uol-featured-image__caption {
+    @extend .uol-typography-paragraph-small;
+
+    margin: 0;
+    padding: $spacing-2 0 0;
+    color: $color-font--x-light;
+  }
+
+

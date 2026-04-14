@@ -1,0 +1,52 @@
+%uol-chevron {
+  &::after {
+    content: "";
+    display: inline-block;
+    position: relative;
+    margin-left: 1ex;
+    left: 0.15em;
+    top: 0.473em;
+    width: 1.3ex;
+    height: 1.3ex;
+    box-sizing: border-box;
+    border-style: solid;
+    border-color: $color-brand;
+    border-width: 0.2em 0.2em 0 0;
+    transform: rotate(-45deg);
+    vertical-align: top;
+  }
+}
+
+  .uol-chevron-up {
+    @extend %uol-chevron;
+
+    top: 0.5em;
+  }
+
+  .uol-chevron-down {
+    @extend %uol-chevron;
+
+    &::after {
+      top: 0.3em;
+      left: 0;
+      transform: rotate(135deg);
+    }
+  }
+
+  .uol-chevron-right {
+    @extend %uol-chevron;
+
+    &::after {
+      left: 0;
+      transform: rotate(45deg);
+    }
+  }
+
+  .uol-chevron-left {
+    @extend %uol-chevron;
+
+    &::after {
+      left: 0.25em;
+      transform: rotate(-135deg);
+    }
+  }

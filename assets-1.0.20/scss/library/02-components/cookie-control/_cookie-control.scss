@@ -1,0 +1,169 @@
+.js {
+
+  .uolcc-prompt-container,
+  .uolcc-privacy-update-container {
+      background: $color-black;
+      border-bottom: 2px solid $color-border;
+      padding: $spacing-3 $spacing-2;
+      color: $color-white;
+
+      @include media(">=uol-media-xs") {
+        padding: $spacing-4;
+      }
+
+      @include media(">=uol-media-l") {
+        padding: $spacing-5;
+      }
+  }
+
+  .uolcc-container,
+  .uolcc-prompt-container,
+  .uolcc-privacy-update-container {
+
+      &:focus {
+          outline: none;
+      }
+
+      .uolcc-outer {
+          // position: fixed;
+      }
+
+      .uolcc-prefs-header,
+      .uolcc-prefs-footer {
+        background: $color-black;
+        color: $color-white;
+      }
+
+      .uolcc-prefs-header {
+
+      }
+
+      .uolcc-prefs-footer {
+        box-shadow:
+        0 -10px 20px 0 rgba($color-black--dark, 0.15),
+        0 -3px 6px 0 rgba($color-black--dark, 0.1);
+      }
+
+      .uolcc-title {
+        @extend .uol-typography-heading-2;
+      }
+
+      .uolcc-subtitle {
+        @extend .uol-typography-heading-3;
+      }
+
+      p {
+        @extend .uol-typography-paragraph;
+      }
+
+      ul {
+        @extend .uol-typography-paragraph;
+        @extend .uol-typography-ul;
+      }
+
+      ol {
+        @extend .uol-typography-ol;
+      }
+
+      .uolcc-cookie-detail__button {
+        color: inherit;
+      }
+
+      .uolcc-cookie-detail__button-title {
+        @extend %text-size-heading-5;
+        @extend %uol-font-sans-serif;
+
+        font-weight: $font-weight-medium--sans-serif;
+      }
+
+      .uolcc-form-inner {
+
+      }
+
+      .uolcc-prompt-inner {
+
+      }
+      .uolcc-prompt-inner,
+      .uolcc-privacy-update-inner {
+        box-sizing: border-box;
+        max-width: 101.75rem;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: $spacing-4;
+
+        @include media(">=uol-media-xl") {
+          padding: 0 $spacing-4;
+        }
+
+          .uolcc-title {
+
+          }
+
+
+          p {
+            @extend .uol-typography-paragraph;
+
+            max-width: 65ch;
+          }
+      }
+
+      .uolcc-cookie-detail {
+
+      }
+
+      .uolcc-cookie-detail__checkbox-container {
+        @extend %text-size-heading-6;
+      }
+
+      .uolcc-cookie-detail__button--open {
+
+      }
+
+      .uolcc-cookie-detail__expand-icon {
+        width: 1.3em;
+        height: 1.3em;
+      }
+
+      .uolcc-cookie-detail__button--open .uolcc-cookie-detail__button-title {
+
+      }
+
+      .uolcc-button {
+        @extend %uol-font-sans-serif;
+        @extend .uol-button;
+        @extend .uol-button--primary;
+
+        @include button_focus(-6px, 10px);
+
+        border: 1px solid $color-white;
+      }
+
+      .uolcc-button + .uolcc-button {
+
+        @include media("<uol-media-xs") {
+          margin-top: $spacing-3;
+        }
+
+        @include media(">=uol-media-xs") {
+          margin-left: $spacing-3;
+        }
+
+      }
+
+          .uolcc-button--secondary {
+            @extend .uol-button--secondary;
+          }
+  }
+
+  #cookie-control-prompt,
+  #cookie-control-privacy-update {
+      &.uolcc-prompt-container,
+      &.uolcc-privacy-update-container {
+
+          a {
+            @include link_focus();
+          }
+      }
+  }
+
+}

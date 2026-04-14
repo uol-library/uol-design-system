@@ -1,0 +1,76 @@
+.uol-full-width-content {
+  background-color: $color-brand-2--light;
+  box-sizing: border-box;
+
+  @include media(">=uol-media-l") {
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    /*
+    change width from 100% to calculation based on vw to account for minor gap which 100% width causes
+    width: 100%
+    */
+    max-width: calc(100vw - 10px);
+  }
+}
+
+.uol-full-width-content__outer-container {
+  box-sizing: border-box;
+  max-width: 103.75rem;
+  margin: 0 auto;
+}
+
+.uol-full-width-content__inner-container {
+  padding: $spacing-6 $spacing-4;
+  margin: 0 auto;
+
+  .uol-rich-text,
+  .uol-rich-text>*,
+  .uol-rich-text>*>*,
+  .uol-rich-text img {
+    max-width: none;
+  }
+
+  @include media(">=uol-media-s") {
+    padding: $spacing-7 0;
+    margin-left: calc(100% / 12 * 1 + 1rem);
+    margin-right: calc(100% / 12 * 1 + 1rem);
+  }
+
+  @include media(">=uol-media-l") {
+    margin-left: calc(100% / 12 * 1 + 1.3rem);
+    margin-right: calc(100% / 12 * 4 + 1rem);
+  }
+
+  @include media(">=uol-media-xl") {
+    margin-left: calc(100% / 12 * 1 + 1.8rem);
+    margin-right: calc(100% / 12 * 5 + 1.1rem);
+  }
+
+  .uol-rich-text h1:first-child,
+  .uol-rich-text h2:first-child,
+  .uol-rich-text h3:first-child {
+    // To overwrite inherited property's important.
+    margin-top: 0!important; 
+    margin-bottom: $spacing-5;
+
+    @include media(">=uol-media-m") {
+      margin-bottom: $spacing-6;
+    }
+  }
+
+  .uol-rich-text h3:first-child {
+    margin-bottom: $spacing-4;
+  }
+
+  .uol-rich-text .uol-featured-image:last-of-type,
+  .uol-rich-text p:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.uol-full-width-content--with-lead.uol-rich-text p:first-of-type {
+  @extend %text-size-paragraph--intro;
+}

@@ -1,0 +1,40 @@
+.nav-list-group {
+
+}
+
+  .nav-list-group__title {
+    @extend %text-size-paragraph--small;
+
+    position: relative;
+    font-weight: $font-weight-bold--sans-serif;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+
+    &::before {
+      content: "";
+      position: absolute;
+      display: inline-block;
+      top: -1rem;
+      left: 0;
+      width: 1rem;
+      height: 0.25rem;
+      background-color: $color-brand--bright;
+    }
+  }
+
+  .nav-list-group__list {
+    @extend %text-size-paragraph--small;
+
+    list-style: none;
+    padding: 0 0 $spacing-6;
+    margin-bottom: 0;
+  }
+
+  .nav-list-group__item {
+    margin-bottom: $spacing-2;
+  }
+
+  .nav-list-group__link {
+    color: inherit;
+    text-decoration: none;
+  }

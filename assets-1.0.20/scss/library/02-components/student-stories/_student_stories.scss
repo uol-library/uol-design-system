@@ -1,0 +1,210 @@
+// @import "node_modules/glider-js/glider.css";
+.glider,.glider-contain{margin:0 auto;position:relative}.glider,.glider-track{transform:translateZ(0)}.glider-dot,.glider-next,.glider-prev{border:0;padding:0;user-select:none;outline:0}.glider-contain{width:100%}.glider{overflow-y:hidden;-webkit-overflow-scrolling:touch;-ms-overflow-style:none}.glider-track{width:100%;margin:0;padding:0;display:flex;z-index:1}.glider.draggable{user-select:none;cursor:-webkit-grab;cursor:grab}.glider.draggable .glider-slide img{user-select:none;pointer-events:none}.glider.drag{cursor:-webkit-grabbing;cursor:grabbing}.glider-slide{user-select:none;justify-content:center;align-content:center;width:100%;min-width:150px}.glider-slide img{max-width:100%}.glider::-webkit-scrollbar{opacity:0;height:0}.glider-next,.glider-prev{position:absolute;background:0 0;z-index:2;font-size:40px;text-decoration:none;left:-23px;top:30%;cursor:pointer;color:#666;opacity:1;line-height:1;transition:opacity .5s cubic-bezier(.17,.67,.83,.67),color .5s cubic-bezier(.17,.67,.83,.67)}.glider-next:focus,.glider-next:hover,.glider-prev:focus,.glider-prev:hover{color:#ccc}.glider-next{right:-23px;left:auto}.glider-next.disabled,.glider-prev.disabled{opacity:.25;color:#666;cursor:default}.glider-hide{opacity:0}.glider-dots{user-select:none;display:flex;flex-wrap:wrap;justify-content:center;margin:0 auto;padding:0}.glider-dot{display:block;cursor:pointer;color:#ccc;border-radius:999px;background:#ccc;width:12px;height:12px;margin:7px}.glider-dot:focus,.glider-dot:hover{background:#ddd}.glider-dot.active{background:#a89cc8}@media(max-width:36em){.glider::-webkit-scrollbar{opacity:1;-webkit-appearance:none;width:7px;height:3px}.glider::-webkit-scrollbar-thumb{opacity:1;border-radius:99px;background-color:rgba(156,156,156,.25);-webkit-box-shadow:0 0 1px rgba(255,255,255,.25);box-shadow:0 0 1px rgba(255,255,255,.25)}}
+
+.student-stories {
+    position: relative;
+    margin-bottom: 1.875rem; // text has 18px under, we require 48px, hence 30px
+
+    @include media('>=uol-media-m') {
+        margin-bottom: 2.75rem; // text has 20px under, we require 64px, hence 44px
+    }
+
+    @include media('>=uol-media-l') {
+        margin-bottom: 3.75rem; // text has 20px under, we require 80px, hence 60px
+    }
+
+
+
+    .uol-content-block {
+        background-color: $color-brand-teal;
+        padding: 2.5rem 2rem;
+        margin-bottom: $spacing-5;
+    }
+    .uol-content-block__heading {
+        @extend .uol-typography-heading-2;
+    }
+
+}
+
+.student-stories--left-block {
+    .uol-content-block * {
+        @include media('>=uol-media-s') {
+            max-width: 470px;
+        }
+
+        @include media('>=uol-media-m') {
+            max-width: 610px;
+        }
+
+        @include media('>=uol-media-l') {
+            max-width: inherit;
+        }
+    }
+
+    .uol-button {
+        margin-bottom: 0;
+    }
+}
+
+
+.student-stories--link {
+    background-color: #111;
+    color: #fff;
+    padding: 1rem;
+    text-decoration: none;
+}
+
+.student-stories--nav {
+    display: flex;
+    height: 5.8125rem; // 93px: 45px for buttons, 24px above and below
+    background-color: $color-brand-teal;
+    // margin-bottom: 1rem; // added space to top of glider track
+
+    .student-stories--nav__controls {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        width: 100%;
+    }
+    .uol-button {
+        background-color: #0A0202;
+        margin: 0 $spacing-6 0 0;
+        padding: 1rem;
+        text-decoration: none;
+
+        &[aria-disabled="true"] {
+           background-color: #6E6B6B;
+        }
+
+         svg {
+            width: 1.5em !important;
+            height: 1.5em !important;
+        }
+    }
+}
+
+.student-stories--section {
+  display: flex;
+  flex-wrap: wrap;
+//   gap: 2rem;
+  padding: 0;
+  margin-left: -16px;
+//   margin-right: 16px;
+
+//   @include media('>=uol-media-l') {
+//     margin-right: 0;
+//   }
+}
+
+.student-stories--section-item {
+    display: flex;
+    flex-direction: column;
+    margin-left: $spacing-4;
+    justify-content: flex-start;
+
+    // @include media('>=uol-media-m') {
+    //     gap: $spacing-5;
+    // }
+
+    @include media('>=uol-media-l') {
+        margin-left: $spacing-5;
+    }
+
+    a:before {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    position: relative;
+
+       &:hover {
+        .student-stories--section-item__title a {
+            text-decoration: underline
+        }
+    }
+
+        &:focus-within {
+        .student-stories--section-item__title a {
+            background-color: $color-brand--faded;
+            text-decoration: underline;
+            text-decoration-thickness: 3px;
+            text-decoration-color: $color-brand--bright;
+            text-underline-offset: 4px;
+            outline: 2px dotted inherit;
+            outline-offset: 1px;
+            outline-color: transparent;
+        }
+    }
+}
+
+.student-stories--section-item__link {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.student-stories--section-item__title {
+    @extend .uol-typography-heading-4;
+
+    width: fit-content;
+    margin: 2rem 0 1rem 0;
+    order: 2;
+
+    @include media("<uol-media-m") {
+        font-size: 1.375rem;
+    }
+}
+
+.student-stories--section-item__lead {
+    order: 3;
+
+    @extend .uol-typography-paragraph;
+    margin-top: 0;
+
+}
+.student-stories--section-item__img {
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    order: 1;
+}
+
+.glider-track {
+    /*
+    removed gap as causing gap at right as well as between,
+    instead applied left margin to student-stories--section-item
+    gap: 1rem;
+    */
+    margin-top: $spacing-4;
+
+    @include media('>=uol-media-l') {
+        // gap: 1.5rem;
+        margin-top: 0;
+    }
+
+    @include media('>=uol-media-xl') {
+        // gap: 2rem;
+    }
+}
+
+// @media only screen and (min-width: 900px) {
+@include media('>=uol-media-l') {
+    .student-stories--left-block {
+        background-color: $color-brand-teal;
+
+
+        .uol-content-block {
+            width: calc(34% - 2*2rem);
+        }
+    }
+    .student-stories--right-block {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 66%;
+    }
+}

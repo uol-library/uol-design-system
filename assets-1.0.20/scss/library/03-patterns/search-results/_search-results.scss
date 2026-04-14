@@ -1,0 +1,196 @@
+.uol-search-results__page-heading {
+  @extend .uol-col;
+  @extend .uol-col-12;
+
+  padding-bottom: 0;
+
+
+  .page-heading {
+    @include media("<uol-media-xs") {
+      padding-left: $spacing-2;
+      padding-top: $spacing-2;
+    }
+
+
+
+    margin-bottom: $spacing-4;
+
+    @include media(">=uol-media-m") {
+      margin-bottom: $spacing-6;
+    }
+  }
+}
+
+.uol-search--no-form {
+  .page-heading {
+    margin-bottom: 0.625rem; // 10px
+
+    @include media(">=uol-media-xs") {
+      margin-bottom: 0.125rem; // 2px
+    }
+
+    @include media(">=uol-media-m") {
+      margin-bottom: 0.938rem; // 15px
+    }
+
+    @include media(">=uol-media-l") {
+      margin-bottom: 1.688rem; // 27px
+    }
+
+    @include media(">=uol-media-xl") {
+      margin-bottom: 1.188rem; // 19px
+    }
+  }
+}
+
+.uol-search-results__content-area {
+  @extend .uol-col;
+  @extend .uol-col-12;
+  padding: 0 $spacing-2;
+
+  .site-outer & {
+    padding-top: 0;
+    margin-top: -0.438rem; // -7px
+
+    @include media(">=uol-media-xs") {
+      padding-bottom: 0;
+      margin-top: -0.938rem // -15px
+    }
+
+    @include media(">=uol-media-m") {
+      padding-bottom: $spacing-4;
+      margin-top: -$spacing-5;
+    }
+
+    @include media(">=uol-media-l") {
+      padding-bottom: 1.75rem; // 28px
+      margin-top: -1.563rem; // -25px
+    }
+
+    @include media(">=uol-media-xl") {
+      padding-bottom: $spacing-4;
+      margin-top: -1.813rem; // -29px
+    }
+
+    .uol-rich-text > p:last-child {
+      margin-bottom: 2.5rem; // 40px
+
+      @include media(">=uol-media-m") {
+        margin-bottom: $spacing-5;
+      }
+
+      @include media(">=uol-media-xl") {
+        margin-bottom: $spacing-6;
+      }
+    }
+  }
+
+  .site-outer .uol-search--has-map-content & {
+    @include media(">=uol-media-l") {
+      padding-bottom: 1.25rem // 20px
+    }
+
+    @include media(">=uol-media-xl") {
+      padding-bottom: 0.75rem // 12px
+    }
+  }
+
+  .site-outer .uol-search--no-form & {
+    margin-bottom: -0.938rem; // -15px
+    padding-top: 0.375rem; // 6px
+
+    @include media(">=uol-media-xs") {
+      padding-top: 0.875rem; // 14px
+    }
+
+    @include media(">=uol-media-m") {
+      margin-bottom: -1.063rem; // -17px
+      padding-top: 1rem; // 16px
+    }
+
+    @include media(">=uol-media-l") {
+      margin-bottom: 0;
+      padding-top: 0.313rem; // 5px
+    }
+
+    @include media(">=uol-media-xl") {
+      padding-top: 0.813rem; // 13px
+    }
+  }
+}
+
+.uol-search-results__main {
+  @include page-width("full");
+}
+
+.uol-search-result__filters {
+  @extend .uol-col;
+  @extend .uol-col-12;
+  @extend .uol-col-l-3;
+
+  .js & {
+    @include media("<uol-media-l") {
+      padding: 0;
+    }
+  }
+}
+
+// Components margin/padding changes if in search results pattern
+.uol-search-results {
+
+  margin-bottom: $spacing-7;
+
+  .uol-form__container,
+  .uol-results-count {
+    margin-bottom: $spacing-6;
+
+    @include media(">=uol-media-m") {
+      margin-bottom: $spacing-7;
+    }
+  }
+
+  .uol-chips {
+    padding: 0;
+  }
+
+  .uol-search-results__button-chips-container {
+    .uol-button {
+      margin-bottom: $spacing-5;
+
+      @include media(">=uol-media-m") {
+        margin-bottom: $spacing-6;
+      }
+    }
+  }
+
+  .uol-results-items {
+    margin: 1.25rem 0 $spacing-6;
+    padding: 0;
+
+    @include media(">=uol-media-m") {
+      margin: 2.25rem 0 $spacing-7;
+    }
+  }
+
+  .uol-form__inner-wrapper .uol-form__input-wrapper {
+    &::before {
+      @include media("<uol-media-m") {
+        bottom: 0; // add comment to force update
+      }
+    }
+  }
+
+  .uol-publications-list {
+    @include media(">=uol-media-s") {
+      margin-right: calc(100% / 12 * 2 + 0.25rem);
+    }
+
+    @include media(">=uol-media-l") {
+      margin-right: calc(100% / 9 * 2 + 0.25rem);
+    }
+  }
+}
+
+.uol-search--publications .page-heading__title__main::after {
+  content: " - Publications";
+}

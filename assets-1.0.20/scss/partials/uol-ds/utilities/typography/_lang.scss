@@ -1,0 +1,5 @@
+// Language support
+
+[lang]:not([lang=en]):not([lang=fr]):not([lang=de]):not([lang=it]):not([lang=pt]):not([lang=es]) {
+  font-family: initial !important;
+}

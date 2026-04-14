@@ -1,0 +1,43 @@
+.js {
+  .uol-icon {
+    position: relative;
+    display: inline-flex;
+
+    svg {
+      display: block;
+      width: 1em;
+      height: 1em;
+      margin-top: .2em;
+      margin-right: 0.4em;
+      margin-left: -0.4em;
+
+      path {
+        fill: currentColor;
+
+        @media (-ms-high-contrast: active) {
+          fill: buttonText;
+        }
+      }
+    }
+  }
+
+    .uol-icon--position-after {
+      flex-direction: row-reverse;
+
+      svg {
+        margin-right: -0.4em;
+        margin-left: 0.4em;
+      }
+    }
+
+    .uol-icon--icon-only {
+
+      svg {
+        margin: 0;
+      }
+
+      .uol-icon__label {
+        @extend .hide-accessible;
+      }
+    }
+}

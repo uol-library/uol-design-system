@@ -1,0 +1,75 @@
+// This file is for horizontal placement rules for article / document/page templates
+
+.uol-side-nav-container--populated + .uol-article,
+.uol-side-nav-container--populated + .uol-page  {
+
+  .uol-article__head,
+  .uol-article__content {
+    @include media(">=uol-media-l") {
+      margin-right: 0;
+      margin-left: 0;
+    }
+  }
+}
+
+.uol-side-nav-container--populated + .uol-article {
+  @include media(">=uol-media-l") {
+    max-width: calc(100% / 12 * 8 - 2rem);
+    flex-basis: calc(100% / 12 * 8 - 2rem);
+    // padding-left: calc(100% / 12 + 1rem) !important;
+  }
+}
+
+.uol-side-nav-container--populated + .uol-page {
+  @include media(">=uol-media-xl") {
+    max-width: calc(100% / 12 * 8 - 2rem);
+    flex-basis: calc(100% / 12 * 8 - 2rem);
+    padding-left: calc(100% / 12 + 1rem) !important;
+  }
+}
+
+
+// Red accent on lead paragraph
+// Taken from article css, applies to both article and document pages
+.uol-page, .uol-article {
+  
+  .uol-rich-text--with-lead {
+    
+    > p:first-of-type {
+      margin-top: $spacing-5;
+      margin-bottom: $spacing-4;
+  
+      @include media(">=uol-media-m") {
+        position: relative;
+        margin-top: 2.5rem;
+        margin-bottom: $spacing-5;
+  
+        &::before {
+          content: "";
+          display: inline-block;
+          position: absolute;
+          width: calc(100% / 12 - #{$spacing-1});
+          height: $spacing-1;
+          top: 0.65em;
+          left: -18px;
+          transform: translateX(-100%);
+          background-color: $color-brand;
+        }
+      }
+  
+      @include media(">=uol-media-l") {
+        &::before {
+          width: calc(100% / 7 - 20px);
+          left: -28px;
+        }
+      }
+  
+      @include media(">=uol-media-xl") {
+        &::before {
+          width: calc(100% / 6 - 28px);
+          left: -36px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,1562 @@
+.uol-form__input-container {
+  /**
+   * Styling specific to all inputs that take text characters as input
+  */
+
+  color: $color-font;
+  font-size: $base-font-size * 1.125;
+  font-variant-numeric: lining-nums;
+  margin-bottom: $spacing-6;
+
+  &:not(.uol-form__input-container--multiple) {
+    position: relative;
+  }
+
+  @include media(">=uol-media-l") {
+    margin-bottom: 2.5rem;
+  }
+
+  @include media(">=uol-media-m") {
+    flex-wrap: nowrap;
+    border-radius: 12px;
+  }
+
+  @include media(">=uol-media-l") {
+    border-radius: 12px;
+    font-size: $base-font-size * 1.25;
+  }
+
+  &[data-typeahead] {
+    @include media(">=uol-media-s") {
+      max-width: 27.375rem;
+      min-width: 27.375rem;
+    }
+  }
+}
+
+  .uol-form__input-label {
+    display: block;
+    font-weight: $font-weight-bold--sans-serif;
+    // padding-bottom: $spacing-3;
+  }
+
+    .uol-form__input-label__text {
+      @extend %text-size-paragraph;
+
+      display: block;
+      max-width: 27.375rem;
+    }
+
+    .uol-form__input-label__hint {
+      @extend %text-size-paragraph--small;
+
+      display: block;
+      font-weight: $font-weight-regular--sans-serif;
+      max-width: 27.375rem;
+    }
+
+    .uol-form__input-label__text + .uol-form__input-label__hint {
+      // padding-top: $spacing-1;
+    }
+
+    .uol-form__input-label__hint + .uol-form__input--checkbox-wrapper {
+      margin-top: $spacing-4;
+    }
+
+    //Error handling
+    .uol-form__input-label__text + .uol-form__input__error {
+      // margin-top: 12px;
+    }
+
+    .uol-form__input__error {
+      // background-color: pink !important;
+      // margin: 12px 0 8px;
+      // margin-bottom: -4px; // could do with CSS refactor, label without error contributes to this
+    }
+    .uol-form__form-error {
+      margin-bottom: 48px;
+    }
+
+    .uol-form__input-label__hint + .uol-form__input__error {
+      // margin-top: 12px;
+
+    }
+
+    .uol-form__input__error + .uol-form__input {
+      margin-top: 0;
+    }
+
+    .uol-form__selected-items {
+      display: none;
+    }
+
+    .uol-form__input__requirements {
+      @extend %text-size-paragraph--small;
+
+      max-width: 47.5rem;
+      font-weight: 400;
+      display: block;
+      margin-top: $spacing-1;
+
+      > span {
+        display: block;
+        position: relative;
+
+        &::before {
+          content: "•";
+          position: relative;
+          padding: 0 $spacing-3 0 $spacing-2;
+          font-size: $base-font-size;
+          top: -0.1rem;
+        }
+
+        &:last-of-type {
+          margin-bottom: $spacing-3;
+        }
+      }
+    }
+
+  .uol-form__input-wrapper {
+    display: inline-block;
+    width: 100%;
+    position: relative;
+
+    &:not(.uol-form__input-wrapper--search):not(.uol-form__input-wrapper--file):not(.uol-form__input-wrapper--predictive) {
+      @include media(">=uol-media-s") {
+        max-width: 27.375rem;
+      }
+    }
+
+    svg {
+      fill: windowText;
+      position: absolute;
+      top: 0.9rem;
+      left: 0.9rem;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 1px;
+      left: 1px;
+      border-bottom: 4px solid $color-focus-accent;
+      width: 0;
+      border-radius: 0 0 4px 4px;
+      transition: width 0.25s ease-in;
+
+      [data-typeahead] & {
+        border-radius: 0;
+      }
+    }
+
+    &.uol-form__input-wrapper--typeahead--open {
+        &::before {
+          border-radius: 0;
+        }
+    }
+
+    &:focus-within {
+
+      &::before {
+        width: calc(100% - 2px);
+      }
+    }
+
+    &[data-field-invalid="true"] {
+      &::before {
+        border-bottom-color: $color-alert--error;
+      }
+    }
+  }
+
+  .uol-form__input-wrapper--search {
+    &::before{
+      @include media("<uol-media-m") {
+        margin-bottom: $spacing-6;
+      }
+    }
+
+  @include media("<uol-media-m") {
+      margin-bottom: 0;
+
+      .uol-form__input--search, .uol-typeahead {
+        & {
+          margin-bottom: $spacing-6;
+          }
+        }
+    }
+
+  }
+
+    .uol-form__input-wrapper--panelOpen {
+      &::before {
+        border-radius: 0;
+      }
+    }
+
+  // uol-form__input-container
+
+  .uol-form__input-container--x-small {
+
+    .uol-form__input__error,
+    [class].uol-form__input-wrapper,
+    .uol-form__input {
+      max-width: 100%;
+
+      @include media(">=uol-media-xs") {
+        max-width: 18.25rem;
+      }
+    }
+
+    .uol-form__input-label__hint {
+      max-width: 27.375rem;
+    }
+  }
+
+  .uol-form__input-container--small {
+
+    .uol-form__input__error,
+    [class].uol-form__input-wrapper,
+    .uol-form__input {
+      max-width: 100%;
+
+      @include media(">=uol-media-s") {
+        max-width: 22.8125rem;
+      }
+    }
+
+    .uol-form__input-label__hint {
+      max-width: 27.375rem;
+    }
+  }
+
+  .uol-form__input-container--medium {
+
+    .uol-form__input__error,
+    [class].uol-form__input-wrapper,
+    .uol-form__input {
+      max-width: 100%;
+
+      @include media(">=uol-media-s") {
+        max-width: 27.375rem;
+      }
+    }
+
+    .uol-form__input-label__hint {
+      max-width: 27.375rem;
+    }
+
+
+  }
+
+  .uol-form__input-container--large {
+
+    .uol-form__input__error,
+    [class].uol-form__input-wrapper,
+    .uol-form__input {
+      max-width: 100%;
+
+      @include media(">=uol-media-xs") {
+        max-width: 46.125rem;
+      }
+    }
+
+    .uol-form__input-label__hint {
+      max-width: 27.375rem;
+    }
+  }
+
+  .uol-form__input {
+    @include line-height-responsive(1.25, 1.25, 1.1);
+
+    @extend %text-size-paragraph;
+
+    box-sizing: border-box;
+    display: block;
+    border-radius: 6px;
+    width: 100%;
+    border: 1px solid $color-border;
+    padding: 0 $spacing-3;
+    background-color: $color-white;
+    font-variant-numeric: lining-nums;
+    background-color: $color-white;
+
+    &:not(.uol-form__input--textarea):not(.uol-form__input--file):not(.uol-form__input--select[multiple]) {
+      height: 3.125rem;
+    }
+
+    &[type="search"] {
+      -webkit-appearance: none;
+      appearance: none;
+      box-sizing: border-box;
+    }
+
+    &:focus {
+      outline: 3px dotted transparent;
+    }
+
+    .no-csspositionsticky & {
+      &:focus {
+        outline: 4px solid $color-blue--bright;
+      }
+    }
+
+    &::placeholder {
+      color: $color-font;
+    }
+
+    &[aria-invalid="true"] {
+      border: 2px solid $color-alert--error;
+      box-shadow:
+        0 3px 6px rgba(0, 0, 0, 0.15),
+        0 2px 4px rgba(0, 0, 0, 0.12);
+    }
+  }
+
+  /*
+  blur on input leaves a faint grey line when chips showing
+  use clip path to remove top border of blur
+  */
+  .uol-typeahead[aria-invalid=true] {
+    clip-path: inset(0px -10px -10px -10px);
+  }
+
+  /**
+   * Styling for textarea component
+   */
+
+  .uol-form__input--textarea-wrapper {
+    position: relative;
+    z-index: 2;
+
+    &::before {
+      content: "";
+      position: absolute;
+      box-sizing: border-box;
+      top: -5px;
+      right: 0;
+      bottom: 0;
+      left: -5px;
+      width: calc(100% + 10px);
+      height: calc(100% + 10px);
+      border: 3px solid transparent;
+      border-radius: 8px;
+      z-index: 3;
+
+      @include media(">=uol-media-l") {
+        max-width: calc(46.125rem + 10px);
+      }
+
+      @media (forced-colors: active) {
+        border: none;
+      }
+
+      @media (-ms-high-contrast: active) {
+        border: none;
+      }
+    }
+
+    &:focus-within::before {
+      border-color: $color-focus-accent;
+    }
+
+    &[data-field-invalid="true"] {
+
+      &:focus-within::before {
+        border-color: $color-alert--error;
+      }
+
+      .uol-form__input--textarea {
+        caret-color: $color-alert--error;
+      }
+    }
+  }
+
+    .uol-form__input--textarea {
+      position: relative;
+      min-height: 3.125rem;
+      max-height: 57.5rem;
+      box-sizing: border-box;
+      resize: vertical;
+      z-index: 3;
+      height: 11.875rem;
+      line-height: 1.556;
+      padding: $spacing-3;
+
+      @include media(">=uol-media-xs") {
+        height: 13.625rem;
+      }
+
+      @include media(">=uol-media-l") {
+        line-height: 1.6;
+        max-width: 46.125rem;
+      }
+
+      &[data-textarea-height="small"] {
+
+        @include media(">=uol-media-s") {
+          height: 6.625rem;
+        }
+
+        @include media(">=uol-media-l") {
+          height: 7.25rem;
+        }
+      }
+
+      &[data-textarea-height="medium"] {
+
+        @include media(">=uol-media-s") {
+          height: 8.375rem;
+        }
+
+        @include media(">=uol-media-l") {
+          height: 9.25rem;
+        }
+      }
+
+      &[data-textarea-height="large"] {
+
+        @include media(">=uol-media-s") {
+          height: 14.625rem;
+        }
+
+        @include media(">=uol-media-l") {
+          height: 15.25rem;
+        }
+      }
+    }
+
+  /**
+   * Styling specific to inputs that have an icon
+   */
+  .uol-form__input-wrapper--with-icon {
+
+    svg {
+      fill: windowText;
+      position: absolute;
+      top: 0.9rem;
+      left: 0.9rem;
+    }
+  }
+
+  .uol-form__input-wrapper--search-typeahead {
+    &::before {
+      @include media("<uol-media-m") {
+        margin-bottom: 32px;
+      }
+    }
+  }
+
+  .uol-form__input-wrapper--search-typeahead {
+    &::before {
+      @include media("<uol-media-m") {
+        margin-bottom: 32px;
+      }
+    }
+  }
+
+  .uol-form__input {
+    .uol-form__input-wrapper--with-icon & {
+      padding-left: 2.875rem;
+    }
+  }
+
+  /**
+   * Styling for search inputs
+   */
+  .uol-form__input--search, .uol-form__input-wrapper--search {
+
+    @include media("<uol-media-m") {
+      // margin-bottom: $spacing-6;
+    }
+
+    @include media(">=uol-media-m") {
+      margin-right: $spacing-4;
+    }
+
+    @include media(">=uol-media-l") {
+      margin-right: $spacing-5;
+    }
+
+    @include media(">=uol-media-xl") {
+      margin-right: $spacing-6;
+    }
+  }
+
+
+
+  .uol-form__input {
+    .uol-form__input-wrapper--with-icon & {
+      padding-left: 2.875rem;
+    }
+  }
+
+
+
+  .uol-form__input {
+    .uol-form__input-wrapper--with-icon & {
+      padding-left: 2.875rem;
+    }
+  }
+
+  .uol-form__additional-content {
+    padding-top: $spacing-3;
+
+    a {
+      @include link_focus();
+    }
+  }
+
+  /**
+   * Password field with Toggle password functionality
+   */
+
+  input[type=password]::-ms-reveal,
+  input[type=password]::-ms-clear {
+      display: none;
+  }
+
+  .uol-form__input--password {
+    width: calc(100% - 3.875rem);
+    border-radius: 6px 0 0 6px;
+    border-right: none;
+
+    .no-js & {
+      border-radius: 6px;
+      border: 1px solid $color-border;
+      width: 100%;
+    }
+  }
+
+  .uol-form__input--password-toggle {
+    @include button_ripple($color-white);
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    padding: 0 $spacing-3;
+    right: 0;
+    top: 0;
+    height: 100%;
+    border: 2px solid $color-brand-2--dark;
+    border-radius: 0 6px 6px 0;
+    transition: box-shadow 0.25s ease-in, background 0.5s ease;
+    min-width: 4rem;
+    outline: 0 dotted transparent;
+    outline-offset: 3px;
+
+    &:focus {
+      background-color: $color-focus-accent;
+      border-color: $color-focus-accent;
+
+      &[data-password-visible="true"] {
+        &::before {
+          border-bottom: 4px solid $color-white;
+          border-top: 2px solid $color-focus-accent;
+        }
+      }
+
+      > svg {
+        color: $color-white;
+        fill: $color-white;
+      }
+
+      @media (forced-colors: active) {
+        outline-color: LinkText;
+        outline-width: 3px;
+      }
+
+      @media (-ms-high-contrast: active) {
+        outline-color: -ms-hotlight;
+        outline-width: 3px;
+      }
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 0;
+      transform-origin: left top;
+      border-bottom: 4px solid $color-brand-2--dark;
+      border-top: 2px solid $color-white;
+      transform: rotate(45deg) translate(-50%, -50%);
+      transition: width 0.25s ease-in;
+    }
+
+    &[data-password-visible="true"] {
+      &::before {
+        width: 2.25rem;
+      }
+    }
+
+    &:hover {
+      box-shadow: inset 0 0 0 1px $color-brand-2--dark;
+    }
+
+    &:active {
+      background-color: darken($color-white, 10%);
+    }
+
+    > svg {
+      fill: $color-brand-2--dark;
+      height: 1.875rem;
+      position: initial;
+      margin-top: 0.125rem;
+
+      @media (forced-colors: active) {
+        fill: LinkText;
+      }
+
+      @media (-ms-high-contrast: active) {
+        fill: -ms-hotlight;
+      }
+    }
+
+    .no-js & {
+      display: none;
+    }
+  }
+
+  .uol-form__input--password__toggle-label {
+    @extend .hide-accessible;
+  }
+
+   /**
+    * Grouped inputs that are short fields displayed inline, DOB, date etc
+    */
+   .uol-form__input--inline-wrapper {
+    display: flex;
+
+    .uol-form__input-container & {
+      position: static;
+    }
+  }
+
+  .uol-form__input--inline-field-wrapper {
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: -4.5px;
+      left: -4px;
+      box-sizing: border-box;
+      border-radius: 10px;
+      border: 3px solid transparent;
+      width: calc(100% + 9px);
+      height: calc(3.125rem + 10px);
+      z-index: 0;
+      background-color: transparent;
+      transition: border-color 0.25s ease-in;
+
+      @include media(">=uol-media-m") {
+        bottom: -4.5px;;
+      }
+
+      @include media(">=uol-media-l") {
+        bottom: -5px;
+      }
+
+      @media (forced-colors: active) {
+        border-color: Canvas;
+      }
+
+      @media (-ms-high-contrast: active) {
+        border-color: Window;
+      }
+    }
+
+    &:focus-within {
+      &::before {
+        border-color: $color-focus-accent;
+      }
+
+      &[data-field-invalid="true"] {
+        &::before {
+          border-color: $color-alert--error;
+        }
+      }
+    }
+
+    &:not(:last-of-type) {
+      margin-right: $spacing-4;
+    }
+
+    // TODO: Bit hacky as the focus ring appeared offset find better solution
+    :first-of-type {
+      margin-left: 1px;
+    }
+
+    &:not(:first-of-type) {
+      margin-left: -1.5px;
+    }
+  }
+
+  .uol-form__input-label {
+    .uol-form__input--inline-field-wrapper & {
+
+      @extend %text-size-paragraph--small;
+
+      font-weight: 500;
+      color: $color-font--dark;
+      padding-bottom: $spacing-2;
+    }
+  }
+
+  .uol-form__input--inline-field {
+    position: relative;
+    z-index: 3;
+    box-sizing: border-box;
+
+    &[maxlength="2"] {
+      width: 3.375rem;
+    }
+
+    &[maxlength="3"] {
+      width: 4rem;
+    }
+
+    &[maxlength="4"] {
+      width: 4.625rem;
+    }
+
+    &[aria-invalid="true"] {
+      border: 2px solid $color-alert--error;
+      box-shadow:
+        0 3px 6px rgba(0, 0, 0, 0.15),
+        0 2px 4px rgba(0, 0, 0, 0.12);
+    }
+  }
+
+  .uol-form__input--fieldset {
+    border: 0;
+    padding: 0;
+    font-size: 2rem;
+    display: block;
+    margin: 2.5rem 0 -2rem;
+
+    @include media(">=uol-media-l") {
+      margin: $spacing-7 0 -2.5rem;
+    }
+  }
+
+  .uol-form__input--legend {
+    border-top: 1px solid #979797;
+    margin-bottom: $spacing-5;
+    display: block;
+    width: 100%;
+  }
+
+    .uol-form__input--legend-title {
+      @extend %text-size-heading-2;
+
+      font-family: $font-family-serif;
+      margin: $spacing-5 0 $spacing-2;
+      color: $color-font;
+
+      @include media(">=uol-media-m") {
+        font-size: 2rem;
+      }
+    }
+
+    .uol-form__input--legend-subtitle {
+      color: $color-font;
+      font-weight: normal;
+      vertical-align: top;
+      font-size: 1.125rem;
+      line-height: 1.556;
+      font-family: $font-family-sans-serif;
+      display: inline-block;
+
+      @include media(">=uol-media-l") {
+        font-size: $base-font-size * 1.25;
+      }
+    }
+
+  // -------------------- Styling for Time inputs
+
+  .uol-form__input--time {
+    -webkit-appearance: none;
+    appearance: none;
+    line-height: 2.75;
+    background-color: $color-white;
+    color: $color-font;
+    text-align: left;
+
+    &[value=""] {
+      -webkit-text-fill-color: $color-font--x-light;
+    }
+
+    &:valid {
+      -webkit-text-fill-color: $color-font;
+    }
+
+    &::-webkit-calendar-picker-indicator {
+      filter: brightness(0) saturate(100%) invert(29%) sepia(34%) saturate(975%) hue-rotate(133deg) brightness(94%) contrast(87%);
+      height: $spacing-5;
+      width: $spacing-5;
+      cursor: pointer;
+
+      @media (forced-colors: active) {
+        filter: none;
+      }
+
+      @media (-ms-high-contrast: active) {
+        filter: none;
+      }
+    }
+
+    &::-webkit-date-and-time-value {
+      -webkit-appearance: none;
+      line-height: 3.1;
+      text-align: left;
+
+      @include media(">=uol-media-s") {
+        line-height: 2.75;
+      }
+
+      @include media(">=uol-media-m") {
+        line-height: 2.5;
+      }
+    }
+
+    &::-webkit-datetime-edit {
+      @include media(">=uol-media-l") {
+        line-height: 2.3;
+      }
+    }
+
+    &::-webkit-datetime-edit-hour-field,
+    &::-webkit-datetime-edit-minute-field {
+      padding: 0;
+
+      &:focus {
+        padding-bottom: 1px;
+        border-radius: 0;
+        background: $color-focus-accent;
+        -webkit-text-fill-color: $color-white;
+      }
+    }
+  }
+
+  @media screen and (-webkit-min-device-pixel-ratio:0) and (min-resolution:.001dpcm) {
+    // line-height: 1;
+  }
+
+  /*
+  --- Below contains all of the styling for our non-text input elements, controls and grouping elements ---
+
+  - Custom radio buttons
+  - Custom checkboxes
+  - Toggle password visibility
+  - Select input
+  - Custom number spinner (currently shelved)
+  */
+
+  /**
+   * Custom fieldset styling
+   */
+
+
+
+  .uol-form__custom-fieldset {
+    border: none;
+    padding: 0;
+    margin-bottom: $spacing-6;
+    width: 100%;
+  }
+
+  // If radio group redcuced bottom margin as radios have their own bottom margin
+
+  [role="radiogroup"] {
+    margin-bottom: $spacing-6;
+
+    @include media(">=uol-media-s") {
+      margin-bottom: $spacing-4;
+    }
+    @include media(">=uol-media-m") {
+      margin-bottom: $spacing-6;
+    }
+  }
+
+    .uol-form__custom__legend {
+      @extend %text-size-paragraph;
+
+      display: block;
+      margin: 0 0 $spacing-3;
+      font-weight: 600;
+    }
+
+  // Styling specific to radio buttons
+
+  .uol-form__input--radio-wrapper {
+    position: relative;
+    margin-bottom: $spacing-4;
+    min-height: 2.625rem;
+    max-width: 27.375rem;
+  }
+
+    .uol-form__input--radio,
+    .uol-form__input--custom-radio {
+      position: absolute;
+      top: 0;
+      left: 0;
+      box-sizing: border-box;
+      height: 2.625rem;
+      width: 2.625rem;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: box-shadow 0.25s ease-in, border-color 0.25s ease-in;
+      background-color: $color-white;
+    }
+
+    .uol-form__input--radio {
+      opacity: 0.000001;
+      z-index: 2;
+      overflow: hidden;
+
+      &:hover {
+        ~ .uol-form__input--custom-radio {
+          border-radius: 50%;
+            border-color: $color-brand-2--dark;
+            box-shadow: inset 0 0 0 1px $color-brand-2--dark;
+        }
+
+        ~ .uol-form__input--radio__label {
+            color: $color-font--dark;
+        }
+      }
+
+      &:checked {
+        ~ .uol-form__input--custom-radio {
+          border-color: $color-brand-2--dark;
+          box-shadow: inset 0 0 0 1px $color-brand-2--dark;
+
+          svg {
+            fill: $color-brand-2--dark;
+            transition: fill 0.25s ease-in;
+
+            @media (forced-colors: active) {
+              fill: LinkText;
+            }
+
+            @media (-ms-high-contrast: active) {
+              fill: -ms-hotlight;
+            }
+          }
+        }
+      }
+    }
+
+    .uol-form__input--radio__label {
+      display: inline-block;
+      margin-left: calc(2.625rem + #{$spacing-2});
+      cursor: pointer;
+      padding: $spacing-1 0;
+      color: $color-font;
+      line-height: 1.556;
+      font-weight: 400;
+      font-size: $base-font-size * 1.125;
+
+      @include media(">=uol-media-l") {
+        font-size: 1.25rem;
+      }
+    }
+
+    .uol-form__input--custom-radio {
+      display: inline-block;
+      border: 2px solid $color-brand-2--dark;
+
+      > svg {
+        margin: 50% 50%;
+        transform: translate(-50%, -50%);
+        fill: rgba($color-brand-2--dark, 0);
+        overflow: visible;
+      }
+    }
+
+    /**
+    * Styling specific to checkboxes
+    */
+
+    .uol-form__input--checkbox-wrapper {
+      position: relative;
+      min-height: 2.625rem;
+      margin-bottom: $spacing-4;
+      transition: box-shadow 0.25s ease-in;
+      max-width: 27.375rem;
+
+      &:hover {
+        .uol-form__input--checkbox-custom {
+          box-shadow: inset 0 0 0 1px $color-brand-2--dark;
+        }
+
+        ~ .uol-form__input--checkbox-label {
+          color: $color-font--dark;
+        }
+      }
+    }
+
+    .uol-form__input--checkbox-link {
+      a {
+        @include link_focus();
+
+        display: inline-block;
+        margin-bottom: $spacing-4;
+      }
+    }
+
+    .uol-form__input--checkbox,
+    .uol-form__input--checkbox-custom {
+      height: 2.625rem;
+      width: 2.625rem;
+      position: absolute;
+      left: 0;
+      top: 0;
+      cursor: pointer;
+      box-sizing: border-box;
+    }
+
+    .uol-form__input--checkbox-label {
+      padding: $spacing-2 0 $spacing-2 3.25rem;
+      cursor: pointer;
+      display: inline-block;
+      line-height: 1.556;
+      font-weight: 400;
+
+      @include media(">=uol-media-l") {
+        padding: 0.35rem 0 0.35rem 3.25rem;
+        font-size: 1.25rem;
+      }
+    }
+
+    .uol-form__input--checkbox {
+      opacity: 0.00001;
+      z-index: 1;
+
+      &:focus {
+        ~ .uol-form__input--checkbox-custom {
+          box-shadow: inset 0 0 0 1px $color-brand-2--dark;
+        }
+
+        ~ .uol-form__input--checkbox-label {
+          color: $color-font--dark;
+        }
+      }
+
+      &[aria-invalid="true"] {
+
+        &:focus,
+        &:hover {
+          ~ .uol-form__input--checkbox-custom {
+            box-shadow: inset 0 0 0 1px $color-alert--error;
+          }
+        }
+      }
+    }
+
+    .uol-form__input--checkbox-custom {
+      border: 2px solid $color-brand-2--dark;
+      background-color: $color-white;
+
+      path {
+        fill: transparent;
+        height: 2.25rem;
+        width: 2.25rem;
+        position: initial;
+        margin: auto;
+        transition: color 0.25s ease-in;
+      }
+    }
+
+    .uol-form__input--checkbox:focus ~ .uol-form__input--checkbox-custom {
+
+      @media (forced-colors: active) {
+        outline: 3px solid LinkText;
+        outline-offset: 3px;
+      }
+
+      @media (-ms-high-contrast: active) {
+        outline: 4px solid -ms-hotlight;
+      }
+    }
+
+    .uol-form__input--checkbox[aria-invalid="true"] ~ .uol-form__input--checkbox-custom {
+      border-color: $color-alert--error;
+      box-shadow:
+      0 3px 6px rgba(0, 0, 0, 0.15),
+      0 2px 4px rgba(0, 0, 0, 0.12);
+    }
+
+    .uol-form__input--checkbox:checked ~ .uol-form__input--checkbox-custom {
+
+      path {
+        fill: $color-brand-2--dark;
+
+        @media (-ms-high-contrast: active) {
+          fill: WindowText;
+        }
+
+        @media (forced-colors: active) {
+          fill: LinkText;
+        }
+      }
+    }
+
+    .uol-form__input--select {
+      // display: none;
+      -webkit-appearance: none;
+      appearance: none;
+      background-color: $color-white;
+      color: $color-font;
+
+
+
+      + svg {
+        right: $spacing-3;
+        left: unset;
+        stroke: WindowText;
+        pointer-events: none;
+
+        path {
+          fill: WindowText;
+        }
+
+        .no-csspositionsticky & {
+          display: none !important;
+        }
+      }
+
+      @include media(">=uol-media-l") {
+        line-height: 1.25;
+      }
+
+      &[multiple] {
+
+        .no-js &,
+        &[data-native-select] {
+          min-height: 10rem;
+          padding: 0;
+
+          option {
+            padding: 0.5em 0.75em;
+          }
+        }
+
+        + svg {
+          display: none;
+        }
+      }
+
+      &.uol-form__input--select--typeahead-hidden {
+        + svg {
+          display: block;
+        }
+      }
+    }
+
+    .uol-form__input--file {
+      @extend .text-size-paragraph;
+
+      padding: 0;
+      border: none;
+      max-width: 25.5rem;
+
+      &:focus {
+        &::file-selector-button, // for Firefox and Safari shadow DOM
+        &::-webkit-file-upload-button { // for Chromium
+          border: 2px solid #045ccc;
+        }
+      }
+
+      &::file-selector-button, // for Firefox and Safari shadow DOM
+      &::-webkit-file-upload-button { // for Chromium
+        // Inheritance breaks on IE 11
+        // @extend .uol-button;
+        // @extend .uol-button--primary;
+
+        // TODO: Remove duplication of .uol-button when we drop IE11 support
+        @include font-size-responsive(1.125rem, 1.125rem, 1.25rem);
+        @include button_ripple($color-brand-2--dark);
+
+        line-height: 1;
+        box-sizing: border-box;
+        min-width: 10rem;
+        border: 0.125rem solid $color-brand-2--dark;
+        padding: 0.8em 1.8em;
+        border-radius: 6px;
+        color: $color-white;
+        background-position: center;
+        text-decoration: none;
+        transition: background 0.5s ease;
+
+
+        @include media(">=uol-media-l") {
+          padding-bottom: 11px;
+        }
+
+
+        @media (-ms-high-contrast: active) {
+          border: 1px solid WindowText;
+        }
+
+        &:hover,
+        &:active {
+          text-decoration: none;
+          box-shadow: 0 3px 6px 0 rgba($color-black, 0.15), 0 2px 4px 0 rgba($color-black, 0.12);
+        }
+
+        &:active {
+          background-color: lighten($color-brand-2--dark, 7%);
+          background-size: 100%;
+          transition: background 0s;
+        }
+
+        &:disabled {
+          color: lighten($color-font, 60%);
+          background: darken($color-white, 6%);
+          border: 0.125rem solid darken($color-white, 6%);
+
+          &:hover {
+            box-shadow: none;
+            cursor: not-allowed;
+          }
+        }
+
+        .js & {
+
+          &.uol-icon {
+            padding: 0.8em 2.2em;
+
+            svg {
+              margin-top: 0;
+            }
+          }
+
+          &.uol-icon--icon-only {
+            min-width: 0;
+            border-radius: 50%;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 2.81rem;
+            height: 2.81rem;
+            min-height: 2.81rem;
+
+            @include media(">=uol-media-l") {
+              width: 3.12rem;
+              height: 3.12rem;
+            }
+          }
+
+          &.uol-icon--icon-only--large {
+            svg {
+              transform: scale(1.4);
+            }
+          }
+        }
+
+        font-family: inherit;
+        margin-right: $spacing-3;
+      }
+    }
+
+    .uol-form__input-wrapper--file {
+
+      &::before {
+        content: none;
+      }
+    }
+
+    .uol-form__files-list {
+      list-style: none;
+      margin: $spacing-3 0;
+      padding: 0;
+      max-width: 27.375rem;
+
+      @include media(">=uol-media-l") {
+        margin: $spacing-3 0 $spacing-5;
+      }
+    }
+
+      .uol-form__files-list__item {
+        @extend .uol-typography-paragraph;
+
+        position: relative;
+        padding: $spacing-3 $spacing-7 $spacing-3 0;
+        border-bottom: 1px solid $color-border;
+
+        .uol-form__files-list__item__name {
+          display: block;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .uol-form__files-list__item__btn-delete {
+          position: absolute;
+          right: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 2em;
+          height: 2em;
+          background: transparent;
+          border: none;
+          border: 2px solid transparent;
+          border-radius: 50%;
+
+          &:hover {
+            border-color: $color-brand-2--dark;
+          }
+
+          svg {
+            position: absolute;
+            width: 1.25em;
+            height: 1.25em;
+            top: initial;
+            left: initial;
+          }
+        }
+    }
+// Currently used for styling checkboxes and radios for the search filter
+.uol-form__input-container--small {
+
+  @include media(">=uol-media-l") {
+
+   .uol-form__input--checkbox-wrapper {
+       min-height: 0;
+       margin-bottom: $spacing-3;
+
+     .uol-form__input--checkbox,
+     .uol-form__input--checkbox-custom {
+       top: 0.075em;
+       height: 1.5rem;
+       width: 1.5rem;
+     }
+
+     .uol-form__input--checkbox-label {
+       padding: 0 0 0 30px;
+       line-height: 1;
+     }
+   }
+
+   .uol-form__input--radio-wrapper {
+       margin-bottom: $spacing-2;
+       min-height: 0;
+
+       .uol-form__input--radio,
+       .uol-form__input--custom-radio {
+         height: 1.5rem;
+         width: 1.5rem;
+
+         svg {
+           transform: translate(-25%,-25%);
+           circle {
+             cx: 6px;
+             cy: 6px;
+             r: 6px;
+           }
+         }
+       }
+
+       .uol-form__input--custom-radio {
+         top: 0.15em;
+       }
+
+       .uol-form__input--radio__label {
+         margin-left: $spacing-6;
+         padding: 0;
+       }
+   }
+ }
+}
+
+
+// ------- Number spinners (shelved) Chrome/NVDA does not correctly announce values, Chrome bug ~ 4yrs old
+  // Custom number spinner
+  // input[type="number"]::-webkit-inner-spin-button,
+  // input[type="number"]::-webkit-outer-spin-button {
+  //   .js & {
+  //     -webkit-appearance: none;
+  //     margin: 0;
+  //   }
+  // }
+
+  // input[type="number"] {
+  //   .js & {
+  //     -moz-appearance: textfield;
+  //   }
+  // }
+
+  // .uol-form__input-number--decrement.uol-icon {
+  //   justify-content: center;
+  //   align-items: center;
+  //   display: inline-block;
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   height: 100%;
+  //   border: 2px solid $color-brand-2--dark;
+  //   padding: $spacing-3;
+  //   padding-right: $spacing-2;
+  //   background-color: $color-white;
+  //   border-radius: 6px 0 0 6px;
+  //   transition: box-shadow 0.25s ease-in, background 0.5s ease;
+
+  //   &:focus-visible {
+  //     background-color: $color-focus-accent;
+  //     border-color: $color-focus-accent;
+
+  //     > svg {
+  //       color: $color-white;
+  //       stroke: $color-white;
+  //     }
+  //   }
+
+  //   &:focus {
+  //     @media (forced-colors: active) {
+  //       outline: 3px solid LinkText;
+  //       outline-offset: 3px;
+  //     }
+
+  //     @media (-ms-high-contrast: active) {
+  //       outline: 4px solid -ms-hotlight;
+  //     }
+  //   }
+
+  //   &:hover {
+  //     box-shadow: inset 0px 0px 0px 1px $color-brand-2--dark;
+  //   }
+
+  //   &:active {
+  //     background-color: darken($color-white, 10%);
+  //   }
+
+  //   > svg {
+  //     stroke: $color-brand-2--dark;
+  //     color: $color-brand-2--dark;
+  //     height: 1.75rem;
+  //     width: 1.75rem;
+  //     position: initial;
+  //     margin-top: -0.125rem;
+
+  //     @media (forced-colors: active) {
+  //       color: LinkText;
+  //       stroke: LinkText;
+  //     }
+
+  //     @media (-ms-high-contrast: active) {
+  //       color: -ms-hotlight;
+  //       stroke: -ms-hotlight;
+  //     }
+  //   }
+
+  //   .no-js & {
+  //     display: none;
+  //   }
+  // }
+
+  // .uol-form__input--number {
+  //   text-align: center;
+  //   width: calc(100% - 6.5rem);
+
+  //   .js & {
+  //     border-left: none;
+  //     border-right: none;
+  //     border-radius: 0;
+  //     margin-left: 3.25rem;
+  //   }
+  // }
+
+  // .uol-form__input-number--increment.uol-icon {
+  //   display: inline-block;
+  //   position: absolute;
+  //   display: inline-flex;
+  //   justify-content: center;
+  //   align-items: center;
+  //   top: 0;
+  //   right: 0;
+  //   height: 100%;
+  //   border: 2px solid $color-brand-2--dark;
+  //   padding: $spacing-3;
+  //   padding-right: $spacing-2;
+  //   background-color: $color-white;
+  //   border-radius: 0  6px 6px 0;
+  //   transition: box-shadow 0.25s ease-in, background 0.5s ease;
+
+  //   &:focus-visible {
+  //     background-color: $color-focus-accent;
+  //     border-color: $color-focus-accent;
+
+  //     > svg {
+  //       color: $color-white;
+  //       stroke: $color-white;
+  //     }
+  //   }
+
+  //   &:focus {
+  //     @media (forced-colors: active) {
+  //       outline: 3px solid LinkText;
+  //       outline-offset: 3px;
+  //     }
+
+  //     @media (-ms-high-contrast: active) {
+  //       outline: 4px solid -ms-hotlight;
+  //     }
+  //   }
+
+  //   &:hover {
+  //     box-shadow: inset 0px 0px 0px 1px $color-brand-2--dark;
+  //   }
+
+  //   &:active {
+  //     background-color: darken($color-white, 10%);
+  //   }
+
+  //   > svg {
+  //     stroke: $color-brand-2--dark;
+  //     color: $color-brand-2--dark;
+  //     height: 1.75rem;
+  //     width: 1.75rem;
+  //     position: initial;
+  //     margin-top: 0.125rem;
+
+  //     @media (forced-colors: active) {
+  //       color: LinkText;
+  //       stroke: LinkText;
+  //       fill: LinkText;
+  //     }
+
+  //     @media (-ms-high-contrast: active) {
+  //       color: -ms-hotlight;
+  //       stroke: -ms-hotlight;
+  //       fill: LinkText;
+  //     }
+  //   }
+
+  //   .no-js & {
+  //     display: none;
+  //   }
+  // }
+
+  .uol-form__inputs-wrapper--inline {
+
+    @include media(">=uol-media-s") {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+
+      .uol-form__input--radio-wrapper {
+        flex-shrink: 0;
+        margin-right: $spacing-6;
+      }
+    }
+   }
+

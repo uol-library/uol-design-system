@@ -1,0 +1,77 @@
+.in-text-icons {
+  padding: 0 !important;
+  
+  /*
+  grip gap for each view same as gap between other components
+  column width 50% - half of grip gap
+  */
+  @include media(">=uol-media-m") {
+    display: grid;
+    columns: 2;
+    grid-template-columns: calc(50% - #{$spacing-2}) calc(50% - #{$spacing-2});
+    grid-gap: 0 $spacing-4;
+  }
+
+  @include media(">=uol-media-l") {
+    grid-template-columns: calc(50% - #{$spacing-3}) calc(50% - #{$spacing-3});
+    grid-gap: 0 $spacing-5;
+  }
+
+  @include media(">=uol-media-xl") {
+    grid-template-columns: calc(50% - #{$spacing-4}) calc(50% - #{$spacing-4});
+    grid-gap: 0 $spacing-6;
+  }
+
+}
+  
+  .in-text-icon {
+    display: grid !important;
+    grid-template-columns: auto 1fr;
+    grid-gap: $spacing-3;
+    align-items: center;
+    margin-bottom: 20px !important;
+    
+    svg {
+      display: block;
+      height: $spacing-6 !important;
+      width: $spacing-6 !important;
+      color: $color-brand;
+      margin: 0 !important;
+    }
+    .uol-icon__label {
+      @extend %text-size-paragraph;
+
+      line-height: 1.75rem;
+      display: block;
+      break-inside: avoid-column;
+      margin-right: 48px;
+    }
+  }
+
+.uol-rich-text {
+  // important tags because component is ul so uses text list styling
+  
+  .in-text-icons {
+    margin-top: 16px !important;
+    margin-bottom: 0px !important;
+
+    @include media(">=uol-media-m") {
+      margin-top: 24px !important;
+      margin-bottom: -20px !important;
+    }
+
+    svg {
+      margin-right: $spacing-3;
+    }
+  }
+
+  p + .in-text-icons {
+    // paragraph normally has 32px after it, here we want 24 so take of 8
+    margin-top: -8px !important;
+    
+    @include media(">=uol-media-m") {
+      // 32px from paragraph above it so remove negative margin
+      margin-top: 0 !important;
+    }
+  }
+}

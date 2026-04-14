@@ -1,0 +1,33 @@
+.footer-supplement {
+    @extend .uol-col-container;
+    @extend %text-size-heading-5;
+    @extend %uol-font-sans-serif;
+
+    font-weight: $font-weight-bold--sans-serif;
+    
+    background-color: $color-black--faded;
+    color: $color-font;
+    text-decoration: none;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding: $spacing-4;
+
+    &:hover,
+    &:focus {
+        text-decoration: underline;
+        text-decoration-color: $color-brand;
+        text-decoration-thickness: 1.5px;
+    }
+
+    .footer-supplement__icon {
+        height: 25px;
+        width: 25px;
+        margin-right: $spacing-2;
+
+        svg {
+            width: 100% !important;
+            height: 100% !important;
+        }
+    }
+}

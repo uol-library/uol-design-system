@@ -1,0 +1,27 @@
+.uol-status-message {
+  display: block;
+
+  + .uol-status-message {
+    margin-top: $spacing-2;
+  }
+
+  color: $color-font--dark;
+
+  strong {
+    font-weight: $font-weight-medium--sans-serif;
+  }
+
+  svg {
+    path {
+      fill: $color-black--dark;
+
+      @media screen and (forced-colors: active) {
+        fill: CanvasText;
+      }
+    }
+  }
+
+  svg + .uol-icon__label {
+    margin-left: $spacing-1;
+  }
+}

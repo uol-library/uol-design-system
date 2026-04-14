@@ -1,0 +1,15 @@
+.site-container {
+  max-width: $site-container-full;
+  margin: 0 auto;
+}
+
+.uol-content-container {
+  max-width: $site-container-full;
+  margin: 0 auto;
+
+  .uol-banner-outer + & {
+    @include media(">=uol-media-l") {
+      margin-top: $spacing-5;
+    }
+  }
+}

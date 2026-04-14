@@ -1,0 +1,37 @@
+.uol-typography-pull-quote {
+  @extend %text-size-pullquote;
+  @extend %uol-font-serif;
+
+  display: inline-block;
+  font-weight: $font-weight-bold--serif;
+  padding: $spacing-4 $spacing-5;
+  margin-bottom: $spacing-6;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @include media ("<uol-media-m") {
+    border-left: $border-width-3 solid $color-brand;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+  .uol-typography-pull-quote--left {
+
+    @include media(">=uol-media-m") {
+      text-align: left;
+      border-left: $border-width-3 solid $color-brand;
+    }
+  }
+
+  .uol-typography-pull-quote--right {
+
+    @include media(">=uol-media-m") {
+      text-align: right;
+      border-right: $border-width-3 solid $color-brand;
+    }
+  }

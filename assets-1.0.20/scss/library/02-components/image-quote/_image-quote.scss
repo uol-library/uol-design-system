@@ -1,0 +1,196 @@
+.image-quote {
+  --quoteBgColour: #{$color-brand-teal};
+  --quoteAccentColour: #{$color-brand-cream};
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 32px 0; 
+
+  @include media('>=uol-media-l') {
+    max-width: none;
+    flex-direction: row;
+  }
+
+  .image-quote__edge {
+    min-width: 48px;
+    background-image: linear-gradient(white  calc(15% + 40px), var(--quoteBgColour) calc(15% + 40px)); 
+
+    @include media('>=uol-media-m') {
+      width: calc((100% - 1440px) / 2);
+    }
+  }
+
+  .image-quote__img-and-video {
+    position: relative;
+
+    @include media('>=uol-media-l') {
+      margin-bottom: -5px;
+    }
+  }
+
+  .image-quote__button {
+    position: absolute !important;
+    bottom: -56px;
+    right: 16px;
+
+    @include media('>=uol-media-m') {
+      bottom: -56px;
+      left: 320px;
+    }
+
+    @include media('>=uol-media-l') {
+      bottom: -10px;
+      left: 320px;
+    }
+  }
+
+  .image-quote__img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    z-index: 2;
+    margin-bottom: -45px;
+
+
+    @include media('>=uol-media-s') {
+      width: 344px !important;
+      max-width: none !important;
+    }
+
+    @include media('>=uol-media-l') {
+      margin-bottom: 0;
+    }
+  }
+
+  .image-quote__text-container {
+    
+    background-image: linear-gradient(var(--quoteBgColour));
+    padding: calc(64px + 32px) 32px 32px;
+    display: flex;
+    align-items: center;
+
+    @include media('>=uol-media-s') {
+      background-image: linear-gradient(var(--quoteAccentColour) 40px, var(--quoteBgColour) 40px);
+    }
+
+    @include media('>=uol-media-l') {
+      width: 100%;
+      background-image: linear-gradient(white 15%, var(--quoteAccentColour) 15%,  var(--quoteAccentColour) calc(15% + 40px), var(--quoteBgColour) calc(15% + 40px));
+      display: flex;
+      align-items: flex-end; 
+      min-height: inherit;
+      padding: 32px 0 10px 48px;
+    }
+  }
+
+  .image-quote__text-container--inner {
+    line-height: 22px;
+    padding-left: 0; 
+    height: calc(85% - 40px);
+    display: flex;
+    align-items: center;
+  }
+
+  .uol-typography-blockquote {
+    @extend %uol-font-sans-serif;
+    
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.75rem; //28px
+    font-size: 1.25rem!important; //20px
+    padding: 20px 10px 0 10px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    margin-bottom: 16px !important;
+
+    @include media('>=uol-media-m') { 
+      margin-bottom: 0;
+    }
+
+    @include media('>=uol-media-m') {
+      max-width: 49rem;
+    }
+
+    @include media('>=uol-media-m', '<uol-media-l') {
+      margin-bottom: 1.75rem;
+    }
+
+    &::before {
+      color: $color-black;
+      left: -0.625rem;
+    }
+    cite {
+      display: block;
+      color: $color-black;
+      font-style: normal;
+      margin-top: 1rem;
+    }
+  }
+}
+
+.uol-course__content,
+.uol-article__content,
+.uol-page__content {
+  .image-quote {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @include media('>=uol-media-xl') {
+      max-width: none;
+      flex-direction: row;
+    }
+  }
+
+  .image-quote__edge {
+    background-image: linear-gradient(white calc(15% + 40px),  var(--quoteBgColour) calc(15% + 40px));
+  }
+  
+  .image-quote__img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    z-index: 2;
+    margin-bottom: -40px;
+    margin-top: 0 !important;
+
+    @include media('>=uol-media-m') {
+      width: 344px !important;
+      max-width: none !important;
+    }
+    
+    @include media('>=uol-media-xl') {
+      margin-bottom: 0;
+    }
+  }
+
+  .image-quote__text-container {
+    background-image: linear-gradient(var(--quoteAccentColour) 40px, var(--quoteBgColour) 40px);
+
+    background-image: linear-gradient(var(--quoteAccentColour) 40px, var(--quoteBgColour) 40px);
+    padding: calc(64px + 32px) 32px 32px;
+    display: flex;
+    align-items: center;
+
+    @include media('>=uol-media-xl') {
+      background-image: linear-gradient(white 15%, var(--quoteAccentColour) 15%, var(--quoteAccentColour) calc(15% + 40px), var(--quoteBgColour) calc(15% + 40px));
+      display: flex;
+      align-items: flex-end; 
+      min-height: inherit;
+      padding: 34px 0 10px 40px;
+    }
+  }
+}
+ 
+.image-quote--cream {
+  --quoteBgColour: #{$color-brand-cream};
+  --quoteAccentColour: white; // second colour looks odd with cream so use white
+}
+
+
+

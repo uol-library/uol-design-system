@@ -1,0 +1,35 @@
+.uol-link-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  
+  @include media(">=uol-media-m") {
+    flex-direction: row;
+  }
+}
+.uol-link-button {
+  display: inline-block;
+  min-width: 0;
+  margin-right: $spacing-5;
+  margin-bottom: $spacing-6;
+
+  @include media(">=uol-media-m") {
+    margin-right: $spacing-5;
+    margin-bottom: $spacing-7;
+  }
+
+  @include media(">=uol-media-xl") {
+    margin-right: $spacing-6;
+  }
+
+  &:first-child {
+    margin-bottom: $spacing-6;
+    @include media(">=uol-media-m") {
+      margin-bottom: 0;
+    }
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

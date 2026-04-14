@@ -1,0 +1,67 @@
+.uol-global-marketing-banner {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  padding: $spacing-4;
+  border-radius: 5px;
+  background: $color-black;
+  color: $color-white;
+
+  @include media(">=uol-media-l") {
+    padding: $spacing-4 $spacing-5;
+  }
+
+  &:hover {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, .12);
+  }
+
+  &:focus-within,
+  &:hover {
+    .uol-global-marketing-banner__link {
+      text-decoration: underline;
+      text-decoration-color: $color-brand--bright
+    }
+  }
+}
+
+  .uol-global-marketing-banner__title {
+    @extend .uol-typography-heading-6;
+
+    margin: 0 0 $spacing-1 0;
+  }
+
+  .uol-global-marketing-banner__description {
+    @extend .uol-typography-paragraph;
+
+    margin: 0 0 $spacing-1 0;
+
+    @include media(">=uol-media-m") {
+      font-weight: $font-weight-medium--sans-serif;
+    }
+
+    @include media(">=uol-media-l") {
+      margin: 0 0 0.0625rem 0;
+    }
+  }
+
+  .uol-global-marketing-banner__link {
+    @extend .uol-typography-paragraph;
+
+    display: inline-block;
+    font-weight: $font-weight-bold--sans-serif;
+    text-decoration: none;
+    margin: 0;
+
+    svg {
+      fill: $color-brand--bright;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+  }

@@ -1,0 +1,675 @@
+.uol-cards {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+
+  @include media(">=uol-media-m") {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
+
+.uol-cards--featured:not(.uol-cards--count-2) {
+  .uol-cards__card:first-of-type {
+
+    @include media(">=uol-media-m") {
+      border: none;
+    }
+
+    .uol-cards__card__link::after {
+      @include media(">=uol-media-m") {
+        display: none;
+      }
+    }
+  }
+}
+
+.uol-cards__card {
+  position: relative;
+  border: 1px solid rgba($color-border--light, 0.6);
+  border-radius: 12px;
+  margin-bottom: $spacing-4;
+  display: flex;
+  flex-direction: column;
+
+  @include media(">=uol-media-m") {
+    width: calc(50% - #{$spacing-2});
+  }
+
+  @include media(">=uol-media-l") {
+    margin-bottom: $spacing-5;
+    width: calc(50% - #{$spacing-5 / 2});
+  }
+
+  @include media(">=uol-media-xl") {
+    margin-bottom: $spacing-5;
+    width: calc(100% / 3 - #{$spacing-6 * 2 / 3});
+  }
+
+  @include media(">=uol-media-xxl") {
+    margin-bottom: $spacing-6;
+  }
+
+  // This declaration displays the top cards at 50%, so the bottom row(s) display 3
+  .uol-cards--count-7:not(.uol-cards--featured) &:nth-of-type(-n+4),
+  .uol-cards--count-6.uol-cards--featured &:nth-of-type(5),
+  .uol-cards--count-6.uol-cards--featured &:nth-of-type(6),
+  .uol-cards--count-5.uol-cards--featured &:not(:first-of-type),
+  .uol-cards--count-5:not(.uol-cards--featured) &:nth-of-type(-n+2),
+  .uol-cards--count-4:not(.uol-cards--featured):not(.uol-cards--wide-container) &,
+  .uol-cards--count-3.uol-cards--featured &:not(:first-of-type),
+  .uol-cards--count-2 &,
+  .uol-cards--count-1:not(.uol-cards--featured) & {
+
+    @include media(">=uol-media-l") {
+      width: calc(50% - #{$spacing-5 / 2});
+    }
+
+    @include media(">=uol-media-xl") {
+      width: calc(50% - #{$spacing-6 / 2});
+    }
+  }
+}
+
+.uol-cards__card__image-wrapper {
+  height: 0;
+  padding-top: 66.66%;
+  position: relative;
+  border-radius: 12px 12px 0 0;
+  background-image: url("../img/placeholder-uol-icon.svg");
+  background-size: cover;
+  background-clip: padding-box;
+  overflow: hidden;
+  text-align: center;
+
+  @media (forced-colors: active) {
+    box-sizing: border-box;
+    border: 1px solid CanvasText;
+  }
+
+  @media (-ms-high-contrast: active) {
+    box-sizing: border-box;
+    border: 1px solid WindowText;
+  }
+
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    -ms-high-contrast-adjust: none;
+    forced-color-adjust: none;
+  }
+}
+
+.uol-cards__card__image {
+  position: absolute;
+  top: 0;
+  left:50%;
+  transform: translateX(-50%);
+  width: auto;
+  height: 100%;
+  border-radius: 11px 11px 0 0;
+}
+
+.uol-cards__card__text-wrapper {
+  // position: relative;
+  padding: 0 $spacing-4 $spacing-5;
+  color: $color-font--light;
+  background-color: $color-grey--light;
+  box-sizing: border-box;
+  border-radius: 0 0 11px 11px;
+  flex: 1 1 auto;
+  order: 1;
+  z-index: 1;
+}
+
+.uol-cards__card__title {
+  @extend %text-size-heading-5;
+  @extend %uol-font-serif;
+
+  padding: $spacing-4 0 $spacing-2 0;
+  margin: 0;
+  font-weight: $font-weight-bold--serif;
+  line-height: 1.4;
+}
+
+.uol-cards__card__link {
+  text-decoration: none;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    transition: box-shadow 0.25s ease-in-out;
+    z-index: 3;
+    border-radius: 11px;
+  }
+
+  &:hover,
+  &:focus-within {
+
+    &::before {
+      box-shadow:
+        0 15px 25px rgba($color-black--dark, 0.15),
+        0 5px 10px rgba($color-black--dark, 0.05);
+    }
+
+    @include media(">=uol-media-m") {
+      .uol-cards--featured:not(.uol-cards--count-2) .uol-cards__card:first-of-type & {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &::after {
+    content: "";
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-bottom: 66.66%;
+    background: transparent;
+    border-bottom: $spacing-2 solid $color-brand;
+    width: $spacing-4;
+    transition: width 0.3s ease-in-out 0.1s;
+  }
+
+  .uol-cards__card:focus-within & {
+    &::after {
+      width: 100%;
+    }
+  }
+
+  .uol-cards__card:hover & {
+    &::after {
+      width: 100%;
+    }
+  }
+}
+
+// remove red line transition when card is type video
+.uol-cards__card__link__video {
+    &::after {
+      content: none;
+  }
+}
+
+.uol-cards--featured:not(.uol-cards--count-2) {
+  .uol-cards__card:first-of-type {
+    .uol-cards__card__link::after {
+      @include media(">=uol-media-m") {
+        display: none;
+      }
+    }
+  }
+}
+
+.uol-cards__card__text {
+  @include font-size-responsive(1.125rem, 1rem, 1.125rem);
+  @include line-height-responsive(1.625, 1.625, 1.556);
+
+  margin: 0;
+}
+
+// This declaration handles the featured card, only if the count is not equal to 2 & the viewport is >= 768
+.uol-cards--featured:not(.uol-cards--count-2) {
+  @include media(">=uol-media-m") {
+
+    .uol-cards__card:first-of-type {
+      display: block;
+      width: 100%;
+
+      .uol-cards__card__image-wrapper {
+        float: right;
+        width: calc(100% / 12 * 10 - #{$spacing-1});
+        padding-top: calc(50% - #{$spacing-4});
+        border: 1px solid rgba($color-border--light, 0.6);
+        border-radius: 12px;
+
+        &::before {
+          display: none;
+        }
+      }
+
+      .uol-cards__card__image {
+        border-radius: 11px;
+      }
+
+      .uol-cards__card__text-wrapper {
+        position: absolute;
+        bottom: $spacing-8;
+        left: 0;
+        width: calc(50% - #{$spacing-2});
+        height: fit-content;
+        padding: $spacing-5 $spacing-5 $spacing-6;
+        border: 1px solid rgba($color-border--light, 0.6);
+        border-radius: 11px;
+
+        .uol-cards__card__title {
+          padding-top: 0;
+        }
+      }
+    }
+  }
+
+  @include media(">=uol-media-l") {
+
+    .uol-cards__card:first-of-type {
+
+      .uol-cards__card__image-wrapper {
+        float: right;
+        // margin-left: 5.5rem;
+        width: calc(80% - #{$spacing-1});
+        padding-top: calc(50% - 2.75rem);
+
+        .uol-side-nav-container--populated + .uol-homepage-content & {
+          width: calc(100% / 9 * 7 - #{$spacing-2});
+        }
+      }
+
+      .uol-cards__card__text-wrapper {
+        width: calc(50% - 1rem);
+
+        .uol-side-nav-container--populated + .uol-homepage-content & {
+          width: calc(100% / 9 * 4 - #{$spacing-4});
+        }
+      }
+    }
+  }
+
+  // Bugfix for escaping text container
+  @include media(">=uol-media-m") {
+    .uol-cards__card:first-of-type {
+
+      .uol-cards__card__text-wrapper {
+        bottom: $spacing-6;
+
+          // TODO: Temporary non-standards fix - remove asap
+          @supports(-webkit-line-clamp: 4) {
+            height: auto;
+          }
+        }
+      }
+
+      .uol-cards__card__text {
+        overflow: hidden;
+        max-height: calc(1.125em * 1.4 * 4);
+
+        @supports(-webkit-line-clamp: 4) {
+          line-clamp: 4;
+          display: -webkit-box;
+          -webkit-line-clamp: 4;
+          -webkit-box-orient: vertical;
+          text-overflow: ellipsis;
+          max-height: 100%;
+        }
+      }
+    }
+
+  @include media(">=uol-media-xl") {
+
+    .uol-cards__card:first-of-type {
+
+      .uol-cards__card__text-wrapper {
+
+        bottom: $spacing-8;
+      }
+
+      .uol-cards__card__text {
+        max-height: calc(1.125em * 1.4 * 6);
+
+        @supports(-webkit-line-clamp: 6) {
+          line-clamp: 6;
+          -webkit-line-clamp: 6;
+        }
+      }
+
+      .uol-cards__card__image-wrapper {
+        // margin-left: 15rem;
+        width: calc(((100% + #{$spacing-6}) / 12 * 8) - #{$spacing-6});
+        padding-top: calc(50% - 7.5rem);
+
+        .uol-side-nav-container--populated + .uol-homepage-content & {
+          width: calc(100% / 9 * 6 - #{$spacing-2});
+        }
+      }
+
+      .uol-cards__card__text-wrapper {
+        width: calc(50% - #{$spacing-6 / 2});
+
+        .uol-side-nav-container--populated + .uol-homepage-content & {
+          left: 0 ;
+          width: calc(100% / 9 * 4 - #{$spacing-4});
+        }
+      }
+    }
+  }
+}
+
+// --------------------- Below is all the CSS for News and Events cards ----------------------------
+
+// Standard styling
+
+  .uol-cards__card--without-image {
+
+    .uol-cards__card__text-wrapper {
+      border-radius: 11px;
+    }
+
+      &::before {
+        content: "";
+        z-index: 2;
+        position: absolute;
+        top: $spacing-4;
+        left: $spacing-4;
+        height: $spacing-2;
+        width: $spacing-4;
+        background-color: $color-brand;
+
+        @media (forced-colors: active) {
+          box-sizing: border-box;
+          border: $spacing-1 solid CanvasText;
+        }
+
+        @media (-ms-high-contrast: active) {
+          box-sizing: border-box;
+          border: $spacing-1 solid WindowText;
+        }
+      }
+
+    .uol-cards__card__title {
+      padding-top: $spacing-6;
+
+      &:hover {
+        text-decoration: underline;
+        color: $color-font--dark;
+      }
+
+      &:focus-within {
+        text-decoration: underline;
+        color: $color-font--dark;
+      }
+    }
+
+    .uol-cards__card__link::after {
+      display: none;
+    }
+  }
+
+  .uol-cards__card__date {
+    display: block;
+    color: $color-font--x-light;
+    font-variant-numeric: lining-nums;
+    line-height: 1.625;
+
+    + .uol-cards__card__text:first-of-type {
+      margin-top: $spacing-5;
+    }
+  }
+
+    .uol-cards__card__video-icon {
+
+      //circle
+      &::before {
+        content: "";
+        box-sizing: border-box;
+        top: -2.4rem;
+        margin-top: 66.66%;
+        position: absolute;
+        width: $spacing-7;
+        height: $spacing-7;
+        display: block;
+        z-index: 2;
+        background-color: $color-brand;
+        border: 3px solid $color-grey--light;
+        border-radius: 50%;
+      }
+
+      //arrow
+      &::after {
+        content: "";
+        box-sizing: border-box;
+        position: absolute;
+        display: block;
+        top: -#{$spacing-5};
+        margin-top: 66.66%;
+        border-style: solid;
+        border-width: 9px 0 9px 16px;
+        border-color: transparent transparent transparent #fff;
+        left: 2.1rem;
+        z-index: 3;
+      }
+    }
+    // Add shadow to play video icon when any part of card is hovered
+    .uol-cards__card {
+      &:hover {
+        .uol-cards__card__video-icon {
+          &::before {
+            box-shadow: 0 3px 6px 0 rgba(33,33,33,.15), 0 2px 4px 0 rgba(33,33,33,.12)
+          }
+        }
+      }
+      &:focus-within {
+        .uol-cards__card__video-icon {
+          &::before {
+            outline: 3px solid #197ebe;
+          }
+        }
+      }
+   }
+
+  // When types of N&E cards are mixed, style the card(s) without images the same as those with and let the placeholder show
+  .uol-cards--image-layout {
+    .uol-cards__card--without-image {
+
+      &::before {
+        display: none;
+      }
+    }
+
+      .uol-cards__card__text-wrapper {
+        border-radius: 0 0 11px 11px;
+      }
+
+      .uol-cards__card__link::after {
+        display: inline-block;
+      }
+
+      .uol-cards__card__title {
+        padding-top: $spacing-4;
+      }
+  }
+
+/*  ----------------------  Layout styling for News and Events cards
+
+  - 2 layout types, with side nav and without
+  - Never display more than 8 cards
+  - If there is a side nav, never display more than 6
+  - Viewports below 1024px, never display more than 6
+
+  -- Both layout types
+  >   Display only 6 or 3 cards below 600px - 1 column
+  >   Display only 6 or 4 cards between 600px and below 1024px - 2 columns
+
+  --- With side navigation
+  >    Display either 6 or 3 cards - 3 column approach for viewports of 1024px and larger
+
+  ---- Without side navigation
+  >     Display either 8 or 4 cards - 4 column approach for viewports of 1024px and larger
+
+  ----- Additional CSS
+  >      Prevented large spaces between cards for when there are only 2 or 3 with an invisible pseudo element
+         Which would have happened if there were only 2 or 3 events
+
+  ------ Consideration
+  >       If there are 3 very important events for example, and an author is asked to add a very important 4th, it won't
+          display under certain scenarios, do they add 3 more just to get the 4th to show? Whether it actually displays
+          or not is dependent on the viewport and whether there is a side nav
+*/
+
+// Layout and sizing when in a widget and there is no side navigation
+.uol-widget--news-events {
+
+  // Do not display more than 6 below large
+  @include media("<uol-media-xl") {
+    .uol-cards__card:nth-of-type(n+7) {
+      display: none;
+    }
+  }
+
+  // Never display more than 8
+  .uol-cards__card:nth-of-type(n+9) {
+    display: none;
+  }
+
+  @include media(">=uol-media-m", "<uol-media-l") {
+    .uol-cards__card {
+      width: calc(100% / 2 - #{$spacing-2});
+    }
+  }
+
+  @include media(">=uol-media-l") {
+    .uol-cards {
+      .uol-cards__card:nth-of-type(n+1) {
+        width: calc(100% / 3 - #{$spacing-4});
+      }
+    }
+  }
+
+  @include media(">=uol-media-xl") {
+    .uol-cards {
+      .uol-cards__card:nth-of-type(n+1) {
+      width: calc(100% / 4 - #{$spacing-5});
+      margin-bottom: $spacing-6;
+      }
+    }
+  }
+
+  // If there are only 2 or 3 cards, prevent large space between cards caused by flex: space-between
+  .uol-cards--count-2,
+  .uol-cards--count-3 {
+
+    @include media(">=uol-media-l") {
+      flex-wrap: nowrap;
+
+      .uol-cards__card:not(:first-of-type) {
+        margin-left: $spacing-5;
+      }
+
+        &::after {
+          content: "";
+          flex: auto;
+        }
+    }
+
+    @include media(">=uol-media-xl") {
+      .uol-cards__card:not(:first-of-type) {
+        margin-left: $spacing-6;
+      }
+    }
+  }
+
+  // Display only 3 news and events cards if there are 4 or 5
+  .uol-cards--count-4,
+  .uol-cards--count-5 {
+
+    @include media("<uol-media-m") {
+      .uol-cards__card:nth-of-type(n+4) {
+        display: none;
+      }
+    }
+
+    @include media(">=uol-media-l", "<uol-media-xl") {
+      .uol-cards__card:nth-of-type(n+4) {
+        display: none;
+      }
+    }
+
+    // Display 4 if there are 4 or 5 between medium and large
+    @include media(">=uol-media-m") {
+      .uol-cards__card:nth-of-type(n+5) {
+        display: none;
+      }
+    }
+  }
+
+  .uol-cards--count-5,
+  .uol-cards--count-6,
+  .uol-cards--count-7 {
+
+    // Display 3 if there are 5, 6 or 7 between large and xl
+    @include media(">=uol-media-l", "<uol-media-xl") {
+      .uol-cards__card:nth-of-type(n+4) {
+        display: none;
+      }
+    }
+
+    // Display 4 if there are 5, 6 or 7 above xl
+    @include media(">=uol-media-xl") {
+      .uol-cards__card:nth-of-type(n+5) {
+        display: none;
+      }
+    }
+  }
+}
+
+// ----------- The below controls layout when the side nav is populated
+
+  .uol-side-nav-container--populated ~ .uol-homepage-content {
+    .uol-widget--news-events {
+
+    // Never display more than 6 if side nav is present
+      .uol-cards__card:nth-of-type(n+7) {
+        display: none;
+      }
+
+      .uol-cards__card {
+
+        @include media(">=uol-media-l") {
+          width: calc(100% / 2 - #{$spacing-3});
+        }
+
+        @include media(">=uol-media-xl") {
+          width: calc(100% / 3 - 1.333rem);
+        }
+      }
+
+    .uol-cards--count-4,
+    .uol-cards--count-5 {
+
+      // Only display 4 if there are 4 or 5 and side nav is present between large and xl
+      @include media(">=uol-media-l", "<uol-media-xl") {
+        // Add display: flex back to 4th card, overwriting display: none
+        .uol-cards__card:nth-of-type(n+4) {
+          display: flex;
+        }
+
+        .uol-cards__card:nth-of-type(n+5) {
+          display: none;
+        }
+      }
+
+      // Only display 3 if there are 4 or 5 above xl
+      @include media(">=uol-media-xl") {
+        .uol-cards__card:nth-of-type(n+4) {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+.uol-cards--wide-container.uol-cards--count-4,
+.uol-cards--wide-container.uol-cards--count-8 {
+
+  .uol-cards__card {
+    @include media(">=uol-media-l") {
+      width: calc(100% / 3 - #{$spacing-4});
+    }
+
+    @include media(">=uol-media-xl") {
+      width: calc(100% / 4 - #{$spacing-5});
+    }
+  }
+}

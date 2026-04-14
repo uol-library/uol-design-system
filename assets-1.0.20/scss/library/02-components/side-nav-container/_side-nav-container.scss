@@ -1,0 +1,10 @@
+.uol-side-nav-container {
+  display: none;
+}
+
+  .uol-side-nav-container--populated {
+    @extend .uol-col;
+    @extend .uol-col-l-3;
+
+    display: block;
+  }

@@ -1,0 +1,40 @@
+.uol-skip-link {
+  @include font-size-responsive(1rem, 1.125rem, 1.25rem);
+  @include line-height-responsive(1.556, 1.556, 1.6);
+
+  position: absolute;
+  white-space: nowrap;
+  left: $spacing-4;
+  top: 0;
+  transform: translateY(-100%);
+  padding: $spacing-2 $spacing-4;
+  text-decoration: none;
+  outline: 2px dotted transparent;
+  background-color: $color-alert--warning;
+  color: $color-font--dark;
+  border-bottom: 2px solid $color-black;
+  z-index: 2;
+  transition: all 0.2s;
+
+  @include media(">=uol-media-l") {
+    padding: $spacing-2 $spacing-5;
+    left: $spacing-5;
+  }
+
+  @include media(">=uol-media-xl") {
+    left: $spacing-6;
+  }
+
+  @media (prefers-reduced-motion) {
+    transition: none;
+  }
+}
+
+.uol-skip-link:focus {
+  transform: translateY(0);
+  top: $spacing-4;
+
+  @include media(">=uol-media-l") {
+    top: $spacing-5;
+  }
+}

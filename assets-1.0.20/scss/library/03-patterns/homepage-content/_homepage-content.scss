@@ -1,0 +1,206 @@
+.uol-homepage-content-container {
+  @extend .uol-col-container;
+
+  overflow: hidden;
+  padding: $spacing-6 $spacing-4 0;
+  display: flex;
+
+  @include media("<uol-media-l") {
+    display: block;
+  }
+}
+
+.uol-homepage-content {
+  @extend .uol-page-width--max-width;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  margin-top: 0;
+  // padding: 0 $spacing-4;
+
+  @include media(">=uol-media-m", "<uol-media-l") {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  @include media(">=uol-media-m", "<uol-media-l") {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  @include media(">=uol-media-l", "<uol-media-xl") {
+    padding-left: $spacing-1;
+  }
+
+  .uol-side-nav-container--populated + & {
+    @extend .uol-col;
+    @extend .uol-col-l-9;
+  }
+}
+
+
+/*
+Specific CSS for studfent hub pattern
+Replicate for all home pages 
+*/
+.uol-homepage-content {
+
+
+  // space between crumbtrail line and first widget
+  .uol-widget-container:first-of-type {
+    margin-top: 0;
+  
+    @include media(">=uol-media-l") {
+      margin-top: $spacing-2;
+    }
+  }
+
+  // space under all widgets
+  .uol-widget-container {
+    margin-bottom: $spacing-7;
+    
+    // adding next line helps when looking at spacing between 
+    // border: 1px solid black;
+
+    @include media(">=uol-media-m") {
+      margin-bottom: $spacing-8;
+    }
+
+    @include media(">=uol-media-l") {
+      margin-bottom: $spacing-9;
+    }
+  }
+
+  .uol-widget__lead {
+    padding-top: 0;
+  }
+
+  .uol-widget-container:last-of-type {
+    
+    @include media(">=uol-media-l") {
+      margin-bottom: $spacing-9 // container has 12, white border 4, aiming for 96 (80 + 12 + 4)
+    }
+  }
+
+  /*
+  This specific rule will apply to the online courses hub page
+  Need to replace with rule which looks at all content containers which end with paragraphs
+  which are followde by CTA components
+  */
+
+  // reset thigs which impact on red line above title and reset to single value via padding in title below
+  .uol-widget {
+    margin-top: 0;
+  }
+
+    .uol-widget__head {
+      padding-top: 0;
+    }
+
+    .uol-widget__title {
+      margin-top: 0;
+
+      // padding is red line thickness (8px) plus required gap (16px)
+      padding-top: 24px;
+
+      @include media(">=uol-media-m") {
+        // padding is red line thickness (8px) plus required gap (24px)
+        padding-top: 32px;
+      }
+
+      &:before {
+        top: 0;
+      }
+    }
+
+    .uol-widget__content {
+      margin: 0;
+  
+      .uol-rich-text {
+        p:last-of-type {
+          margin-bottom: 0;
+        }
+      }
+
+      .uol-in-text-cta {
+        margin-bottom: 0;
+      }
+    }
+
+  .uol-widget--featured-content {
+    margin: 0;
+
+    .uol-rich-text {
+      p:last-of-type {
+        margin-bottom: $spacing-6;
+      }
+    }
+
+    .uol-widget__title {
+      padding-top: $spacing-7;
+
+      @include media(">=uol-media-m") {
+        padding-top: $spacing-8;
+      }
+
+      @include media(">=uol-media-l") {
+        padding-top: $spacing-6;
+      }
+
+      &:before {
+        top: $spacing-6;
+
+        @include media(">=uol-media-m") {
+          top: $spacing-6;
+        }
+
+        @include media(">=uol-media-l") {
+          top: 0;
+        }
+      }
+    }
+  }
+
+  .uol-widget--tiles {
+    margin-top: 0;
+  }
+
+  /*
+  Negate margin on bottom of cards by having same negative margin on container
+  Means cards will fit exactly in to widget container
+  */
+  .uol-widget-container__cards {
+    .uol-widget__content {
+      margin-bottom: -16px;
+
+      @include media(">=uol-media-l") {
+        margin-bottom: -24px;
+      }
+    } 
+  }
+}
+
+// defect 96349, last paragraph followed by cta spacing
+.uol-widget p:last-of-type + .uol-in-text-cta {
+  margin-top: $spacing-4;
+}
+
+// defect 104587 fix issue with accordion spacing on homepages
+.uol-homepage-content .uol-accordion {
+  .uol-accordion__btn {
+    padding-bottom: 1rem!important;
+  }
+
+  .uol-accordion__content--expanded {
+   padding-bottom: 1.5rem!important;
+  }
+
+  ul:last-of-type {
+    margin-top: 2rem!important;
+
+    li:last-of-type {
+      margin-bottom: 0.5rem;
+    }
+  }
+}

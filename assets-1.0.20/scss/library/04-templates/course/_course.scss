@@ -1,0 +1,256 @@
+// TO DO - structure this CSS correctly
+// Note - here there's a lot of nudging content due to inherent paddings and margins on cols.
+// Ultimately look at removing so col structure doesn't bring spacing in
+
+// Fiddle fix to stop horizontal scrolling on some browsers and banner goes right to edge of page
+.uol-course {
+
+  @include media("<=uol-media-xxl") {
+    overflow-x: hidden;
+  }
+
+  .uol-hero-banner, .uol-key-facts {
+    width: calc(100vw - 0px);
+
+    @include media(">uol-media-xxl") {
+      width: calc(100vw - 9px);
+    }
+  }
+}
+
+.uol-course .uol-course__header .uol-col-12 {
+  padding-bottom: 0;
+  padding-top: 0;
+  margin-top: $spacing-4;
+
+  @include media(">=uol-media-l") {
+    margin-top: $spacing-5;
+  }
+}
+
+.uol-course .uol-course__header {
+  padding: $spacing-2 $spacing-4 0;
+
+  @include media(">=uol-media-xs") {
+    padding: $spacing-2 $spacing-2 0;
+  }
+
+  @include media(">=uol-media-m") {
+    padding-top: $spacing-4;
+  }
+
+  @include media(">=uol-media-l") {
+    margin-top: $spacing-4;
+    padding: 0 $spacing-4;
+  }
+}
+
+.uol-course__main {
+  padding-top: 0;
+}
+
+.uol-course .uol-side-nav-container,
+.uol-course .uol-side-nav-container--populated,
+.uol-course .uol-course__content {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.uol-course .uol-detail-nav {
+  margin-bottom: $spacing-4;
+  margin-left: $spacing-2;
+
+  @include media(">=uol-media-m") {
+    margin-bottom: $spacing-7;
+  }
+
+  @include media(">=uol-media-l") {
+    margin-left: 0;
+    padding-bottom: 0;
+  }
+
+  .uol-detail-nav__title {
+    margin-top: 0;
+  }
+}
+
+.uol-global-marketing-banner, .uol-global-banner  {
+  margin: $spacing-6 0;
+  @include media(">=uol-media-m") {
+    margin: $spacing-7 0;
+  }
+}
+
+// Fix for 113318 global banner link button in courses page spacing issue
+.uol-course .uol-global-banner .uol-link-button-container {
+  margin: 0; 
+} 
+
+.uol-table-container table {
+  width: 100%;
+}
+
+.uol-course-year--label {
+  color: $color-font--dark;
+}
+.uol-course-year--value {
+  color: $color-font;
+  font-variant-numeric: lining-nums;
+}
+
+.uol-course__content__page-nav-container {
+  max-width: 760px;
+
+  @include media('>=uol-media-m') {
+    max-width: none;
+  }
+}
+
+.uol-hero-banner + .uol-year-of-entry {
+  margin: $spacing-6 0 $spacing-5;
+
+  @include media(">=uol-media-m") {
+    margin: $spacing-7 0 $spacing-6;
+  }
+}
+
+// Temp grey full width placeholder
+.uol-content-placeholder {
+  display: flex;
+  align-items: center;
+  background-image: linear-gradient(135deg, #e8e8e8 25%, #ececec 25%, #ececec 50%, #e8e8e8 50%, #e8e8e8 75%, #ececec 75%, #ececec 100%);
+  background-size: 84.85px 84.85px;
+  padding: 20px;
+  margin: 20px 0;
+  font-size: 20px;
+}
+
+.uol-course__content {
+  @include media(">=uol-media-l") {
+    margin-bottom: $spacing-6;
+  }
+
+  .uol-profile-supplement {
+    margin: $spacing-7 0;
+
+    @include media(">=uol-media-m") {
+      margin: $spacing-7 0;
+    }
+  }
+}
+
+.uol-course table th {
+  min-width: none;
+};
+
+.uol-course .uol-logo-group-item__logo {
+  width: inherit !important;
+}
+
+.uol-course .uol-results-items__item h3 {
+  margin-top: 0px;
+}
+
+.uol-course .uol-link-button-container {
+  margin: $spacing-5 0 $spacing-6;
+
+  @include media(">=uol-media-m") {
+    margin: $spacing-6 0 $spacing-7;
+  }
+}
+
+.uol-course__content__profile-container,
+.uol-course__content__cards-container {
+  margin: 0;
+
+  .uol-widget-container {
+    margin: 0;
+
+    .uol-widget {
+      margin: 0;
+
+      .uol-cards {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+.uol-course__content__cards-container {
+  .uol-widget__head {
+    padding-bottom: 8px;
+
+    @include media(">=uol-media-m") {
+      padding-bottom: $spacing-5;
+    }
+  }
+
+  .uol-widget__title {
+    margin-top: $spacing-6;
+
+    @include media(">=uol-media-m") {
+      margin-top: $spacing-2;
+    }
+
+    @include media(">=uol-media-l") {
+      margin-top: $spacing-6;
+    }
+  }
+
+  .uol-cards {
+    @include media("<uol-media-l") {
+      margin-bottom: 0;
+    }
+  }
+
+  .uol-cards__card:last-child {
+    @include media("<uol-media-l") {
+      margin-bottom: -8px;
+    }
+  }
+}
+
+.no-js {
+  .uol-course
+    .uol-page-nav {
+      display: none;
+    }
+}
+
+.uol-course__content {
+
+  @include media(">=uol-media-l") {
+    margin-top: 20px;
+    max-width: calc(100% / 12 * 9 - 32px) !important;
+    flex-basis: calc(100% / 12 * 9 - 32px) !important;
+    margin-left: 12px;
+    padding-left: 0 !important;
+  }
+
+  @include media(">=uol-media-xl") {
+    max-width: calc(100% / 12 * 9 - 32px) !important;
+    flex-basis: calc(100% / 12 * 9 - 32px) !important;
+    margin-left: 16px;
+    padding-left: 0 !important;
+  }
+
+  .uol-rich-text {
+    margin-right: 0;
+  }
+
+  .uol-rich-text--with-lead {
+    > p:first-of-type {
+      @include media(">=uol-media-xl") {
+        &::before {
+          width: calc(100% / 7 - 8px) !important;
+          left: -32px !important;
+        }
+      }
+    }
+  }
+
+}
+
+.uol-course__content__section .uol-spacing {
+  margin-top: -48px;
+}

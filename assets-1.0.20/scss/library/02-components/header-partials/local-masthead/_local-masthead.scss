@@ -1,0 +1,84 @@
+.uol-header-local-masthead {
+  @include font-size-responsive(2.125rem, 1.25rem);
+  @include line-height-responsive(1.556, 1.6);
+
+  padding: $spacing-4;
+  background-color: $color-white;
+
+  @include media(">=uol-media-m") {
+    padding: $spacing-3 $spacing-4;
+  }
+
+  @include media(">=uol-media-l") {
+    padding: $spacing-3 $spacing-5;
+  }
+
+  @include media(">=uol-media-xl") {
+    padding: $spacing-3 $spacing-6;
+  }
+
+  .uol-global-masthead-outer--with-local-navigation & {
+    border-bottom: 1px solid $color-border--light;
+  }
+}
+
+.uol-global-masthead-outer--with-local-navigation + .uol-content-container.uol-header-local-navigation-wrapper {
+  margin-top: 0;
+
+  &.uol-header-local-navigation-wrapper--scrollable {
+    border-top: none;
+  }
+
+  @include media(">=uol-media-l") {
+    margin-top: none;
+  }
+}
+
+  .uol-header-local-masthead__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0 auto;
+    max-width: 99.75rem;
+  }
+
+    .uol-header-local-masthead__link {
+      @include link_focus(1px);
+
+      font-weight: $font-weight-bold--sans-serif;
+      text-decoration: underline;
+      text-underline-offset: 1px;
+      color: $color-font;
+
+      @include media(">=uol-media-m") {
+        font-weight: $font-weight-bold--sans-serif;
+      }
+
+      &:hover {
+        // TODO: Look to include on the ds-link-focus mixin or equivalent
+        text-decoration: underline;
+        text-decoration-color: $color-brand;
+        text-decoration-thickness: 2px;
+        transition: text-decoration-color 0s;
+
+        .no-csspositionsticky & {
+          text-decoration: none;
+        }
+      }
+    }
+      .uol-header-local-masthead__link--parent-site {
+        // TODO: Typography - Check to see if this size should be global
+        @include font-size-responsive(0.875rem, 1rem);
+        @include line-height-responsive(1.25rem, 1.25rem);
+
+        margin-bottom: 8px;
+
+        @include media(">=uol-media-m") {
+          margin-bottom: 6px;
+        }
+      }
+
+      .uol-header-local-masthead__link--title {
+        @extend %text-size-paragraph;
+        @include line-height-responsive(1.75rem, 2rem);
+      }

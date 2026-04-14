@@ -1,0 +1,45 @@
+.uol-article-highlight {
+  font-variant-numeric: lining-nums;
+  background-color: $color-brand--faded;
+  padding: $spacing-5;
+  margin: $spacing-6 0;
+
+  @include media(">=uol-media-s") {
+    padding: $spacing-5 calc(100% / 12);
+  }
+
+  @include media(">=uol-media-m") {
+    margin: $spacing-7 0;
+    
+  }
+
+  @include media(">=uol-media-l") {
+    margin: $spacing-5 0 $spacing-7;
+    padding: $spacing-5;
+  }
+
+}
+
+  .uol-article-highlight__title {
+    @extend %text-size-heading-3;
+    @extend %uol-font-serif--bold;
+
+    margin: 0 0 $spacing-2;
+  }
+
+  .uol-article-highlight__subtitle {
+    @extend .uol-typography-paragraph; 
+    @extend %uol-font-sans-serif--bold;
+
+    font-weight: $font-weight-medium--sans-serif;
+    
+    margin: $spacing-2 0 $spacing-3;
+  }
+
+  .uol-article-highlight__paragraph {
+    @extend .uol-typography-paragraph; 
+    
+    margin: $spacing-3 0 0;
+  }
+
+  

@@ -1,0 +1,70 @@
+// Font sizes - Responsive
+
+%text-size-epic {
+  @include font-size-responsive(2.25rem, 3.25rem, 4.125rem);
+  @include line-height-responsive(2.75rem, 4rem, 4.75rem);
+  @include letter-spacing-responsive(normal, -0.05rem, -0.13rem);
+}
+
+%text-size-heading-1 {
+  @include font-size-responsive(2rem, 2.75rem, 3.312rem);
+  @include line-height-responsive(2.5rem, 3.5rem, 3.938rem);
+  @include letter-spacing-responsive(normal, -0.05rem, -0.09rem);
+}
+
+%text-size-heading-2 {
+  @include font-size-responsive(1.75rem, 2.25rem, 2.625rem);
+  @include line-height-responsive(2.25rem, 3rem, 3.25rem);
+  @include letter-spacing-responsive(normal, -0.025rem, -0.05rem);
+}
+
+%text-size-heading-3 {
+  @include font-size-responsive(1.5rem, 2rem, 2.188rem);
+  @include line-height-responsive(2rem, 2.75rem, 2.812rem);
+  @include letter-spacing-responsive(normal, -0.0125rem, -0.025rem);
+}
+
+%text-size-heading-4 {
+  @include font-size-responsive(1.25rem, 1.75rem, 1.75rem);
+  @include line-height-responsive(1.75rem, 2.5rem, 2.375rem);
+}
+
+%text-size-heading-5 {
+  @include font-size-responsive(1.25rem, 1.5rem, 1.375rem);
+  @include line-height-responsive(1.75rem, 2.25rem, 2rem);
+}
+
+%text-size-heading-6 {
+  @include font-size-responsive(1.25rem, 1.25rem, 1.25rem);
+  @include line-height-responsive(1.75rem, 1.75rem, 1.875rem);
+}
+
+%text-size-paragraph {
+  @include font-size-responsive(1.125rem, 1.25rem, 1.25rem);
+  @include line-height-responsive(1.75rem, 1.75rem, 2rem);
+}
+
+%text-size-paragraph--small {
+  @include font-size-responsive(1rem, 1rem, 1.125rem);
+  @include line-height-responsive(1.5rem, 1.625rem, 1.75rem);
+}
+
+%text-size-paragraph--intro {
+  @include font-size-responsive(1.25rem, 1.375rem, 1.5rem);
+  @include line-height-responsive(1.75rem, 2.125rem, 2.25rem);
+}
+
+%text-size-blockquote {
+  @include font-size-responsive(1.125rem, 1.5rem, 1.75rem !important);
+  @include line-height-responsive(1.75rem, 2.25rem, 2.25rem);
+}
+
+%text-size-pullquote {
+  @include font-size-responsive(1.125rem, 1.25rem, 1.25rem);
+  @include line-height-responsive(1.5rem, 1.625rem, 1.75rem);
+}
+
+%text-size-caption {
+  @include font-size-responsive(1rem);
+  @include line-height-responsive(1.125rem);
+}

@@ -1,0 +1,43 @@
+.uol-global-banner {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  padding: $spacing-5 $spacing-4;
+  background: $color-brand-teal;
+  color: $color-black;
+
+  @include media(">=uol-media-l") {
+    padding: $spacing-5;
+  }
+
+  .uol-button {
+    display: block;
+    margin-top: $spacing-4;
+  }
+}
+
+  .uol-global-banner__title {
+    @extend .uol-typography-heading-3;
+    
+    display: inline-block;
+    margin: 0;
+    padding: $spacing-2;
+    background: $color-white;
+  }
+
+  .uol-global-banner__description {
+    @extend .uol-typography-paragraph;
+
+    font-weight: $font-weight-bold--sans-serif;
+    margin: $spacing-4 0 0;
+    max-width: 470px;
+
+    @include media(">=uol-media-m") {
+      max-width: 610px;
+    }
+
+    @include media(">=uol-media-l") {
+      max-width: 748px;
+      
+    }
+  }

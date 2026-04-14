@@ -1,0 +1,326 @@
+.uol-clp {
+
+  .uol-key-facts {
+    width: 100%;
+    margin: $spacing-4 -50% $spacing-6;
+
+    @include media(">=uol-media-m") {
+      margin-bottom: $spacing-7;
+    }
+
+    @include media(">=uol-media-l") {
+      margin-bottom: $spacing-9;
+    }
+  }
+
+  .uol-form__container {
+    margin-bottom: 0;
+    
+    @include media(">=uol-media-m") {
+      margin-bottom: $spacing-4;
+    }
+
+    @include media(">=uol-media-l") {
+      margin-bottom: $spacing-9;
+    }
+
+    .uol-form__inner-wrapper {
+      @include media(">=uol-media-s", "<uol-media-m") {
+        padding-left: 8%;
+        padding-right: 8%;
+      }
+    }
+  }
+  .uol-site-footer__accreditations {
+    margin-left: $spacing-2;
+  }
+}
+
+
+
+.uol-clp__outer {
+  max-width: 103.75rem;
+  margin: 0 auto;
+}
+
+.uol-clp__inner {
+  display: flex;
+  flex-direction: column;
+
+  .uol-in-text-fact__item {
+    width: 100%;
+    margin: $spacing-2 auto;
+
+    @include media(">=uol-media-l") {
+      margin: $spacing-4 auto;
+    }
+  }
+
+  @include media(">=uol-media-l") {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+
+}
+
+.uol-clp__column {
+
+  &:first-child {
+    margin: $spacing-7 auto $spacing-6;
+    width: calc((100% - 2 * #{$col-gutter-s}));
+    
+    @include media(">=uol-media-s") {
+      width: calc((100% - #{$col-gutter-s}) / 12 * 10 - #{$col-gutter-s});
+    }
+    
+    @include media(">=uol-media-m") {
+      margin-bottom: 36px; // to make total of 64px
+      width: calc((100% - #{$col-gutter-m}) / 12 * 10 - #{$col-gutter-m});  
+    }
+
+    @include media(">=uol-media-l") {
+      margin-top: 5rem;
+      margin-left: #{$col-gutter-l};
+      margin-bottom: 0;
+      width: calc((100% - #{$col-gutter-l}) / 12 * 4 - #{$col-gutter-l});
+    }
+
+    @include media(">=uol-media-xl") {
+      margin-left: #{$col-gutter-xl};
+      width: calc((100% - #{$col-gutter-xl}) / 12 * 4 - #{$col-gutter-xl});
+    }
+
+    @include media("<uol-media-l") {
+      order: 2;
+    }
+  }
+
+  &:last-child {
+    margin: 0 auto;
+
+    width: calc((100% - 2 * #{$col-gutter-s}));
+    
+    @include media(">=uol-media-s") {
+      width: calc((100% - #{$col-gutter-s}) / 12 * 10 - #{$col-gutter-s});
+    }
+      
+    @include media(">=uol-media-m") {
+      margin-top: $spacing-2; // 8px more space required for just 768-1024
+      width: calc((100% - #{$col-gutter-m}) / 12 * 10 - #{$col-gutter-m});
+    }
+
+    @include media(">=uol-media-l") {
+      margin-top: 0;
+      margin-right: #{$col-gutter-l};
+      /*
+      full width is 12 columns plus 12 gutters, plus one more gutter width for last column edge,
+      1, therefore to work out width remove one gutter (leaving 12 pairs of column plus gutter),
+      2, then divide by 12 and multiply by number of cols item is to span across
+      3,then remove one gutter
+
+      eg.
+      1: (100% - #{$col-gutter-l}
+      2: (100% - #{$col-gutter-l}) / 12 * 7
+      3: (100% - #{$col-gutter-l}) / 12 * 7 - #{$col-gutter-l}
+      */
+      width: calc((100% - #{$col-gutter-l}) / 12 * 7 - #{$col-gutter-l});
+    }
+
+    @include media(">=uol-media-xl") {
+      margin-right: #{$col-gutter-xl};
+      width: calc((100% - #{$col-gutter-xl}) / 12 * 7 - #{$col-gutter-xl});
+    }
+  }
+}
+
+.uol_clp__page-content {
+
+  .uol-spacing > :last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+  
+  margin-top: $spacing-7;
+
+  @include media(">=uol-media-m") {
+    margin-top: $spacing-8;
+  }
+
+  @include media(">=uol-media-l") {
+    margin-top: $spacing-9;
+  }
+
+  .uol-rich-text {
+    margin: 0 #{$col-gutter-s};
+
+    @include media(">=uol-media-s") {
+      margin-left: calc(100% / 12 * 1 + 1rem);
+      margin-right: calc(100% / 12 * 1 + 1rem);
+    }
+
+    @include media(">=uol-media-l") {
+      margin-left: calc(100% / 12 * 1 + 1.3rem);
+      margin-right: calc(100% / 12 * 4 + 1rem);
+    }
+
+    @include media(">=uol-media-xl") {
+      margin-left: calc(100% / 12 * 1 + 1.8rem);
+      margin-right: calc(100% / 12 * 5 + 1.1rem);
+    }
+  }
+}
+
+
+
+.uol-profile-supplement {
+  @include media(">=uol-media-l") {
+    margin-right: calc(100% / 12* 3);
+  }
+}
+
+.uol-profile-supplement__container {
+  @extend .s-1-12;
+  @extend .l-1-9;
+
+  .uol-profile-supplement {
+    margin-right: 0;
+    padding: 6px 0 $spacing-8;
+    flex-direction: column;
+
+    @include media(">=uol-media-m") {
+      padding-top: $spacing-1;
+      padding-bottom: $spacing-9;
+    }
+
+    @include media(">=uol-media-l") {
+      padding-top: 42px; // nudge to make total distance 80px
+      padding-bottom: 96px;
+    }
+  }
+}
+
+.uol-clp__home {
+
+  .uol-in-text-facts {
+    padding-top: $spacing-2;
+    margin-bottom: $spacing-2;
+
+    @include media(">=uol-media-m") {
+      margin-bottom: 20px;
+    }
+
+    @include media(">=uol-media-l") {
+      padding-top: 0;
+    }
+  }
+
+  .uol-in-text-fact__item {
+    width: 100%;
+    margin: $spacing-2 auto;
+
+    @include media(">=uol-media-m") {
+      margin: $spacing-2 auto;
+    }
+
+    @include media(">=uol-media-l") {
+      margin: $spacing-4 auto;
+    }
+  }
+
+  @include media(">=uol-media-l") {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .uol-form__lead p {
+    font-weight: 600;
+  }
+}
+
+.uol-clp__confirmation {
+  margin-bottom: 36px; // fiddle, already had 12px, required = 48px;
+
+  @include media(">=uol-media-m") {
+    margin-bottom: 20px; // gives visual gap of 64px
+  }
+
+  @include media(">=uol-media-l") {
+    margin-bottom: 18px; // gives visual gap of 80px
+  }
+
+  .uol-clp__column {
+
+    &:first-child {
+      margin-bottom: 0;
+    }
+
+    &:last-child {
+      margin-top: 0;
+    }
+  }
+
+  .uol-clp__inner {
+    display: block;
+  }
+
+  .uol-in-text-fact__item {
+
+    &:not(:only-child) {
+      @include media(">=uol-media-m") {
+        padding: $spacing-4 $spacing-6 $spacing-5;
+        width: calc(50% - #{$spacing-5} / 2);
+
+        &:first-of-type {
+          margin: 0 0 $spacing-5;
+        }
+
+        &:last-of-type {
+          margin: 0 0 $spacing-5;
+        }
+      }
+  
+      @include media(">=uol-media-xl") {
+        width: calc(50% - #{$spacing-6} / 2);
+
+        &:first-of-type {
+          margin: 0 0 $spacing-6;
+        }
+
+        &:last-of-type {
+          margin: 0 0 $spacing-6;
+        }
+      }
+    }
+    
+  }
+
+  .uol-clp__outer:last-of-type {
+    
+    @include media(">=uol-media-m") {
+      margin-top: $spacing-8;
+    }
+
+    @include media(">=uol-media-l") {
+      margin-top: $spacing-9;
+    }
+
+    margin-bottom: -12px;
+    
+    @include media(">=uol-media-m") {
+      margin-bottom: -4px;
+    }
+
+    @include media(">=uol-media-l") {
+      margin-bottom: -6px;
+    }
+    
+  }
+  .uol-in-text-facts__container {
+    padding-bottom: inherit;
+  }
+
+}
+
+// add text comment to initiate a dev deployment
+

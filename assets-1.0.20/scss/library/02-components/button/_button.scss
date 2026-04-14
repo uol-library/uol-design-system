@@ -1,0 +1,115 @@
+.uol-button {
+  @include font-size-responsive(1.125rem, 1.125rem, 1.25rem);
+  @include button_ripple($color-black);
+  @include button_focus(-6px, $radius: 9px);
+
+  line-height: 1;
+  box-sizing: border-box;
+  min-width: 10rem;
+  border: 0;
+  padding: 0.8em 1.8em;
+  border: 2px solid $color-black;
+  border-radius: 6px;
+  color: $color-white;
+  background-position: center;
+  text-decoration: none;
+  transition: background 0.5s ease;
+
+  @media (-ms-high-contrast: active) {
+    border: 1px solid WindowText;
+  }
+
+  &:hover,
+  &:active {
+    text-decoration: none;
+    box-shadow: 0 3px 6px 0 rgba($color-black, 0.15), 0 2px 4px 0 rgba($color-black, 0.12);
+  }
+
+  &:active {
+    background-color: lighten($color-black, 20%);
+    background-size: 100%;
+    transition: background 0s;
+  }
+
+  &:disabled {
+    color: $color-grey--medium;
+    background: $color-grey;
+    border: 0.125rem solid darken($color-white, 6%);
+
+    &:hover {
+      box-shadow: none;
+      cursor: not-allowed;
+    }
+  }
+
+  .js & {
+
+    &.uol-icon {
+      padding: 0.8em 2.2em;
+
+      svg {
+        margin-top: 0;
+      }
+    }
+
+    &.uol-icon--icon-only {
+      @include button_focus(-6px, $radius: 50%);
+
+      min-width: 0;
+      border-radius: 50%;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 2.81rem;
+      height: 2.81rem;
+      min-height: 2.81rem;
+
+      @include media(">=uol-media-l") {
+        width: 3.12rem;
+        height: 3.12rem;
+      }
+
+      svg {
+        position: absolute;
+      }
+    }
+
+    &.uol-icon--icon-only--large {
+      svg {
+        transform: scale(1.4);
+      }
+    }
+  }
+}
+
+  .uol-button--primary {
+    @include button_ripple($color-brand-2--dark);
+
+    border-color: $color-brand-2--dark;
+
+    &:active {
+      background-color: lighten($color-brand-2--dark, 7%);
+    }
+  }
+
+  .uol-button--secondary {
+    @include button_ripple($color-white);
+
+    color: $color-brand-2--dark;
+    border-color: $color-brand-2--dark;
+
+    &:active {
+      background-color: darken($color-white, 10%);
+    }
+  }
+
+  .uol-button--bright {
+    @include button_ripple($color-brand--bright);
+
+    border-color: $color-brand--bright;
+
+    &:active {
+      background-color: lighten($color-brand--bright, 7%);
+    }
+  }

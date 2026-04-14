@@ -1,0 +1,44 @@
+@mixin button_focus($offset: -5px, $radius: inherit, $above_image: false, $ring_color: $color-focus-accent, $radius: inherit) {
+  position: relative;
+  outline: 0 dotted $ring_color;
+  outline-offset: 3px;
+  overflow: visible;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: $offset;
+    right: $offset;
+    bottom: $offset;
+    left: $offset;
+    border: 3px solid transparent;
+    border-radius: $radius;
+    transition: all 0.15s;
+
+    @media (-ms-high-contrast: active), (forced-colors: active) {
+      display: none;
+    }
+  }
+
+  &:focus {
+    @media (-ms-high-contrast: active), (forced-colors: active) {
+      outline-width: 3px;
+    }
+  }
+
+  &:focus::before {
+    border-color: $ring_color;
+  }
+
+  &:focus:not(:focus-visible)::before {
+    border-color: transparent;
+  }
+
+  &:focus-visible::before {
+    border-color: $ring_color;
+
+    @if $above_image {
+      box-shadow: inset 0px 0px 0px 2px rgba(0, 0, 0, 0.65);
+    }
+  }
+}

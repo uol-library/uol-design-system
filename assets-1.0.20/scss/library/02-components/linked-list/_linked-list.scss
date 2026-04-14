@@ -1,0 +1,141 @@
+.uol-linked-list {
+  padding: 0;
+  margin: 0 $spacing-4 0 0;
+  list-style-type: none;
+
+  @include media(">=uol-media-m") {
+    column-count: 2;
+    column-gap: 1.75rem;
+  }
+
+  @include media(">=uol-media-l") {
+    column-gap: 2.25rem;
+  }
+
+  @include media("<uol-media-xl") {
+    max-width: 60rem;
+  }
+
+  @include media(">=uol-media-xl") {
+    column-count: 4;
+    column-gap: 2.75rem;
+
+    .uol-side-nav-container--populated + .uol-homepage-content & {
+      column-count: 3;
+    }
+  }
+}
+  //specifics when in a article page
+  .uol-article, .uol-page {
+    .uol-linked-list {
+      column-count: 1;
+      padding-left: 0;
+    }
+
+    p + .uol-linked-list {
+      @include media(">=uol-media-m") {
+        padding-top: $spacing-2;
+      }
+    }
+  }
+
+
+
+.uol-widget--linked-list {
+  max-width: 100%;
+
+  .uol-widget__head {
+    padding-bottom: 0;
+
+    @include media(">=uol-media-m") {
+      padding-bottom: $spacing-2;
+    }
+
+    @include media(">=uol-media-l") {
+      padding-bottom: $spacing-4;
+    }
+  }
+
+  .uol-widget__content {
+    margin-top: $spacing-3;
+  }
+}
+
+  .uol-linked-list__item {
+    @include font-size-responsive(1.125rem, 1.25rem);
+
+    box-sizing: border-box;
+    color: $color-font;
+    break-inside: avoid;
+    padding: $spacing-1 0;
+    display: block;
+    width: 100%;
+  }
+
+    .uol-linked-list__link {
+      @include line-height-responsive(1.778, 1.6);
+
+      margin-left: $spacing-4;
+      padding: 0.375rem 0;
+      display: inline-block;
+      position: relative;
+
+      @include media(">=uol-media-l") {
+        margin-left: $spacing-4;
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        height: 4px;
+        width: 4px;
+        background-color: $color-brand;
+        left: -14px;
+        top: 1.2rem;
+
+        @media (-ms-high-contrast: active), (forced-colors: active) {
+          background-color: currentColor;
+        }
+      }
+
+      &:hover {
+        text-decoration: underline;
+        text-decoration-color: $color-brand--bright;
+        text-decoration-thickness: 3px;
+      }
+
+      &:focus {
+        outline-color: transparent;
+        background: $color-brand--faded;
+        text-underline-offset: 2px;
+        text-decoration-thickness: 3px;
+        text-decoration-color: $color-brand--bright;
+      }
+
+      .no-csspositionsticky & {
+        &:hover,
+        &:focus {
+          text-decoration: none;
+          border-bottom: 3px solid $color-brand--bright;
+        }
+      }
+    }
+
+
+.uol-widget__content {
+  
+  // linked list only one column when in content widget
+  .uol-linked-list {
+
+    padding-left: 0;
+  
+    @include media(">=uol-media-m") {
+      column-count: 1;
+    }
+
+    @include media(">=uol-media-xl") {
+      column-count: 1;
+    }
+  }
+}
+

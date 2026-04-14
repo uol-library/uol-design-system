@@ -1,0 +1,20 @@
+{
+  "name": "uol-design-system",
+  "version": "0.0.1",
+  "description": "University of Leeds Design System examples and assets",
+  "homepage": "https://github.com/uol-library/uol-design-system#readme",
+  "bugs": {
+    "url": "https://github.com/uol-library/uol-design-system/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uol-library/uol-design-system.git"
+  },
+  "license": "Unlicense",
+  "author": "peteredwards <p.l.edwards@leeds.ac.uk>",
+  "type": "ESM",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

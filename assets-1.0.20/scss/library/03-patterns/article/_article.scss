@@ -1,0 +1,878 @@
+$section-debug-colour: rgba(rgb(111, 243, 115), 0.2);
+
+.uol-article-container, .uol-page-container {
+
+  .uol-side-nav-container--populated + .uol-article,  .uol-side-nav-container--populated + .uol-page {
+
+    @include media(">=uol-media-l") {
+      max-width: calc(100% / 12 * 8 - 2rem);
+      flex-basis: calc(100% / 12 * 8 - 2rem);
+      padding-left: calc(100% / 12 + 1rem) !important;
+    }
+
+    .uol-article__head,
+    .uol-article__content,
+    .uol-page__head,
+    .uol-page__content {
+      @include media(">=uol-media-l") {
+        margin-right: 0;
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+.uol-article, .uol-page {
+
+  :not(.uol-article--profile) {
+    .uol-article__head, .uol-page__head {
+
+      @include media(">=uol-media-l") {
+        margin-right: calc(100% / 12* 4) !important;
+      }
+
+      @include media(">=uol-media-xl") {
+        margin-right: calc(100% / 12 * 5) !important;
+      }
+
+    }
+  }
+
+
+  // cancel out padding from columns container
+  padding-bottom: 0 !important;
+
+  padding-left: 8px !important;
+  padding-right: 8px !important;
+
+  @include media(">=uol-media-m") {
+    padding-left: 4px !important;
+    padding-right: 4px !important;
+  }
+
+  @include media(">=uol-media-l") {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+
+  @include media(">=uol-media-xl") {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  max-width: calc(100% - 1rem);
+
+  @include page-width("wide");
+
+  @include media(">=uol-media-l") {
+    max-width: calc(100% - 1.75rem);
+  }
+
+  @include media(">=uol-media-xl") {
+    max-width: calc(100% - 2rem);
+  }
+
+  .uol-article__head,
+  .uol-article__content,
+  .uol-page__head,
+  .uol-page__content
+   {
+    @include media(">=uol-media-l") {
+      margin-right: calc(100% / 12 * 3);
+      margin-left: calc(100% / 12 + 0.25rem);
+    }
+
+    @include media(">=uol-media-xl") {
+      margin-right: calc(100% / 12 * 3 + 0.5rem);
+      margin-left: calc(100% / 12 + 0.25rem);
+    }
+  }
+
+  .uol-rich-text {
+
+    > *:last-child {
+      margin-bottom: 0;
+    }
+
+    @include media(">=uol-media-l") {
+      max-width: inherit;
+      margin-right: calc(100% / 8 * 1 + 0.125rem);
+    }
+
+    @include media(">=uol-media-xl") {
+      margin-right: calc(100% / 8 * 2 + 0.5rem);
+    }
+
+    img:not(.uol-logo-group-item__logo) {
+      max-width: none;
+    }
+
+    figure {
+      @include media(">=uol-media-m") {
+        // margin-top: $spacing-7;
+      }
+    }
+
+    .uol-gallery figure {
+      @include media(">=uol-media-m") {
+        margin-top: 0;
+      }
+    }
+
+    .text-highlight p {
+      margin-bottom: 0;
+    }
+
+  }
+
+    .uol-rich-text--with-lead {
+
+      // Add accent to lead paragraph
+      > p:first-of-type {
+        // margin-bottom: $spacing-4;
+
+        @include media(">=uol-media-m") {
+          position: relative;
+          // margin-bottom: $spacing-5;
+
+          &::before {
+            content: "";
+            display: inline-block;
+            position: absolute;
+            width: calc(100% / 12 - #{$spacing-1});
+            height: $spacing-1;
+            top: 0.65em;
+            left: -18px;
+            transform: translateX(-100%);
+            background-color: $color-brand;
+          }
+        }
+
+        @include media(">=uol-media-l") {
+          &::before {
+            width: calc(100% / 7 - 20px);
+            left: -28px;
+          }
+        }
+
+        @include media(">=uol-media-xl") {
+          &::before {
+            width: calc(100% / 6 - 28px);
+            left: -36px;
+          }
+        }
+      }
+    }
+
+  .uol-side-nav-container--populated + & {
+    .uol-typography-pull-quote {
+      @include media(">=uol-media-l") {
+        margin-right: 0;
+      }
+
+      @include media(">=uol-media-xl") {
+        position: absolute;
+        max-width: calc(100% / 9 * 2 - 2rem);
+        right: $spacing-4;
+      }
+    }
+  }
+
+  .uol-typography-pull-quote {
+    display: block;
+  }
+  // ul, ol {
+  //   margin: $spacing-6 0;
+
+  //   @include media(">=uol-media-m") {
+  //     margin: $spacing-7 0;
+  //   }
+  // }
+
+  .uol-typography-pull-quote {
+    margin: $spacing-6 0;
+
+    @include media(">=uol-media-m") {
+      margin: $spacing-7 0;
+    }
+
+    @include media(">=uol-media-xl") {
+      margin: 0 0 $spacing-7;
+    }
+  }
+
+  .uol-featured-image {
+
+    @include media("<=uol-media-xs") {
+      margin-right: -#{$spacing-4};
+      margin-left: -#{$spacing-4};
+      max-width: none;
+    }
+
+    @include media(">uol-media-xs", "<uol-media-s") {
+      margin-right: -#{$spacing-5};
+      margin-left: -#{$spacing-5};
+      max-width: none;
+    }
+
+    @include media(">=uol-media-s", "<uol-media-m") {
+      margin-right: -13%;
+      margin-left: -13%;
+    }
+
+    img {
+      @extend .uol-featured-image__img;
+    }
+  }
+
+  .uol-featured-image__caption,
+  figcaption {
+    @extend .uol-featured-image__caption;
+  }
+
+  .uol-table-outer {
+    // margin: $spacing-4 0 $spacing-6;
+
+    // @include media(">=uol-media-l") {
+    //   margin: $spacing-4 0 $spacing-7 ;
+    // }
+
+    .uol-table-container {
+      max-width: none;
+    }
+
+    table {
+      margin-bottom: 0;
+    }
+  }
+
+  img {
+    display: block;
+    margin: $spacing-6 0;
+
+    @include media(">=uol-media-m") {
+      margin: $spacing-7 0;
+    }
+  }
+
+  // bugfix 91676
+  .uol-results-items__item__img {
+    margin: 0;
+  }
+
+  .uol-typography-pull-quote {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+
+    .uol-col-debug & {
+      background: $section-debug-colour;
+    }
+
+    @include media(">=uol-media-xl") {
+      float: none;
+      position: absolute;
+      right: calc(1rem + 100%/12 * 3);
+      max-width: calc(100% / 12 * 2 - 2rem);
+    }
+  }
+
+  .uol-info-list-container {
+    margin: $spacing-6 0;
+
+    @include media(">=uol-media-m") {
+      margin: $spacing-7 0;
+    }
+  }
+
+  .uol-publications-list .uol-info-list-container {
+    margin: 0;
+  }
+
+  .uol-featured-image {
+    margin: $spacing-6 0;
+
+    @include media(">=uol-media-m") {
+      margin: $spacing-7 0;
+    }
+
+    @include media(">=uol-media-l") {
+      max-width: inherit;
+      margin-right: calc(100% / 8 * 1 + 0.125rem);
+    }
+
+    @include media(">=uol-media-xl") {
+      margin-right: calc(100% / 8 * 2 + 0.5rem);
+    }
+  }
+
+  .uol-featured-image__img {
+    margin: 0;
+  }
+
+  .uol-cards__card__image {
+    margin: 0  }
+
+  .uol-info-list {
+    margin: 0;
+  }
+
+  .uol-accordion__title {
+    margin: 0 !important;
+  }
+}
+// end of uol-article (generic)
+
+.uol-article--news {
+  .page-heading__title {
+    margin-bottom: $spacing-4;
+  }
+  .page-heading__meta__group:first-child {
+    margin-bottom: $spacing-2;
+  }
+}
+// end of uol-article--news
+
+.uol-article--event {
+
+  .uol-info-list-container {
+
+    .uol-col-debug & {
+      background: $section-debug-colour;
+    }
+
+  }
+
+  .uol-info-list {
+    @include media(">=uol-media-xl") {
+      margin: 0;
+    }
+  }
+}
+// end of uol-article--event
+
+.uol-article--profile {
+
+  margin-top: 8px;
+
+  @include media(">=uol-media-m") {
+    margin-top: 16px;
+  }
+
+  @include media(">=uol-media-l") {
+    margin-top: 24px;
+  }
+
+  .page-heading__title:before {
+    top: -24px;
+
+    @include media(">=uol-media-m") {
+      top: -32px;
+    }
+  }
+
+  .page-heading__meta__group {
+    margin-bottom: $spacing-6;
+  }
+
+  .uol-article__head {
+    flex-direction: column;
+
+    .uol-article__no-profile-image {
+      width: 100%;
+
+      @include media(">=uol-media-xl") {
+        margin-left: calc((100% + #{$col-gutter-xl} + 8px) / 12 * 4);
+      }
+    }
+
+    @include media(">=uol-media-s") {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .uol-article__head__image-container {
+      background: linear-gradient(90deg, $color-brand--dark 72px, rgba(255,255,255,0) 0);
+      padding: 16px 0 16px 32px;
+      border-radius: 6px;
+      margin-bottom: 48px;
+      width: 192px;
+
+      @include media(">=uol-media-s") {
+        padding-right: 0;
+        margin-bottom: 2rem;
+        margin-right: 16px;
+      }
+
+      @include media(">=uol-media-m") {
+        margin-left: -4px;
+        margin-right: 16px;
+        width: 204px;
+      }
+
+      @include media(">=uol-media-l") {
+        margin-left: 0;
+        margin-right: 24px;
+        padding-right: 0;
+      }
+
+      @include media(">=uol-media-xl") {
+        background: linear-gradient(90deg, $color-brand--dark 96px, rgba(255,255,255,0) 0);
+        padding: 0 0 0 32px;
+        margin-right: 0;
+        width: inherit;
+      }
+
+      .uol-profile-image {
+        .uol-profile-image__img {
+          width: 192px;
+          height: 192px;
+          padding-bottom: 0;
+
+          @include media(">=uol-media-m") {
+            width: 204px;
+            height: 204px;
+          }
+
+          @include media(">=uol-media-l") {
+            width: 196px;
+            height: 196px;
+            margin-right: #{$col-gutter-l}
+          }
+
+          @include media(">=uol-media-xl") {
+            width: 266px;
+            height: 266px;
+            margin-right: #{$col-gutter-xl}
+          }
+
+          @include media(">=uol-media-xxl") {
+            width: 311px;
+            height: 311px;
+          }
+        }
+      }
+    }
+  }
+
+  // .uol-info-list-container {
+  //   @include media(">=uol-media-xl") {
+  //     // fix to make info list be close to page heading without ammending markup
+  //     margin-top: -100px;
+  //   }
+  // }
+  .uol-article__head {
+    margin-right: calc((100% + #{$col-gutter-m} + 8px) / 12 * 1 - 8px);
+
+    @include media(">=uol-media-l") {
+      margin-right: calc((100% + #{$col-gutter-l} + 8px) / 12 * 3 - 8px);
+    }
+
+    @include media(">=uol-media-xl") {
+      margin-right: calc((100% + #{$col-gutter-xl} + 8px) / 12 * 3 - 4px);
+
+    }
+
+    &:has(.uol-article__no-profile-image) {
+      @include media(">=uol-media-s") {
+        margin-left: calc((100% + #{$col-gutter-s} + 8px) / 12 * 1);
+      }
+
+      @include media(">=uol-media-l") {
+        margin-left: calc((100% + #{$col-gutter-l} + 8px) / 12 * 2);
+      }
+
+      @include media(">=uol-media-xl") {
+        margin-left: 0;
+      }
+    }
+
+
+
+  }
+
+  .uol-article__content {
+
+    @include media(">=uol-media-l") {
+      margin-right: calc((100% + #{$col-gutter-l} + 8px) / 12 * 3 - 8px);
+      margin-left: calc((100% + #{$col-gutter-l} + 8px) / 12 * 2 );
+    }
+
+    @include media(">=uol-media-xl") {
+      margin-right: calc((100% + #{$col-gutter-xl} + 8px) / 12 * 3 - 4px);
+      margin-left: calc((100% + #{$col-gutter-xl} + 8px) / 12 * 3 );
+    }
+
+    .uol-info-list-container {
+      padding-bottom: 48px;
+      border-bottom: 0.25rem solid #c70000;
+    }
+
+    .uol-publications-list .uol-info-list-container {
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+  }
+
+  .uol-article-section {
+
+    margin-right: 0;
+    .uol-rich-text {
+      margin-right: 0;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin: $spacing-6 0 $spacing-2;
+
+    @include media(">=uol-media-m") {
+      margin: $spacing-7 0 $spacing-4;
+    }
+    }
+
+
+    @include media(">=uol-media-xl") {
+      display: flex;
+      flex-direction: row;
+      margin-left: calc(((100% + #{$col-gutter-xl} + 8px) / 6 * 3 ) * -1);
+      margin-top: $spacing-7;
+
+      .uol-article-section__content {
+        width: calc(((100% + #{$col-gutter-xl}) / 9 * 6 ) * 1 - #{$col-gutter-xl});
+
+        & .uol-accordion:first-child {
+          margin-top: 0;
+        }
+      }
+
+      .uol-article-section__title {
+        margin-right: 0;
+      }
+    }
+
+    .uol-article-section__title {
+      @extend .uol-typography-heading-3;
+
+      @include media(">=uol-media-xl") {
+        width: calc((100% + #{$col-gutter-xl} + 8px) / 9 * 3 - #{$col-gutter-xl});
+        margin-right: #{$col-gutter-xl};
+        margin-top: 0;
+        text-align: right;
+      }
+    }
+  }
+
+
+}
+// end of uol-article--profile
+
+.uol-article--person-insight {
+
+  .uol-article__head {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: $spacing-1 solid $color-brand;
+    margin-bottom: $spacing-6;
+
+    @include media(">=uol-media-m") {
+      margin-bottom: $spacing-7;
+    }
+  }
+
+  .uol-article__head__heading-text {
+
+    @include media(">=uol-media-s") {
+      min-height: calc(24px + 144px + 32px); //  24px for gap above red accent, 144px for image,  min 32px below
+    }
+
+    @include media(">=uol-media-m") {
+      min-height: calc(24px + 192px + 32px);
+    }
+
+    @include media(">=uol-media-l") {
+      min-height: calc(24px + 192px + 48px);
+    }
+
+    @include media(">=uol-media-xl") {
+      min-height: calc(24px + 288px + 48px);
+    }
+  }
+
+  .page-heading {
+    width: 100%;
+    margin-bottom: 0;
+
+    .page-heading__meta__group {
+      margin-bottom: 0;
+    }
+  }
+
+  .uol-info-list {
+    margin: 32px 0;
+  }
+
+  .uol-profile-image {
+    width: 96px;
+    top: $spacing-5;
+    margin-left: $spacing-4;
+
+    @include media(">=uol-media-s") {
+      width: 144px;
+    }
+
+    @include media(">=uol-media-m") {
+      width: 192px;
+    }
+
+    @include media(">=uol-media-xl") {
+      width: 288px;
+    }
+  }
+}
+// end of uol-article--person-insight
+
+
+// Items following headings CSS
+// TODO: remove dependency on !important tags
+
+.uol-rich-text :is(h1, h2, h3, h4, h5, h6) + {
+
+
+
+  .uol-in-text-facts__container {
+    margin-top: $spacing-5 !important;
+
+    @include media(">=uol-media-m") {
+      margin-top: $spacing-6 !important;
+    }
+  }
+}
+
+// For vertical spacing on widget (news, events)
+// and profile supplement, on article pattern
+.uol-article .uol-rich-text p:last-child {
+  margin-bottom: 0;
+}
+// Fix for accordion
+.uol-article .uol-accordion p:last-child {
+  margin-bottom: $spacing-4;
+}
+
+// Fix for accordion
+.uol-article .uol-accordion p:last-child {
+  margin-bottom: $spacing-4;
+}
+// Fix for margin on accordion within article pages
+.uol-article .uol-accordion__content .uol-rich-text {
+  margin-right: 0;
+}
+
+.uol-article .uol-profile-supplement {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: $spacing-6;
+  max-width: auto;
+
+  @include media(">=uol-media-m") {
+    padding-top: $spacing-7;
+  }
+
+  @include media(">=uol-media-l") {
+    margin-right: calc(100% / 12 * 3);
+    margin-left: 0;
+  }
+
+  @include media(">=uol-media-xl") {
+    margin-right: calc(100% / 12 * 3 + 0.5rem);
+  }
+
+  .uol-profile-supplement__title {
+    margin-top: $spacing-4;
+
+    @include media(">=uol-media-l") {
+      margin-top: $spacing-5;
+    }
+  }
+
+  .uol-profile-supplement__text-container {
+    margin-bottom: 0;
+  }
+}
+
+.uol-side-nav-container--populated + .uol-article .uol-profile-supplement {
+  @include media(">=uol-media-l") {
+    margin-right: -0.5rem;
+    margin-left: calc(-100% / 12 * 2 + 3%);
+  }
+
+  @include media(">=uol-media-xl") {
+    margin-right: 0;
+    margin-left: calc(-100% / 12 * 2 + 4%);
+  }
+}
+
+.uol-article__widgets {
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: $spacing-6;
+
+  @include media(">=uol-media-m") {
+    margin-top: $spacing-7;
+  }
+
+  @include media(">=uol-media-l") {
+    margin-right: calc(100% / 12 * 4);
+    margin-left: 0;
+  }
+
+  @include media(">=uol-media-xl") {
+    margin-right: calc(100% / 12 * 3 + 0.5rem);
+    margin-left: 0;
+  }
+
+  .uol-widget-container {
+    margin-bottom: 0;
+  }
+
+  .uol-widget {
+    margin-top: 0;
+
+    .uol-widget__title {
+      margin-top: $spacing-4;
+
+      @include media(">=uol-media-l") {
+        margin-top: $spacing-5;
+      }
+    }
+
+    .uol-cards,
+    .uol-widget__content {
+      margin-top: 0;
+    }
+
+    .uol-cards {
+      margin-bottom: 0;
+
+      .uol-cards__card {
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+
+        @include media(">=uol-media-xl") {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    .uol-cards__card__image {
+      margin: 0;
+    }
+
+    @include media(">=uol-media-xl") {
+      .event-card-outer {
+        width: 33.333333333333333%;
+      }
+    }
+  }
+}
+
+// TO DO: refactor this file
+.uol-article {
+  // .uol-image-pair {
+  //   margin: $spacing-6 0;
+
+  //   @include media(">=uol-media-m") {
+  //     margin: $spacing-7 0;
+  //   }
+
+  //   .uol-image-pair__column {
+  //     margin: 0;
+  //   }
+  // }
+
+  .uol-form__container {
+    margin-top: 2rem;
+
+    @include media(">=uol-media-m") {
+      margin-top: 3rem;
+    }
+
+    @include media("<uol-media-m") {
+      margin-bottom: 1.5rem;
+    }
+    .uol-form__input-container {
+      margin-bottom: 1rem;
+
+      @include media(">=uol-media-l") {
+        margin-bottom: 1.5rem;
+      }
+  }
+    // Typeahead overwrite when in article
+    .uol-typeahead__list {
+      margin: 19px 0;
+      padding-left: 0;
+    }
+  }
+
+  .uol-info-list-container {
+    margin: 0;
+  }
+
+  // -ve margins applied because spacing to gallery smaller than spacing to all other text elements
+  .uol-gallery-container {
+    margin: -0.5rem 0 -1rem;
+
+    @include media(">=uol-media-m") {
+      margin: -1rem 0;
+    }
+  }
+
+  // similarly for map in article
+  .uol-iframe {
+    margin-top: -0.5rem;
+
+    @include media(">=uol-media-m") {
+      margin-top: 0;
+    }
+  }
+
+  .uol-page-nav {
+
+    @include media(">=uol-media-m") {
+      margin-top: 2.75rem; // 44px, gap is 48px, map has 4px gap at bottom
+    }
+
+    @include media(">=uol-media-l") {
+      margin-bottom: 2.5rem; // 40px, gap is 48px, page title red line has 8px
+    }
+  }
+}
+// Set max width for default featured image
+.uol-article {
+  .uol-featured-image {
+    max-width: 49rem;
+  }
+}
+// Bigger featured image for news and event variants
+.uol-article--news,
+.uol-article--event {
+  .uol-featured-image {
+    max-width: inherit;
+    margin-right: 0;
+  }
+}
+
+// set max-width to contain ckeditor elements (without side nav)
+:not(.uol-side-nav-container--populated) + .uol-article {
+  .uol-article__head,
+      .uol-article__content {
+        @include media(">=uol-media-l") {
+          // max-width: 49rem;
+        }
+      }
+    }

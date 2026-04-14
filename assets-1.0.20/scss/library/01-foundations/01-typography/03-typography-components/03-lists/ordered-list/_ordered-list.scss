@@ -1,0 +1,28 @@
+
+.uol-typography-ol {
+  @extend %text-size-paragraph;
+
+  list-style: none;
+  counter-reset: item;
+  padding-left: 2em;
+
+  .uol-typography-ol__item {
+    margin-bottom: 0.6em;
+    position: relative;
+    counter-increment: item;
+
+    &::before {
+      @extend %uol-font-sans-serif--bold;
+
+      content: counter(item) ".";
+      font-variant-numeric: lining-nums;
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 2em;
+      transform: translateX(-126%);
+      text-align: right;
+    }
+  }
+}

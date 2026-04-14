@@ -1,0 +1,38 @@
+.uol-clp--widget-variant {
+    padding: 0;
+
+    .uol-widget-container,
+    .uol-widget,
+    .uol-widget__content {
+      margin: 0;
+    }
+
+    // Reset code that is used to bleed out of parent container (not required here).
+    .uol-key-facts {
+        margin: $spacing-4 0 $spacing-6;
+        left: 0;
+        right: 0;
+        position: static;
+
+        @include media('>=uol-media-m') {
+            margin-bottom: 2.5rem;
+        }
+
+        @include media('>=uol-media-l') {
+          margin-bottom: 5rem;
+      }
+    }
+
+    .uol-homepage-content {
+        width: 100%;
+        padding: 0;
+    }
+
+    .uol-in-text-facts {
+      padding-bottom: $spacing-6;
+
+      @include media('>=uol-media-m') {
+        padding-bottom: 0;
+      }
+    }
+}
