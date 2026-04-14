@@ -6,15 +6,15 @@
   "bugs": {
     "url": "https://github.com/uol-library/uol-design-system/issues"
   },
+  "scripts":{
+    "compile": "node _scripts/compile.mjs"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/uol-library/uol-design-system.git"
   },
   "license": "Unlicense",
   "author": "peteredwards <p.l.edwards@leeds.ac.uk>",
-  "type": "ESM",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  }
+  "type": "module",
+  "main": "index.js"
 }

@@ -1,0 +1,153 @@
+###############################################################################
+#     _____ __        _  __          _           __  _         
+#    / __(_) /____   / |/ /__ __  __(_)__ ____ _/ /_(_)__  ___ 
+#   _\ \/ / __/ -_) /    / _ `/ |/ / / _ `/ _ `/ __/ / _ \/ _ \
+#  /___/_/\__/\__/ /_/|_/\_,_/|___/_/\_, /\_,_/\__/_/\___/_//_/
+#                                   /___/                     
+# 
+# This file contains the main site navigation.
+#
+# There are four main navigation areas:
+#
+#   quicklinks - these are the menus at the top of the page in the black header
+#   main       - this is the main menu shown below the black header
+#   section    - this is a menu which can be turned on and off for different
+#                pages and can be used for contextual navigation
+#   footer     - the footer has three menu areas in columns and another in the
+#                bottom band of the site
+#
+# All navigation items have a title and either have an items collection (for 
+# a nested menu) or a url.
+#
+###############################################################################
+
+# Quicklinks are placed in the black header at the top of each page
+# This menu must only be nested one level deep.
+
+#quicklinks:
+#  - title:
+#    items:
+#      - url: 
+#        title: 
+#  - title: 
+#    items:
+#      - url: 
+#        title:
+
+# These are the standard quicklinks on the corporate site (as of 22/02/2023)
+quicklinks:
+  - title: "Students"
+    items:
+      - url: "https://minerva.leeds.ac.uk/"
+        title: "Minerva"
+      - url: "https://it.leeds.ac.uk/mobileapps"
+        title: "Mobile app"
+      - url: "https://students.leeds.ac.uk"
+        title: "For Students"
+  - title: "Staff"
+    items:
+      - url: "https://forstaff.leeds.ac.uk"
+        title: "For staff"
+      - url: "https://forstaff.leeds.ac.uk/forstaff/homepage/375/services"
+        title: "Services A-Z"
+      - url: "https://ses.leeds.ac.uk/"
+        title: "Student Education Service"
+  - title: "Faculties"
+    items:
+      - url: "https://ahc.leeds.ac.uk/"
+        title: "Faculty of Arts, Humanities and Cultures"
+      - url: "https://biologicalsciences.leeds.ac.uk/"
+        title: "Faculty of Biological Sciences"
+      - url: "https://business.leeds.ac.uk"
+        title: "Faculty of Business"
+      - url: "https://eps.leeds.ac.uk"
+        title: "Faculty of Engineering and Physical Sciences"
+      - url: "https://environment.leeds.ac.uk/"
+        title: "Faculty of Environment"
+      - url: "https://medicinehealth.leeds.ac.uk/"
+        title: "Faculty of Medicine and Health"
+      - url: "https://essl.leeds.ac.uk/"
+        title: "Faculty of Social ciences"
+      - url: "https://www.leeds.ac.uk/lifelong-learning"
+        title: "Lifelong Learning Centre<"
+      - url: "https://www.leeds.ac.uk/language-centre"
+        title: "Language Centre"
+  - title: "Alumni"
+    items:
+      - url: "https://www.leeds.ac.uk/alumni"
+        title: "Alumni website"
+
+# The Main Menu placed under the black header
+# This menu must only be nested one level deep. Items on the nested level can
+# also have a cta property which will change the link's appearance
+
+#mainmenu:
+#  - title:
+#    items:
+#      - title:
+#        url: 
+#      - title:
+#        url: 
+#        cta: 1
+#  - title: 
+#    url: 
+
+# The Section Menu is located to the left of content on larger screens and
+# forms a dropdown on smaller screens. As different pages can be in different
+# sections, each menu has a name, and is referred to in page front matter
+# like this:
+
+# sectionmenu: sectionname
+
+#sectionmenu:
+#  sectionname:
+#    title:
+#    items:
+#      - title:
+#        url:
+#      - title :
+#        url:
+
+# Section Calls to action are located under the section menu to the left of
+# content on larger screens and under the page content on smaller screens.
+# As different pages can be in different sections, each menu has a name, and is
+# referred to in page front matter like this:
+
+# sectionctas: sectionctaname
+
+#sectionctas:
+#  sectionctaname:
+#    title: 
+#    items:
+#      - title: 
+#        url: 
+#      - title: 
+#        url: 
+
+# Footer menus are located at the bottom of each page and there can be up to
+# three configured here
+
+#footermenus: 
+#  - title: 
+#    items:
+#      - url: 
+#        title: 
+#  - title:
+#    items:
+#      - url: 
+#        title: 
+#  - title:
+#    items:
+#      - url: 
+#        title: 
+
+# Footer Information consists of links to key pages on the site.
+# Each site should have its own Accessibility and Privacy pages
+# and may well have a Terms and Conditions page and Copyright
+# Page. You can also link to the University FOI page here.
+
+#footerinfo:
+#  - url: 
+#    title: 
+#  - url: "https://leeds.ac.uk/freedom-of-information"
+#    title: "Freedom of information"

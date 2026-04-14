@@ -1,0 +1,47 @@
+inlinectas:
+  - title: Inline Call to action
+    url: /covid-19/
+    text: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius, blanditiis.
+  - title: Clearing
+    url: /clearing/
+    text: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius, blanditiis.
+mainmenu:
+  - title: Examples
+    url: /examples/
+  - title: Blog
+    url: /blog/
+ac2:
+  - title: Test accordion 3
+    content: |
+      This is some test content for an accordion in markdown
+
+      * with a
+      * bulleted
+      * list
+
+      #### and a subheading
+
+      with some other text.
+  - title: Test accordion 4
+    content: Just a _bit_ of **text** here.
+related:
+  title: Wiki content
+  items:
+    - title: Introduction
+      links:
+        - title: Theme Overview
+          url: https://github.com/peteredwards/uol-jekyll-theme/wiki
+        - title: Menus
+          url: https://github.com/peteredwards/uol-jekyll-theme/wiki/Menus
+    - title: Page Templates
+      links:
+        - title: Templates Overview
+          url: https://github.com/peteredwards/uol-jekyll-theme/wiki/Page-templates
+        - title: Home page
+          url: https://github.com/peteredwards/uol-jekyll-theme/wiki/Home-page
+        - title: Page
+          url: https://github.com/peteredwards/uol-jekyll-theme/wiki/Page
+        - title: Post
+          url: https://github.com/peteredwards/uol-jekyll-theme/wiki/Post
+        - title: List
+          url: https://github.com/peteredwards/uol-jekyll-theme/wiki/List
