@@ -13,7 +13,8 @@ author:
   email: p.l.edwards@leeds.ac.uk
 description: >
   Test site for Design System components and patterns
-url: https://uol-library.github.io/uol-design-system/
+url: https://uol-library.github.io
+baseurl: /uol-design-system 
 host: localhost
 destination: public
 
